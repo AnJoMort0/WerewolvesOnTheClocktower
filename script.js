@@ -1,29 +1,34 @@
 // Function to generate and display the random list
 function generateAndDisplay() {
-    // Get input and result container elements
-    const playerCountInput = document.getElementById('playerCount');
-    const resultContainer = document.getElementById('result-container');
-    const messagesContainer = document.getElementById('messages-container');
-  
-    // Remove the existing result container content
-    resultContainer.innerHTML = '';
-  
-    // Remove the existing messages container if it exists
-    if (messagesContainer) {
-      messagesContainer.parentNode.removeChild(messagesContainer);
-    }
-  
-    // Create a new messages container
-    const newMessagesContainer = document.createElement('div');
-    newMessagesContainer.id = 'messages-container';
-    document.body.appendChild(newMessagesContainer);
-  
-    // Parse player count from input
-    const playerCount = parseInt(playerCountInput.value);
-  
-    // Generate random list
-    const result = generateRandomList(playerCount, newMessagesContainer);
-  
+  // Get input and result container elements
+  const playerCountInput = document.getElementById('playerCount');
+  const resultContainer = document.getElementById('result-container');
+  const messagesContainer = document.getElementById('messages-container');
+
+  // Remove the existing result container content
+  resultContainer.innerHTML = '';
+
+  // Remove the existing messages container if it exists
+  if (messagesContainer) {
+    messagesContainer.parentNode.removeChild(messagesContainer);
+  }
+
+  // Create a new messages container
+  const newMessagesContainer = document.createElement('div');
+  newMessagesContainer.id = 'messages-container';
+  document.body.appendChild(newMessagesContainer);
+
+  // Parse player count from input
+  const playerCount = parseInt(playerCountInput.value);
+
+  // Check if the input is empty
+  if (isNaN(playerCount) || playerCount <= 0) {
+    newMessagesContainer.innerHTML = "Please add the number of players!";
+    return;
+  }
+
+  // Generate random list
+  const result = generateRandomList(playerCount, newMessagesContainer);
     // Display the result
   if (result) {
     resultContainer.innerHTML = `<p>Result: ${result.join(', ')}</p>`;
