@@ -1,0 +1,12 @@
+#result-container {
+    margin-top: 20px;
+  }
+
+#result-container img {
+    max-width: 500px;
+    max-height: 500px;
+    margin: 5px;
+    display: block; /* Create a line break between images */
+  }
+  
+  
