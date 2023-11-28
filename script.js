@@ -34,18 +34,34 @@ function generateAndDisplay() {
   if (result) {
     resultContainer.innerHTML = `<p>Result: ${result.join(', ')}</p>`;
 
-    // Create a table for characters, poisoned, and dead rows
+    // Create a table for characters, poisoned, dead, players, and notes rows
     const table = document.createElement('table');
     table.style.borderCollapse = 'collapse';
 
-    // Create rows for characters, poisoned, and dead
+    // Create rows for players, characters, poisoned, dead, and notes
+    const playersRow = table.insertRow();
     const charactersRow = table.insertRow();
     const poisonedRow = table.insertRow();
     poisonedRow.insertCell().appendChild(document.createTextNode('Poisoned'));
     const deadRow = table.insertRow();
     deadRow.insertCell().appendChild(document.createTextNode('Dead'));
+    const notesRow = table.insertRow();
+    const notesCell = notesRow.insertCell();
+    notesCell.appendChild(document.createTextNode('Notes'));
 
     let maxCellWidth = 0;
+
+    // Add "Players" text to the first cell of the players row
+    const playersCell = playersRow.insertCell();
+    playersCell.appendChild(document.createTextNode('Players'));
+
+    // Populate players row with text boxes for player names
+    result.forEach(() => {
+      const playerCell = playersRow.insertCell();
+      const playerNameInput = document.createElement('input');
+      playerNameInput.type = 'text';
+      playerCell.appendChild(playerNameInput);
+    });
 
     // Add "Characters" text to the first cell of the characters row
     const charactersCell = charactersRow.insertCell();
@@ -88,15 +104,26 @@ function generateAndDisplay() {
       deadCell.appendChild(deadSwitch);
 
       // Track the width of the icon
+      const iconHeight = icon.clientHeight;
       const iconWidth = icon.clientWidth;
       if (iconWidth > maxCellWidth) {
         maxCellWidth = iconWidth;
       }
+      // Adjust the height of the character cell based on the icon height
+      characterCell.style.height = `${Math.max(iconHeight, 100)}px`; // Set a minimum height of 100px for character cells
     });
 
     // Set the width for all character cells based on the width of the icon
     Array.from(charactersRow.cells).forEach(cell => {
       cell.style.width = `${Math.max(maxCellWidth, 200)}px`; // Set a minimum width of 200px for character cells
+    });
+
+    // Populate notes row with text areas for notes
+    result.forEach(() => {
+      const notesTextAreaCell = notesRow.insertCell();
+      const notesTextArea = document.createElement('textarea');
+      notesTextArea.rows = 4; // Set the number of rows as needed
+      notesTextAreaCell.appendChild(notesTextArea);
     });
 
     // Append the rows to the table
