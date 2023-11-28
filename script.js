@@ -252,7 +252,7 @@ function getCharacterName(number) {
     case 152: return 'Irmã';
     case 282: return 'Irmão';
     case 283: return 'Irmão';
-    
+
     default: return 'Unknown Character';
   }
 }
@@ -285,14 +285,12 @@ function generateRandomList(x, messagesContainer) {
     const randomIndex = Math.floor(Math.random() * availableNumbers.length);
     const randomNumber = availableNumbers.splice(randomIndex, 1)[0];
 
-    result.push(randomNumber);
-
-    if (randomNumber === 15 && result.length < x - 1) {
-      result.push(152);
-    }
-
-    if (randomNumber === 28 && result.length < x - 2) {
-      result.push(282, 283);
+    if (randomNumber != 15 && randomNumber != 28) {
+      result.push(randomNumber);
+    } else if (randomNumber === 15 && result.length < x - 2) {
+      result.push(15, 152);
+    } else if (randomNumber === 28 && result.length < x - 3) {
+      result.push(28, 282, 283);
     }
   }
 
