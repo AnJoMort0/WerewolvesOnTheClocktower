@@ -56,10 +56,11 @@ function generateAndDisplay() {
     playersCell.appendChild(document.createTextNode('Players'));
 
     // Populate players row with text boxes for player names
-    result.forEach(() => {
+    result.forEach((number, index) => {
       const playerCell = playersRow.insertCell();
       const playerNameInput = document.createElement('input');
       playerNameInput.type = 'text';
+      playerNameInput.id = `player-name-${number}`;
       playerCell.appendChild(playerNameInput);
     });
 
@@ -82,25 +83,29 @@ function generateAndDisplay() {
       icon.src = `images/${number}_icon.png`;
       icon.alt = 'Character Icon';
       icon.classList.add('character-icon');
+      icon.id = `character-icon-${number}`;
       characterCell.appendChild(icon);
 
       // Add character name text to the cell
       const characterName = getCharacterName(number);
       const nameContainer = document.createElement('span');
       nameContainer.appendChild(document.createTextNode(characterName));
+      nameContainer.id = `character-name-${number}`;
       characterCell.appendChild(nameContainer);
 
       // Create radio button for the poisoned row
       const poisonedRadio = document.createElement('input');
       poisonedRadio.type = 'radio';
-      poisonedRadio.name = 'poisoned';
+      poisonedRadio.name = `poisoned-${number}`;
       poisonedRadio.value = number;
+      poisonedRadio.id = `poisoned-radio-${number}`;
       poisonedCell.appendChild(poisonedRadio);
 
       // Create toggle switch for the dead row
       const deadSwitch = document.createElement('input');
       deadSwitch.type = 'checkbox';
       deadSwitch.value = number;
+      deadSwitch.id = `dead-switch-${number}`;
       deadCell.appendChild(deadSwitch);
 
       // Track the width of the icon
@@ -111,6 +116,9 @@ function generateAndDisplay() {
       }
       // Adjust the height of the character cell based on the icon height
       characterCell.style.height = `${Math.max(iconHeight, 100)}px`; // Set a minimum height of 100px for character cells
+      characterCell.setAttribute('data-character', number); // Set data-character attribute
+      poisonedCell.setAttribute('data-character', number); // Set data-character attribute
+      deadCell.setAttribute('data-character', number); // Set data-character attribute
     });
 
     // Set the width for all character cells based on the width of the icon
@@ -119,10 +127,11 @@ function generateAndDisplay() {
     });
 
     // Populate notes row with text areas for notes
-    result.forEach(() => {
+    result.forEach(number => {
       const notesTextAreaCell = notesRow.insertCell();
       const notesTextArea = document.createElement('textarea');
       notesTextArea.rows = 4; // Set the number of rows as needed
+      notesTextArea.id = `notes-${number}`;
       notesTextAreaCell.appendChild(notesTextArea);
     });
 
@@ -135,6 +144,7 @@ function generateAndDisplay() {
       img.src = `images/${number}_pt.png`;
       img.setAttribute('data-image-number', number);
       img.classList.add('generated-image');
+      img.id = `generated-image-${number}`;
       resultContainer.appendChild(img);
     });
   }
@@ -145,7 +155,7 @@ function generateAndDisplay() {
 
 // Function to add event listeners for radio buttons and toggle switches
 function addEventListeners() {
-  const poisonedRadios = document.querySelectorAll('input[name="poisoned"]');
+  const poisonedRadios = document.querySelectorAll('input[type="radio"]');
   const deadSwitches = document.querySelectorAll('input[type="checkbox"]');
 
   poisonedRadios.forEach(radio => {
