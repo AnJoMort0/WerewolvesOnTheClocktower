@@ -96,7 +96,7 @@ function generateAndDisplay() {
       // Create radio button for the poisoned row
       const poisonedRadio = document.createElement('input');
       poisonedRadio.type = 'radio';
-      poisonedRadio.name = `poisoned-${number}`;
+      poisonedRadio.name = `poisoned`;
       poisonedRadio.value = number;
       poisonedRadio.id = `poisoned-radio-${number}`;
       poisonedCell.appendChild(poisonedRadio);
@@ -169,11 +169,40 @@ function addEventListeners() {
 
 // Function to handle changes in the poisoned radio buttons
 function handlePoisonedChange(event) {
+  const characterNumber = event.target.value;
+  const characterNameElement = document.getElementById(`character-name-${characterNumber}`);
+  const characterIconElement = document.getElementById(`character-icon-${characterNumber}`);
+
+  // Remove the .poisoned-character style from all elements in the page
+  const allPoisonedElements = document.querySelectorAll('.poisoned-character');
+  allPoisonedElements.forEach(element => element.classList.remove('poisoned-character'));
+
+  if (event.target.checked) {
+    // If the poisoned button is checked, apply the .poisoned-character style
+    characterNameElement.classList.remove('default');
+    characterNameElement.classList.add('poisoned-character');
+    characterIconElement.classList.add('poisoned-character');
+  }
   // Handle the change if needed
 }
 
 // Function to handle changes in the dead toggle switches
 function handleDeadChange(event) {
+  const characterNumber = event.target.value;
+  const characterNameElement = document.getElementById(`character-name-${characterNumber}`);
+  const characterIconElement = document.getElementById(`character-icon-${characterNumber}`);
+
+  if (event.target.checked) {
+    // If the dead switch is checked, apply the .dead-character style
+    characterNameElement.classList.remove('default');
+    characterNameElement.classList.add('dead-character');
+    characterIconElement.classList.add('dead-character');
+  } else {
+    // If the dead switch is unchecked, apply the .default style
+    characterNameElement.classList.remove('dead-character');
+    characterIconElement.classList.remove('dead-character');
+    characterNameElement.classList.add('default');
+  }
   // Handle the change if needed
 }
 
@@ -219,6 +248,11 @@ function getCharacterName(number) {
     case 26: return 'Lobisomem Vampiro';
     case 27: return 'Ankou';
     case 28: return 'Irmão';
+
+    case 152: return 'Irmã';
+    case 282: return 'Irmão';
+    case 283: return 'Irmão';
+    
     default: return 'Unknown Character';
   }
 }
@@ -254,11 +288,11 @@ function generateRandomList(x, messagesContainer) {
     result.push(randomNumber);
 
     if (randomNumber === 15 && result.length < x - 1) {
-      result.push(15);
+      result.push(152);
     }
 
     if (randomNumber === 28 && result.length < x - 2) {
-      result.push(28, 28);
+      result.push(282, 283);
     }
   }
 
