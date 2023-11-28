@@ -1,40 +1,39 @@
+/* Style for the result container */
 #result-container {
-    margin-top: 20px;
-  }
+  margin-top: 20px;
+}
 
+/* Style for generated images */
 #result-container img {
-    max-width: 500px;
-    max-height: 500px;
-    margin: 5px;
-    display: block; /* Create a line break between images */
-  }
+  max-width: 500px;
+  max-height: 500px;
+  margin: 5px;
+  display: block;
+}
 
+/* Style for the result table */
 #result-container table {
-    border-collapse: collapse;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
 #result-container table, #result-container th, #result-container td {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 #result-container td {
-    text-align: center;
-    position: relative;
+  text-align: center;
+  position: relative;
 }
 
+/* Style for character icons */
 #result-container img.character-icon {
-    position: absolute;
-    top: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
-}
-.square-box {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 50px;
   height: 50px;
-  background-color: lightgray;
-  border: 1px solid black;
 }
 
 /* Style for toggle containers */
@@ -47,4 +46,19 @@
 /* Style for toggle switches */
 .toggle-switch {
   margin-left: 5px;
+}
+
+/* Style for character cells */
+.character-cell {
+  text-align: center;
+  vertical-align: middle;
+  width: 200px;
+  border: 1px solid black;
+}
+
+/* Style for toggle cells */
+.toggle-cell {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
 }

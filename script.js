@@ -5,10 +5,10 @@ function generateAndDisplay() {
   const resultContainer = document.getElementById('result-container');
   const messagesContainer = document.getElementById('messages-container');
 
-  // Remove the existing result container content
+  // Clear existing result content
   resultContainer.innerHTML = '';
 
-  // Remove the existing messages container if it exists
+  // Remove existing messages container if it exists
   if (messagesContainer) {
     messagesContainer.parentNode.removeChild(messagesContainer);
   }
@@ -34,47 +34,72 @@ function generateAndDisplay() {
   if (result) {
     resultContainer.innerHTML = `<p>Result: ${result.join(', ')}</p>`;
 
-    // Create a table with borders
+    // Create a table for characters, poisoned, and dead rows
     const table = document.createElement('table');
-    table.style.borderCollapse = 'collapse'; // Set border collapse style
+    table.style.borderCollapse = 'collapse';
 
-    // Create a single row in the table
-    const row = table.insertRow();
+    // Create rows for characters, poisoned, and dead
+    const charactersRow = table.insertRow();
+    const poisonedRow = table.insertRow();
+    poisonedRow.insertCell().appendChild(document.createTextNode('Poisoned'));
+    const deadRow = table.insertRow();
+    deadRow.insertCell().appendChild(document.createTextNode('Dead'));
 
-    // Track the maximum width for cells
     let maxCellWidth = 0;
 
-    // Populate the row with character names and icons
+    // Add "Characters" text to the first cell of the characters row
+    const charactersCell = charactersRow.insertCell();
+    charactersCell.appendChild(document.createTextNode('Characters'));
+
+    // Populate rows with character names, icons, radio buttons, and toggle switches
     result.forEach(number => {
-        const cell = row.insertCell();
-        cell.style.border = '1px solid black'; // Set cell border
-        cell.style.textAlign = 'center'; // Center-align the text
+      const characterCell = charactersRow.insertCell();
+      const poisonedCell = poisonedRow.insertCell();
+      const deadCell = deadRow.insertCell();
 
-        // Add character icon to the cell
-        const icon = document.createElement('img');
-        icon.src = `images/${number}_icon.png`;
-        icon.alt = 'Character Icon';
-        icon.classList.add('character-icon'); // Add a class for styling
-        cell.appendChild(icon);
+      characterCell.classList.add('character-cell');
+      poisonedCell.classList.add('toggle-cell');
+      deadCell.classList.add('toggle-cell');
 
-        // Add character name text to the cell
-        const characterName = getCharacterName(number);
-        const textNode = document.createTextNode(characterName);
-        cell.appendChild(textNode);
+      // Add character icon to the cell
+      const icon = document.createElement('img');
+      icon.src = `images/${number}_icon.png`;
+      icon.alt = 'Character Icon';
+      icon.classList.add('character-icon');
+      characterCell.appendChild(icon);
 
-        // Track the width of the icon
-        const iconWidth = icon.clientWidth;
-        if (iconWidth > maxCellWidth) {
-            maxCellWidth = iconWidth;
-        }
+      // Add character name text to the cell
+      const characterName = getCharacterName(number);
+      const nameContainer = document.createElement('span');
+      nameContainer.appendChild(document.createTextNode(characterName));
+      characterCell.appendChild(nameContainer);
+
+      // Create radio button for the poisoned row
+      const poisonedRadio = document.createElement('input');
+      poisonedRadio.type = 'radio';
+      poisonedRadio.name = 'poisoned';
+      poisonedRadio.value = number;
+      poisonedCell.appendChild(poisonedRadio);
+
+      // Create toggle switch for the dead row
+      const deadSwitch = document.createElement('input');
+      deadSwitch.type = 'checkbox';
+      deadSwitch.value = number;
+      deadCell.appendChild(deadSwitch);
+
+      // Track the width of the icon
+      const iconWidth = icon.clientWidth;
+      if (iconWidth > maxCellWidth) {
+        maxCellWidth = iconWidth;
+      }
     });
 
-    // Set the width for all cells based on the width of the icon
-    Array.from(row.cells).forEach(cell => {
-        cell.style.width = `${Math.max(maxCellWidth, 200)}px`; // Set a minimum width of 50px
+    // Set the width for all character cells based on the width of the icon
+    Array.from(charactersRow.cells).forEach(cell => {
+      cell.style.width = `${Math.max(maxCellWidth, 200)}px`; // Set a minimum width of 200px for character cells
     });
 
-    // Append the table to the result container
+    // Append the rows to the table
     resultContainer.appendChild(table);
 
     // Generate and append images under the table
@@ -82,15 +107,42 @@ function generateAndDisplay() {
       const img = document.createElement('img');
       img.src = `images/${number}_pt.png`;
       img.setAttribute('data-image-number', number);
-      img.classList.add('generated-image'); // Add a class for styling
+      img.classList.add('generated-image');
       resultContainer.appendChild(img);
     });
   }
+
+  // Add event listeners for radio buttons and toggle switches
+  addEventListeners();
+}
+
+// Function to add event listeners for radio buttons and toggle switches
+function addEventListeners() {
+  const poisonedRadios = document.querySelectorAll('input[name="poisoned"]');
+  const deadSwitches = document.querySelectorAll('input[type="checkbox"]');
+
+  poisonedRadios.forEach(radio => {
+    radio.addEventListener('change', handlePoisonedChange);
+  });
+
+  deadSwitches.forEach(switchElem => {
+    switchElem.addEventListener('change', handleDeadChange);
+  });
+}
+
+// Function to handle changes in the poisoned radio buttons
+function handlePoisonedChange(event) {
+  // Handle the change if needed
+}
+
+// Function to handle changes in the dead toggle switches
+function handleDeadChange(event) {
+  // Handle the change if needed
 }
 
 // Function to toggle the display of images
 function toggleImages() {
-  const images = document.querySelectorAll('.generated-image'); // Use the added class
+  const images = document.querySelectorAll('.generated-image');
 
   // Toggle the display property of each image
   images.forEach(img => {
@@ -101,6 +153,7 @@ function toggleImages() {
 // Function to get the character name based on the number
 function getCharacterName(number) {
   switch (number) {
+    // Long switch statement for each character number
     case 1: return 'Lobisomem';
     case 2: return 'Bruxa Malvada';
     case 3: return 'Cupido';
@@ -135,18 +188,14 @@ function getCharacterName(number) {
 
 // Function to generate a random list based on player count
 function generateRandomList(x, messagesContainer) {
-  // Initial result array with fixed numbers
   const result = [1, 2, 3, 4, 5];
-  // Array of available numbers
   let availableNumbers = [];
 
-  // Check if messagesContainer is defined
   if (!messagesContainer) {
     console.error('Error: messagesContainer is not defined.');
     return;
   }
 
-  // Set available numbers based on player count
   if (x < 8) {
     messagesContainer.innerHTML = "Not enough players!";
     return;
@@ -161,14 +210,12 @@ function generateRandomList(x, messagesContainer) {
     return;
   }
 
-  // Loop to add random numbers to the result array
   while (result.length < x && availableNumbers.length > 0) {
     const randomIndex = Math.floor(Math.random() * availableNumbers.length);
     const randomNumber = availableNumbers.splice(randomIndex, 1)[0];
 
     result.push(randomNumber);
 
-    // Add extra numbers based on specific conditions
     if (randomNumber === 15 && result.length < x - 1) {
       result.push(15);
     }
@@ -178,7 +225,6 @@ function generateRandomList(x, messagesContainer) {
     }
   }
 
-  // Shuffle the final result array
   shuffleArray(result);
   return result;
 }
