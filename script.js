@@ -1,3 +1,6 @@
+//Werewolf Maximum Guide Companion
+//by AnJoMorto
+
 // Function to generate and display the random list
 function generateAndDisplay() {
   // Get input and result container elements
