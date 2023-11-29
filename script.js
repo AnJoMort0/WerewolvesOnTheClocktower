@@ -175,13 +175,15 @@ function handlePoisonedChange(event) {
 
   // Remove the .poisoned-character style from all elements in the page
   const allPoisonedElements = document.querySelectorAll('.poisoned-character');
+  const allPoisonedIcon = document.querySelectorAll('.poisoned-icon');
   allPoisonedElements.forEach(element => element.classList.remove('poisoned-character'));
+  allPoisonedIcon.forEach(element => element.classList.remove('poisoned-icon'));
 
   if (event.target.checked) {
     // If the poisoned button is checked, apply the .poisoned-character style
     characterNameElement.classList.remove('default');
     characterNameElement.classList.add('poisoned-character');
-    characterIconElement.classList.add('poisoned-character');
+    characterIconElement.classList.add('poisoned-icon');
   }
   // Handle the change if needed
 }

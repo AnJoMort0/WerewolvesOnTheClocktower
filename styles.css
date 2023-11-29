@@ -79,6 +79,11 @@
   font-style: italic;
 }
 
+/* Style for the icons of poisoned characters */
+.poisoned-icon {
+  filter: sepia(50%) hue-rotate(600deg) brightness(100%) saturate(300%);
+}
+
 /* Style for the dead characters */
 .dead-character {
   color: grey;
