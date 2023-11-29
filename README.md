@@ -5,3 +5,5 @@ For now there's only portuguese results even if the whole UI is in English, I'm 
 Anyway, since it's not the most handcrafted program and is quite unoptimized, if you find any use for it, maybe for your normal Werewolf/Mafia games, download it, change it as you like, optimize it, publish it, idc, I hope you enjoy!
 
 If for any reason you want to contact me you can also DM me @an_jo_morto on IG.
+
+Oh, and all images were downloaded from https://www.loups-garous-en-ligne.com/, the text was added by me in a word document I screenshoted, indeed very professional.
