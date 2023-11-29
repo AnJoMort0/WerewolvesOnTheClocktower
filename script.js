@@ -149,6 +149,91 @@ function generateAndDisplay() {
     });
   }
 
+  // Add a section for the night preparation information
+  const nightPrepSection = document.createElement('div');
+  nightPrepSection.id = 'night-preparation-section';
+
+  // Add title
+  const title = document.createElement('h2');
+  title.textContent = 'Noite de preparação';
+  nightPrepSection.appendChild(title);
+
+  // Add paragraphs based on characters in the result
+  if (result.includes(15)) {
+    const paragraph = document.createElement('p');
+    paragraph.id = '15_fn_txt';
+    paragraph.textContent = 'Irmãs acordam para se conhecerem.';
+    nightPrepSection.appendChild(paragraph);
+    nightPrepSection.appendChild(document.createElement('br'));
+  }
+
+  if (result.includes(28)) {
+    const paragraph = document.createElement('p');
+    paragraph.id = '28_fn_txt';
+    paragraph.textContent = 'Irmãos acordam para se conhecerem.';
+    nightPrepSection.appendChild(paragraph);
+    nightPrepSection.appendChild(document.createElement('br'));
+  }
+
+  if (result.includes(18)) {
+    const paragraph = document.createElement('p');
+    paragraph.id = '18_fn_txt';
+    paragraph.textContent = 'Acusador acorda e escolhe um Bode Expiatório.';
+    nightPrepSection.appendChild(paragraph);
+    nightPrepSection.appendChild(document.createElement('br'));
+  }
+
+  if (result.includes(3)) {
+    const paragraph = document.createElement('p');
+    paragraph.id = '3_fn_txt';
+    paragraph.textContent = 'Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.';
+    nightPrepSection.appendChild(paragraph);
+    nightPrepSection.appendChild(document.createElement('br'));
+  }
+
+  if (result.includes(23)) {
+    const paragraph = document.createElement('p');
+    paragraph.id = '23_fn_txt';
+    paragraph.textContent = 'Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.';
+    nightPrepSection.appendChild(paragraph);
+    nightPrepSection.appendChild(document.createElement('br'));
+  }
+
+  if (result.includes(25)) {
+    const paragraph = document.createElement('p');
+    paragraph.id = '25_fn_txt';
+    paragraph.textContent = 'Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas.';
+    nightPrepSection.appendChild(paragraph);
+    nightPrepSection.appendChild(document.createElement('br'));
+  }
+
+  if (result.includes(2)) {
+    const paragraph = document.createElement('p');
+    paragraph.id = '2_fn_txt';
+    paragraph.textContent = 'Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (Cupido, Idiota, Irmã, Marionestista, Cão-Lobo, Criança Selvagem, Irmão).';
+    nightPrepSection.appendChild(paragraph);
+    nightPrepSection.appendChild(document.createElement('br'));
+  }
+
+  if (result.includes(8)) {
+    const paragraph = document.createElement('p');
+    paragraph.id = '8_fn_txt';
+    paragraph.textContent = 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador os seus vizinhos são maus.';
+    nightPrepSection.appendChild(paragraph);
+    nightPrepSection.appendChild(document.createElement('br'));
+  }
+
+  if (result.includes(7)) {
+    const paragraph = document.createElement('p');
+    paragraph.id = '7_fn_txt';
+    paragraph.textContent = 'Urso rosna/não rosna.';
+    nightPrepSection.appendChild(paragraph);
+    nightPrepSection.appendChild(document.createElement('br'));
+  }
+
+  // Add the night preparation section to the result container
+  resultContainer.appendChild(nightPrepSection);
+
   // Add event listeners for radio buttons and toggle switches
   addEventListeners();
 }
