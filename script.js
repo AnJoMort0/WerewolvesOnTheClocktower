@@ -33,6 +33,11 @@ function generateAndDisplay() {
   // Generate random list
   const result = generateRandomList(playerCount, newMessagesContainer);
 
+  //Remove the result from the fake characters list
+  const availableFakeCharacters = [6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 20];
+  const fakeCharacters = availableFakeCharacters.filter(element => !result.includes(element));
+  console.log(fakeCharacters);
+
   // Display the result
   if (result) {
     resultContainer.innerHTML = `<p>Result: ${result.join(', ')}</p>`;
@@ -161,13 +166,16 @@ function generateAndDisplay() {
   title.textContent = 'Noite de preparação';
   nightPrepSection.appendChild(title);
 
+  const emptyLine = document.createElement('p');
+  emptyLine.textContent = '&nbsp';
+
   // Add paragraphs based on characters in the result
   if (result.includes(15)) {
     const paragraph = document.createElement('p');
     paragraph.id = '15_fn_txt';
     paragraph.textContent = 'Irmãs acordam para se conhecerem.';
     nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(document.createElement('br'));
+    nightPrepSection.appendChild(emptyLine);
   }
 
   if (result.includes(28)) {
@@ -175,7 +183,7 @@ function generateAndDisplay() {
     paragraph.id = '28_fn_txt';
     paragraph.textContent = 'Irmãos acordam para se conhecerem.';
     nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(document.createElement('br'));
+    nightPrepSection.appendChild(emptyLine);
   }
 
   if (result.includes(18)) {
@@ -183,7 +191,7 @@ function generateAndDisplay() {
     paragraph.id = '18_fn_txt';
     paragraph.textContent = 'Acusador acorda e escolhe um Bode Expiatório.';
     nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(document.createElement('br'));
+    nightPrepSection.appendChild(emptyLine);
   }
 
   if (result.includes(3)) {
@@ -191,7 +199,7 @@ function generateAndDisplay() {
     paragraph.id = '3_fn_txt';
     paragraph.textContent = 'Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.';
     nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(document.createElement('br'));
+    nightPrepSection.appendChild(emptyLine);
   }
 
   if (result.includes(23)) {
@@ -199,15 +207,16 @@ function generateAndDisplay() {
     paragraph.id = '23_fn_txt';
     paragraph.textContent = 'Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.';
     nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(document.createElement('br'));
+    nightPrepSection.appendChild(emptyLine);
   }
 
   if (result.includes(25)) {
     const paragraph = document.createElement('p');
     paragraph.id = '25_fn_txt';
-    paragraph.textContent = 'Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas.';
+    const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+    paragraph.textContent = `Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas: ${fakeCharactersText}`;
     nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(document.createElement('br'));
+    nightPrepSection.appendChild(emptyLine);
   }
 
   if (result.includes(2)) {
@@ -215,7 +224,7 @@ function generateAndDisplay() {
     paragraph.id = '2_fn_txt';
     paragraph.textContent = 'Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (Cupido, Idiota, Irmã, Marionestista, Cão-Lobo, Criança Selvagem, Irmão).';
     nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(document.createElement('br'));
+    nightPrepSection.appendChild(emptyLine);
   }
 
   if (result.includes(8)) {
@@ -223,7 +232,7 @@ function generateAndDisplay() {
     paragraph.id = '8_fn_txt';
     paragraph.textContent = 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador os seus vizinhos são maus.';
     nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(document.createElement('br'));
+    nightPrepSection.appendChild(emptyLine);
   }
 
   if (result.includes(7)) {
@@ -231,7 +240,7 @@ function generateAndDisplay() {
     paragraph.id = '7_fn_txt';
     paragraph.textContent = 'Urso rosna/não rosna.';
     nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(document.createElement('br'));
+    nightPrepSection.appendChild(emptyLine);
   }
 
   // Add the night preparation section to the result container
@@ -360,6 +369,8 @@ function generateRandomList(x, messagesContainer) {
   if (x < 8) {
     messagesContainer.innerHTML = "Not enough players!";
     return;
+  } else if (x < 10) {
+    availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24];
   } else if (x < 12) {
     availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
   } else if (x < 22) {
