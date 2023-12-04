@@ -95,3 +95,8 @@
   text-decoration: line-through;
   filter: grayscale();
 }
+
+/* Style for done characters */
+.done {
+  text-decoration: line-through;
+}

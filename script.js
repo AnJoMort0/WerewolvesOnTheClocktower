@@ -36,7 +36,11 @@ function generateAndDisplay() {
   //Remove the result from the fake characters list
   const availableFakeCharacters = [6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 20];
   const fakeCharacters = availableFakeCharacters.filter(element => !result.includes(element));
-  console.log(fakeCharacters);
+  shuffleArray(fakeCharacters);
+
+  //Make the list of the important characters to mention if poisoned
+  const availablePoisanableCharacters = [3, 13, 15, 20, 21, 23, 28];
+  const poisanableCharacters = availablePoisanableCharacters.filter(element => result.includes(element));
 
   // Display the result
   if (result) {
@@ -221,7 +225,8 @@ function generateAndDisplay() {
   if (result.includes(2)) {
     const paragraph = document.createElement('p');
     paragraph.id = '2_fn_txt';
-    paragraph.textContent = 'Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (Cupido, Idiota, Irmã, Marionestista, Cão-Lobo, Criança Selvagem, Irmão).';
+    const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+    paragraph.textContent = `Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`;
     nightPrepSection.appendChild(paragraph);
     nightPrepSection.appendChild(emptyLine);
   }
