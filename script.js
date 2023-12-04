@@ -1,4 +1,4 @@
-//Werewolf Maximum Guide Companion
+//Werewolves on thr Clocktower Guide Companion
 //by AnJoMorto
 
 // Function to generate and display the random list
