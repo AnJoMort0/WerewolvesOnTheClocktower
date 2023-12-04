@@ -160,9 +160,12 @@ function generateAndDisplay() {
     });
   }
 
+  //Need to create empty p for every character that isn't in the script to have IDs for all the characters otherwise the style application doesn't work
   // Add a section for the night preparation information
   const nightPrepSection = document.createElement('div');
   nightPrepSection.id = 'night-preparation-section';
+
+  const remainingFnCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 152, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 282, 283];
 
   // Add title
   const title = document.createElement('h2');
@@ -175,76 +178,127 @@ function generateAndDisplay() {
   // Add paragraphs based on characters in the result
   if (result.includes(15)) {
     const paragraph = document.createElement('p');
-    paragraph.id = '15_fn_txt';
+    paragraph.id = 'fn-txt-15';
     paragraph.textContent = 'Irmãs acordam para se conhecerem.';
     nightPrepSection.appendChild(paragraph);
     nightPrepSection.appendChild(emptyLine);
+    
+    const index = remainingFnCharacters.indexOf(15);
+    if (index !== -1) {
+      remainingFnCharacters.splice(index, 1);
+    }
   }
 
   if (result.includes(28)) {
     const paragraph = document.createElement('p');
-    paragraph.id = '28_fn_txt';
+    paragraph.id = 'fn-txt-28';
     paragraph.textContent = 'Irmãos acordam para se conhecerem.';
     nightPrepSection.appendChild(paragraph);
     nightPrepSection.appendChild(emptyLine);
+
+    const index = remainingFnCharacters.indexOf(28);
+    if (index !== -1) {
+      remainingFnCharacters.splice(index, 1);
+    }
   }
 
   if (result.includes(18)) {
     const paragraph = document.createElement('p');
-    paragraph.id = '18_fn_txt';
+    paragraph.id = 'fn-txt-18';
     paragraph.textContent = 'Acusador acorda e escolhe um Bode Expiatório.';
     nightPrepSection.appendChild(paragraph);
     nightPrepSection.appendChild(emptyLine);
+
+    const index = remainingFnCharacters.indexOf(18);
+    if (index !== -1) {
+      remainingFnCharacters.splice(index, 1);
+    }
   }
 
   if (result.includes(3)) {
     const paragraph = document.createElement('p');
-    paragraph.id = '3_fn_txt';
+    paragraph.id = 'fn-txt-3';
     paragraph.textContent = 'Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.';
     nightPrepSection.appendChild(paragraph);
     nightPrepSection.appendChild(emptyLine);
+
+    const index = remainingFnCharacters.indexOf(3);
+    if (index !== -1) {
+      remainingFnCharacters.splice(index, 1);
+    }
   }
 
   if (result.includes(23)) {
     const paragraph = document.createElement('p');
-    paragraph.id = '23_fn_txt';
+    paragraph.id = 'fn-txt-23';
     paragraph.textContent = 'Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.';
     nightPrepSection.appendChild(paragraph);
     nightPrepSection.appendChild(emptyLine);
+
+    const index = remainingFnCharacters.indexOf(23);
+    if (index !== -1) {
+      remainingFnCharacters.splice(index, 1);
+    }
   }
 
   if (result.includes(25)) {
     const paragraph = document.createElement('p');
-    paragraph.id = '25_fn_txt';
+    paragraph.id = 'fn-txt-25';
     const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
     paragraph.textContent = `Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas: ${fakeCharactersText}`;
     nightPrepSection.appendChild(paragraph);
     nightPrepSection.appendChild(emptyLine);
+
+    const index = remainingFnCharacters.indexOf(25);
+    if (index !== -1) {
+      remainingFnCharacters.splice(index, 1);
+    }
   }
 
   if (result.includes(2)) {
     const paragraph = document.createElement('p');
-    paragraph.id = '2_fn_txt';
+    paragraph.id = 'fn-txt-2';
     const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
     paragraph.textContent = `Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`;
     nightPrepSection.appendChild(paragraph);
     nightPrepSection.appendChild(emptyLine);
+
+    const index = remainingFnCharacters.indexOf(2);
+    if (index !== -1) {
+      remainingFnCharacters.splice(index, 1);
+    }
   }
 
   if (result.includes(8)) {
     const paragraph = document.createElement('p');
-    paragraph.id = '8_fn_txt';
+    paragraph.id = 'fn-txt-8';
     paragraph.textContent = 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador os seus vizinhos são maus.';
     nightPrepSection.appendChild(paragraph);
     nightPrepSection.appendChild(emptyLine);
+
+    const index = remainingFnCharacters.indexOf(8);
+    if (index !== -1) {
+      remainingFnCharacters.splice(index, 1);
+    }
   }
 
   if (result.includes(7)) {
     const paragraph = document.createElement('p');
-    paragraph.id = '7_fn_txt';
+    paragraph.id = 'fn-txt-7';
     paragraph.textContent = 'Urso rosna/não rosna.';
     nightPrepSection.appendChild(paragraph);
     nightPrepSection.appendChild(emptyLine);
+
+    const index = remainingFnCharacters.indexOf(7);
+    if (index !== -1) {
+      remainingFnCharacters.splice(index, 1);
+    }
+  }
+
+  for (let i = 0; i < remainingFnCharacters.length; i++) {
+    const paragraph = document.createElement('p');
+    paragraph.id = `fn-txt-${remainingFnCharacters[i]}`;
+    nightPrepSection.appendChild(paragraph);
   }
 
   // Add the night preparation section to the result container
@@ -273,20 +327,28 @@ function handlePoisonedChange(event) {
   const characterNumber = event.target.value;
   const characterNameElement = document.getElementById(`character-name-${characterNumber}`);
   const characterIconElement = document.getElementById(`character-icon-${characterNumber}`);
+  const characterFnTxt       = document.getElementById(`fn-txt-${characterNumber}`);
+  const characterSnTxt       = document.getElementById(`sn-txt-${characterNumber}`);
+  const characterNnTxt       = document.getElementById(`nn-txt-${characterNumber}`);
 
   // Remove the .poisoned-character style from all elements in the page
   const allPoisonedElements = document.querySelectorAll('.poisoned-character');
-  const allPoisonedIcon = document.querySelectorAll('.poisoned-icon');
+  const allPoisonedIcon     = document.querySelectorAll('.poisoned-icon');
   allPoisonedElements.forEach(element => element.classList.remove('poisoned-character'));
   allPoisonedIcon.forEach(element => element.classList.remove('poisoned-icon'));
 
   if (event.target.checked) {
     // If the poisoned button is checked, apply the .poisoned-character style
     characterNameElement.classList.remove('default');
+    characterFnTxt.classList.remove('default');
+    //characterSnTxt.classList.remove('default');
+    //characterNnTxt.classList.remove('default');
     characterNameElement.classList.add('poisoned-character');
     characterIconElement.classList.add('poisoned-icon');
+    characterFnTxt.classList.add('poisoned-character');
+    //characterSnTxt.classList.add('poisoned-character');
+    //characterNnTxt.classList.add('poisoned-character');
   }
-  // Handle the change if needed
 }
 
 // Function to handle changes in the dead toggle switches
@@ -294,19 +356,33 @@ function handleDeadChange(event) {
   const characterNumber = event.target.value;
   const characterNameElement = document.getElementById(`character-name-${characterNumber}`);
   const characterIconElement = document.getElementById(`character-icon-${characterNumber}`);
+  const characterFnTxt       = document.getElementById(`fn-txt-${characterNumber}`);
+  const characterSnTxt       = document.getElementById(`sn-txt-${characterNumber}`);
+  const characterNnTxt       = document.getElementById(`nn-txt-${characterNumber}`);
 
   if (event.target.checked) {
     // If the dead switch is checked, apply the .dead-character style
     characterNameElement.classList.remove('default');
+    characterFnTxt.classList.remove('default');
+    //characterSnTxt.classList.remove('default');
+    //characterNnTxt.classList.remove('default');
     characterNameElement.classList.add('dead-character');
     characterIconElement.classList.add('dead-character');
+    characterFnTxt.classList.add('dead-character');
+    //characterSnTxt.classList.add('dead-character');
+    //characterNnTxt.classList.add('dead-character');
   } else {
     // If the dead switch is unchecked, apply the .default style
     characterNameElement.classList.remove('dead-character');
     characterIconElement.classList.remove('dead-character');
+    characterFnTxt.classList.remove('dead-character');
+    //characterSnTxt.classList.remove('dead-character');
+    //characterNnTxt.classList.remove('dead-character');
     characterNameElement.classList.add('default');
+    characterFnTxt.classList.add('default');
+    //characterSnTxt.classList.add('default');
+    //characterNnTxt.classList.add('default');
   }
-  // Handle the change if needed
 }
 
 // Function to toggle the display of images
