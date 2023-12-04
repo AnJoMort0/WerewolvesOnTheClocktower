@@ -89,7 +89,6 @@ function generateAndDisplay() {
       // Add character icon to the cell
       const icon = document.createElement('img');
       icon.src = `images/${number}_icon.png`;
-      icon.alt = 'Character Icon';
       icon.classList.add('character-icon');
       icon.id = `character-icon-${number}`;
       characterCell.appendChild(icon);
