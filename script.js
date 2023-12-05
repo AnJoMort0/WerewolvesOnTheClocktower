@@ -4,8 +4,8 @@
 // Function to generate and display the random list
 function generateAndDisplay() {
   // Get input and result container elements
-  const playerCountInput = document.getElementById('playerCount');
-  const resultContainer = document.getElementById('result-container');
+  const playerCountInput  = document.getElementById('playerCount');
+  const resultContainer   = document.getElementById('result-container');
   const messagesContainer = document.getElementById('messages-container');
 
   // Clear existing result content
@@ -31,20 +31,31 @@ function generateAndDisplay() {
   }
 
   // Generate random list
-  const result = generateRandomList(playerCount, newMessagesContainer);
-
-  //Remove the result from the fake characters list
-  const availableFakeCharacters = [6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 20];
-  const fakeCharacters = availableFakeCharacters.filter(element => !result.includes(element));
-  shuffleArray(fakeCharacters);
-
-  //Make the list of the important characters to mention if poisoned
-  const availablePoisanableCharacters = [3, 13, 15, 20, 21, 23, 28];
-  const poisanableCharacters = availablePoisanableCharacters.filter(element => result.includes(element));
-
-  //Make a list of the allies
-  const availableAllies = [2, 27, 21, 22];
-  const allies = availableAllies.filter(element => result.includes(element));
+  let result = generateRandomList(playerCount, newMessagesContainer);
+  let counter = 1; // Initialize the counter
+  result = result.map(value => {
+    if (value === 0) {
+      // If the value is 0, replace it with the counter and increment the counter
+      const newValue = counter.toString().padStart(2, '0');
+      counter++;
+      return newValue;
+    } else {
+      // If the value is not 0, keep it as it is
+      return value;
+    }
+  });  
+  
+  //Other lists important for the script later
+    //Remove the result from the fake characters list
+    const availableFakeCharacters = [6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 20];
+    const fakeCharacters = availableFakeCharacters.filter(element => !result.includes(element));
+    shuffleArray(fakeCharacters);
+    //Make the list of the important characters to mention if poisoned
+    const availablePoisanableCharacters = [3, 13, 15, 20, 21, 23, 28];
+    const poisanableCharacters = availablePoisanableCharacters.filter(element => result.includes(element));
+    //Make a list of the allies
+    const availableAllies = [2, 27, 21, 22];
+    const allies = availableAllies.filter(element => result.includes(element));
 
   // Display the result
   if (result) {
@@ -100,7 +111,9 @@ function generateAndDisplay() {
 
       // Add character icon to the cell
       const icon = document.createElement('img');
-      icon.src = `images/${number}_icon.png`;
+      const numberString = String(number); // Convert to string
+      const imagePath = numberString.startsWith('0') ? `images/0_icon.png` : `images/${numberString}_icon.png`;
+      icon.src = imagePath;
       icon.classList.add('character-icon');
       icon.id = `character-icon-${number}`;
       characterCell.appendChild(icon);
@@ -167,15 +180,19 @@ function generateAndDisplay() {
     // Append the rows to the table
     resultContainer.appendChild(table);
 
-    // Generate and append images under the table
-    result.forEach(number => {
-      const img = document.createElement('img');
-      img.src = `images/${number}_pt.png`;
-      img.setAttribute('data-image-number', number);
-      img.classList.add('generated-image');
-      img.id = `generated-image-${number}`;
-      resultContainer.appendChild(img);
-    });
+  // Generate and append images under the table
+  result.forEach(number => {
+  const img = document.createElement('img');
+  const numberString = String(number); // Convert to string
+  const imagePath = numberString.startsWith('0') ? `images/0_pt.png` : `images/${numberString}_pt.png`;
+  img.src = imagePath;
+  img.setAttribute('data-image-number', number);
+  img.classList.add('generated-image');
+  img.id = `generated-image-${number}`;
+  resultContainer.appendChild(img);
+});
+
+
   }
 
   // Add different buttons
@@ -645,7 +662,7 @@ function getCharacterName(number) {
     case 282: return 'Irmão';
     case 283: return 'Irmão';
 
-    default: return 'Unknown Character';
+    default: return 'Aldeão Triste';
   }
 }
 
@@ -670,6 +687,12 @@ function generateRandomList(x, messagesContainer) {
     availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27];
   } else if (x < 32) {
     availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
+  } else if (x < 41) {
+    availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
+    const extraPlayers = x - 31;
+    for (let i = 0; i < extraPlayers; i++) {
+      result.push(0);
+    }
   } else {
     messagesContainer.innerHTML = "Too many players!";
     return;
