@@ -456,11 +456,11 @@ function generateAndDisplay() {
       remainingNnCharacters.splice(index, 1);
     }
 
-      // Add event listener to the paragraph element
-      paragraph.addEventListener('click', function () {
-        // Toggle the .done class on the paragraph
-        this.classList.toggle('done');
-      });
+    // Add event listener to the paragraph element
+    paragraph.addEventListener('click', function () {
+      // Toggle the .done class on the paragraph
+      this.classList.toggle('done');
+    });
   }
 
   // Add event listeners for radio buttons and toggle switches
