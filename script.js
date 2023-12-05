@@ -143,6 +143,7 @@ function generateAndDisplay() {
       }
       // Adjust the height of the character cell based on the icon height
       characterCell.style.height = `${Math.max(iconHeight, 100)}px`; // Set a minimum height of 100px for character cells
+      
       characterCell.setAttribute('data-character', number); // Set data-character attribute
       poisonedCell.setAttribute('data-character', number); // Set data-character attribute
       deadCell.setAttribute('data-character', number); // Set data-character attribute
@@ -381,7 +382,7 @@ function generateAndDisplay() {
 
   if (result.includes(2)) {
     const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-    addPnTxtWithToggle(2, ` - Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
+    addNnTxt(2, ` - Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
   }
 
   if (result.includes(1)) {
@@ -469,8 +470,8 @@ function generateAndDisplay() {
 // Function to add event listeners for radio buttons and toggle switches
 function addDandPEventListeners() {
   const poisonedRadios = document.querySelectorAll('input[type="radio"]');
-  const deadSwitches = document.querySelectorAll('input[type="checkbox"]');
-  const doneSwitches = document.querySelectorAll('input[type="checkbox"]');
+  const deadSwitches = document.querySelectorAll('input[id^="dead-switch-"]');
+  const doneSwitches = document.querySelectorAll('input[id^="done-switch-"]');
 
   poisonedRadios.forEach(radio => {
     radio.addEventListener('change', handlePoisonedChange);
