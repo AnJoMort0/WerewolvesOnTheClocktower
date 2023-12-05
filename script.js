@@ -42,6 +42,10 @@ function generateAndDisplay() {
   const availablePoisanableCharacters = [3, 13, 15, 20, 21, 23, 28];
   const poisanableCharacters = availablePoisanableCharacters.filter(element => result.includes(element));
 
+  //Make a list of the allies
+  const availableAllies = [2, 27, 21, 22];
+  const allies = availableAllies.filter(element => result.includes(element));
+
   // Display the result
   if (result) {
     resultContainer.innerHTML = `<p>Result: ${result.join(', ')}</p>`;
@@ -174,11 +178,11 @@ function generateAndDisplay() {
   prepNightToggle.addEventListener('click', togglePrepNight);
   resultContainer.appendChild(prepNightToggle);
 
-  /*const secondNightToggle = document.createElement('button');
+  const secondNightToggle = document.createElement('button');
   secondNightToggle.id = 'sn-toggle';
   secondNightToggle.innerText = 'Toggle Second Night';
   secondNightToggle.addEventListener('click', toggleSecondNight);
-  resultContainer.appendChild(secondNightToggle);*/
+  resultContainer.appendChild(secondNightToggle);
 
   //Need to create empty p for every character that isn't in the script to have IDs for all the characters otherwise the style application doesn't work
   // Add a section for the night preparation information
@@ -276,6 +280,75 @@ function generateAndDisplay() {
     nightPrepSection.hidden = !nightPrepSection.hidden;
   }
 
+  // Add a section for the second night information
+  const secondNightSection = document.createElement('div');
+  secondNightSection.id = 'second-night-section';
+
+  const remainingSnCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 152, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 282, 283];
+
+  // Add title
+  const secondNightTitle = document.createElement('h2');
+  secondNightTitle.textContent = 'Começo da segunda noite.';
+  secondNightSection.appendChild(secondNightTitle);
+
+  const emptyLineSn = document.createElement('p');
+  emptyLineSn.textContent = '&nbsp';
+
+  // Add paragraphs based on characters in the result
+  if (result.includes(21)) {
+    addSnTxtWithToggle(21, 'Cão-Lobo acorda e escolhe com o polegar para cima se quer se juntar aos aldeões ou com um polegar para baixo se quer se juntar aos Lobisomens como um Lobisomem que só pode dizer a verdade.');
+  }
+
+  if (result.includes(22)) {
+    addSnTxtWithToggle(22, 'Ladrão acorda e escolhe com o polegar para cima se quer se juntar aos aldeões ou com um polegar para baixo se quer se juntar aos Lobisomens.');
+  }
+
+  if (result.includes(25)) {
+    const alliesTxt = allies.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+    addSnTxtWithToggle(25, `Lobisomens acordam e o Moderador aponta-lhes quem são os Aliados (${alliesTxt})`);
+  }
+
+  // Repeat this pattern for other cases...
+
+  //creating the remaining non-existing tags for compatibility reasons
+  for (let i = 0; i < remainingSnCharacters.length; i++) {
+    const paragraph = document.createElement('p');
+    paragraph.id = `sn-txt-${remainingSnCharacters[i]}`;
+    secondNightSection.appendChild(paragraph);
+  }
+
+  // Add the second night section to the result container
+  resultContainer.appendChild(secondNightSection);
+
+  // Function to add a paragraph with a click event for toggling .done class
+  function addSnTxtWithToggle(characterNumber, text) {
+    // Create a paragraph element with the desired id
+    const paragraph = document.createElement('p');
+    paragraph.id = `sn-txt-${characterNumber}`;
+    paragraph.textContent = text;
+
+    // Add the paragraph to the secondNightSection
+    secondNightSection.appendChild(paragraph);
+
+    // Add an empty line
+    secondNightSection.appendChild(emptyLineSn);
+
+    const index = remainingSnCharacters.indexOf(characterNumber);
+    if (index !== -1) {
+      remainingSnCharacters.splice(index, 1);
+    }
+
+    // Add event listener to the paragraph element
+    paragraph.addEventListener('click', function () {
+      // Toggle the .done class on the paragraph
+      this.classList.toggle('done');
+    });
+  }
+
+  // Function to toggle the visibility of the secondNightSection
+  function toggleSecondNight() {
+    secondNightSection.hidden = !secondNightSection.hidden;
+  }
 
   // Add event listeners for radio buttons and toggle switches
   addDandPEventListeners();
