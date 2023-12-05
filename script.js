@@ -392,7 +392,7 @@ function handlePoisonedChange(event) {
     characterNameElement.classList.add('poisoned-character');
     characterIconElement.classList.add('poisoned-icon');
     characterPnTxt.classList.add('poisoned-character');
-    //characterSnTxt.classList.add('poisoned-character');
+    characterSnTxt.classList.add('poisoned-character');
     //characterNnTxt.classList.add('poisoned-character');
   }
 }
@@ -415,18 +415,18 @@ function handleDeadChange(event) {
     characterNameElement.classList.add('dead-character');
     characterIconElement.classList.add('dead-character');
     characterPnTxt.classList.add('dead-character');
-    //characterSnTxt.classList.add('dead-character');
+    characterSnTxt.classList.add('dead-character');
     //characterNnTxt.classList.add('dead-character');
   } else {
     // If the dead switch is unchecked, apply the .default style
     characterNameElement.classList.remove('dead-character');
     characterIconElement.classList.remove('dead-character');
     characterPnTxt.classList.remove('dead-character');
-    //characterSnTxt.classList.remove('dead-character');
+    characterSnTxt.classList.remove('dead-character');
     //characterNnTxt.classList.remove('dead-character');
     characterNameElement.classList.add('default');
     characterPnTxt.classList.add('default');
-    //characterSnTxt.classList.add('default');
+    characterSnTxt.classList.add('default');
     //characterNnTxt.classList.add('default');
   }
 }
