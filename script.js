@@ -63,7 +63,7 @@ function generateAndDisplay() {
 
     let maxCellWidth = 0;
 
-    // Add "Players" text to the first cell of the players row
+    // Add "Players" text to the prep cell of the players row
     const playersCell = playersRow.insertCell();
     playersCell.appendChild(document.createTextNode('Players'));
 
@@ -76,7 +76,7 @@ function generateAndDisplay() {
       playerCell.appendChild(playerNameInput);
     });
 
-    // Add "Characters" text to the first cell of the characters row
+    // Add "Characters" text to the prep cell of the characters row
     const charactersCell = charactersRow.insertCell();
     charactersCell.appendChild(document.createTextNode('Characters'));
 
@@ -168,13 +168,13 @@ function generateAndDisplay() {
   resetScriptButton.addEventListener('click', resetScript);
   resultContainer.appendChild(resetScriptButton);
 
-  /*const firstNightToggle = document.createElement('button');
-  firstNightToggle.id = 'fn-toggle';
-  firstNightToggle.innerText = 'Toggle First Night';
-  firstNightToggle.addEventListener('click', toggleFirstNight);
-  resultContainer.appendChild(firstNightToggle);
+  const prepNightToggle = document.createElement('button');
+  prepNightToggle.id = 'pn-toggle';
+  prepNightToggle.innerText = 'Toggle Preparation Night';
+  prepNightToggle.addEventListener('click', togglePrepNight);
+  resultContainer.appendChild(prepNightToggle);
 
-  const secondNightToggle = document.createElement('button');
+  /*const secondNightToggle = document.createElement('button');
   secondNightToggle.id = 'sn-toggle';
   secondNightToggle.innerText = 'Toggle Second Night';
   secondNightToggle.addEventListener('click', toggleSecondNight);
@@ -185,7 +185,7 @@ function generateAndDisplay() {
   const nightPrepSection = document.createElement('div');
   nightPrepSection.id = 'night-preparation-section';
 
-  const remainingFnCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 152, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 282, 283];
+  const remainingPnCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 152, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 282, 283];
 
   // Add title
   const title = document.createElement('h2');
@@ -195,51 +195,51 @@ function generateAndDisplay() {
   const emptyLine = document.createElement('p');
   emptyLine.textContent = '&nbsp';
 
-// Add paragraphs based on characters in the result
-if (result.includes(15)) {
-  addFnTxtWithToggle(15, 'Irmãs acordam para se conhecerem.');
-}
+  // Add paragraphs based on characters in the result
+  if (result.includes(15)) {
+    addPnTxtWithToggle(15, 'Irmãs acordam para se conhecerem.');
+  }
 
-if (result.includes(28)) {
-  addFnTxtWithToggle(28, 'Irmãos acordam para se conhecerem.');
-}
+  if (result.includes(28)) {
+    addPnTxtWithToggle(28, 'Irmãos acordam para se conhecerem.');
+  }
 
-if (result.includes(18)) {
-  addFnTxtWithToggle(18, 'Acusador acorda e escolhe um Bode Expiatório.');
-}
+  if (result.includes(18)) {
+    addPnTxtWithToggle(18, 'Acusador acorda e escolhe um Bode Expiatório.');
+  }
 
-if (result.includes(3)) {
-  addFnTxtWithToggle(3, 'Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.');
-}
+  if (result.includes(3)) {
+    addPnTxtWithToggle(3, 'Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.');
+  }
 
-if (result.includes(23)) {
-  addFnTxtWithToggle(23, 'Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.');
-}
+  if (result.includes(23)) {
+    addPnTxtWithToggle(23, 'Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.');
+  }
 
-if (result.includes(25)) {
-  const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-  addFnTxtWithToggle(25, `Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas: ${fakeCharactersText}`);
-}
+  if (result.includes(25)) {
+    const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+    addPnTxtWithToggle(25, `Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas: ${fakeCharactersText}`);
+  }
 
-if (result.includes(2)) {
-  const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-  addFnTxtWithToggle(2, `Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
-}
+  if (result.includes(2)) {
+    const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+    addPnTxtWithToggle(2, `Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
+  }
 
-if (result.includes(8)) {
-  addFnTxtWithToggle(8, 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador os seus vizinhos são maus.');
-}
+  if (result.includes(8)) {
+    addPnTxtWithToggle(8, 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador os seus vizinhos são maus.');
+  }
 
-if (result.includes(7)) {
-  addFnTxtWithToggle(7, 'Urso rosna/não rosna.');
-}
+  if (result.includes(7)) {
+    addPnTxtWithToggle(7, 'Urso rosna/não rosna.');
+  }
 
-// Repeat this pattern for other cases...
+  // Repeat this pattern for other cases...
 
   //creating the remaining non existing tags for compatibility reasons
-  for (let i = 0; i < remainingFnCharacters.length; i++) {
+  for (let i = 0; i < remainingPnCharacters.length; i++) {
     const paragraph = document.createElement('p');
-    paragraph.id = `fn-txt-${remainingFnCharacters[i]}`;
+    paragraph.id = `pn-txt-${remainingPnCharacters[i]}`;
     nightPrepSection.appendChild(paragraph);
   }
 
@@ -247,29 +247,35 @@ if (result.includes(7)) {
   resultContainer.appendChild(nightPrepSection);
 
   // Function to add a paragraph with a click event for toggling .done class
-  function addFnTxtWithToggle(characterNumber, text) {
-  // Create a paragraph element with the desired id
-  const paragraph = document.createElement('p');
-  paragraph.id = `fn-txt-${characterNumber}`;
-  paragraph.textContent = text;
+  function addPnTxtWithToggle(characterNumber, text) {
+    // Create a paragraph element with the desired id
+    const paragraph = document.createElement('p');
+    paragraph.id = `pn-txt-${characterNumber}`;
+    paragraph.textContent = text;
 
-  // Add the paragraph to the nightPrepSection
-  nightPrepSection.appendChild(paragraph);
+    // Add the paragraph to the nightPrepSection
+    nightPrepSection.appendChild(paragraph);
 
-  // Add an empty line
-  nightPrepSection.appendChild(emptyLine);
+    // Add an empty line
+    nightPrepSection.appendChild(emptyLine);
 
-  const index = remainingFnCharacters.indexOf(characterNumber);
-  if (index !== -1) {
-    remainingFnCharacters.splice(index, 1);
+    const index = remainingPnCharacters.indexOf(characterNumber);
+    if (index !== -1) {
+      remainingPnCharacters.splice(index, 1);
+    }
+
+    // Add event listener to the paragraph element
+    paragraph.addEventListener('click', function () {
+      // Toggle the .done class on the paragraph
+      this.classList.toggle('done');
+    });
   }
 
-  // Add event listener to the paragraph element
-  paragraph.addEventListener('click', function () {
-    // Toggle the .done class on the paragraph
-    this.classList.toggle('done');
-  });
-}
+  // Function to toggle the visibility of the nightPrepSection
+  function togglePrepNight() {
+    nightPrepSection.hidden = !nightPrepSection.hidden;
+  }
+
 
   // Add event listeners for radio buttons and toggle switches
   addDandPEventListeners();
@@ -294,7 +300,7 @@ function handlePoisonedChange(event) {
   const characterNumber = event.target.value;
   const characterNameElement = document.getElementById(`character-name-${characterNumber}`);
   const characterIconElement = document.getElementById(`character-icon-${characterNumber}`);
-  const characterFnTxt       = document.getElementById(`fn-txt-${characterNumber}`);
+  const characterPnTxt       = document.getElementById(`pn-txt-${characterNumber}`);
   const characterSnTxt       = document.getElementById(`sn-txt-${characterNumber}`);
   const characterNnTxt       = document.getElementById(`nn-txt-${characterNumber}`);
 
@@ -307,12 +313,12 @@ function handlePoisonedChange(event) {
   if (event.target.checked) {
     // If the poisoned button is checked, apply the .poisoned-character style
     //characterNameElement.classList.remove('default');
-    //characterFnTxt.classList.remove('default');
+    //characterPnTxt.classList.remove('default');
     //characterSnTxt.classList.remove('default');
     //characterNnTxt.classList.remove('default');
     characterNameElement.classList.add('poisoned-character');
     characterIconElement.classList.add('poisoned-icon');
-    characterFnTxt.classList.add('poisoned-character');
+    characterPnTxt.classList.add('poisoned-character');
     //characterSnTxt.classList.add('poisoned-character');
     //characterNnTxt.classList.add('poisoned-character');
   }
@@ -323,30 +329,30 @@ function handleDeadChange(event) {
   const characterNumber = event.target.value;
   const characterNameElement = document.getElementById(`character-name-${characterNumber}`);
   const characterIconElement = document.getElementById(`character-icon-${characterNumber}`);
-  const characterFnTxt       = document.getElementById(`fn-txt-${characterNumber}`);
+  const characterPnTxt       = document.getElementById(`pn-txt-${characterNumber}`);
   const characterSnTxt       = document.getElementById(`sn-txt-${characterNumber}`);
   const characterNnTxt       = document.getElementById(`nn-txt-${characterNumber}`);
 
   if (event.target.checked) {
     // If the dead switch is checked, apply the .dead-character style
     //characterNameElement.classList.remove('default');
-    //characterFnTxt.classList.remove('default');
+    //characterPnTxt.classList.remove('default');
     //characterSnTxt.classList.remove('default');
     //characterNnTxt.classList.remove('default');
     characterNameElement.classList.add('dead-character');
     characterIconElement.classList.add('dead-character');
-    characterFnTxt.classList.add('dead-character');
+    characterPnTxt.classList.add('dead-character');
     //characterSnTxt.classList.add('dead-character');
     //characterNnTxt.classList.add('dead-character');
   } else {
     // If the dead switch is unchecked, apply the .default style
     characterNameElement.classList.remove('dead-character');
     characterIconElement.classList.remove('dead-character');
-    characterFnTxt.classList.remove('dead-character');
+    characterPnTxt.classList.remove('dead-character');
     //characterSnTxt.classList.remove('dead-character');
     //characterNnTxt.classList.remove('dead-character');
     characterNameElement.classList.add('default');
-    characterFnTxt.classList.add('default');
+    characterPnTxt.classList.add('default');
     //characterSnTxt.classList.add('default');
     //characterNnTxt.classList.add('default');
   }
@@ -362,7 +368,7 @@ function toggleImages() {
   });
 }
 
-//Function to reset all script texts to default
+// Function to reset all script texts to default
 function resetScript() {
   const allDoneElements = document.body.querySelectorAll('.done');
   allDoneElements.forEach(element => element.classList.remove('done'));
