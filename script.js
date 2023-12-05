@@ -186,6 +186,9 @@ function generateAndDisplay() {
 
   //Need to create empty p for every character that isn't in the script to have IDs for all the characters otherwise the style application doesn't work
   // Add a section for the night preparation information
+  const emptyLine = document.createElement('p');
+  emptyLine.textContent = '&nbsp';
+
   const nightPrepSection = document.createElement('div');
   nightPrepSection.id = 'night-preparation-section';
 
@@ -195,9 +198,6 @@ function generateAndDisplay() {
   const title = document.createElement('h2');
   title.textContent = 'Noite de preparação';
   nightPrepSection.appendChild(title);
-
-  const emptyLine = document.createElement('p');
-  emptyLine.textContent = '&nbsp';
 
   // Add paragraphs based on characters in the result
   if (result.includes(15)) {
@@ -231,7 +231,7 @@ function generateAndDisplay() {
   }
 
   if (result.includes(8)) {
-    addPnTxtWithToggle(8, 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador os seus vizinhos são maus.');
+    addPnTxtWithToggle(8, 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador ou os seus vizinhos são maus.');
   }
 
   if (result.includes(7)) {
@@ -291,9 +291,6 @@ function generateAndDisplay() {
   secondNightTitle.textContent = 'Começo da segunda noite.';
   secondNightSection.appendChild(secondNightTitle);
 
-  const emptyLineSn = document.createElement('p');
-  emptyLineSn.textContent = '&nbsp';
-
   // Add paragraphs based on characters in the result
   if (result.includes(21)) {
     addSnTxtWithToggle(21, 'Cão-Lobo acorda e escolhe com o polegar para cima se quer se juntar aos aldeões ou com um polegar para baixo se quer se juntar aos Lobisomens como um Lobisomem que só pode dizer a verdade.');
@@ -331,7 +328,7 @@ function generateAndDisplay() {
     secondNightSection.appendChild(paragraph);
 
     // Add an empty line
-    secondNightSection.appendChild(emptyLineSn);
+    secondNightSection.appendChild(emptyLine);
 
     const index = remainingSnCharacters.indexOf(characterNumber);
     if (index !== -1) {
@@ -349,6 +346,102 @@ function generateAndDisplay() {
   function toggleSecondNight() {
     secondNightSection.hidden = !secondNightSection.hidden;
   }
+
+  // Add a section for the nights information
+  const nightsSection = document.createElement('div');
+  nightsSection.id = 'nights-section';
+
+  const remainingNnCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 152, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 282, 283];
+
+  // Add title for all nights
+  const nightsTitle = document.createElement('h2');
+  nightsTitle.textContent = 'Todas as noites.';
+  nightsSection.appendChild(nightsTitle);
+
+  // Add paragraphs based on characters in the result
+  if (result.includes(17)) {
+    addNnTxt(17, 'Sonâmbulo acorda e escolhe um jogador para visitar. Esse jogador será tocado e não poderá acordar nessa noite mesmo sendo chamado pelo Moderador.');
+  }
+
+  if (result.includes(5)) {
+    addNnTxt(5, '(Se alguém foi executado no dia passado) Vidente acorda e o Moderador mostra-lhe a identidade do executado.');
+  }
+
+  if (result.includes(2)) {
+    addNnTxt(2, 'Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado (Cupido, Idiota, Irmã, Marionetista, Cão-Lobo, Criança Selvagem, Irmão).');
+  }
+
+  if (result.includes(1)) {
+    addNnTxt(1, 'Lobisomens acordam e apontam para quem querem assassinar. Se o Lobisomem Vampiro quiser transformar a vítima, ficará acordado a apontar para a vítima. A vítima será tocada na cabeça.');
+  }
+
+  if (result.includes(24)) {
+    addNnTxt(24, 'A CADA 3 NOITES OU SE ENVENENADO: Lobisomem Branco: acorda e escolhe um Lobisomem para matar.');
+  }
+
+  if (result.includes(4)) {
+    addNnTxt(4, 'Chaman acorda e vê quem foi assassinado, indica se o quer salvar com o polegar para cima.');
+  }
+
+  if (result.includes(22)) {
+    addNnTxt(22, 'Ladrão acorda e aponta para o jogador que não terá direito ao voto no próximo dia.');
+  }
+
+  if (result.includes(8)) {
+    addNnTxt(8, 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador ou os seus vizinhos são maus.');
+  }
+
+  if (result.includes(7)) {
+    addNnTxt(7, 'Urso rosna/não rosna.');
+  }
+
+  // Add subtitle
+  const subtitle = document.createElement('h3');
+  subtitle.textContent = 'RESOLVER VÁRIAS COISAS:';
+  nightsSection.appendChild(subtitle);
+
+  // Add paragraphs for resolving various things
+  if (result.includes(6)) {
+    addNnTxt(6, 'Se o Chefe de Aldeia for assassinado pelos Lobisomens, o Lobisomem afetado é avisado, tocando-lhe na cabeça e pedindo para acordar e ver as indicações silenciosas do Moderador.');
+
+  }
+  if (result.includes(11)) {
+    addNnTxt(11, 'Se o Caçador morto ainda não tiver escolhido a vítima, o Moderador acorda-o tocando-lhe na cabeça e sem dizer nada espera que ele aponte para uma vítima.');
+
+  }
+  if (result.includes(23)) {
+    addNnTxt(23, 'Se Criança Selvagem for envenenada, acorda por toque e sem o Moderador dizer nada, terá de escolher um novo pai adotivo.');
+
+  }
+
+  //creating the remaining non-existing tags for compatibility reasons
+  for (let i = 0; i < remainingNnCharacters.length; i++) {
+    const paragraph = document.createElement('p');
+    paragraph.id = `nn-txt-${remainingNnCharacters[i]}`;
+    nightsSection.appendChild(paragraph);
+  }
+
+  // Add the nights section to the result container
+  resultContainer.appendChild(nightsSection);
+
+  // Function to add a paragraph to the nightsSection
+  function addNnTxt(characterNumber, text) {
+    // Create a paragraph element with the desired id
+    const paragraph = document.createElement('p');
+    paragraph.id = `nn-txt-${characterNumber}`;
+    paragraph.textContent = text;
+
+    // Add the paragraph to the nightsSection
+    nightsSection.appendChild(paragraph);
+
+    // Add an empty line
+    nightsSection.appendChild(emptyLine);
+
+    const index = remainingNnCharacters.indexOf(characterNumber);
+    if (index !== -1) {
+      remainingNnCharacters.splice(index, 1);
+    }
+}
 
   // Add event listeners for radio buttons and toggle switches
   addDandPEventListeners();
@@ -393,7 +486,7 @@ function handlePoisonedChange(event) {
     characterIconElement.classList.add('poisoned-icon');
     characterPnTxt.classList.add('poisoned-character');
     characterSnTxt.classList.add('poisoned-character');
-    //characterNnTxt.classList.add('poisoned-character');
+    characterNnTxt.classList.add('poisoned-character');
   }
 }
 
@@ -416,18 +509,18 @@ function handleDeadChange(event) {
     characterIconElement.classList.add('dead-character');
     characterPnTxt.classList.add('dead-character');
     characterSnTxt.classList.add('dead-character');
-    //characterNnTxt.classList.add('dead-character');
+    characterNnTxt.classList.add('dead-character');
   } else {
     // If the dead switch is unchecked, apply the .default style
     characterNameElement.classList.remove('dead-character');
     characterIconElement.classList.remove('dead-character');
     characterPnTxt.classList.remove('dead-character');
     characterSnTxt.classList.remove('dead-character');
-    //characterNnTxt.classList.remove('dead-character');
+    characterNnTxt.classList.remove('dead-character');
     characterNameElement.classList.add('default');
     characterPnTxt.classList.add('default');
     characterSnTxt.classList.add('default');
-    //characterNnTxt.classList.add('default');
+    characterNnTxt.classList.add('default');
   }
 }
 
