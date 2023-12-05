@@ -50,17 +50,19 @@ function generateAndDisplay() {
   if (result) {
     resultContainer.innerHTML = `<p>Result: ${result.join(', ')}</p>`;
 
-    // Create a table for characters, poisoned, dead, players, and notes rows
+    // Create a table for characters, poisoned, dead, done, players, and notes rows
     const table = document.createElement('table');
     table.style.borderCollapse = 'collapse';
 
-    // Create rows for players, characters, poisoned, dead, and notes
+    // Create rows for players, characters, poisoned, dead, done, and notes
     const playersRow = table.insertRow();
     const charactersRow = table.insertRow();
     const poisonedRow = table.insertRow();
     poisonedRow.insertCell().appendChild(document.createTextNode('Poisoned'));
     const deadRow = table.insertRow();
     deadRow.insertCell().appendChild(document.createTextNode('Dead'));
+    const doneRow = table.insertRow();
+    doneRow.insertCell().appendChild(document.createTextNode('Done'))
     const notesRow = table.insertRow();
     const notesCell = notesRow.insertCell();
     notesCell.appendChild(document.createTextNode('Notes'));
@@ -89,10 +91,12 @@ function generateAndDisplay() {
       const characterCell = charactersRow.insertCell();
       const poisonedCell = poisonedRow.insertCell();
       const deadCell = deadRow.insertCell();
+      const doneCell = doneRow.insertCell();
 
       characterCell.classList.add('character-cell');
       poisonedCell.classList.add('toggle-cell');
       deadCell.classList.add('toggle-cell');
+      doneCell.classList.add('toggle-cell');
 
       // Add character icon to the cell
       const icon = document.createElement('img');
@@ -117,12 +121,19 @@ function generateAndDisplay() {
       poisonedRadio.id = `poisoned-radio-${number}`;
       poisonedCell.appendChild(poisonedRadio);
 
-      // Create toggle switch for the dead row
+      // Create dead toggle switch for the dead row
       const deadSwitch = document.createElement('input');
       deadSwitch.type = 'checkbox';
       deadSwitch.value = number;
       deadSwitch.id = `dead-switch-${number}`;
       deadCell.appendChild(deadSwitch);
+
+      // Create done toggle switch for the done row
+      const doneSwitch = document.createElement('input');
+      doneSwitch.type = 'checkbox';
+      doneSwitch.value = number;
+      doneSwitch.id = `done-switch-${number}`;
+      doneCell.appendChild(doneSwitch);      
 
       // Track the width of the icon
       const iconHeight = icon.clientHeight;
@@ -135,6 +146,7 @@ function generateAndDisplay() {
       characterCell.setAttribute('data-character', number); // Set data-character attribute
       poisonedCell.setAttribute('data-character', number); // Set data-character attribute
       deadCell.setAttribute('data-character', number); // Set data-character attribute
+      doneCell.setAttribute('data-character', number); // Set data-character attibute
     });
 
     // Set the width for all character cells based on the width of the icon
@@ -457,6 +469,7 @@ function generateAndDisplay() {
 function addDandPEventListeners() {
   const poisonedRadios = document.querySelectorAll('input[type="radio"]');
   const deadSwitches = document.querySelectorAll('input[type="checkbox"]');
+  const doneSwitches = document.querySelectorAll('input[type="checkbox"]');
 
   poisonedRadios.forEach(radio => {
     radio.addEventListener('change', handlePoisonedChange);
@@ -464,6 +477,10 @@ function addDandPEventListeners() {
 
   deadSwitches.forEach(switchElem => {
     switchElem.addEventListener('change', handleDeadChange);
+  });
+
+  doneSwitches.forEach(switchElem => {
+    switchElem.addEventListener('change', handleDoneChange);
   });
 }
 
@@ -518,6 +535,40 @@ function handleDeadChange(event) {
     characterNnTxt.classList.add('dead-character');
   } else {
     // If the dead switch is unchecked, apply the .default style
+    characterNameElement.classList.remove('dead-character');
+    characterIconElement.classList.remove('dead-character');
+    characterPnTxt.classList.remove('dead-character');
+    characterSnTxt.classList.remove('dead-character');
+    characterNnTxt.classList.remove('dead-character');
+    characterNameElement.classList.add('default');
+    characterPnTxt.classList.add('default');
+    characterSnTxt.classList.add('default');
+    characterNnTxt.classList.add('default');
+  }
+}
+
+// Function to handle changes in the done toggle switches
+function handleDoneChange(event) {
+  const characterNumber = event.target.value;
+  const characterNameElement = document.getElementById(`character-name-${characterNumber}`);
+  const characterIconElement = document.getElementById(`character-icon-${characterNumber}`);
+  const characterPnTxt       = document.getElementById(`pn-txt-${characterNumber}`);
+  const characterSnTxt       = document.getElementById(`sn-txt-${characterNumber}`);
+  const characterNnTxt       = document.getElementById(`nn-txt-${characterNumber}`);
+
+  if (event.target.checked) {
+    // If the done switch is checked, apply the .done-character style
+    //characterNameElement.classList.remove('default');
+    //characterPnTxt.classList.remove('default');
+    //characterSnTxt.classList.remove('default');
+    //characterNnTxt.classList.remove('default');
+    characterNameElement.classList.add('dead-character');
+    characterIconElement.classList.add('dead-character');
+    characterPnTxt.classList.add('dead-character');
+    characterSnTxt.classList.add('dead-character');
+    characterNnTxt.classList.add('dead-character');
+  } else {
+    // If the done switch is unchecked, apply the .default style
     characterNameElement.classList.remove('dead-character');
     characterIconElement.classList.remove('dead-character');
     characterPnTxt.classList.remove('dead-character');
