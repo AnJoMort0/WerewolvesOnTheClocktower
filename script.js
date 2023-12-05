@@ -101,6 +101,7 @@ function generateAndDisplay() {
       const characterName = getCharacterName(number);
       const nameContainer = document.createElement('span');
       nameContainer.appendChild(document.createTextNode(characterName));
+      nameContainer.classList.add('default')
       nameContainer.id = `character-name-${number}`;
       characterCell.appendChild(nameContainer);
 
@@ -175,126 +176,48 @@ function generateAndDisplay() {
   const emptyLine = document.createElement('p');
   emptyLine.textContent = '&nbsp';
 
-  // Add paragraphs based on characters in the result
-  if (result.includes(15)) {
-    const paragraph = document.createElement('p');
-    paragraph.id = 'fn-txt-15';
-    paragraph.textContent = 'Irmãs acordam para se conhecerem.';
-    nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(emptyLine);
-    
-    const index = remainingFnCharacters.indexOf(15);
-    if (index !== -1) {
-      remainingFnCharacters.splice(index, 1);
-    }
-  }
+// Add paragraphs based on characters in the result
+if (result.includes(15)) {
+  addFnTxtWithSwitch(15, 'Irmãs acordam para se conhecerem.');
+}
 
-  if (result.includes(28)) {
-    const paragraph = document.createElement('p');
-    paragraph.id = 'fn-txt-28';
-    paragraph.textContent = 'Irmãos acordam para se conhecerem.';
-    nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(emptyLine);
+if (result.includes(28)) {
+  addFnTxtWithSwitch(28, 'Irmãos acordam para se conhecerem.');
+}
 
-    const index = remainingFnCharacters.indexOf(28);
-    if (index !== -1) {
-      remainingFnCharacters.splice(index, 1);
-    }
-  }
+if (result.includes(18)) {
+  addFnTxtWithSwitch(18, 'Acusador acorda e escolhe um Bode Expiatório.');
+}
 
-  if (result.includes(18)) {
-    const paragraph = document.createElement('p');
-    paragraph.id = 'fn-txt-18';
-    paragraph.textContent = 'Acusador acorda e escolhe um Bode Expiatório.';
-    nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(emptyLine);
+if (result.includes(3)) {
+  addFnTxtWithSwitch(3, 'Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.');
+}
 
-    const index = remainingFnCharacters.indexOf(18);
-    if (index !== -1) {
-      remainingFnCharacters.splice(index, 1);
-    }
-  }
+if (result.includes(23)) {
+  addFnTxtWithSwitch(23, 'Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.');
+}
 
-  if (result.includes(3)) {
-    const paragraph = document.createElement('p');
-    paragraph.id = 'fn-txt-3';
-    paragraph.textContent = 'Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.';
-    nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(emptyLine);
+if (result.includes(25)) {
+  const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+  addFnTxtWithSwitch(25, `Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas: ${fakeCharactersText}`);
+}
 
-    const index = remainingFnCharacters.indexOf(3);
-    if (index !== -1) {
-      remainingFnCharacters.splice(index, 1);
-    }
-  }
+if (result.includes(2)) {
+  const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+  addFnTxtWithSwitch(2, `Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
+}
 
-  if (result.includes(23)) {
-    const paragraph = document.createElement('p');
-    paragraph.id = 'fn-txt-23';
-    paragraph.textContent = 'Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.';
-    nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(emptyLine);
+if (result.includes(8)) {
+  addFnTxtWithSwitch(8, 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador os seus vizinhos são maus.');
+}
 
-    const index = remainingFnCharacters.indexOf(23);
-    if (index !== -1) {
-      remainingFnCharacters.splice(index, 1);
-    }
-  }
+if (result.includes(7)) {
+  addFnTxtWithSwitch(7, 'Urso rosna/não rosna.');
+}
 
-  if (result.includes(25)) {
-    const paragraph = document.createElement('p');
-    paragraph.id = 'fn-txt-25';
-    const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-    paragraph.textContent = `Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas: ${fakeCharactersText}`;
-    nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(emptyLine);
+// Repeat this pattern for other cases...
 
-    const index = remainingFnCharacters.indexOf(25);
-    if (index !== -1) {
-      remainingFnCharacters.splice(index, 1);
-    }
-  }
-
-  if (result.includes(2)) {
-    const paragraph = document.createElement('p');
-    paragraph.id = 'fn-txt-2';
-    const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-    paragraph.textContent = `Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`;
-    nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(emptyLine);
-
-    const index = remainingFnCharacters.indexOf(2);
-    if (index !== -1) {
-      remainingFnCharacters.splice(index, 1);
-    }
-  }
-
-  if (result.includes(8)) {
-    const paragraph = document.createElement('p');
-    paragraph.id = 'fn-txt-8';
-    paragraph.textContent = 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador os seus vizinhos são maus.';
-    nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(emptyLine);
-
-    const index = remainingFnCharacters.indexOf(8);
-    if (index !== -1) {
-      remainingFnCharacters.splice(index, 1);
-    }
-  }
-
-  if (result.includes(7)) {
-    const paragraph = document.createElement('p');
-    paragraph.id = 'fn-txt-7';
-    paragraph.textContent = 'Urso rosna/não rosna.';
-    nightPrepSection.appendChild(paragraph);
-    nightPrepSection.appendChild(emptyLine);
-
-    const index = remainingFnCharacters.indexOf(7);
-    if (index !== -1) {
-      remainingFnCharacters.splice(index, 1);
-    }
-  }
-
+  //creating the remaining non existing tags for compatibility reasons
   for (let i = 0; i < remainingFnCharacters.length; i++) {
     const paragraph = document.createElement('p');
     paragraph.id = `fn-txt-${remainingFnCharacters[i]}`;
@@ -303,6 +226,53 @@ function generateAndDisplay() {
 
   // Add the night preparation section to the result container
   resultContainer.appendChild(nightPrepSection);
+
+// Function to add a paragraph with an on/off switch
+function addFnTxtWithSwitch(characterNumber, text) {
+  // Create a container for the switch, label, and paragraph
+  const container = document.createElement('div');
+  container.style.display = 'flex'; // Make the container a flex container
+
+  // Create a switch element
+  const switchElement = document.createElement('input');
+  switchElement.type = 'checkbox';
+  switchElement.id = `fn-switch-${characterNumber}`;
+
+  // Create a label for the switch
+  const switchLabel = document.createElement('label');
+  switchLabel.htmlFor = `fn-switch-${characterNumber}`;
+
+  // Create a paragraph element with the desired id
+  const paragraph = document.createElement('p');
+  paragraph.id = `fn-txt-${characterNumber}`;
+  paragraph.textContent = text;
+
+  // Add the switch, label, and paragraph to the container
+  container.appendChild(switchElement);
+  container.appendChild(switchLabel);
+  container.appendChild(paragraph);
+
+  // Add the container to the nightPrepSection
+  nightPrepSection.appendChild(container);
+
+  // Add an empty line
+  nightPrepSection.appendChild(emptyLine);
+
+  const index = remainingFnCharacters.indexOf(characterNumber);
+  if (index !== -1) {
+    remainingFnCharacters.splice(index, 1);
+  }
+
+    // Add event listener to the switch element
+    switchElement.addEventListener('change', function () {
+      // Toggle the class based on the switch state
+      if (this.checked) {
+        paragraph.classList.add('done');
+      } else {
+        paragraph.classList.remove('done');
+      }
+    });
+}
 
   // Add event listeners for radio buttons and toggle switches
   addEventListeners();
@@ -339,8 +309,8 @@ function handlePoisonedChange(event) {
 
   if (event.target.checked) {
     // If the poisoned button is checked, apply the .poisoned-character style
-    characterNameElement.classList.remove('default');
-    characterFnTxt.classList.remove('default');
+    //characterNameElement.classList.remove('default');
+    //characterFnTxt.classList.remove('default');
     //characterSnTxt.classList.remove('default');
     //characterNnTxt.classList.remove('default');
     characterNameElement.classList.add('poisoned-character');
@@ -362,8 +332,8 @@ function handleDeadChange(event) {
 
   if (event.target.checked) {
     // If the dead switch is checked, apply the .dead-character style
-    characterNameElement.classList.remove('default');
-    characterFnTxt.classList.remove('default');
+    //characterNameElement.classList.remove('default');
+    //characterFnTxt.classList.remove('default');
     //characterSnTxt.classList.remove('default');
     //characterNnTxt.classList.remove('default');
     characterNameElement.classList.add('dead-character');
