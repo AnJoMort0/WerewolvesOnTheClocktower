@@ -213,41 +213,41 @@ function generateAndDisplay() {
 
   // Add paragraphs based on characters in the result
   if (result.includes(15)) {
-    addPnTxtWithToggle(15, 'Irmãs acordam para se conhecerem.');
+    addPnTxtWithToggle(15, ' - Irmãs acordam para se conhecerem.');
   }
 
   if (result.includes(28)) {
-    addPnTxtWithToggle(28, 'Irmãos acordam para se conhecerem.');
+    addPnTxtWithToggle(28, ' - Irmãos acordam para se conhecerem.');
   }
 
   if (result.includes(18)) {
-    addPnTxtWithToggle(18, 'Acusador acorda e escolhe um Bode Expiatório.');
+    addPnTxtWithToggle(18, ' - Acusador acorda e escolhe um Bode Expiatório.');
   }
 
   if (result.includes(3)) {
-    addPnTxtWithToggle(3, 'Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.');
+    addPnTxtWithToggle(3, ' - Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.');
   }
 
   if (result.includes(23)) {
-    addPnTxtWithToggle(23, 'Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.');
+    addPnTxtWithToggle(23, ' - Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.');
   }
 
   if (result.includes(25)) {
     const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-    addPnTxtWithToggle(25, `Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas: ${fakeCharactersText}`);
+    addPnTxtWithToggle(25, ` - Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas: ${fakeCharactersText}`);
   }
 
   if (result.includes(2)) {
     const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-    addPnTxtWithToggle(2, `Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
+    addPnTxtWithToggle(2, ` - Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
   }
 
   if (result.includes(8)) {
-    addPnTxtWithToggle(8, 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador ou os seus vizinhos são maus.');
+    addPnTxtWithToggle(8, ' - Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador ou os seus vizinhos são maus.');
   }
 
   if (result.includes(7)) {
-    addPnTxtWithToggle(7, 'Urso rosna/não rosna.');
+    addPnTxtWithToggle(7, ' - Urso rosna/não rosna.');
   }
 
   // Repeat this pattern for other cases...
@@ -305,16 +305,16 @@ function generateAndDisplay() {
 
   // Add paragraphs based on characters in the result
   if (result.includes(21)) {
-    addSnTxtWithToggle(21, 'Cão-Lobo acorda e escolhe com o polegar para cima se quer se juntar aos aldeões ou com um polegar para baixo se quer se juntar aos Lobisomens como um Lobisomem que só pode dizer a verdade.');
+    addSnTxtWithToggle(21, ' - Cão-Lobo acorda e escolhe com o polegar para cima se quer se juntar aos aldeões ou com um polegar para baixo se quer se juntar aos Lobisomens como um Lobisomem que só pode dizer a verdade.');
   }
 
   if (result.includes(22)) {
-    addSnTxtWithToggle(22, 'Ladrão acorda e escolhe com o polegar para cima se quer se juntar aos aldeões ou com um polegar para baixo se quer se juntar aos Lobisomens.');
+    addSnTxtWithToggle(22, ' - Ladrão acorda e escolhe com o polegar para cima se quer se juntar aos aldeões ou com um polegar para baixo se quer se juntar aos Lobisomens.');
   }
 
   if (result.includes(25)) {
     const alliesTxt = allies.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-    addSnTxtWithToggle(25, `Lobisomens acordam e o Moderador aponta-lhes quem são os Aliados (${alliesTxt})`);
+    addSnTxtWithToggle(25, ` - Lobisomens acordam e o Moderador aponta-lhes quem são os Aliados (${alliesTxt})`);
   }
 
   // Repeat this pattern for other cases...
@@ -372,39 +372,40 @@ function generateAndDisplay() {
 
   // Add paragraphs based on characters in the result
   if (result.includes(17)) {
-    addNnTxt(17, 'Sonâmbulo acorda e escolhe um jogador para visitar. Esse jogador será tocado e não poderá acordar nessa noite mesmo sendo chamado pelo Moderador.');
+    addNnTxt(17, ' - Sonâmbulo acorda e escolhe um jogador para visitar. Esse jogador será tocado e não poderá acordar nessa noite mesmo sendo chamado pelo Moderador.');
   }
 
   if (result.includes(5)) {
-    addNnTxt(5, '(Se alguém foi executado no dia passado) Vidente acorda e o Moderador mostra-lhe a identidade do executado.');
+    addNnTxt(5, ' - (Se alguém foi executado no dia passado) Vidente acorda e o Moderador mostra-lhe a identidade do executado.');
   }
 
   if (result.includes(2)) {
-    addNnTxt(2, 'Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado (Cupido, Idiota, Irmã, Marionetista, Cão-Lobo, Criança Selvagem, Irmão).');
+    const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+    addPnTxtWithToggle(2, ` - Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
   }
 
   if (result.includes(1)) {
-    addNnTxt(1, 'Lobisomens acordam e apontam para quem querem assassinar. Se o Lobisomem Vampiro quiser transformar a vítima, ficará acordado a apontar para a vítima. A vítima será tocada na cabeça.');
+    addNnTxt(1, ' - Lobisomens acordam e apontam para quem querem assassinar. Se o Lobisomem Vampiro quiser transformar a vítima, ficará acordado a apontar para a vítima. A vítima será tocada na cabeça.');
   }
 
   if (result.includes(24)) {
-    addNnTxt(24, 'A CADA 3 NOITES OU SE ENVENENADO: Lobisomem Branco: acorda e escolhe um Lobisomem para matar.');
+    addNnTxt(24, ' - A CADA 3 NOITES OU SE ENVENENADO: Lobisomem Branco: acorda e escolhe um Lobisomem para matar.');
   }
 
   if (result.includes(4)) {
-    addNnTxt(4, 'Chaman acorda e vê quem foi assassinado, indica se o quer salvar com o polegar para cima.');
+    addNnTxt(4, ' - Chaman acorda e vê quem foi assassinado, indica se o quer salvar com o polegar para cima.');
   }
 
   if (result.includes(22)) {
-    addNnTxt(22, 'Ladrão acorda e aponta para o jogador que não terá direito ao voto no próximo dia.');
+    addNnTxt(22, ' - Ladrão acorda e aponta para o jogador que não terá direito ao voto no próximo dia.');
   }
 
   if (result.includes(8)) {
-    addNnTxt(8, 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador ou os seus vizinhos são maus.');
+    addNnTxt(8, ' - Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador ou os seus vizinhos são maus.');
   }
 
   if (result.includes(7)) {
-    addNnTxt(7, 'Urso rosna/não rosna.');
+    addNnTxt(7, ' - Urso rosna/não rosna.');
   }
 
   // Add subtitle
@@ -414,15 +415,15 @@ function generateAndDisplay() {
 
   // Add paragraphs for resolving various things
   if (result.includes(6)) {
-    addNnTxt(6, 'Se o Chefe de Aldeia for assassinado pelos Lobisomens, o Lobisomem afetado é avisado, tocando-lhe na cabeça e pedindo para acordar e ver as indicações silenciosas do Moderador.');
+    addNnTxt(6, ' - Se o Chefe de Aldeia for assassinado pelos Lobisomens, o Lobisomem afetado é avisado, tocando-lhe na cabeça e pedindo para acordar e ver as indicações silenciosas do Moderador.');
 
   }
   if (result.includes(11)) {
-    addNnTxt(11, 'Se o Caçador morto ainda não tiver escolhido a vítima, o Moderador acorda-o tocando-lhe na cabeça e sem dizer nada espera que ele aponte para uma vítima.');
+    addNnTxt(11, ' - Se o Caçador morto ainda não tiver escolhido a vítima, o Moderador acorda-o tocando-lhe na cabeça e sem dizer nada espera que ele aponte para uma vítima.');
 
   }
   if (result.includes(23)) {
-    addNnTxt(23, 'Se Criança Selvagem for envenenada, acorda por toque e sem o Moderador dizer nada, terá de escolher um novo pai adotivo.');
+    addNnTxt(23, ' - Se Criança Selvagem for envenenada, acorda por toque e sem o Moderador dizer nada, terá de escolher um novo pai adotivo.');
 
   }
 
