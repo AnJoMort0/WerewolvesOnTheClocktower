@@ -390,7 +390,7 @@ function generateAndDisplay() {
   }
 
   if (result.includes(24)) {
-    addNnTxt(24, ' - A CADA 3 NOITES OU SE ENVENENADO: Lobisomem Branco: acorda e escolhe um Lobisomem para matar.');
+    addNnTxt(24, ' - A CADA 3 NOITES OU SE ENVENENADO: Lobisomem Branco: acorda e escolhe um Lobisomem para matar: ', true);
   }
 
   if (result.includes(4)) {
@@ -439,14 +439,31 @@ function generateAndDisplay() {
   resultContainer.appendChild(nightsSection);
 
   // Function to add a paragraph to the nightsSection
-  function addNnTxt(characterNumber, text) {
+  function addNnTxt(characterNumber, text, counter) {
+    // Create a container for the counter and paragraph
+    const container = document.createElement('div');
+    container.style.display = 'flex'; // Make the container a flex container
+    
     // Create a paragraph element with the desired id
     const paragraph = document.createElement('p');
     paragraph.id = `nn-txt-${characterNumber}`;
     paragraph.textContent = text;
+    container.appendChild(paragraph);
+
+    // Create a counter
+    if (counter != null) {
+      // Create a counter element
+      const numberElement = document.createElement('input');
+      numberElement.type = 'number';
+      numberElement.id = `nn-counter-${characterNumber}`;
+      numberElement.min = 0;
+      numberElement.max = 3;
+      numberElement.step = 1;
+      container.appendChild(numberElement);
+    }
 
     // Add the paragraph to the nightsSection
-    nightsSection.appendChild(paragraph);
+    nightsSection.appendChild(container);
 
     // Add an empty line
     nightsSection.appendChild(emptyLine);
