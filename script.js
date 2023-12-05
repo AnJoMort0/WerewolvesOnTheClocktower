@@ -551,31 +551,23 @@ function handleDeadChange(event) {
 // Function to handle changes in the done toggle switches
 function handleDoneChange(event) {
   const characterNumber = event.target.value;
-  const characterNameElement = document.getElementById(`character-name-${characterNumber}`);
-  const characterIconElement = document.getElementById(`character-icon-${characterNumber}`);
   const characterPnTxt       = document.getElementById(`pn-txt-${characterNumber}`);
   const characterSnTxt       = document.getElementById(`sn-txt-${characterNumber}`);
   const characterNnTxt       = document.getElementById(`nn-txt-${characterNumber}`);
 
   if (event.target.checked) {
     // If the done switch is checked, apply the .done-character style
-    //characterNameElement.classList.remove('default');
     //characterPnTxt.classList.remove('default');
     //characterSnTxt.classList.remove('default');
     //characterNnTxt.classList.remove('default');
-    characterNameElement.classList.add('dead-character');
-    characterIconElement.classList.add('dead-character');
     characterPnTxt.classList.add('dead-character');
     characterSnTxt.classList.add('dead-character');
     characterNnTxt.classList.add('dead-character');
   } else {
     // If the done switch is unchecked, apply the .default style
-    characterNameElement.classList.remove('dead-character');
-    characterIconElement.classList.remove('dead-character');
     characterPnTxt.classList.remove('dead-character');
     characterSnTxt.classList.remove('dead-character');
     characterNnTxt.classList.remove('dead-character');
-    characterNameElement.classList.add('default');
     characterPnTxt.classList.add('default');
     characterSnTxt.classList.add('default');
     characterNnTxt.classList.add('default');
