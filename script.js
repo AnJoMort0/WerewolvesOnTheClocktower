@@ -161,6 +161,25 @@ function generateAndDisplay() {
     });
   }
 
+  // Add different buttons
+  const resetScriptButton = document.createElement('button');
+  resetScriptButton.id = 'reset-script';
+  resetScriptButton.innerText = 'Reset Script'
+  resetScriptButton.addEventListener('click', resetScript);
+  resultContainer.appendChild(resetScriptButton);
+
+  /*const firstNightToggle = document.createElement('button');
+  firstNightToggle.id = 'fn-toggle';
+  firstNightToggle.innerText = 'Toggle First Night';
+  firstNightToggle.addEventListener('click', toggleFirstNight);
+  resultContainer.appendChild(firstNightToggle);
+
+  const secondNightToggle = document.createElement('button');
+  secondNightToggle.id = 'sn-toggle';
+  secondNightToggle.innerText = 'Toggle Second Night';
+  secondNightToggle.addEventListener('click', toggleSecondNight);
+  resultContainer.appendChild(secondNightToggle);*/
+
   //Need to create empty p for every character that isn't in the script to have IDs for all the characters otherwise the style application doesn't work
   // Add a section for the night preparation information
   const nightPrepSection = document.createElement('div');
@@ -178,41 +197,41 @@ function generateAndDisplay() {
 
 // Add paragraphs based on characters in the result
 if (result.includes(15)) {
-  addFnTxtWithSwitch(15, 'Irmãs acordam para se conhecerem.');
+  addFnTxtWithToggle(15, 'Irmãs acordam para se conhecerem.');
 }
 
 if (result.includes(28)) {
-  addFnTxtWithSwitch(28, 'Irmãos acordam para se conhecerem.');
+  addFnTxtWithToggle(28, 'Irmãos acordam para se conhecerem.');
 }
 
 if (result.includes(18)) {
-  addFnTxtWithSwitch(18, 'Acusador acorda e escolhe um Bode Expiatório.');
+  addFnTxtWithToggle(18, 'Acusador acorda e escolhe um Bode Expiatório.');
 }
 
 if (result.includes(3)) {
-  addFnTxtWithSwitch(3, 'Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.');
+  addFnTxtWithToggle(3, 'Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.');
 }
 
 if (result.includes(23)) {
-  addFnTxtWithSwitch(23, 'Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.');
+  addFnTxtWithToggle(23, 'Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.');
 }
 
 if (result.includes(25)) {
   const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-  addFnTxtWithSwitch(25, `Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas: ${fakeCharactersText}`);
+  addFnTxtWithToggle(25, `Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas: ${fakeCharactersText}`);
 }
 
 if (result.includes(2)) {
   const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-  addFnTxtWithSwitch(2, `Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
+  addFnTxtWithToggle(2, `Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
 }
 
 if (result.includes(8)) {
-  addFnTxtWithSwitch(8, 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador os seus vizinhos são maus.');
+  addFnTxtWithToggle(8, 'Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador os seus vizinhos são maus.');
 }
 
 if (result.includes(7)) {
-  addFnTxtWithSwitch(7, 'Urso rosna/não rosna.');
+  addFnTxtWithToggle(7, 'Urso rosna/não rosna.');
 }
 
 // Repeat this pattern for other cases...
@@ -227,33 +246,15 @@ if (result.includes(7)) {
   // Add the night preparation section to the result container
   resultContainer.appendChild(nightPrepSection);
 
-// Function to add a paragraph with an on/off switch
-function addFnTxtWithSwitch(characterNumber, text) {
-  // Create a container for the switch, label, and paragraph
-  const container = document.createElement('div');
-  container.style.display = 'flex'; // Make the container a flex container
-
-  // Create a switch element
-  const switchElement = document.createElement('input');
-  switchElement.type = 'checkbox';
-  switchElement.id = `fn-switch-${characterNumber}`;
-
-  // Create a label for the switch
-  const switchLabel = document.createElement('label');
-  switchLabel.htmlFor = `fn-switch-${characterNumber}`;
-
+  // Function to add a paragraph with a click event for toggling .done class
+  function addFnTxtWithToggle(characterNumber, text) {
   // Create a paragraph element with the desired id
   const paragraph = document.createElement('p');
   paragraph.id = `fn-txt-${characterNumber}`;
   paragraph.textContent = text;
 
-  // Add the switch, label, and paragraph to the container
-  container.appendChild(switchElement);
-  container.appendChild(switchLabel);
-  container.appendChild(paragraph);
-
-  // Add the container to the nightPrepSection
-  nightPrepSection.appendChild(container);
+  // Add the paragraph to the nightPrepSection
+  nightPrepSection.appendChild(paragraph);
 
   // Add an empty line
   nightPrepSection.appendChild(emptyLine);
@@ -263,23 +264,19 @@ function addFnTxtWithSwitch(characterNumber, text) {
     remainingFnCharacters.splice(index, 1);
   }
 
-    // Add event listener to the switch element
-    switchElement.addEventListener('change', function () {
-      // Toggle the class based on the switch state
-      if (this.checked) {
-        paragraph.classList.add('done');
-      } else {
-        paragraph.classList.remove('done');
-      }
-    });
+  // Add event listener to the paragraph element
+  paragraph.addEventListener('click', function () {
+    // Toggle the .done class on the paragraph
+    this.classList.toggle('done');
+  });
 }
 
   // Add event listeners for radio buttons and toggle switches
-  addEventListeners();
+  addDandPEventListeners();
 }
 
 // Function to add event listeners for radio buttons and toggle switches
-function addEventListeners() {
+function addDandPEventListeners() {
   const poisonedRadios = document.querySelectorAll('input[type="radio"]');
   const deadSwitches = document.querySelectorAll('input[type="checkbox"]');
 
@@ -363,6 +360,12 @@ function toggleImages() {
   images.forEach(img => {
     img.style.display = (img.style.display === 'none' || !img.style.display) ? 'block' : 'none';
   });
+}
+
+//Function to reset all script texts to default
+function resetScript() {
+  const allDoneElements = document.body.querySelectorAll('.done');
+  allDoneElements.forEach(element => element.classList.remove('done'));
 }
 
 // Function to get the character name based on the number
