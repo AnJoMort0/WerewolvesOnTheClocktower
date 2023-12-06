@@ -8,9 +8,12 @@
 
 //Fixed values
 const maxChar = 31;
+const wolfRatio = 4;
 
 // Function to generate and display the random list
 function generateAndDisplay() {
+  extraCounterIcon = 0;
+  extraCounterImg = 0;
   // Get input and result container elements
   const playerCountInput  = document.getElementById('playerCount');
   const resultContainer   = document.getElementById('result-container');
@@ -41,10 +44,15 @@ function generateAndDisplay() {
   // Generate random list
   let result = generateRandomList(playerCount, newMessagesContainer);
   //Check add 00,01, 02 etc for extra players
+  let extraPlayers = 0;
+  let extraWolves = [];
   if (playerCount > maxChar) {
-    const extraPlayers = playerCount - maxChar;
+    extraPlayers = playerCount - maxChar;
     for (let i = 0; i < extraPlayers; i++) {
       result.push(`0${i}`)
+      if (i % wolfRatio == 0) {
+        extraWolves.push(i);
+      }
     }
   }
   shuffleArray(result);
@@ -135,10 +143,15 @@ function generateAndDisplay() {
       const icon = document.createElement('img');
       const numberString = String(number); // Convert to string
       let imagePath;
-      if(numberString.startsWith('04') || numberString.startsWith('08')){
+      if(numberString.startsWith(`0`)){
+        let x = numberString.substring(1);
+        if (x % wolfRatio == 0) {
           imagePath = `images/1_icon.png`;
+        } else {
+          imagePath = `images/0_icon.png`;
+        }
       } else {
-         imagePath = numberString.startsWith('0') ? `images/0_icon.png` : `images/${numberString}_icon.png`;
+         imagePath = `images/${numberString}_icon.png`;
       };
       icon.src = imagePath;
       icon.classList.add('character-icon');
@@ -212,10 +225,15 @@ function generateAndDisplay() {
       const img = document.createElement('img');
       const numberString = String(number); // Convert to string
       let imagePath;
-      if(numberString.startsWith('04') || numberString.startsWith('08')){
-        imagePath = `images/1_pt.png`;
+      if(numberString.startsWith(`0`)){
+        let x = numberString.substring(1);        
+        if (x % wolfRatio == 0) {
+          imagePath = `images/1_pt.png`;
+        } else {
+          imagePath = `images/0_pt.png`;
+        }
       } else {
-        imagePath = numberString.startsWith('0') ? `images/0_pt.png` : `images/${numberString}_pt.png`;
+         imagePath = `images/${numberString}_pt.png`;
       };
       img.src = imagePath;
       img.setAttribute('data-image-number', number);
@@ -574,12 +592,19 @@ function handlePoisonedChange(event) {
   allPoisonedElements.forEach(element => element.classList.remove('poisoned-character'));
   allPoisonedIcon.forEach(element => element.classList.remove('poisoned-icon'));
 
-  if (characterNumber.toString() == '04' || characterNumber.toString() == '08'){
-    characterNameElement.classList.add('poisoned-character');
-    characterIconElement.classList.add('poisoned-icon');
-    document.getElementById(`pn-txt-1`).classList.add('poisoned-character');
-    document.getElementById(`sn-txt-1`).classList.add('poisoned-character');
-    document.getElementById(`nn-txt-1`).classList.add('poisoned-character');
+  if (characterNumber.toString().startsWith('0')){
+    let x = characterNumber.toString().substring(1);
+    if (x % wolfRatio == 0) {
+      characterNameElement.classList.add('poisoned-character');
+      characterIconElement.classList.add('poisoned-icon');
+      document.getElementById(`pn-txt-1`).classList.add('poisoned-character');
+      document.getElementById(`sn-txt-1`).classList.add('poisoned-character');
+      document.getElementById(`nn-txt-1`).classList.add('poisoned-character');
+    } else {
+      characterNameElement.classList.add('poisoned-character');
+      characterIconElement.classList.add('poisoned-icon');
+    }
+
   } else if (event.target.checked) {
     // If the poisoned button is checked, apply the .poisoned-character style
     //characterNameElement.classList.remove('default');
@@ -741,9 +766,6 @@ function getCharacterName(number) {
     case 152: return 'Irmã';
     case 282: return 'Irmão';
     case 283: return 'Irmão';
-
-    case '04': return 'Lobisomem';
-    case '08': return 'Lobisomem';
 
     default: return 'Aldeão Triste';
   }
