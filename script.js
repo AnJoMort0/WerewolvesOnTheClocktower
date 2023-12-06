@@ -1,6 +1,13 @@
 //Werewolves on thr Clocktower Guide Companion
 //by AnJoMorto
 
+//Planned updates:
+  //If the Sleepwalker (17) is in game adds a new radio row for Host that applies .host style
+
+  //Later
+    //FR language
+    //EN language
+    
 // Function to generate and display the random list
 function generateAndDisplay() {
   // Get input and result container elements
