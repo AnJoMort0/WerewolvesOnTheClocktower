@@ -2,12 +2,10 @@
 //by AnJoMorto
 
 //Planned updates:
-  //If the Sleepwalker (17) is in game adds a new radio row for Host that applies .host style
-
   //Later
     //FR language
     //EN language
-    
+
 // Function to generate and display the random list
 function generateAndDisplay() {
   // Get input and result container elements
@@ -75,22 +73,44 @@ function generateAndDisplay() {
 
     // Create rows for players, characters, poisoned, dead, done, and notes
     const playersRow = table.insertRow();
+    playersRow.insertCell().appendChild(document.createTextNode('Players'))
+
     const charactersRow = table.insertRow();
+    charactersRow.insertCell().appendChild(document.createTextNode('Characters'));
+
     const poisonedRow = table.insertRow();
     poisonedRow.insertCell().appendChild(document.createTextNode('Poisoned'));
+
     const deadRow = table.insertRow();
     deadRow.insertCell().appendChild(document.createTextNode('Dead'));
+
     const doneRow = table.insertRow();
     doneRow.insertCell().appendChild(document.createTextNode('Done'))
+
     const notesRow = table.insertRow();
-    const notesCell = notesRow.insertCell();
-    notesCell.appendChild(document.createTextNode('Notes'));
+    notesRow.insertCell().appendChild(document.createTextNode('Notes'));
+
+      // Adding a Host row when the sleepwalker is in the game
+      if (result.includes(17)){
+        const hostRow = table.insertRow();
+        hostRow.insertCell().appendChild(document.createTextNode('Host'));
+        result.forEach(number => {
+          const hostCell = hostRow.insertCell();
+          hostCell.classList.add('toggle-cell');
+    
+          // Create radio button for the poisoned row
+          const hostRadio = document.createElement('input');
+          hostRadio.type = 'radio';
+          hostRadio.name = `host`;
+          hostRadio.value = number;
+          hostRadio.id = `host-radio-${number}`;
+          hostCell.appendChild(hostRadio);
+
+          hostCell.setAttribute('data-character', number); // Set data-character attribute
+        });
+      };
 
     let maxCellWidth = 0;
-
-    // Add "Players" text to the prep cell of the players row
-    const playersCell = playersRow.insertCell();
-    playersCell.appendChild(document.createTextNode('Players'));
 
     // Populate players row with text boxes for player names
     result.forEach((number, index) => {
@@ -100,10 +120,6 @@ function generateAndDisplay() {
       playerNameInput.id = `player-name-${number}`;
       playerCell.appendChild(playerNameInput);
     });
-
-    // Add "Characters" text to the prep cell of the characters row
-    const charactersCell = charactersRow.insertCell();
-    charactersCell.appendChild(document.createTextNode('Characters'));
 
     // Populate rows with character names, icons, radio buttons, and toggle switches
     result.forEach(number => {
@@ -523,9 +539,10 @@ function generateAndDisplay() {
 
 // Function to add event listeners for radio buttons and toggle switches
 function addDandPEventListeners() {
-  const poisonedRadios = document.querySelectorAll('input[type="radio"]');
+  const poisonedRadios = document.querySelectorAll('input[id^="poisoned-radio-"]');
   const deadSwitches = document.querySelectorAll('input[id^="dead-switch-"]');
   const doneSwitches = document.querySelectorAll('input[id^="done-switch-"]');
+  const hostRadios = document.querySelectorAll('input[id^="host-radio-"]');
 
   poisonedRadios.forEach(radio => {
     radio.addEventListener('change', handlePoisonedChange);
@@ -538,6 +555,10 @@ function addDandPEventListeners() {
   doneSwitches.forEach(switchElem => {
     switchElem.addEventListener('change', handleDoneChange);
   });
+
+  hostRadios.forEach(switchElem => {
+    switchElem.addEventListener('change', handleHostChange);
+  })
 }
 
 // Function to handle changes in the poisoned radio buttons
@@ -637,6 +658,36 @@ function handleDoneChange(event) {
     characterPnTxt.classList.add('default');
     characterSnTxt.classList.add('default');
     characterNnTxt.classList.add('default');
+  }
+}
+
+// Function to handle changes in the host radio buttons
+function handleHostChange(event) {
+  const characterNumber = event.target.value;
+  const characterNameElement = document.getElementById(`character-name-${characterNumber}`);
+  const characterPnTxt       = document.getElementById(`pn-txt-${characterNumber}`);
+  const characterSnTxt       = document.getElementById(`sn-txt-${characterNumber}`);
+  const characterNnTxt       = document.getElementById(`nn-txt-${characterNumber}`);
+
+  // Remove the .host-character style from all elements in the page
+  const allHostElements = document.querySelectorAll('.host-character');
+  allHostElements.forEach(element => element.classList.remove('host-character'));
+
+  if (characterNumber.toString() == '04' || characterNumber.toString() == '08'){
+    characterNameElement.classList.add('host-character');
+    document.getElementById(`pn-txt-1`).classList.add('host-character');
+    document.getElementById(`sn-txt-1`).classList.add('host-character');
+    document.getElementById(`nn-txt-1`).classList.add('host-character');
+  } else if (event.target.checked) {
+    // If the host button is checked, apply the .host-character style
+    //characterNameElement.classList.remove('default');
+    //characterPnTxt.classList.remove('default');
+    //characterSnTxt.classList.remove('default');
+    //characterNnTxt.classList.remove('default');
+    characterNameElement.classList.add('host-character');
+    characterPnTxt.classList.add('host-character');
+    characterSnTxt.classList.add('host-character');
+    characterNnTxt.classList.add('host-character');
   }
 }
 
