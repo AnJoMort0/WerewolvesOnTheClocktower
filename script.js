@@ -6,6 +6,9 @@
     //FR language
     //EN language
 
+//Fixed values
+const maxChar = 31;
+
 // Function to generate and display the random list
 function generateAndDisplay() {
   // Get input and result container elements
@@ -37,18 +40,13 @@ function generateAndDisplay() {
 
   // Generate random list
   let result = generateRandomList(playerCount, newMessagesContainer);
-  let counter = 1; // Initialize the counter
-  result = result.map(value => {
-    if (value === 0) {
-      // If the value is 0, replace it with the counter and increment the counter
-      const newValue = counter.toString().padStart(2, '0');
-      counter++;
-      return newValue;
-    } else {
-      // If the value is not 0, keep it as it is
-      return value;
+  //Check add 00,01, 02 etc for extra players
+  if (playerCount > maxChar) {
+    const extraPlayers = playerCount - maxChar;
+    for (let i = 0; i < extraPlayers; i++) {
+      result.push(`0${i}`)
     }
-  }); 
+  }
   shuffleArray(result);
   
   //Other lists important for the script later
@@ -770,33 +768,38 @@ function generateRandomList(x, messagesContainer) {
     availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
   } else if (x < 22) {
     availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27];
-  } else if (x < 32) {
-    availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
-  } else if (x < 41) {
-    availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
-    const extraPlayers = x - 31;
-    for (let i = 0; i < extraPlayers; i++) {
-      result.push(0);
-    }
   } else {
-    messagesContainer.innerHTML = "Too many players!";
-    return;
+    availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
   }
 
-  while (result.length < x && availableNumbers.length > 0) {
-    const randomIndex = Math.floor(Math.random() * availableNumbers.length);
-    const randomNumber = availableNumbers.splice(randomIndex, 1)[0];
+if (x <= maxChar) {
+    while (result.length < x && availableNumbers.length > 0) {
+      const randomIndex = Math.floor(Math.random() * availableNumbers.length);
+      const randomNumber = availableNumbers.splice(randomIndex, 1)[0];
+  
+      if (randomNumber != 15 && randomNumber != 28) {
+        result.push(randomNumber);
+      } else if (randomNumber === 15 && result.length < x - 2) {
+        result.push(15, 152);
+      } else if (randomNumber === 28 && result.length < x - 3) {
+        result.push(28, 282, 283);
+      }
+    }
+} else {
+    while (result.length < maxChar && availableNumbers.length > 0) {
+      const randomIndex = Math.floor(Math.random() * availableNumbers.length);
+      const randomNumber = availableNumbers.splice(randomIndex, 1)[0];
 
-    if (randomNumber != 15 && randomNumber != 28) {
-      result.push(randomNumber);
-    } else if (randomNumber === 15 && result.length < x - 2) {
-      result.push(15, 152);
-    } else if (randomNumber === 28 && result.length < x - 3) {
-      result.push(28, 282, 283);
+      if (randomNumber != 15 && randomNumber != 28) {
+        result.push(randomNumber);
+      } else if (randomNumber === 15 && result.length < x - 2) {
+        result.push(15, 152);
+      } else if (randomNumber === 28 && result.length < x - 3) {
+        result.push(28, 282, 283);
+      }
     }
   }
 
-  shuffleArray(result);
   return result;
 }
 
