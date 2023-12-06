@@ -584,6 +584,11 @@ function handleDeadChange(event) {
     characterPnTxt.classList.add('dead-character');
     characterSnTxt.classList.add('dead-character');
     characterNnTxt.classList.add('dead-character');
+    if(characterNumber.toString() == 1){
+      characterPnTxt.classList.remove('dead-character');
+      characterSnTxt.classList.remove('dead-character');
+      characterNnTxt.classList.remove('dead-character');
+    }
   } else {
     // If the dead switch is unchecked, apply the .default style
     characterNameElement.classList.remove('dead-character');
