@@ -43,7 +43,8 @@ function generateAndDisplay() {
       // If the value is not 0, keep it as it is
       return value;
     }
-  });  
+  }); 
+  shuffleArray(result);
   
   //Other lists important for the script later
     //Remove the result from the fake characters list
@@ -112,7 +113,12 @@ function generateAndDisplay() {
       // Add character icon to the cell
       const icon = document.createElement('img');
       const numberString = String(number); // Convert to string
-      const imagePath = numberString.startsWith('0') ? `images/0_icon.png` : `images/${numberString}_icon.png`;
+      let imagePath;
+      if(numberString.startsWith('04') || numberString.startsWith('08')){
+          imagePath = `images/1_icon.png`;
+      } else {
+         imagePath = numberString.startsWith('0') ? `images/0_icon.png` : `images/${numberString}_icon.png`;
+      };
       icon.src = imagePath;
       icon.classList.add('character-icon');
       icon.id = `character-icon-${number}`;
@@ -180,19 +186,22 @@ function generateAndDisplay() {
     // Append the rows to the table
     resultContainer.appendChild(table);
 
-  // Generate and append images under the table
-  result.forEach(number => {
-  const img = document.createElement('img');
-  const numberString = String(number); // Convert to string
-  const imagePath = numberString.startsWith('0') ? `images/0_pt.png` : `images/${numberString}_pt.png`;
-  img.src = imagePath;
-  img.setAttribute('data-image-number', number);
-  img.classList.add('generated-image');
-  img.id = `generated-image-${number}`;
-  resultContainer.appendChild(img);
-});
-
-
+    // Generate and append images under the table
+    result.forEach(number => {
+      const img = document.createElement('img');
+      const numberString = String(number); // Convert to string
+      let imagePath;
+      if(numberString.startsWith('04') || numberString.startsWith('08')){
+        imagePath = `images/1_pt.png`;
+      } else {
+        imagePath = numberString.startsWith('0') ? `images/0_pt.png` : `images/${numberString}_pt.png`;
+      };
+      img.src = imagePath;
+      img.setAttribute('data-image-number', number);
+      img.classList.add('generated-image');
+      img.id = `generated-image-${number}`;
+      resultContainer.appendChild(img);
+    });
   }
 
   // Add different buttons
@@ -661,6 +670,9 @@ function getCharacterName(number) {
     case 152: return 'Irmã';
     case 282: return 'Irmão';
     case 283: return 'Irmão';
+
+    case '04': return 'Lobisomem';
+    case '08': return 'Lobisomem';
 
     default: return 'Aldeão Triste';
   }
