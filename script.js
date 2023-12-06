@@ -544,7 +544,13 @@ function handlePoisonedChange(event) {
   allPoisonedElements.forEach(element => element.classList.remove('poisoned-character'));
   allPoisonedIcon.forEach(element => element.classList.remove('poisoned-icon'));
 
-  if (event.target.checked) {
+  if (characterNumber.toString() == '04' || characterNumber.toString() == '08'){
+    characterNameElement.classList.add('poisoned-character');
+    characterIconElement.classList.add('poisoned-icon');
+    document.getElementById(`pn-txt-1`).classList.add('poisoned-character');
+    document.getElementById(`sn-txt-1`).classList.add('poisoned-character');
+    document.getElementById(`nn-txt-1`).classList.add('poisoned-character');
+  } else if (event.target.checked) {
     // If the poisoned button is checked, apply the .poisoned-character style
     //characterNameElement.classList.remove('default');
     //characterPnTxt.classList.remove('default');
