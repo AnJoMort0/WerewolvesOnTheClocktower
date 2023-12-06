@@ -412,7 +412,11 @@ function generateAndDisplay() {
   }
 
   if (result.includes(1)) {
-    addNnTxt(1, ' - Lobisomens acordam e apontam para quem querem assassinar. Se o Lobisomem Vampiro quiser transformar a vítima, ficará acordado a apontar para a vítima. A vítima será tocada na cabeça.');
+    addNnTxt(1, ' - Lobisomens acordam e apontam para quem querem assassinar.');
+  }
+
+  if (result.includes(26)) {
+    addNnTxt(26, 'Se o Lobisomem Vampiro quiser transformar a vítima, ficará acordado a apontar para a vítima. A vítima será tocada na cabeça.');
   }
 
   if (result.includes(24)) {
