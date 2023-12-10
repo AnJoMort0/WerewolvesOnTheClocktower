@@ -1,4 +1,4 @@
-//Werewolves on thr Clocktower Guide Companion
+//Werewolves on the Clocktower Guide Companion
 //by AnJoMorto
 
 //Planned updates:
@@ -37,7 +37,7 @@ function generateAndDisplay() {
 
   // Check if the input is empty
   if (isNaN(playerCount) || playerCount <= 0) {
-    newMessagesContainer.innerHTML = "Please add the number of players!";
+    newMessagesContainer.innerHTML = "Por favor junte o número de jogadores!";
     return;
   }
 
@@ -79,27 +79,27 @@ function generateAndDisplay() {
 
     // Create rows for players, characters, poisoned, dead, done, and notes
     const playersRow = table.insertRow();
-    playersRow.insertCell().appendChild(document.createTextNode('Players'))
+    playersRow.insertCell().appendChild(document.createTextNode('Jogadores'))
 
     const charactersRow = table.insertRow();
-    charactersRow.insertCell().appendChild(document.createTextNode('Characters'));
+    charactersRow.insertCell().appendChild(document.createTextNode('Personagens'));
 
     const poisonedRow = table.insertRow();
-    poisonedRow.insertCell().appendChild(document.createTextNode('Poisoned'));
+    poisonedRow.insertCell().appendChild(document.createTextNode('Envenenado'));
 
     const deadRow = table.insertRow();
-    deadRow.insertCell().appendChild(document.createTextNode('Dead'));
+    deadRow.insertCell().appendChild(document.createTextNode('Morto'));
 
     const doneRow = table.insertRow();
-    doneRow.insertCell().appendChild(document.createTextNode('Done'))
+    doneRow.insertCell().appendChild(document.createTextNode('Acabou'))
 
     const notesRow = table.insertRow();
-    notesRow.insertCell().appendChild(document.createTextNode('Notes'));
+    notesRow.insertCell().appendChild(document.createTextNode('Anotações'));
 
       // Adding a Host row when the sleepwalker is in the game
       if (result.includes(17)){
         const hostRow = table.insertRow();
-        hostRow.insertCell().appendChild(document.createTextNode('Host'));
+        hostRow.insertCell().appendChild(document.createTextNode('Hospedeiro'));
         result.forEach(number => {
           const hostCell = hostRow.insertCell();
           hostCell.classList.add('toggle-cell');
@@ -246,19 +246,19 @@ function generateAndDisplay() {
   // Add different buttons
   const resetScriptButton = document.createElement('button');
   resetScriptButton.id = 'reset-script';
-  resetScriptButton.innerText = 'Reset Script'
+  resetScriptButton.innerText = 'Limpar Guião'
   resetScriptButton.addEventListener('click', resetScript);
   resultContainer.appendChild(resetScriptButton);
 
   const prepNightToggle = document.createElement('button');
   prepNightToggle.id = 'pn-toggle';
-  prepNightToggle.innerText = 'Toggle Preparation Night';
+  prepNightToggle.innerText = 'Desativar/Ativar Noite de Preparação';
   prepNightToggle.addEventListener('click', togglePrepNight);
   resultContainer.appendChild(prepNightToggle);
 
   const secondNightToggle = document.createElement('button');
   secondNightToggle.id = 'sn-toggle';
-  secondNightToggle.innerText = 'Toggle Second Night';
+  secondNightToggle.innerText = 'Desativar/Ativar Segunda Noite';
   secondNightToggle.addEventListener('click', toggleSecondNight);
   resultContainer.appendChild(secondNightToggle);
 
@@ -782,7 +782,7 @@ function generateRandomList(x, messagesContainer) {
   }
 
   if (x < 8) {
-    messagesContainer.innerHTML = "Not enough players!";
+    messagesContainer.innerHTML = "Sem jogadores suficientes! (mínimo 8)";
     return;
   } else if (x < 10) {
     availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24];
