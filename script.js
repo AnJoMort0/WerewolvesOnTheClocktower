@@ -2,6 +2,7 @@
 //by AnJoMorto
 
 //Planned updates:
+  //Drunk character
   //Later
     //FR language
     //EN language
