@@ -787,7 +787,7 @@ function generateRandomList(x, messagesContainer) {
     messagesContainer.innerHTML = "Sem jogadores suficientes! (mínimo 8)";
     return;
   } else if (x < 10) {
-    availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+    availableNumbers = [7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24];
   } else if (x < 12) {
     availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
   } else if (x < 22) {
