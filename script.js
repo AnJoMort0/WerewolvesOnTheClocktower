@@ -486,7 +486,8 @@ function generateAndDisplay() {
 
   // Add paragraphs for resolving various things
   if (result.includes(6)) {
-    addNnTxt(6, ' - Se o Chefe de Aldeia for assassinado pelos Lobisomens, o Lobisomem afetado é avisado, tocando-lhe na cabeça e pedindo para acordar e ver as indicações silenciosas do Moderador.');
+    const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+    addNnTxt(6, ` - Se o Chefe de Aldeia for assassinado pelos Lobisomens, o Lobisomem afetado é avisado, tocando-lhe na cabeça e pedindo para acordar e ver as indicações silenciosas do Moderador. O Lobisomem se torna o último personagem desta lista: ${fakeCharactersText}`);
 
   }
   if (result.includes(11)) {
