@@ -241,6 +241,20 @@ function generateAndDisplay() {
       img.classList.add('generated-image');
       img.id = `generated-image-${number}`;
       resultContainer.appendChild(img);
+      
+      // Add click event listener to copy image to clipboard
+      img.addEventListener('click', async () => {
+        try {
+          const response = await fetch(img.src);
+          const blob = await response.blob();
+
+          const item = new ClipboardItem({ 'image/png': blob });
+          await navigator.clipboard.write([item]);
+          
+        } catch (error) {
+          console.error('Error copying image to clipboard:', error);
+        }
+      });
     });
   }
 
