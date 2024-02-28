@@ -38,7 +38,7 @@ function generateAndDisplay() {
 
   // Check if the input is empty
   if (isNaN(playerCount) || playerCount <= 0) {
-    newMessagesContainer.innerHTML = "Por favor junte o número de jogadores!";
+    document.getElementById("result-container").innerHTML = "Por favor junte o número de jogadores!";
     return;
   }
 
@@ -306,7 +306,7 @@ function generateAndDisplay() {
   }
 
   if (result.includes(3)) {
-    addPnTxtWithToggle(3, ' - Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado.');
+    addPnTxtWithToggle(3, ' - Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado. Lembro que os apaixonados não se podem mentir.');
   }
 
   if (result.includes(23)) {
@@ -321,10 +321,6 @@ function generateAndDisplay() {
   if (result.includes(2)) {
     const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
     addPnTxtWithToggle(2, ` - Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
-  }
-
-  if (result.includes(8)) {
-    addPnTxtWithToggle(8, ' - Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador ou os seus vizinhos são maus.');
   }
 
   if (result.includes(7)) {
@@ -393,7 +389,7 @@ function generateAndDisplay() {
     addSnTxtWithToggle(22, ' - Ladrão acorda e escolhe com o polegar para cima se quer se juntar aos aldeões ou com um polegar para baixo se quer se juntar aos Lobisomens.');
   }
 
-  if (result.includes(25)) {
+  if (result.includes(1)) {
     const alliesTxt = allies.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
     addSnTxtWithToggle(25, ` - Lobisomens acordam e o Moderador aponta-lhes quem são os Aliados (${alliesTxt})`);
   }
@@ -798,7 +794,7 @@ function generateRandomList(x, messagesContainer) {
   }
 
   if (x < 8) {
-    messagesContainer.innerHTML = "Sem jogadores suficientes! (mínimo 8)";
+    document.getElementById("result-container").innerHTML = "Sem jogadores suficientes! (mínimo 8)";
     return;
   } else if (x < 10) {
     availableNumbers = [7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24];
