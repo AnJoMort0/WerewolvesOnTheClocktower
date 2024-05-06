@@ -15,6 +15,33 @@
   color: white;
 }
 
+/* Default style for reset elements */
+.default {
+  color: white;
+}
+
+header {
+  background-image: url('images/background/werewolf4.jpeg'); /* Set the background image */
+  background-size: cover; /* Cover the entire header with the background image */
+  background-position: 100% 70%; /* Center the background image */
+  color: #f4f4f4;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0; /* Adjusted margin to remove the gap */
+  font-size: 40px;
+}
+
+footer {
+  background-color: #545454; /* A darker footer background color */
+  color: #f4f4f4;
+  padding: 5x; /* Adjusted padding for a thinner footer */
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  font-size: 12px;
+}
+
 /* Style for the container of generated content */
 #result-container {
   margin-top: 20px;
@@ -93,11 +120,6 @@
   vertical-align: middle;
   border: 1px solid white;
   border-radius: 15px;
-}
-
-/* Default style for reset elements */
-.default {
-  color: white;
 }
 
 /* Style for the poisoned characters */

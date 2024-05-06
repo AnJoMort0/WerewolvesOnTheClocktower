@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Lobisomens na Torre Sangrenta</title>
-    <link rel="icon" href="ai_logo.ico">
+    <link rel="icon" href="images/backgrounds/ai_logo.ico">
   </head>
 
   <body>
@@ -16,15 +16,12 @@
       <h1>Lobisomens na Torre Sangrenta</h1>
     </header>
 
-    <!-- Container for displaying messages -->
-    <div id="messages-container"></div>
-
     <!-- Button to toggle the display of generated images -->
     <button onclick="toggleImages()">Desativar/Ativar Imagens</button>
 
     <!-- Input for the number of players -->
     <label for="playerCount">Número de Jogadores:</label>
-    <input type="number" id="playerCount" name="playerCount" min="8" step="1">
+    <input type="number" id="player-count" name="playerCount" min="8" step="1">
 
     <!-- Button to generate and display the result -->
     <button onclick="generateAndDisplay()">Gerar Personagens</button>
@@ -33,7 +30,6 @@
     <div id="result-container"></div>
 
     <footer>
-      <p>&nbsp</p>
       <p>&copy; 2024 - AnJoMorto - Werewolves on the Clocktower. Some rights reserved.</p>
     </footer>
 

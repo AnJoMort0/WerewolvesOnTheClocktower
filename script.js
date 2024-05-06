@@ -1,33 +1,93 @@
+//==================================================================================================//
+//==================================================================================================//
+
 //Werewolves on the Clocktower Guide Companion
 //by AnJoMorto
 
 //Planned updates:
-  //Drunk character
+  //Add all character's lists to the fixed values for easier access and modification
+  //Testdrive observations
+  //Automate in script the characters with neighbours (yes or no bear, fox)
+  //Add player names to the script when necessary (second night friends)
+  //Hover the numbers in the result and see the characters name
+  //Link to the rule Docs Document for now : https://docs.google.com/document/d/1aV9II9br_8ln4zrA7wgHRByBLqyb8EzkOqc2ltHGCes/edit?usp=sharing
+  //Automate Round turning and add built-in timer for the day after the script (+ play sound when timer start/over)
+  //New characters
+  //Drunk character (togglable)
   //Later
     //FR language
     //EN language
 
+//==================================================================================================//
+//==================================================================================================//
+
+//Character lists
+/*
+0 - Aldeão Triste
+1 - Lobisomem
+2 - Bruxa Malvada
+3 - Cupido
+4 - Chaman
+5 - Vidente
+6 - Chefe da Aldeia
+7 - Mestre do Urso
+8 - Mestre da Raposa
+9 - Mestre do Corvo
+10 - Menina
+11 - Caçador
+12 - Cavaleiro Enferrujado
+13 - Idiota
+14 - Anjo
+15 - Irmãs (2x)
+16 - Juíz
+17 - Sonâmbulo
+18 - Acusador
+19 - Hippie
+20 - Marionetista
+21 - Cão-Lobo
+22 - Ladrão
+23 - Criança Selvagem
+24 - Lobisomem Branco
+25 - Chefe dos Lobisomens
+26 - Lobisomem Vampiro
+27 - Ankou
+28 - Irmãos (3x)
+29 - Ator
+30 - Lobisomem Vidente
+31 - Paranoico
+32 - Pirômano
+*/
+const goodCharacters          = [0,3,4,5,6,7,8,9,10,11,12,13,14,15,152,16,17,18,19,20,29,31,32,28,282,283]; //all the folk characters
+const flexibleCharacters      = [21,22,23,24]; //all the chosing characters
+const badCharacters           = [1,2,25,26,30,27]; //all the wolfs and allies
+const allCharacters           = [...goodCharacters,...flexibleCharacters,...badCharacters]; //everyone
+const availableFakeCharacters       = [6,7,8,9,10,11,12,14,16,17,18,19,20,29,31,32]; //all characters that can be proposed as fake characters
+const availableAllies               = [2,27,21,22]; //all non wolf bad characters
+const availablePoisanableCharacters = [3,13,15,20,21,23,28]; //all characters whose poison status need to be informed to the person
+const availablePlayableCharacters   = []; //all characters that can be played by the actor
+//Character Balancing depending on Player count:
+const upTo10  = [];
+
 //Fixed values
-const maxChar = 31;
+const maxChar   = allCharacters.length; //need to make it so the maximum amount of characters is dependant on the list length
 const wolfRatio = 4;
 
-// Function to generate and display the random list
+//==================================================================================================//
+
+//FUNCTION TO GENERATE AND DISPLAY THE WHOLE THING
 function generateAndDisplay() {
-  extraCounterIcon = 0;
-  extraCounterImg = 0;
+
   // Get input and result container elements
-  const playerCountInput  = document.getElementById('playerCount');
+  const playerCountInput  = document.getElementById('player-count');
   const resultContainer   = document.getElementById('result-container');
   const messagesContainer = document.getElementById('messages-container');
 
-  // Clear existing result content
+  // Clear existing result content if it exists
   resultContainer.innerHTML = '';
-
   // Remove existing messages container if it exists
   if (messagesContainer) {
     messagesContainer.parentNode.removeChild(messagesContainer);
   }
-
   // Create a new messages container
   const newMessagesContainer = document.createElement('div');
   newMessagesContainer.id = 'messages-container';
@@ -36,15 +96,16 @@ function generateAndDisplay() {
   // Parse player count from input
   const playerCount = parseInt(playerCountInput.value);
 
-  // Check if the input is empty
+  // Check if the player count input is empty
   if (isNaN(playerCount) || playerCount <= 0) {
     document.getElementById("result-container").innerHTML = "Por favor junte o número de jogadores!";
     return;
   }
 
+
   // Generate random list
   let result = generateRandomList(playerCount, newMessagesContainer);
-  //Check add 00,01, 02 etc for extra players
+  //Check add 00,01,02 etc for extra players
   let extraPlayers = 0;
   let extraWolves = [];
   if (playerCount > maxChar) {
@@ -58,17 +119,20 @@ function generateAndDisplay() {
   }
   shuffleArray(result);
   
+  /////////////////////////////////
+
   //Other lists important for the script later
     //Remove the result from the fake characters list
-    const availableFakeCharacters = [6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 20];
     const fakeCharacters = availableFakeCharacters.filter(element => !result.includes(element));
     shuffleArray(fakeCharacters);
     //Make the list of the important characters to mention if poisoned
-    const availablePoisanableCharacters = [3, 13, 15, 20, 21, 23, 28];
     const poisanableCharacters = availablePoisanableCharacters.filter(element => result.includes(element));
-    //Make a list of the allies
-    const availableAllies = [2, 27, 21, 22];
+    //Make a list of the wolfs allies
     const allies = availableAllies.filter(element => result.includes(element));
+    //Make a list of the flexible characters for possible allies
+    const flexibles = flexibleCharacters.filter(element => result.includes(element));
+
+  /////////////////////////////////
 
   // Display the result
   if (result) {
@@ -79,301 +143,342 @@ function generateAndDisplay() {
     table.style.borderCollapse = 'collapse';
 
     // Create rows for players, characters, poisoned, dead, done, and notes
-    const playersRow = table.insertRow();
+    const playersRow    = table.insertRow();
     playersRow.insertCell().appendChild(document.createTextNode('Jogadores'))
-
     const charactersRow = table.insertRow();
     charactersRow.insertCell().appendChild(document.createTextNode('Personagens'));
-
-    const poisonedRow = table.insertRow();
+    const poisonedRow   = table.insertRow();
     poisonedRow.insertCell().appendChild(document.createTextNode('Envenenado'));
-
-    const deadRow = table.insertRow();
+    const deadRow       = table.insertRow();
     deadRow.insertCell().appendChild(document.createTextNode('Morto'));
-
-    const doneRow = table.insertRow();
-    doneRow.insertCell().appendChild(document.createTextNode('Acabou'))
-
-    const notesRow = table.insertRow();
+    const doneRow       = table.insertRow();
+    doneRow.insertCell().appendChild(document.createTextNode('Acabou'));
+    const notesRow      = table.insertRow();
     notesRow.insertCell().appendChild(document.createTextNode('Anotações'));
 
       // Adding a Host row when the sleepwalker is in the game
       if (result.includes(17)){
-        const hostRow = table.insertRow();
+        const hostRow   = table.insertRow();
         hostRow.insertCell().appendChild(document.createTextNode('Hospedeiro'));
         result.forEach(number => {
           const hostCell = hostRow.insertCell();
           hostCell.classList.add('toggle-cell');
     
-          // Create radio button for the poisoned row
+          // Create radio button for the hosting row
           const hostRadio = document.createElement('input');
           hostRadio.type = 'radio';
           hostRadio.name = `host`;
           hostRadio.value = number;
           hostRadio.id = `host-radio-${number}`;
           hostCell.appendChild(hostRadio);
-
           hostCell.setAttribute('data-character', number); // Set data-character attribute
         });
       };
 
     let maxCellWidth = 0;
 
-    // Populate players row with text boxes for player names
-    result.forEach((number, index) => {
-      const playerCell = playersRow.insertCell();
-      const playerNameInput = document.createElement('input');
-      playerNameInput.type = 'text';
-      playerNameInput.id = `player-name-${number}`;
-      playerCell.appendChild(playerNameInput);
-    });
+    ////////////////////////
 
-    // Populate rows with character names, icons, radio buttons, and toggle switches
-    result.forEach(number => {
-      const characterCell = charactersRow.insertCell();
-      const poisonedCell = poisonedRow.insertCell();
-      const deadCell = deadRow.insertCell();
-      const doneCell = doneRow.insertCell();
+    // POPULARE ROWS WITH PLAYER NAMES; CHARACTER NAMES; ICONS; RADIO BUTTONS AND TOGGLE SWITCHES
+      //Player names
+        result.forEach((number, index) => {
+        const playerCell      = playersRow.insertCell();
+        const playerNameInput = document.createElement('input');
+        playerNameInput.type  = 'text';
+        playerNameInput.id    = `player-name-${number}`;
+        playerCell.appendChild(playerNameInput);
+      });
 
-      characterCell.classList.add('character-cell');
-      poisonedCell.classList.add('toggle-cell');
-      deadCell.classList.add('toggle-cell');
-      doneCell.classList.add('toggle-cell');
-
-      // Add character icon to the cell
-      const icon = document.createElement('img');
-      const numberString = String(number); // Convert to string
-      let imagePath;
-      if(numberString.startsWith(`0`)){
-        let x = numberString.substring(1);
-        if (x % wolfRatio == 0) {
-          imagePath = `images/1_icon.png`;
-        } else {
-          imagePath = `images/0_icon.png`;
-        }
-      } else {
-         imagePath = `images/${numberString}_icon.png`;
-      };
-      icon.src = imagePath;
-      icon.classList.add('character-icon');
-      icon.id = `character-icon-${number}`;
-      characterCell.appendChild(icon);
-
-      // Add character name text to the cell
-      const characterName = getCharacterName(number);
-      const nameContainer = document.createElement('span');
-      nameContainer.appendChild(document.createTextNode(characterName));
-      nameContainer.classList.add('default')
-      nameContainer.id = `character-name-${number}`;
-      characterCell.appendChild(nameContainer);
-
-      // Create radio button for the poisoned row
-      const poisonedRadio = document.createElement('input');
-      poisonedRadio.type = 'radio';
-      poisonedRadio.name = `poisoned`;
-      poisonedRadio.value = number;
-      poisonedRadio.id = `poisoned-radio-${number}`;
-      poisonedCell.appendChild(poisonedRadio);
-
-      // Create dead toggle switch for the dead row
-      const deadSwitch = document.createElement('input');
-      deadSwitch.type = 'checkbox';
-      deadSwitch.value = number;
-      deadSwitch.id = `dead-switch-${number}`;
-      deadCell.appendChild(deadSwitch);
-
-      // Create done toggle switch for the done row
-      const doneSwitch = document.createElement('input');
-      doneSwitch.type = 'checkbox';
-      doneSwitch.value = number;
-      doneSwitch.id = `done-switch-${number}`;
-      doneCell.appendChild(doneSwitch);      
-
-      // Track the width of the icon
-      const iconHeight = icon.clientHeight;
-      const iconWidth = icon.clientWidth;
-      if (iconWidth > maxCellWidth) {
-        maxCellWidth = iconWidth;
-      }
-      // Adjust the height of the character cell based on the icon height
-      characterCell.style.height = `${Math.max(iconHeight, 100)}px`; // Set a minimum height of 100px for character cells
+      //Cells for characters, poison, dead and done
+        result.forEach(number => {
+          const characterCell = charactersRow.insertCell();
+          const poisonedCell  = poisonedRow.insertCell();
+          const deadCell      = deadRow.insertCell();
+          const doneCell      = doneRow.insertCell();
+                characterCell.classList.add('character-cell');
+                poisonedCell.classList.add('toggle-cell');
+                deadCell.classList.add('toggle-cell');
+                doneCell.classList.add('toggle-cell');
       
-      characterCell.setAttribute('data-character', number); // Set data-character attribute
-      poisonedCell.setAttribute('data-character', number); // Set data-character attribute
-      deadCell.setAttribute('data-character', number); // Set data-character attribute
-      doneCell.setAttribute('data-character', number); // Set data-character attibute
-    });
+        // Add character icon to the cell
+          const icon = document.createElement('img');
+          const numberString = String(number); // Convert to string
+          let imagePath;
+          if(numberString.startsWith(`0`)){
+            let x = numberString.substring(1);
+            if (x % wolfRatio == 0) { //check if the character is a wolf
+              imagePath = `images/1_icon.png`;
+            } else { //check if the character is a villager
+              imagePath = `images/0_icon.png`;
+            }
+          } else { //all other character's whose character's ids don't start with 0
+            imagePath = `images/${numberString}_icon.png`;
+          };
+          icon.src = imagePath;
+          icon.classList.add('character-icon');
+          icon.id = `character-icon-${number}`;
+          characterCell.appendChild(icon);
+          // Track the width of the icon
+            const iconHeight = icon.clientHeight;
+            const iconWidth = icon.clientWidth;
+            if (iconWidth > maxCellWidth) {
+              maxCellWidth = iconWidth;
+            }
+            // Adjust the height of the character cell based on the icon height
+            characterCell.style.height = `${Math.max(iconHeight, 100)}px`; // Set a minimum height of 100px for character cells
+
+        // Add character name text to the cell
+          const characterName = getCharacterName(number);
+          const nameContainer = document.createElement('span');
+          nameContainer.appendChild(document.createTextNode(characterName));
+          nameContainer.classList.add('default')
+          nameContainer.id    = `character-name-${number}`;
+          characterCell.appendChild(nameContainer);
+
+        // Create radio button for the poisoned row
+          const poisonedRadio = document.createElement('input');
+          poisonedRadio.type  = 'radio';
+          poisonedRadio.name  = `poisoned`;
+          poisonedRadio.value = number;
+          poisonedRadio.id    = `poisoned-radio-${number}`;
+          poisonedCell.appendChild(poisonedRadio);
+
+        // Create dead toggle switch for the dead row
+          const deadSwitch    = document.createElement('input');
+          deadSwitch.type     = 'checkbox';
+          deadSwitch.value    = number;
+          deadSwitch.id       = `dead-switch-${number}`;
+          deadCell.appendChild(deadSwitch);
+
+        // Create done toggle switch for the done row
+          const doneSwitch    = document.createElement('input');
+          doneSwitch.type     = 'checkbox';
+          doneSwitch.value    = number;
+          doneSwitch.id       = `done-switch-${number}`;
+          doneCell.appendChild(doneSwitch);      
+
+        characterCell.setAttribute('data-character', number); // Set data-character attribute
+        poisonedCell.setAttribute('data-character', number);  // Set data-character attribute
+        deadCell.setAttribute('data-character', number);      // Set data-character attribute
+        doneCell.setAttribute('data-character', number);      // Set data-character attibute
+      });
 
     // Set the width for all character cells based on the width of the icon
-    Array.from(charactersRow.cells).forEach(cell => {
-      cell.style.width = `${Math.max(maxCellWidth, 200)}px`; // Set a minimum width of 200px for character cells
-    });
+      Array.from(charactersRow.cells).forEach(cell => {
+        cell.style.width = `${Math.max(maxCellWidth, 200)}px`; // Set a minimum width of 200px for character cells
+      });
 
     // Populate notes row with text areas for notes
-    result.forEach(number => {
-      const notesTextAreaCell = notesRow.insertCell();
-      const notesTextArea = document.createElement('textarea');
-      notesTextArea.rows = 4; // Set the number of rows as needed
-      notesTextArea.id = `notes-${number}`;
-      notesTextAreaCell.appendChild(notesTextArea);
-    });
+      result.forEach(number => {
+        const notesTextAreaCell = notesRow.insertCell();
+        const notesTextArea     = document.createElement('textarea');
+        notesTextArea.rows      = 3; // Set the number of rows as needed
+        notesTextArea.id        = `notes-${number}`;
+        notesTextAreaCell.appendChild(notesTextArea);
+      });
 
     // Append the rows to the table
-    resultContainer.appendChild(table);
+      resultContainer.appendChild(table);
 
     // Generate and append images under the table
-    result.forEach(number => {
-      const img = document.createElement('img');
-      const numberString = String(number); // Convert to string
-      let imagePath;
-      if(numberString.startsWith(`0`)){
-        let x = numberString.substring(1);        
-        if (x % wolfRatio == 0) {
-          imagePath = `images/1_pt.png`;
-        } else {
-          imagePath = `images/0_pt.png`;
-        }
-      } else {
-         imagePath = `images/${numberString}_pt.png`;
-      };
-      img.src = imagePath;
-      img.setAttribute('data-image-number', number);
-      img.classList.add('generated-image');
-      img.id = `generated-image-${number}`;
-      resultContainer.appendChild(img);
-      
-      // Add click event listener to copy image to clipboard
-      img.addEventListener('click', async () => {
-        try {
-          const response = await fetch(img.src);
-          const blob = await response.blob();
-
-          const item = new ClipboardItem({ 'image/png': blob });
-          await navigator.clipboard.write([item]);
-          
-        } catch (error) {
-          console.error('Error copying image to clipboard:', error);
-        }
+      result.forEach(number => {
+        const img = document.createElement('img');
+        const numberString = String(number); // Convert to string
+        let imagePath;
+        if(numberString.startsWith(`0`)){ //checks if it's wolf or a villager
+          let x = numberString.substring(1);        
+          if (x % wolfRatio == 0) { //checks if it's a wolf
+            imagePath = `images/1_pt.png`;
+          } else { //checks if it's a villager
+            imagePath = `images/0_pt.png`;
+          }
+        } else { //all other characters
+          imagePath = `images/${numberString}_pt.png`;
+        };
+        img.src = imagePath;
+        img.setAttribute('data-image-number', number);
+        img.classList.add('generated-image');
+        img.id = `generated-image-${number}`;
+        resultContainer.appendChild(img);
+        // Add click event listener to copy image to clipboard
+          img.addEventListener('click', async () => {
+            try {
+              const response = await fetch(img.src);
+              const blob = await response.blob();
+              const item = new ClipboardItem({ 'image/png': blob });
+              await navigator.clipboard.write([item]);
+            } catch (error) {
+              alert.error('Error copying image to clipboard:', error);
+            }
+          });
       });
-    });
   }
 
-  // Add different buttons
-  const resetScriptButton = document.createElement('button');
-  resetScriptButton.id = 'reset-script';
-  resetScriptButton.innerText = 'Limpar Guião'
-  resetScriptButton.addEventListener('click', resetScript);
-  resultContainer.appendChild(resetScriptButton);
+  //ADD DIFFERENT BUTTONS UNDER THE TABLE
+    //Clean script clicked overlays (keep dead, poisoned, etc.)
+    const resetScriptButton     = document.createElement('button');
+    resetScriptButton.id        = 'reset-script';
+    resetScriptButton.innerText = 'Limpar Guião'
+    resetScriptButton.addEventListener('click', resetScript);
+    resultContainer.appendChild(resetScriptButton);
 
-  const prepNightToggle = document.createElement('button');
-  prepNightToggle.id = 'pn-toggle';
-  prepNightToggle.innerText = 'Desativar/Ativar Noite de Preparação';
-  prepNightToggle.addEventListener('click', togglePrepNight);
-  resultContainer.appendChild(prepNightToggle);
+    //Toggle on/off the first night script part
+    const prepNightToggle       = document.createElement('button');
+    prepNightToggle.id          = 'pn-toggle';
+    prepNightToggle.innerText   = 'Desativar/Ativar Noite de Preparação';
+    prepNightToggle.addEventListener('click', togglePrepNight);
+    resultContainer.appendChild(prepNightToggle);
 
-  const secondNightToggle = document.createElement('button');
-  secondNightToggle.id = 'sn-toggle';
-  secondNightToggle.innerText = 'Desativar/Ativar Segunda Noite';
-  secondNightToggle.addEventListener('click', toggleSecondNight);
-  resultContainer.appendChild(secondNightToggle);
+    //Toggle on/off the second night script part
+    const secondNightToggle     = document.createElement('button');
+    secondNightToggle.id        = 'sn-toggle';
+    secondNightToggle.innerText = 'Desativar/Ativar Segunda Noite';
+    secondNightToggle.addEventListener('click', toggleSecondNight);
+    resultContainer.appendChild(secondNightToggle);
 
-  //Need to create empty p for every character that isn't in the script to have IDs for all the characters otherwise the style application doesn't work
-  // Add a section for the night preparation information
+  //---------------------//
+  //Information: Need to create empty p for every character that isn't in the script to have IDs for all the characters otherwise the style application doesn't work for some reason
+
+  /**
+   * How the script goes:
+   * 
+   * Fist Night:
+   * 15. Irmãs
+   * 28. Irmãos
+   * 3. Cupido
+   * 23. Criança Selvagem
+   * 18. Acusador
+   * 25. Chefe dos Lobisomens
+   * 
+   * Second Night:
+   * 21. Cão-Lobo
+   * 22. Ladrão
+   * Acordar todos os que estão na equipa dos maus
+   * 
+   * Every Night:
+   * 32. Pirômano
+   * 29. (A cada 3 execuções) Ator (with the list of the dead playable characters)
+   * 17. Sonâmbulo
+   * 5. Vidente (+ mortos automaticos - se calhar com um confirm button)
+   * 2. Bruxa
+   * 7. Mestre do Urso
+   * 8. Mestre da Raposa
+   * 22. Ladrão
+   * 1. Lobisomens
+   * 30. Lobisomem Vidente
+   * 26. Lobisomem Vampiro
+   * 24. (A cada 3 noites) Lobisomem Branco
+   * 4. Chaman
+   * 
+   * Fixes (add them automatically to the script (maybe on top of the Every Night part) would be huge (mostly more easy with the # ones)):
+   * 14. Ressuscitar alguém
+   * 6. Chefe da Aldeia Morto #
+   * 11. Caçador Morto #
+   * 3. Cupido Morto #
+   * 23. Criança Selvagem se Pai morto
+   * Inimigo que Ganhou
+   * 
+   */
+
+  //EMPTY LINE GENERATOR
   const emptyLine = document.createElement('p');
   emptyLine.textContent = '&nbsp';
 
-  const nightPrepSection = document.createElement('div');
-  nightPrepSection.id = 'night-preparation-section';
+  // Add a section for the night preparation information
+    const nightPrepSection  = document.createElement('div');
+    nightPrepSection.id     = 'night-preparation-section';
+    // Add title
+      const title           = document.createElement('h2');
+      title.textContent     = 'Noite de preparação';
+      nightPrepSection.appendChild(title);
 
-  const remainingPnCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 152, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 282, 283];
-
-  // Add title
-  const title = document.createElement('h2');
-  title.textContent = 'Noite de preparação';
-  nightPrepSection.appendChild(title);
-
-  // Add paragraphs based on characters in the result
-  if (result.includes(15)) {
-    addPnTxtWithToggle(15, ' - Irmãs acordam para se conhecerem.');
-  }
-
-  if (result.includes(28)) {
-    addPnTxtWithToggle(28, ' - Irmãos acordam para se conhecerem.');
-  }
-
-  if (result.includes(18)) {
-    addPnTxtWithToggle(18, ' - Acusador acorda e escolhe um Bode Expiatório.');
-  }
-
-  if (result.includes(3)) {
-    addPnTxtWithToggle(3, ' - Cupido acorda e aponta para dois jogadores que se tornaram namorados. O cupido adormece e os namorados serão agora tocados e podem acordar para ver quem é seu amado. Lembro que os apaixonados não se podem mentir.');
-  }
-
-  if (result.includes(23)) {
-    addPnTxtWithToggle(23, ' - Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.');
-  }
-
-  if (result.includes(25)) {
-    const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-    addPnTxtWithToggle(25, ` - Chefe dos Lobisomens acorda e o Moderador mostra-lhe as personagens falsas: ${fakeCharactersText}`);
-  }
-
-  if (result.includes(2)) {
-    const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-    addPnTxtWithToggle(2, ` - Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
-  }
-
-  if (result.includes(7)) {
-    addPnTxtWithToggle(7, ' - Urso rosna/não rosna.');
-  }
-
-  // Repeat this pattern for other cases...
-
-  //creating the remaining non existing tags for compatibility reasons
-  for (let i = 0; i < remainingPnCharacters.length; i++) {
-    const paragraph = document.createElement('p');
-    paragraph.id = `pn-txt-${remainingPnCharacters[i]}`;
-    nightPrepSection.appendChild(paragraph);
-  }
-
-  // Add the night preparation section to the result container
-  resultContainer.appendChild(nightPrepSection);
-
-  // Function to add a paragraph with a click event for toggling .done class
-  function addPnTxtWithToggle(characterNumber, text) {
-    // Create a paragraph element with the desired id
-    const paragraph = document.createElement('p');
-    paragraph.id = `pn-txt-${characterNumber}`;
-    paragraph.textContent = text;
-
-    // Add the paragraph to the nightPrepSection
-    nightPrepSection.appendChild(paragraph);
-
-    // Add an empty line
-    nightPrepSection.appendChild(emptyLine);
-
-    const index = remainingPnCharacters.indexOf(characterNumber);
-    if (index !== -1) {
-      remainingPnCharacters.splice(index, 1);
+    // Add paragraphs based on characters in the result
+    if(result.includes(1)){
+      addPnTxtWithToggle(1, ' ! Relembro que na primeira noite nehuma morte acontecerá.')
     }
 
-    // Add event listener to the paragraph element
-    paragraph.addEventListener('click', function () {
-      // Toggle the .done class on the paragraph
-      this.classList.toggle('done');
-    });
-  }
+    if (result.includes(15)) {
+      addPnTxtWithToggle(15, ' - Irmãs acordam para se conhecerem.');
+    }
 
-  // Function to toggle the visibility of the nightPrepSection
-  function togglePrepNight() {
-    nightPrepSection.hidden = !nightPrepSection.hidden;
-  }
+    if (result.includes(28)) {
+      addPnTxtWithToggle(28, ' - Irmãos acordam para se conhecerem.');
+    }
+
+    if (result.includes(3)) {
+      addPnTxtWithToggle(3, ' - Cupido acorda e aponta para dois jogadores que se tornaram Namorados. O Cupido adormece e os Namorados serão agora tocados e podem acordar para ver quem é seu amado. Lembro que os Namorados têm como objectivo de ganharem juntos');
+    }
+
+    if (result.includes(23)) {
+      addPnTxtWithToggle(23, ' - Criança Selvagem acorda e aponta para o jogador que ela escolhe como pai adotivo.');
+    }
+
+    if (result.includes(18)) {
+      addPnTxtWithToggle(18, ' - Acusador acorda e escolhe um Bode Expiatório.');
+    }
+
+    if (result.includes(25)) {
+      const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+      addPnTxtWithToggle(25, ` - Chefe dos Lobisomens acorda e o Narrador mostra-lhe as personagens falsas: ${fakeCharactersText}`);
+    }
+
+    if (result.includes(2)) {
+      const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+      addPnTxtWithToggle(2, ` - Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Narrador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
+    }
+
+    if (result.includes(22)) {
+      addPnTxtWithToggle(22, ' - Ladrão acorda e aponta para o jogador que não terá direito ao voto no próximo dia.');
+    }
+
+    if (result.includes(8)) {
+      addPnTxtWithToggle(8, ' - Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador ou os seus vizinhos são Criaturas Malvadas.');
+    }
+
+    if (result.includes(7)) {
+      addPnTxtWithToggle(7, ' - Urso rosna/não rosna.');
+    }
+
+    //creating the remaining non existing tags for compatibility reasons
+    for (let i = 0; i < allCharacters.length; i++) {
+      const paragraph = document.createElement('p');
+      paragraph.id = `pn-txt-${allCharacters[i]}`;
+      nightPrepSection.appendChild(paragraph);
+    }
+
+    resultContainer.appendChild(nightPrepSection);   // Add the night preparation section to the result container
+
+    // Function to add a paragraph with a click event for toggling .done class --> for some reason it needs to be here
+    function addPnTxtWithToggle(characterNumber, text) {
+      // Create a paragraph element with the desired id
+      const paragraph       = document.createElement('p');
+      paragraph.id          = `pn-txt-${characterNumber}`;
+      paragraph.textContent = text;
+      nightPrepSection.appendChild(paragraph); // Add the paragraph to the nightPrepSection
+
+      // Add an empty line
+      nightPrepSection.appendChild(emptyLine);
+
+      const index = allCharacters.indexOf(characterNumber);
+      if (index !== -1) {
+        allCharacters.splice(index, 1);
+      } //no idea what this does anymore
+
+      // Add event listener to the paragraph element
+        paragraph.addEventListener('click', function () {
+          // Toggle the .done class on the paragraph
+          this.classList.toggle('done');
+        });
+    }
+
+    // Function to toggle the visibility of the nightPrepSection
+    function togglePrepNight() {
+      nightPrepSection.hidden = !nightPrepSection.hidden;
+    }
 
   // Add a section for the second night information
   const secondNightSection = document.createElement('div');
   secondNightSection.id = 'second-night-section';
-
-  const remainingSnCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 152, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 282, 283];
 
   // Add title
   const secondNightTitle = document.createElement('h2');
@@ -390,16 +495,15 @@ function generateAndDisplay() {
   }
 
   if (result.includes(1)) {
-    const alliesTxt = allies.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-    addSnTxtWithToggle(25, ` - Lobisomens acordam e o Moderador aponta-lhes quem são os Aliados (${alliesTxt})`);
+    const alliesTxt    = allies.map(number    => `${number}. ${getCharacterName(number)}`).join(', ');
+    const flexiblesTxt = flexibles.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
+    addSnTxtWithToggle(1, ` - Lobisomens acordam e o Narrador aponta-lhes quem são os Aliados (${alliesTxt} e se calhar: ${flexiblesTxt})`);
   }
 
-  // Repeat this pattern for other cases...
-
   //creating the remaining non-existing tags for compatibility reasons
-  for (let i = 0; i < remainingSnCharacters.length; i++) {
+  for (let i = 0; i < allCharacters.length; i++) {
     const paragraph = document.createElement('p');
-    paragraph.id = `sn-txt-${remainingSnCharacters[i]}`;
+    paragraph.id = `sn-txt-${allCharacters[i]}`;
     secondNightSection.appendChild(paragraph);
   }
 
@@ -419,9 +523,9 @@ function generateAndDisplay() {
     // Add an empty line
     secondNightSection.appendChild(emptyLine);
 
-    const index = remainingSnCharacters.indexOf(characterNumber);
+    const index = allCharacters.indexOf(characterNumber);
     if (index !== -1) {
-      remainingSnCharacters.splice(index, 1);
+      allCharacters.splice(index, 1);
     }
 
     // Add event listener to the paragraph element
@@ -440,30 +544,52 @@ function generateAndDisplay() {
   const nightsSection = document.createElement('div');
   nightsSection.id = 'nights-section';
 
-  const remainingNnCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 152, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 282, 283];
-
   // Add title for all nights
   const nightsTitle = document.createElement('h2');
   nightsTitle.textContent = 'Todas as noites.';
   nightsSection.appendChild(nightsTitle);
 
   // Add paragraphs based on characters in the result
+  if (result.includes(32)) {
+    addNnTxt(32, ' - SE J. CHAMADO AO T. MAS NÃO EXECUTADO: Pirômano escolhe com o polgar para cima se quer ou não incendiar a casa do jogador que foi a tribunal mas não foi executado, esse jogador morrerá se for um Lobisomem, senão simplesmente perderá o seu poder para sempre.');
+  }
+
+  if (result.includes(29)) {
+    addNnTxt(29, ' - A CASA 3 EXECUÇÕES: Ator vai tomar o papel de um jogador que foi executado até agora: ---', true);
+  }
+
   if (result.includes(17)) {
-    addNnTxt(17, ' - Sonâmbulo acorda e escolhe um jogador para visitar. Esse jogador será tocado e não poderá acordar nessa noite mesmo sendo chamado pelo Moderador.');
+    addNnTxt(17, ' - Sonâmbulo acorda e escolhe um jogador para visitar. Esse jogador será tocado e não poderá acordar nessa noite mesmo sendo chamado pelo Narrador.');
   }
 
   if (result.includes(5)) {
-    addNnTxt(5, ' - (Se alguém foi executado no dia passado) Vidente acorda e o Moderador mostra-lhe a identidade do executado.');
+    addNnTxt(5, ' - (Se alguém foi morto no dia passado) Vidente acorda e o Narrador mostra-lhe a identidade do executado.');
   }
 
   if (result.includes(2)) {
     const poisanableCharactersText = poisanableCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-    addNnTxt(2, ` - Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Moderador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
+    addNnTxt(2, ` - Bruxa Malvada acorda e aponta para quem quer envenenar. Se for necessário o Narrador toca na cabeça do jogador envenenado. (${poisanableCharactersText})`);
+  }
+
+  if (result.includes(7)) {
+    addNnTxt(7, ' - Urso rosna/não rosna.');
+  }
+
+  if (result.includes(8)) {
+    addNnTxt(8, ' - Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador ou os seus vizinhos são maus.');
+  }
+
+  if (result.includes(22)) {
+    addNnTxt(22, ' - Ladrão acorda e aponta para o jogador que não terá direito ao voto no próximo dia.');
   }
 
   if (result.includes(1)) {
     addNnTxt(1, ' - Lobisomens acordam e apontam para quem querem assassinar.');
   }
+
+  if (result.includes(30)) {
+    addNnTxt(30, ' - Lobisomem Vidente escolhe se quer ver a identidade da vitíma mas salvá-la com o pulgar para cima ou não');
+  }  
 
   if (result.includes(26)) {
     addNnTxt(26, 'Se o Lobisomem Vampiro quiser transformar a vítima, ficará acordado a apontar para a vítima. A vítima será tocada na cabeça.');
@@ -477,42 +603,37 @@ function generateAndDisplay() {
     addNnTxt(4, ' - Chaman acorda e vê quem foi assassinado, indica se o quer salvar com o polegar para cima.');
   }
 
-  if (result.includes(22)) {
-    addNnTxt(22, ' - Ladrão acorda e aponta para o jogador que não terá direito ao voto no próximo dia.');
-  }
-
-  if (result.includes(8)) {
-    addNnTxt(8, ' - Mestre da Raposa acorda e aponta para um jogador, e é-lhe indicado por um polegar para cima se esse jogador ou os seus vizinhos são maus.');
-  }
-
-  if (result.includes(7)) {
-    addNnTxt(7, ' - Urso rosna/não rosna.');
-  }
-
   // Add subtitle
   const subtitle = document.createElement('h3');
   subtitle.textContent = 'RESOLVER VÁRIAS COISAS:';
   nightsSection.appendChild(subtitle);
 
   // Add paragraphs for resolving various things
+  if (result.includes(14)) {
+    addNnTxt(14, ' - Se o Anjo resuscitou alguém, ter atenção a isso.');
+  }
+
   if (result.includes(6)) {
     const fakeCharactersText = fakeCharacters.map(number => `${number}. ${getCharacterName(number)}`).join(', ');
-    addNnTxt(6, ` - Se o Chefe de Aldeia for assassinado pelos Lobisomens, o Lobisomem afetado é avisado, tocando-lhe na cabeça e pedindo para acordar e ver as indicações silenciosas do Moderador. O Lobisomem se torna o último personagem desta lista: ${fakeCharactersText}`);
-
+    addNnTxt(6, ` - Se o Chefe de Aldeia for assassinado pelos Lobisomens, o Lobisomem afetado é avisado, tocando-lhe na cabeça e pedindo para acordar e ver as indicações silenciosas do Narrador (o Lobisomem se torna o último personagem desta lista: ${fakeCharactersText})`);
   }
+
   if (result.includes(11)) {
-    addNnTxt(11, ' - Se o Caçador morto ainda não tiver escolhido a vítima, o Moderador acorda-o tocando-lhe na cabeça e sem dizer nada espera que ele aponte para uma vítima.');
-
+    addNnTxt(11, ' - Se o Caçador morto ainda não tiver escolhido a vítima, o Narrador acorda-o tocando-lhe na cabeça e sem dizer nada espera que ele aponte para uma vítima.');
   }
-  if (result.includes(23)) {
-    addNnTxt(23, ' - Se Criança Selvagem for envenenada, acorda por toque e sem o Moderador dizer nada, terá de escolher um novo pai adotivo.');
 
+  if (result.includes(3)) {
+    addNnTxt(3, ' - Se o Cupido for morto, vai acordar agora e escolher dois jogadores que serão Inimigos: se um Inimigo consegue condenar o outro a execução, o primeiro recebe imunidade na próxima tentativa de assassinato.');
+  }
+
+  if (result.includes(23)) {
+    addNnTxt(23, ' - Se Criança Selvagem for envenenada, acorda por toque e sem o Narrador dizer nada, terá de escolher um novo pai adotivo.');
   }
 
   //creating the remaining non-existing tags for compatibility reasons
-  for (let i = 0; i < remainingNnCharacters.length; i++) {
+  for (let i = 0; i < allCharacters.length; i++) {
     const paragraph = document.createElement('p');
-    paragraph.id = `nn-txt-${remainingNnCharacters[i]}`;
+    paragraph.id = `nn-txt-${allCharacters[i]}`;
     nightsSection.appendChild(paragraph);
   }
 
@@ -549,9 +670,10 @@ function generateAndDisplay() {
     // Add an empty line
     nightsSection.appendChild(emptyLine);
 
-    const index = remainingNnCharacters.indexOf(characterNumber);
+    //I don't know what this is
+    const index = allCharacters.indexOf(characterNumber);
     if (index !== -1) {
-      remainingNnCharacters.splice(index, 1);
+      allCharacters.splice(index, 1);
     }
 
     // Add event listener to the paragraph element
@@ -567,10 +689,10 @@ function generateAndDisplay() {
 
 // Function to add event listeners for radio buttons and toggle switches
 function addDandPEventListeners() {
-  const poisonedRadios = document.querySelectorAll('input[id^="poisoned-radio-"]');
-  const deadSwitches = document.querySelectorAll('input[id^="dead-switch-"]');
-  const doneSwitches = document.querySelectorAll('input[id^="done-switch-"]');
-  const hostRadios = document.querySelectorAll('input[id^="host-radio-"]');
+  const poisonedRadios  = document.querySelectorAll('input[id^="poisoned-radio-"]');
+  const deadSwitches    = document.querySelectorAll('input[id^="dead-switch-"]');
+  const doneSwitches    = document.querySelectorAll('input[id^="done-switch-"]');
+  const hostRadios      = document.querySelectorAll('input[id^="host-radio-"]');
 
   poisonedRadios.forEach(radio => {
     radio.addEventListener('change', handlePoisonedChange);
@@ -602,11 +724,12 @@ function handlePoisonedChange(event) {
   const allPoisonedElements = document.querySelectorAll('.poisoned-character');
   const allPoisonedIcon     = document.querySelectorAll('.poisoned-icon');
   allPoisonedElements.forEach(element => element.classList.remove('poisoned-character'));
-  allPoisonedIcon.forEach(element => element.classList.remove('poisoned-icon'));
+  allPoisonedIcon.forEach(element     => element.classList.remove('poisoned-icon'));
 
-  if (characterNumber.toString().startsWith('0')){
-    let x = characterNumber.toString().substring(1);
-    if (x % wolfRatio == 0) {
+  //Add the .poisoned-character style to extra wolves
+  if (characterNumber.toString().startsWith('0')){ //checks the ones that start with 0 -> so either villager or wolf
+    let x = characterNumber.toString().substring(1); //cuts the first number to keep only the last
+    if (x % wolfRatio == 0) { //if it is a wolf, let it be poisoned
       characterNameElement.classList.add('poisoned-character');
       characterIconElement.classList.add('poisoned-icon');
       document.getElementById(`pn-txt-1`).classList.add('poisoned-character');
@@ -651,7 +774,7 @@ function handleDeadChange(event) {
     characterPnTxt.classList.add('dead-character');
     characterSnTxt.classList.add('dead-character');
     characterNnTxt.classList.add('dead-character');
-    if(characterNumber.toString() == 1){
+    if(characterNumber.toString() == 1){ //removes the .dead-character style from werewolves script texts
       characterPnTxt.classList.remove('dead-character');
       characterSnTxt.classList.remove('dead-character');
       characterNnTxt.classList.remove('dead-character');
@@ -708,11 +831,18 @@ function handleHostChange(event) {
   const allHostElements = document.querySelectorAll('.host-character');
   allHostElements.forEach(element => element.classList.remove('host-character'));
 
-  if (characterNumber.toString() == '04' || characterNumber.toString() == '08'){
-    characterNameElement.classList.add('host-character');
-    document.getElementById(`pn-txt-1`).classList.add('host-character');
-    document.getElementById(`sn-txt-1`).classList.add('host-character');
-    document.getElementById(`nn-txt-1`).classList.add('host-character');
+  //Add the .host-character style to extra wolves
+  if (characterNumber.toString().startsWith('0')){ //checks the ones that start with 0 -> so either villager or wolf
+    let x = characterNumber.toString().substring(1); //cuts the first number to keep only the last
+    if (x % wolfRatio == 0) { //if it is a wolf, let it be host
+      characterNameElement.classList.add('host-character');
+      document.getElementById(`pn-txt-1`).classList.add('host-character');
+      document.getElementById(`sn-txt-1`).classList.add('host-character');
+      document.getElementById(`nn-txt-1`).classList.add('host-character');
+    } else {
+      characterNameElement.classList.add('host-character');
+    }
+
   } else if (event.target.checked) {
     // If the host button is checked, apply the .host-character style
     //characterNameElement.classList.remove('default');
@@ -774,12 +904,16 @@ function getCharacterName(number) {
     case 26: return 'Lobisomem Vampiro';
     case 27: return 'Ankou';
     case 28: return 'Irmão';
+    case 29: return 'Ator';
+    case 30: return 'Lobisomem Videnete';
+    case 31: return 'Paranoico';
+    case 32: return 'Pirômano'
 
     case 152: return 'Irmã';
     case 282: return 'Irmão';
     case 283: return 'Irmão';
 
-    default: return 'Aldeão Triste';
+    default: return 'Aldeão Triste'; //this may the problem on why the extra werewolves are taking the Aldeão name
   }
 }
 
@@ -797,13 +931,13 @@ function generateRandomList(x, messagesContainer) {
     document.getElementById("result-container").innerHTML = "Sem jogadores suficientes! (mínimo 8)";
     return;
   } else if (x < 10) {
-    availableNumbers = [7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24];
-  } else if (x < 12) {
-    availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
-  } else if (x < 22) {
-    availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27];
+    availableNumbers = [7,10,11,14,16,31,32,26,21,22,23,24];
+  } else if (x < 15) {
+    availableNumbers = [7,8,9,10,11,12,13,14,16,17,19,31,32,20,26,30,27,21,22,23,24];
+  } else if (x < 20) {
+    availableNumbers = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32];
   } else {
-    availableNumbers = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
+    availableNumbers = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32,28];
   }
 
 if (x <= maxChar) {
