@@ -5,7 +5,6 @@
 //by AnJoMorto
 
 //Planned updates:
-  //Add all character's lists to the fixed values for easier access and modification
   //Testdrive observations
   //Automate in script the characters with neighbours (yes or no bear, fox)
   //Add player names to the script when necessary (second night friends)
@@ -66,7 +65,10 @@ const availableAllies               = [2,27,21,22]; //all non wolf bad character
 const availablePoisanableCharacters = [3,13,15,20,21,23,28]; //all characters whose poison status need to be informed to the person
 const availablePlayableCharacters   = []; //all characters that can be played by the actor
 //Character Balancing depending on Player count:
-const upTo10  = [];
+const upTo10 = [7,10,11,14,16,31,32,26,21,22,23,24];
+const upTo15 = [7,8,9,10,11,12,13,14,16,17,19,31,32,20,26,30,27,21,22,23,24];
+const upTo20 = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32];
+const upToInf= [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32,28];
 
 //Fixed values
 const maxChar   = allCharacters.length; //need to make it so the maximum amount of characters is dependant on the list length
@@ -931,13 +933,13 @@ function generateRandomList(x, messagesContainer) {
     document.getElementById("result-container").innerHTML = "Sem jogadores suficientes! (mínimo 8)";
     return;
   } else if (x < 10) {
-    availableNumbers = [7,10,11,14,16,31,32,26,21,22,23,24];
+    availableNumbers = upTo10;
   } else if (x < 15) {
-    availableNumbers = [7,8,9,10,11,12,13,14,16,17,19,31,32,20,26,30,27,21,22,23,24];
+    availableNumbers = upTo15;
   } else if (x < 20) {
-    availableNumbers = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32];
+    availableNumbers = upTo20;
   } else {
-    availableNumbers = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32,28];
+    availableNumbers = upToInf;
   }
 
 if (x <= maxChar) {
