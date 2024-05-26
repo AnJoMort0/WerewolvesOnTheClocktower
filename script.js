@@ -5,6 +5,7 @@
 //by AnJoMorto
 
 //Planned updates:
+  //Automate in script the characters with neighbours (yes or no bear, fox)
   //Testdrive observations
     /**
         [ ] Saber quem foi roubado.
@@ -28,14 +29,13 @@
         [ ] Morto com o caçador automático 
         [v] Serial Killer: Pode matar durante o dia 1×
      */
-  //Automate in script the characters with neighbours (yes or no bear, fox)
   //Add player names to the script when necessary (second night friends)
   //Hover the numbers in the result and see the characters name
   //Link to the rule Docs Document for now : https://docs.google.com/document/d/1aV9II9br_8ln4zrA7wgHRByBLqyb8EzkOqc2ltHGCes/edit?usp=sharing
   //Automate Round turning and add built-in timer for the day after the script (+ play sound when timer start/over)
-  //New characters
-  //Drunk character (togglable)
   //Later
+    //New characters
+    //Drunk character (togglable)
     //FR language
     //EN language
   
