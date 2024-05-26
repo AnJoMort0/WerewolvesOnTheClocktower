@@ -6,6 +6,28 @@
 
 //Planned updates:
   //Testdrive observations
+    /**
+        [ ] Saber quem foi roubado.
+        [ ] Lista dos mortos da última noite
+        [v] Saber quem é mau.
+        [ ] Vitória. (Não esquecer Chefe Aldeia e Lobisomem -> pop-up
+        [v] 5min
+        [v] Vidente vê todos os mortos
+        [ ] Indicar quem é o pai da criança + automatico
+        [v] Meter as equipas mais comprehensive
+        [v] A Raposa só começa na segunda noite
+        [v] Fazer o Juiz ser Ankou dos bons
+        [v] Ação para o fantasma do cupido
+        [ ] Puder juntar jogadores manualmente (+ trocar personagens)
+        [ ] Namorados automático (inclui Cúpido envenenado)
+        [ ] Bode Expiatório automático 
+        [ ] Forma mais fácil de mostrar cartas a Vidente (clicar no logo/nome + na lista dos mortos) + Alerta no Guião 
+        [ ] Botão para Hover Result Numbers para só mostrar um de cada vez
+        [ ] Juntar um "Alert" quando tenho que avisar alguém que foi envenenado
+        [ ] Imunidade do Hippie automática (e também do Inimigo)
+        [ ] Morto com o caçador automático 
+        [v] Serial Killer: Pode matar durante o dia 1×
+     */
   //Automate in script the characters with neighbours (yes or no bear, fox)
   //Add player names to the script when necessary (second night friends)
   //Hover the numbers in the result and see the characters name
