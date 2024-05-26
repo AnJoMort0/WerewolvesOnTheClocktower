@@ -16,6 +16,10 @@
   //Later
     //FR language
     //EN language
+  
+//Known bugs (order of importance):
+  //Bonus Werewolfs have the text "Aldeão Triste"
+  //If I regenerate multiple times whitout reloading the page, the number count is not accurate anymore
 
 //==================================================================================================//
 //==================================================================================================//

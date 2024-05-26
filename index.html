@@ -3,6 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,15 +17,15 @@
       <h1>Lobisomens na Torre Sangrenta</h1>
     </header>
 
-    <!-- Button to toggle the display of generated images -->
-    <button onclick="toggleImages()">Desativar/Ativar Imagens</button>
-
     <!-- Input for the number of players -->
     <label for="playerCount">Número de Jogadores:</label>
     <input type="number" id="player-count" name="playerCount" min="8" step="1">
 
     <!-- Button to generate and display the result -->
     <button onclick="generateAndDisplay()">Gerar Personagens</button>
+
+    <!-- Button to toggle the display of generated images -->
+    <button onclick="toggleImages()">Desativar/Ativar Imagens</button>
 
     <!-- Container for displaying the generated result -->
     <div id="result-container"></div>
@@ -37,4 +38,5 @@
     <script src="script.js"></script>
 
   </body>
+
 </html>
