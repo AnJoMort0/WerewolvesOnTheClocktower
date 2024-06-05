@@ -616,7 +616,7 @@ function generateAndDisplay() {
   }
 
   if (result.includes(30)) {
-    addNnTxt(30, ' - Lobisomem Vidente escolhe se quer ver a identidade da vitíma mas salvá-la com o pulgar para cima ou não');
+    addNnTxt(30, ' - Lobisomem Vidente escolhe se quer ver a identidade da vitíma mas salvá-la com o polegar para cima ou não');
   }  
 
   if (result.includes(26)) {
@@ -638,7 +638,7 @@ function generateAndDisplay() {
 
   // Add paragraphs for resolving various things
   if (result.includes(14)) {
-    addNnTxt(14, ' - Se o Anjo resuscitou alguém, ter atenção a isso.');
+    addNnTxt(14, ' - Se o Anjo ressuscitou alguém, ter atenção a isso.');
   }
 
   if (result.includes(6)) {
