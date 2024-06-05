@@ -583,7 +583,7 @@ function generateAndDisplay() {
   }
 
   if (result.includes(29)) {
-    addNnTxt(29, ' - A CASA 3 EXECUÇÕES: Ator vai tomar o papel de um jogador que foi executado até agora: ---', true);
+    addNnTxt(29, ' - A CADA 3 EXECUÇÕES: Ator vai tomar o papel de um jogador que foi executado até agora: ---', true);
   }
 
   if (result.includes(17)) {
