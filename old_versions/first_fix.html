@@ -1,0 +1,42 @@
+<!-- Werewolves on the Clocktower Guide Companion
+     by AnJoMorto -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Lobisomens na Torre Sangrenta</title>
+    <link rel="icon" href="images/backgrounds/ai_logo.ico">
+  </head>
+
+  <body>
+    <header>
+      <h1>Lobisomens na Torre Sangrenta</h1>
+    </header>
+
+    <!-- Input for the number of players -->
+    <label for="playerCount">Número de Jogadores:</label>
+    <input type="number" id="player-count" name="playerCount" min="8" step="1">
+
+    <!-- Button to generate and display the result -->
+    <button onclick="generateAndDisplay()">Gerar Personagens</button>
+
+    <!-- Button to toggle the display of generated images -->
+    <button onclick="toggleImages()">Desativar/Ativar Imagens</button>
+
+    <!-- Container for displaying the generated result -->
+    <div id="result-container"></div>
+
+    <footer>
+      <p>&copy; 2024 - AnJoMorto - Werewolves on the Clocktower. Some rights reserved.</p>
+    </footer>
+
+    <!-- Script file for JavaScript logic -->
+    <script src="script.js"></script>
+
+  </body>
+
+</html>

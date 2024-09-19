@@ -1,0 +1,55 @@
+/*  Werewolves on the Clocktower Guide Companion
+     by AnJoMorto
+
+/* Importing Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(22, 23, 28);
+    color: white;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    background-color: #1c1d24;
+    padding: 1em;
+    text-align: center;
+    border-bottom: 2px solid #444;
+}
+
+header h1 {
+    font-weight: 700;
+}
+
+/* Main Content Styles */
+main {
+    flex: 1;
+    padding: 2em;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #1c1d24;
+    color: #aaa;
+    text-align: center;
+    padding: 0.5em;
+    border-top: 2px solid #444;
+    font-size: 0.8em;
+}
+
+footer p {
+    margin: 0;
+}

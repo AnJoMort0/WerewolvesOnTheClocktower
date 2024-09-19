@@ -1,0 +1,154 @@
+/* Werewolves on the Clocktower Guide Companion
+   by AnJoMorto */
+
+/* Import a cool font (you can replace this with any other Google Font) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Apply the cool font to the whole document */
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Default dark mode baby*/
+* {
+  background-color: rgb(22, 23, 28);
+  color: white;
+}
+
+/* Style for the container of generated content */
+#result-container {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Style for generated images */
+#result-container img.generated-image {
+  max-width: 50%;
+  height: auto;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+/* Style for the result table */
+#result-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+#result-container table,
+#result-container th,
+#result-container td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+
+#result-container th,
+#result-container td {
+  padding: 10px; /* Adjusted padding */
+}
+
+.character-cell {
+  position: relative;
+  text-align: center;
+}
+
+.character-icon {
+  max-width: 100%;
+  max-height: 80px; /* Adjusted max-height */
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+}
+
+/* Style for toggle containers */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+/* Style for toggle switches */
+.toggle-switch {
+  margin-left: 10px;
+}
+
+/* Style for character cells */
+.character-cell {
+  text-align: center;
+  vertical-align: middle;
+  width: 150px; /* Adjusted width */
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
+/* Style for toggle cells */
+.toggle-cell {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
+/* Default style for reset elements */
+.default {
+  color: white;
+}
+
+/* Style for the poisoned characters */
+.poisoned-character {
+  color: #27ae60;
+  font-style: italic;
+}
+
+/* Style for the icons of poisoned characters */
+.poisoned-icon {
+  filter: sepia(50%) hue-rotate(120deg) brightness(100%) saturate(150%);
+}
+
+/* Style for the dead characters */
+.dead-character {
+  color: #7f8c8d;
+  text-decoration: line-through;
+  filter: grayscale(100%);
+}
+
+/* Style for done characters */
+.done {
+  text-decoration: line-through;
+}
+
+/* Style for the character hosting the Sleepwalker */
+.host-character {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+/* Style for buttons */
+button {
+  background-color: #2c3e50; /* Darker blue color */
+  color: white;
+  padding: 10px 15px; /* Adjusted padding */
+  border: 2px solid #3498db; /* Border color */
+  border-radius: 10px;
+  margin-right: 10px; /* Added margin-right */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:last-child {
+  margin-right: 0; /* Remove margin-right for the last button */
+}
+
+button:hover {
+  background-color: #1c2a39; /* Darker blue color on hover */
+}
+
+p:hover {
+  color: lightblue;
+}
