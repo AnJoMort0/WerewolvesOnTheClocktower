@@ -190,8 +190,10 @@ function generateRandomCharacters() {
 
     const finalCharacters = [...mandatory, ...selectedCharacters];
 
-    // Create a new array that includes mandatory, respective upTo array, and 0
-    const dropdownOptions = [...mandatory, ...availablePool, 0];
+    // Create a new array that includes mandatory, respective upTo array, and 0, sorted in number order, excluding finalCharacters
+    const dropdownOptions = [...new Set([...mandatory, ...availablePool, 0])]
+        .filter(option => !finalCharacters.includes(option))
+        .sort((a, b) => a - b);
 
     // Shuffle final characters
     for (let i = finalCharacters.length - 1; i > 0; i--) {
@@ -226,12 +228,10 @@ function generateRandomCharacters() {
 
         // Add all options from the new dropdownOptions array
         dropdownOptions.forEach(optionValue => {
-            if (optionValue !== character) {
-                const option = document.createElement('option');
-                option.value = optionValue;
-                option.textContent = optionValue;
-                characterSelect.appendChild(option);
-            }
+            const option = document.createElement('option');
+            option.value = optionValue;
+            option.textContent = optionValue;
+            characterSelect.appendChild(option);
         });
 
         resultContainer.appendChild(characterSelect);
