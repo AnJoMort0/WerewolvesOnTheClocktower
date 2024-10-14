@@ -104,7 +104,7 @@ const upToInf= [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 
 // Fixed values
 const maxChar   = allCharacters.length;
 const minChar   = 8;
-const wolfRatio = 4;
+const wolfRatio = 3;
 
 //BEGINNING OF THE PROGRAM
 document.addEventListener('DOMContentLoaded', () => {
@@ -115,19 +115,90 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create label for the player input
     const playerInputLabel = document.createElement('label');
     playerInputLabel.setAttribute('for', 'player-count');
-    playerInputLabel.textContent = 'Número de Jogadores: ';
+    playerInputLabel.textContent = `Número de Jogadores: `;
     
     // Create input field for number of players
     const playerInput = document.createElement('input');
     playerInput.type = 'number';
     playerInput.id = 'player-count';
     playerInput.min = '8';
-    playerInput.placeholder = 'Insira o número de jogadores (mínimo 8)'; 
+    playerInput.placeholder = `Insira o número de jogadores (mínimo 8)`; 
     
-    // Append label and input to the container
+    // Create confirm button
+    const confirmButton = document.createElement('button');
+    confirmButton.textContent = `Confirmar`;
+    confirmButton.addEventListener('click', generateRandomCharacters);
+    
+    // Append label, input, and button to the container
     playerInputContainer.appendChild(playerInputLabel);
     playerInputContainer.appendChild(playerInput);
+    playerInputContainer.appendChild(confirmButton);
   
     // Append the container to the body element
     document.body.appendChild(playerInputContainer);
-  });
+});
+
+function generateRandomCharacters() {
+    const playerCount = parseInt(document.getElementById('player-count').value);
+    if (isNaN(playerCount) || playerCount < minChar) {
+        alert(`Número inválido de jogadores. Insira um número igual ou maior a ${minChar}`);
+        return;
+    }
+
+    let availablePool = [];
+    if (playerCount <= 10) {
+        availablePool = [...upTo10];
+    } else if (playerCount <= 15) {
+        availablePool = [...upTo15];
+    } else if (playerCount <= 20) {
+        availablePool = [...upTo20];
+    } else {
+        availablePool = [...upToInf];
+    }
+
+    const nonMandatoryCount = playerCount - mandatory.length;
+    while (availablePool.length < nonMandatoryCount) {
+        availablePool.push(0);
+        if (availablePool.length % wolfRatio === 0) {
+            availablePool.push(1);
+        }
+    }
+
+    const selectedCharacters = [];
+    for (let i = 0; i < nonMandatoryCount; i++) {
+        const randomIndex = Math.floor(Math.random() * availablePool.length);
+        selectedCharacters.push(availablePool[randomIndex]);
+        availablePool.splice(randomIndex, 1);
+    }
+
+    if (selectedCharacters.includes(15)) {
+        const indexToReplace = selectedCharacters.findIndex(num => num === 0) !== -1 ? selectedCharacters.findIndex(num => num === 0) : selectedCharacters.findIndex(num => num !== 15);
+        if (indexToReplace !== -1) {
+            selectedCharacters[indexToReplace] = 152;
+        }
+    }
+
+    if (selectedCharacters.includes(28)) {
+        let replaceCount = 0;
+        for (let i = 0; i < selectedCharacters.length && replaceCount < 2; i++) {
+            if (selectedCharacters[i] === 0 || (selectedCharacters[i] !== 15 && selectedCharacters[i] !== 152)) {
+                selectedCharacters[i] = replaceCount === 0 ? 282 : 283;
+                replaceCount++;
+            }
+        }
+    }
+
+    const finalCharacters = [...mandatory, ...selectedCharacters];
+
+    // Shuffle final characters
+    for (let i = finalCharacters.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [finalCharacters[i], finalCharacters[j]] = [finalCharacters[j], finalCharacters[i]];
+    }
+
+    console.log(finalCharacters);
+    console.assert(finalCharacters.length === playerCount, 'The final character array length does not match the player count.');
+}
+
+//==================================================================================================//
+//==================================================================================================//
