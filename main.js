@@ -190,13 +190,56 @@ function generateRandomCharacters() {
 
     const finalCharacters = [...mandatory, ...selectedCharacters];
 
+    // Create a new array that includes mandatory, respective upTo array, and 0
+    const dropdownOptions = [...mandatory, ...availablePool, 0];
+
     // Shuffle final characters
     for (let i = finalCharacters.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [finalCharacters[i], finalCharacters[j]] = [finalCharacters[j], finalCharacters[i]];
     }
 
-    console.log(finalCharacters);
+    // Clear current input elements
+    document.body.innerHTML = '';
+
+    // Create container for displaying the final characters
+    const resultContainer = document.createElement('div');
+    resultContainer.id = 'result-container';
+
+    // Display each character in a drop-down menu with the character value
+    finalCharacters.forEach(character => {
+        const characterSelect = document.createElement('select');
+        characterSelect.classList.add('character-select');
+
+        // Add an empty option
+        const emptyOption = document.createElement('option');
+        emptyOption.value = '';
+        emptyOption.textContent = '';
+        characterSelect.appendChild(emptyOption);
+
+        // Add the character as the selected option
+        const characterOption = document.createElement('option');
+        characterOption.value = character;
+        characterOption.textContent = character;
+        characterOption.selected = true;
+        characterSelect.appendChild(characterOption);
+
+        // Add all options from the new dropdownOptions array
+        dropdownOptions.forEach(optionValue => {
+            if (optionValue !== character) {
+                const option = document.createElement('option');
+                option.value = optionValue;
+                option.textContent = optionValue;
+                characterSelect.appendChild(option);
+            }
+        });
+
+        resultContainer.appendChild(characterSelect);
+    });
+
+    // Append result container to body
+    document.body.appendChild(resultContainer);
+
     console.assert(finalCharacters.length === playerCount, 'The final character array length does not match the player count.');
 }
 
