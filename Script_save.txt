@@ -1,0 +1,53 @@
+Primeira Noite:
+- Esta noite não terá mortos.
+- O Cupido acorda e escolhe dois jogadores que serão Namorados. O Cupido adormece e os Namorados serão agora tocados e podem se conhecer. Se um Namorado morre, o outro se suicida. O objetivo dos Namorados é de serem os últimos sobreviventes.
+- O Cupido Malvado acorda e escolhe dois Aldeões que serão Inimigos. O Cupido Malvado adormece e os Inimigos serão agora tocados e podem se conhecer. Se um Inimigo consegue condenar o outro a execução, o primeiro recebe imunidade nas duas próximas tentativas de assassinato.
+- As Irmãs acordam para se conhecerem.
+- As Irmãos acordam para se conhecerem.
+- A Bruxa Malvada acorda e escolhe um jogador que irá envenenar esta noite. O poder do jogador envenenado não funcionará bem.
+- O Sonâmbulo acorda e escolhe um jogador para visitar. Esse jogador vai ser tocado e sabe que quando for chamado não acordará.
+- O Ilusionista acorda e escolhe 3 jogadores vizinhos cuja a identidade será obstruída.
+- O Urso rosna/não rosna.
+- O Mestre da Raposa acorda e mostra que três vizinhos é que a raposa vai cheirar esta noite. Será-lhe revelado se um dos três jogadores é uma Criatura Malvada.
+- O Mestre do Corvo escolhe um jogador que terá automáticamente 2 votos contra ele no dia que vai seguir.
+
+
+Início da Segunda Noite:
+- O Cão-Lobo acorda e diz se quer ser um Cão ou um Lobisomem com o pulgar. Se escolher ser um Cão vai apontar um dono, que vai ser tocado, e que poderá acordar para conhecer o seu Cachorro. É revelado ao Cão o papel do seu dono. A partir deste momento, o Cão acorda sempre com o seu dono e deve também usar o seu poder. Se escolher ser um Lobisomem, pode voltar dormir.
+- A Criança Selvagem acorda e escolhe o seu Pai Adotivo. Se este morrer durante o jogo, a Criança Selvagem se tornará um Lobisomem.
+- O Ladrão acorda e escolhe se quer jogar do lado dos Aldeões ou do lado dos Lobisomens com o pulgar.
+- Os Lobisomens acordam e é-lhes mostrado quem são os seus Aliados.
+
+
+Noite Normal:
+- (A cada 3 execuções) O Ator acorda e será-lhe mostrado o seu papel para essa noite e dia. O Ator acordará quando esse papel for chamado.
+- (Se o Anjo usar o puder, ressucitar o jogador).
+- O Salvador acorda e escolhe que será imune durante esta noite.
+- (Se o Cavaleiro Enferrujado morreu, matar o Lobisomem mais próximo).
+- (Se o Caçador morreu) O Fantasma do Caçador acorda e escolhe quem quer assassinar.
+- O Sonâmbulo acorda e escolhe um jogador para visitar. Esse jogador vai ser tocado e sabe que quando for chamado não acordará.
+- A Bruxa Malvada acorda e escolhe um jogador que irá envenenar esta noite.
+- (Se alguém morreu) A Vidente acorda e é-lhe revelado o papel dos mortos recentes.
+- O Ilusionista acorda e escolhe 3 jogadores vizinhos cuja a identidade será obstruída.
+- O Urso rosna/não rosna.
+- O Mestre da Raposa acorda e mostra que três vizinhos é que a raposa vai cheirar esta noite. Se um dos três não for uma Criatura Malvada, a raposa foge.
+- O Mestre do Corvo escolhe um jogador que terá automáticamente 2 votos contra ele no dia que vai seguir.
+- O Cupido acorda e decide com o pulgar se quer usar uma das suas duas flechas de proteção para proteger os Namorados esta noite.
+- O Amante Secreto acorda e aponta para um jogador, e será revelado se é um dos Namorados. Se for o caso, tocarei nesse Namorado que acordará para lhe ser revelado o seu Amante.
+- O Ladrão acorda e escolhe a quem quer retirar o voto no próximo Tribunal.
+- NÃO ACORDAR OS LOBISOMENS SE O ASTRONOMO MORREU
+- Os Lobisomens acordam e escolhem em conjunto uma vitima que iram assassinar esta noite.
+- O Lobisomem Vampiro acorda e diz com o pulgar se quer transformar a vítima em Lobisomem. Se for o caso a vitima será tocada, e passará a acordar sempre com os Lobisomens. A vitima diz se quer guardar os seus poderes ou não com o pulgar.
+- O Lobisomem Vidente acorda e decide com o pulgar se quer salvar a vitima para ver o seu papel ou deixá-la morrer.
+- (A cada 3 noites) O Lobisomem Branco acorda e escolhe o Lobisomem que quer matar.
+- O Chaman acorda e é-lhe apresentado as vitimas. Ele escolhe então com o pulgar se as quer salvar ou não.
+- O Substituto acorda e é-lhe apresentado as vitimas. Ele decide se quer tomar o lugar de uma delas. Se escolher, é-lhe mostrado o seu novo papel, e o Substituto responderá sempre a esse papel.
+
+
+Condições de Vitória/Perda:
+- Chefe da Aldeia executado!
+
+
+---> Add to the code an extra info for the second Villager when the Insomniac is in the game
+---> Add the Dog Owner color and a dog radio bar
+---> Add a is Evil Char bar

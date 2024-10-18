@@ -40,6 +40,8 @@
     //EN language
   
 //Known bugs (order of importance):
+  //BRO, THERE NEEDS TO BE MORE THAN A SINGLE WEREWOLF WTF
+  //3 brothers should just replace three 0s
   //Bonus Werewolfs have the text "Aldeão Triste"
   //If I regenerate multiple times whitout reloading the page, the number count is not accurate anymore
 
@@ -96,10 +98,10 @@ const availablePlayableCharacters   = []; // all characters that can be played b
 
 // Character Balancing depending on Player count
 const mandatory = [1, 2, 3, 4, 5]
-const upTo10 = [7, 10, 11, 14, 16, 31, 32, 26, 21, 22, 23, 24];
-const upTo15 = [7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 19, 31, 32, 20, 26, 30, 27, 21, 22, 23, 24];
-const upTo20 = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32];
-const upToInf= [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32, 28];
+const upTo10    = [7, 10, 11, 14, 16, 31, 32, 26, 21, 22, 23, 24];
+const upTo15    = [7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 19, 31, 32, 20, 26, 30, 27, 21, 22, 23, 24];
+const upTo20    = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32];
+const upToInf   = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32, 28];
 
 // Fixed values
 const maxChar   = allCharacters.length;
