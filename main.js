@@ -40,6 +40,8 @@
     //EN language
   
 //Known bugs (order of importance):
+  //BRO, THERE NEEDS TO BE MORE THAN A SINGLE WEREWOLF WTF
+  //3 brothers should just replace three 0s
   //Bonus Werewolfs have the text "Aldeão Triste"
   //If I regenerate multiple times whitout reloading the page, the number count is not accurate anymore
 
