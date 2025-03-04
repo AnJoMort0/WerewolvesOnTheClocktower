@@ -83,6 +83,7 @@
 30 - Lobisomem Vidente
 31 - Paranoico
 32 - Pirômano
+33 - 
 */
 
 // Constants for character groups
