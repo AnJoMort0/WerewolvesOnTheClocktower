@@ -121,16 +121,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    for (let i = 0; i < 8; i++) {
+    function addRow() {
         const row = document.createElement("tr");
 
-        // Name column
+        // Name input
         const nameCell = document.createElement("td");
         const nameInput = document.createElement("input");
         nameInput.type = "text";
         nameCell.appendChild(nameInput);
 
-        // Character dropdown column
+        // Character dropdown
         const characterCell = document.createElement("td");
         const charInput = document.createElement("input");
         charInput.type = "text";
@@ -139,9 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
         dropdown.classList.add("dropdown");
 
         charInput.addEventListener("input", function () {
-            const filteredOptions = characterOptions.filter(option => 
-                option.toLowerCase().includes(charInput.value.toLowerCase())
-            );
+            const filteredOptions = characterOptions
+                .filter(option => option.toLowerCase().includes(charInput.value.toLowerCase()));
             createDropdown(charInput, dropdown, filteredOptions);
             dropdown.style.display = "block";
         });
@@ -165,8 +164,63 @@ document.addEventListener("DOMContentLoaded", function () {
         tbody.appendChild(row);
     }
 
+    function removeRow() {
+        if (tbody.rows.length > 8) {
+            tbody.deleteRow(tbody.rows.length - 1);
+        }
+    }
+
+    function setRowCount() {
+        let rowCount = parseInt(rowInput.value, 10);
+        if (isNaN(rowCount) || rowCount < 8) {
+            rowCount = 8;
+            rowInput.value = 8;
+        }
+
+        // Adjust number of rows
+        while (tbody.rows.length < rowCount) {
+            addRow();
+        }
+        while (tbody.rows.length > rowCount) {
+            removeRow();
+        }
+    }
+
+    // Initialize 8 rows
+    for (let i = 0; i < 8; i++) {
+        addRow();
+    }
+
     table.appendChild(thead);
     table.appendChild(tbody);
     container.appendChild(table);
+
+    // Controls
+    const controls = document.createElement("div");
+    controls.classList.add("table-controls");
+
+    const addButton = document.createElement("button");
+    addButton.textContent = "+";
+    addButton.addEventListener("click", addRow);
+
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "-";
+    removeButton.addEventListener("click", removeRow);
+
+    const rowInput = document.createElement("input");
+    rowInput.type = "number";
+    rowInput.min = "8";
+    rowInput.value = "8";
+
+    const confirmButton = document.createElement("button");
+    confirmButton.textContent = "Confirmar";
+    confirmButton.addEventListener("click", setRowCount);
+
+    controls.appendChild(addButton);
+    controls.appendChild(removeButton);
+    controls.appendChild(rowInput);
+    controls.appendChild(confirmButton);
+
+    container.appendChild(controls);
     document.body.appendChild(container);
 });
