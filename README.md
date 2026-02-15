@@ -1,39 +1,57 @@
 # 🌕 Werewolves on the Clocktower 🏰
 
-## Welcome to the Den of Deceit!
+## A brand-new way to play Werewolf of the Miller’s Hollow!
 
-Unleash the mystical power of Werewolves on the Clocktower, a clandestine project born from the shadows to assist you in orchestrating the grand spectacle of Werewolf of the Miller's Hollow. This mod is imbued with secret functionalities whispered by the spirits of Blood on the Clock Tower.
+**Werewolves on the Clocktower** is a clandestine project inspired by the simple rules and characters of *Werewolf of the Miller’s Hollow*, enhanced with selected mechanics from *Blood on the Clocktower*.  
 
-### Dark Secrets Unveiled
-
-1. **Invoke the Count:** Input the sacred number of players ready to engage in the mysterious dance of the wolves.
-
-2. **Cryptic Character Selection:** Receive an enigmatic selection of characters, carefully balanced for the number of players.
-
-3. **Fallback Villagers:** Should the number of arcane characters surpass the limits, ordinary villagers and a lone werewolf (every 4 players) emerge from the shadows to fill the void.
-
-4. **Table of Shadows:** Conjure a table with all the characters, arranged in a chaotic dance. The table reveals cells for player names, poisoned, dead, done, and a mystic noteblock.
-
-5. **Image Glyphs:** Evoke images adorned with descriptions for each character, perfectly aligned with the mystical table. Left-click to wield the power of copy.
-
-6. **Dynamic Script of Fate:** Unveil a script that morphs with the characters' states. Left-click to invoke the ethereal `text-decoration: line-through` spell.
-
-### Whispers of Languages
-
-Currently, the incantations are uttered in Portuguese. Future plans include attuning the magic to French, and perhaps English. The ultimate quest may lead to making the grimoire more versatile, including Rules Manuals in diverse tongues.
-
-### Conjuring Contributions
-
-Feel free to summon, shape, and wield the project as you see fit. Whether for your nightly Werewolf rituals or to contribute to its arcane evolution, may the spirits guide you!
-
-### Contact the Oracle
-
-To commune with the creator, venture into the realm of Instagram: [@an_jo_morto](https://www.instagram.com/an_jo_morto/)
-
-### Credits and Enchantments
-
-All glyphs summoned in this project were extracted from the mystical repository [Loups-Garous en Ligne](https://www.loups-garous-en-ligne.com/). The incantations were inscribed manually in a Word document and captured in a mystical screenshot.
+The goal is to create a more interactive experience that relies heavily on communication and bluffing. Each player takes on a complex and engaging role, while the game remains intuitive for first-time players. It stays familiar to fans of the original *Werewolf of the Miller’s Hollow* and, importantly, gives players a reason to remain involved even after death, so no one feels left out of the fun.
 
 ---
 
-**Disclaimer:** This mystical artifact is provided as-is. The secrets it holds are yours to uncover, and any use or modification is at your own peril.
+## The Goal
+
+This repository aims to create a web-based adaptive script for the Game Master.
+
+Because of the game’s complexity, it is usually run by two GMs. Typically:
+- One GM reads the script and interacts directly with the players (tapping them, showing cards, etc.).
+- The second GM gathers and records all necessary information.
+
+This script is designed to help the reading GM by providing a constantly updated version of the script that adapts to in-game actions and characters. In the future, it may reduce the workload of the assisting GM, or even replace the need for a second GM entirely.
+
+---
+
+## Languages
+
+The game is currently available in EU Portuguese.  
+
+Future plans include French and English versions. The long-term goal is to make the repository more versatile by providing rule manuals in multiple languages.
+
+The current updated list of characters and script can be found [here](https://docs.google.com/document/d/1aV9II9br_8ln4zrA7wgHRByBLqyb8EzkOqc2ltHGCes/edit?usp=sharing).
+
+---
+
+## Contributions
+
+Feel free to share your ideas, suggestions, or experiences. Your feedback is welcome and may help shape future development, playtesting, and updates.
+
+---
+
+## Contact
+
+To connect with the creator, visit:  
+[@an_jo_morto](https://linktr.ee/anjomorto)
+
+---
+
+## Credits
+
+All original images used in this project were sourced from:
+
+- [Loups-Garous en Ligne](https://www.loups-garous-en-ligne.com/)
+- [Wiki Loup-Garou](https://loupgarou.fandom.com/fr/wiki/Wiki_Loup-Garou)
+
+There are plans to recreate the images in a unified, original art style. The goal is to ensure visual consistency while keeping the designs close enough to *Werewolf of the Miller’s Hollow* to make the transition easy for new players discovering this version of the game.
+
+---
+
+**Disclaimer:** This project is provided as-is. Use or modification is at your own risk.
