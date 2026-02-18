@@ -7,7 +7,8 @@ Colours / Colour combos and their correlation:
 -	Beige			- Sad villager	| Neutral/Passive
 
 -	Green / Lime				| Villager ; Assassination
--	Yellow / Lavender			| Villager ; Information
+-	Yellow / Lavender	- Fortune Teller
+-	Green / Orange				| Villager ; Information
 -	Blue / Cyan				| Villager ; Life/Death
 -	Brown / Swamp				| Villager ; Tribunal
 
@@ -19,3 +20,4 @@ Iconology of symbols:
 -	Square with loop	- Vote		| Tribunal
 -	Heart					| Lovers
 -	Devil horns				| Represents Evil Beings
+-	Chain					| Animal Tamer
