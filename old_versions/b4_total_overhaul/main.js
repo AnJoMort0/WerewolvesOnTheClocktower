@@ -93,6 +93,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "0 - Aldeão Triste"
     ];
 
+    const scriptContainer = document.createElement("div");
+    scriptContainer.classList.add("script-container");
+    document.body.appendChild(scriptContainer);
+
     const container = document.createElement("div");
     container.classList.add("table-container");
 
@@ -116,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
             option.addEventListener("click", function () {
                 inputField.value = optionText;
                 dropdown.style.display = "none";
+                updateScript();
             });
             dropdown.appendChild(option);
         });
@@ -167,6 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function removeRow() {
         if (tbody.rows.length > 8) {
             tbody.deleteRow(tbody.rows.length - 1);
+            updateScript();
         }
     }
 
@@ -177,13 +183,90 @@ document.addEventListener("DOMContentLoaded", function () {
             rowInput.value = 8;
         }
 
-        // Adjust number of rows
         while (tbody.rows.length < rowCount) {
             addRow();
         }
         while (tbody.rows.length > rowCount) {
             removeRow();
         }
+        updateScript();
+    }
+
+    function updateScript() {
+        const selectedCharacters = [];
+        document.querySelectorAll("tbody tr").forEach(row => {
+            const charInput = row.cells[1].querySelector("input");
+            if (charInput.value) {
+                selectedCharacters.push(charInput.value);
+            }
+        });
+
+        const scriptText = generateScript(selectedCharacters);
+        scriptContainer.innerHTML = `<h2>Roteiro de Jogo</h2>${scriptText}`;
+    }
+
+    function generateScript(selectedCharacters) {
+        let script = "<h3>Primeira Noite</h3>";
+        script += "<p>Esta noite não terá mortos.</p>";
+        script += "<p>(Lançar um d12)</p>";
+
+        if (selectedCharacters.includes("3 - Cupido")) {
+            script += "<p>O Cupido acorda e escolhe dois jogadores que serão Namorados...</p>";
+        }
+
+        if (selectedCharacters.includes("32 - Cupido Malvado")) {
+            script += "<p>O Cupido Malvado acorda e escolhe dois jogadores que serão Inimigos...</p>";
+        }
+
+        if (selectedCharacters.includes("105 - Irmãs")) {
+            script += "<p>As Irmãs acordam para se conhecerem.</p>";
+        }
+
+        if (selectedCharacters.includes("106 - Irmãos")) {
+            script += "<p>Os Irmãos acordam para se conhecerem.</p>";
+        }
+
+        if (selectedCharacters.includes("2 - Bruxa Malvada")) {
+            script += "<p>A Bruxa Malvada acorda e escolhe um jogador para envenenar...</p>";
+        }
+
+        if (selectedCharacters.includes("11 - Mestre do Corvo")) {
+            script += "<p>O Mestre do Corvo escolhe um jogador que terá automaticamente 2 votos contra...</p>";
+        }
+
+        script += "<h3>Início da Segunda Noite</h3>";
+
+        if (selectedCharacters.includes("23 - Cão-Lobo")) {
+            script += "<p>O Cão-Lobo acorda e escolhe se quer ser um Cão ou um Lobisomem...</p>";
+        }
+
+        if (selectedCharacters.includes("24 - Ladrão")) {
+            script += "<p>O Ladrão acorda e escolhe se quer jogar do lado dos Aldeões ou dos Lobisomens...</p>";
+        }
+
+        if (selectedCharacters.includes("102 - Criança Selvagem")) {
+            script += "<p>A Criança Selvagem acorda e escolhe o seu Pai Adotivo...</p>";
+        }
+
+        script += "<h3>Noite Normal</h3>";
+
+        if (selectedCharacters.includes("14 - Paranoico")) {
+            script += "<p>LEMBRA-TE (Se o Cavaleiro Enferrujado morreu, matar o Lobisomem mais próximo)</p>";
+        }
+
+        if (selectedCharacters.includes("20 - Insomniaca")) {
+            script += "<p>O Sonâmbulo acorda e escolhe um jogador para visitar...</p>";
+        }
+
+        if (selectedCharacters.includes("5 - Vidente")) {
+            script += "<p>Se alguém morreu, a Vidente acorda e vê os mortos...</p>";
+        }
+
+        if (selectedCharacters.includes("12 - Anjo")) {
+            script += "<p>(Ressuscitar o jogador salvo pelo Anjo)</p>";
+        }
+
+        return script;
     }
 
     // Initialize 8 rows
