@@ -9,14 +9,14 @@ Colours / Colour combos and their correlation:
 -	Green / Lime				| Villager ; Assassination
 -	Yellow / Lavender	- Fortune Teller
 -	Green / Orange				| Villager ; Information
--	Blue / Cyan				| Villager ; Life/Death
--	Brown / Swamp				| Villager ; Tribunal
-
+-	Green / Cyan				| Villager ; Life/Death
+-	Green / Grey / Vote			| Villager ; Tribunal
 
 Iconology of symbols:
 
 -	Eye					| See cards - Information
 -	Skull					| Death - Postmortem
+-	Thread					| Resurection
 -	Square with loop	- Vote		| Tribunal
 -	Heart					| Lovers
 -	Devil horns				| Represents Evil Beings
