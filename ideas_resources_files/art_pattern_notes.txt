@@ -21,3 +21,4 @@ Iconology of symbols:
 -	Heart					| Lovers
 -	Devil horns				| Represents Evil Beings
 -	Chain					| Animal Tamer
+-	Bubbles					| Poison
