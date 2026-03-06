@@ -92,24 +92,16 @@ const langData = {
                 requires: ["a04"] // Ator
             },
             {
-                text: "A Cigana acorda e indica 3 vizinhos. Se um deles estiver envenenado, ele perde o veneno e a Cigana passa a estar envenenada.",
-                requires: ["v12"] // Cigana
-            },
-            {
-                text: "O Domador do Corvo acorda e é-lhe revelado o número de Criaturas Malvadas que vivem na Aldeia (ou o Corvo está confuso).",
+                text: "O Domador do Corvo acorda e é-lhe revelado o número de Criaturas Malvadas que vivem na Aldeia.",
                 requires: ["v03"] // Domador do Corvo
             },
             {
-                text: "O Domador da Raposa acorda e indica três vizinhos. Será-lhe revelado, com o polegar, se um desses três jogadores é uma Criatura Malvada (ou se a Raposa está confusa).",
+                text: "O Domador da Raposa acorda e indica três vizinhos. Será-lhe revelado, com o polegar, se um desses três jogadores é uma Criatura Malvada.",
                 requires: ["v04"] // Domador da Raposa
             },
             {
-                text: "O Urso rosna/não rosna (/está confuso).",
+                text: "O Urso rosna/não rosna.",
                 requires: ["v02"] // Domador do Urso
-            },
-            {
-                text: "O Domador dos Coelhos ouviu os Coelhos assustados esta noite/ [nada] (/os Coelhos estão confusos).",
-                requires: ["v05"] // Domador dos Coelhos
             },
             {
                 text: "O Chefe da Aldeia acorda e escolhe um jogador que automaticamente terá 2 votos contra ele no próximo Tribunal.",
@@ -132,6 +124,9 @@ const langData = {
             {
                 text: "A Criança Selvagem acorda e escolhe o seu Pai Adotivo. Se este morrer durante o jogo, a Criança Selvagem se tornará um Lobisomem.",
                 requires: ["l02"] // Criança Selvagem
+            },
+            {
+                text: "Os Lobisomens acordam e são-lhe apresentados as Criaturas Malvadas."
             }
         ],
 
@@ -188,7 +183,7 @@ const langData = {
                 requires: ["a06"] // Ilusionista
             },
             {
-                text: "(Se alguém morreu) A Vidente acorda e é-lhe revelado o papel dos mortos de ontem. (Limpar “† de ontem”).",
+                text: "(Se alguém morreu) A Vidente acorda e é-lhe revelado o papel dos mortos de ontem.",
                 requires: ["e04"] // Vidente
             },
             {
@@ -240,8 +235,12 @@ const langData = {
                 requires: ["v22"] // Pedro
             },
             {
-                text: "Os Lobisomens acordam/não acordam se envenenados e escolhem em conjunto uma vítima que irão assassinar.",
+                text: "Os Lobisomens acordam/não acordam se envenenados e escolhem em conjunto uma vítima que irão assassinar esta noite.",
                 requires: ["e01"] // Lobisomem
+            },
+            {
+                text: "O Lobisomem Mau acorda e escolhe com o polegar se quer se mascarar de Avózinha esta noite e dia, ou não. Pode usar esse poder duas vezes durante todo o jogo.",
+                requires: ["m01"] //Lobisomem Mau
             },
             {
                 text: "O Lobisomem Vidente acorda/não acorda se envenenados e decide com o polegar se quer salvar a vítima para ver o seu papel ou deixá-la morrer.",
@@ -256,7 +255,7 @@ const langData = {
                 requires: ["s02"] // Lobisomem Branco
             },
             {
-                text: "O Domador dos Coelhos ouviu os Coelhos assustados esta noite/ [nada] (/os Coelhos estão confusos)",
+                text: "O Domador dos Coelhos ouviu os Coelhos assustados esta noite. / [nada] (/os Coelhos estão confusos)",
                 requires: ["v05"] // Domador dos Coelhos
             },
             {
@@ -284,7 +283,7 @@ const langData = {
                 requires: ["v01"] // Menina
             },
             {
-                text: "O Profeta acorda/não acorda se não houver vítimas e indica ao apontar um jogador que acha que morreu esta noite. Se estiver correto, o jogador será tocado, para saber que pode guardar o seu poder, mesmo como Fantasma, durante o próximo dia e a noite.",
+                text: "O Profeta acorda/não acorda se não houver vítimas e indica, ao apontar um jogador que acha que morreu esta noite. Se estiver correto, o jogador será tocado, para saber que pode guardar o seu poder, mesmo como Fantasma, durante o próximo dia e a noite.",
                 requires: ["v19"] // Profeta
             }
         ]
