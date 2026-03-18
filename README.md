@@ -1,10 +1,10 @@
-# 🌕 Werewolves on the Clocktower 🏰
+# Werewolves on the Clocktower
 
-## A brand-new way to play Werewolf of the Miller’s Hollow!
+## A brand-new way to play *Werewolf of the Miller’s Hollow*!
 
 **Werewolves on the Clocktower** is a clandestine project inspired by the simple rules and characters of *Werewolf of the Miller’s Hollow*, enhanced with selected mechanics from *Blood on the Clocktower*.  
 
-The goal is to create a more interactive experience that relies heavily on communication and bluffing. Each player takes on a complex and engaging role, while the game remains intuitive for first-time players. It stays familiar to fans of the original *Werewolf of the Miller’s Hollow* and, importantly, gives players a reason to remain involved even after death, so no one feels left out of the fun.
+The goal is to create a more interactive experience that relies heavily on communication and bluffing. Each player takes on a complex and engaging role, while the game remains intuitive for first-time players. It stays familiar to fans of the original *Werewolf of the Miller’s Hollow* and, importantly, gives everyone an interesting role (40+ unique characters) and gives players a reason to remain involved even after death, so no one feels left out of the fun.
 
 ---
 
@@ -26,7 +26,7 @@ The game is currently available in EU Portuguese.
 
 Future plans include French and English versions. The long-term goal is to make the repository more versatile by providing rule manuals in multiple languages.
 
-The current updated list of characters and script can be found [here](https://docs.google.com/document/d/1aV9II9br_8ln4zrA7wgHRByBLqyb8EzkOqc2ltHGCes/edit?usp=sharing).
+The current updated list of characters and script can be found [here](https://docs.google.com/document/d/1aV9II9br_8ln4zrA7wgHRByBLqyb8EzkOqc2ltHGCes/edit?usp=sharing) in Portuguese and [here]() in French.
 
 ---
 
@@ -45,7 +45,7 @@ To connect with the creator, visit:
 
 ## Credits
 
-All original images used in this project were sourced from:
+All the art is digitally hand-drawn by L_PT_1463. They are either original cards or reinterpreations of the *Werewolf of the Miller's Hollow* cards sourced from:
 
 - [Loups-Garous en Ligne](https://www.loups-garous-en-ligne.com/)
 - [Wiki Loup-Garou](https://loupgarou.fandom.com/fr/wiki/Wiki_Loup-Garou)
