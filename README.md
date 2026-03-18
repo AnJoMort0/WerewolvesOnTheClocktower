@@ -50,7 +50,7 @@ All the art is digitally hand-drawn by L_PT_1463. They are either original cards
 - [Loups-Garous en Ligne](https://www.loups-garous-en-ligne.com/)
 - [Wiki Loup-Garou](https://loupgarou.fandom.com/fr/wiki/Wiki_Loup-Garou)
 
-There are plans to recreate the images in a unified, original art style. The goal is to ensure visual consistency while keeping the designs close enough to *Werewolf of the Miller’s Hollow* to make the transition easy for new players discovering this version of the game.
+There goal of recreating the cards in a unified, original art style was to ensure visual consistency while keeping the designs close enough to *Werewolf of the Miller’s Hollow* to make the transition easy for new players discovering this version of the game.
 
 ---
 
