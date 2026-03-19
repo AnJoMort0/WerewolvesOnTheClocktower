@@ -26,7 +26,7 @@ The game is currently available in EU Portuguese.
 
 Future plans include French and English versions. The long-term goal is to make the repository more versatile by providing rule manuals in multiple languages.
 
-The current updated list of characters and script can be found [here](https://docs.google.com/document/d/1aV9II9br_8ln4zrA7wgHRByBLqyb8EzkOqc2ltHGCes/edit?usp=sharing) in Portuguese and [here]() in French.
+The current updated list of characters and script can be found [here](https://docs.google.com/document/d/1aV9II9br_8ln4zrA7wgHRByBLqyb8EzkOqc2ltHGCes/edit?usp=sharing) in Portuguese and [here](https://docs.google.com/document/d/1Jd6N6Us3eo_LdNMcFmwEd3A5IbOAB332adSVViu7Na0/edit?tab=t.0#heading=h.dy2z3kn1r3as) in French.
 
 ---
 
@@ -50,7 +50,7 @@ All the art is digitally hand-drawn by L_PT_1463. They are either original cards
 - [Loups-Garous en Ligne](https://www.loups-garous-en-ligne.com/)
 - [Wiki Loup-Garou](https://loupgarou.fandom.com/fr/wiki/Wiki_Loup-Garou)
 
-There goal of recreating the cards in a unified, original art style was to ensure visual consistency while keeping the designs close enough to *Werewolf of the Miller’s Hollow* to make the transition easy for new players discovering this version of the game.
+The goal of recreating the cards in a unified, original art style was to ensure visual consistency while keeping the designs close enough to *Werewolf of the Miller’s Hollow* to make the transition easy for new players discovering this version of the game.
 
 ---
 
