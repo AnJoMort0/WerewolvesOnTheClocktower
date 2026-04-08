@@ -55,10 +55,12 @@ createTableButton.addEventListener("click", function () {
 
         TXT.characters.forEach(character => {
             const option = document.createElement("option");
-            option.value = character;
-            option.textContent = character;
+            option.value = character.id;
+            option.textContent = `${character.id}. ${character.name}`;
             select.appendChild(option);
         });
+
+        select.addEventListener("change", updateScript);
 
         cell.appendChild(select);
         characterRow.appendChild(cell);
@@ -67,4 +69,46 @@ createTableButton.addEventListener("click", function () {
     table.appendChild(characterRow);
 
     tableContainer.appendChild(table);
+
+    updateScript();
 });
+
+// Create the script
+const scriptContainer = document.createElement("div");
+document.body.appendChild(scriptContainer);
+function getSelectedCharacters() {
+    const selects = tableContainer.querySelectorAll("select");
+    const selected = [];
+
+    selects.forEach(select => {
+        if (select.value) {
+            selected.push(select.value);
+        }
+    });
+
+    return selected;
+}
+function updateScript() {
+    console.log("working")
+    const selectedCharacters = getSelectedCharacters();
+
+    scriptContainer.innerHTML = ""; // clear previous script
+
+    TXT.secondNightScript.forEach(step => {
+
+        // If step has no requirements → always show
+        if (!step.requires) {
+            const p = document.createElement("p");
+            p.textContent = step.text;
+            scriptContainer.appendChild(p);
+        }
+
+        // If it has requirements → only show if character is selected
+        else if (step.requires.some(id => selectedCharacters.includes(id))) {
+            const p = document.createElement("p");
+            p.textContent = step.text;
+            scriptContainer.appendChild(p);
+        }
+
+    });
+}
