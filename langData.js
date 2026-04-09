@@ -55,7 +55,7 @@ const langData = {
             { id: "a04", name: "Ator" },
             { id: "a05", name: "Rouba-Túmulos" },
             { id: "a06", name: "Ilusionista" },
-            { id: "a07", name: "Amante Secreto" },
+            { id: "as01b", name: "Amante Secreto" },
 
             { id: "l01", name: "Aldeão Triste" },
             { id: "l02", name: "Criança Selvagem" },
@@ -216,7 +216,7 @@ const langData = {
             },
             {
                 text: "O Amante Secreto acorda e aponta para um jogador, e será revelado se é um dos Namorados. Se for o caso, esse Namorado será tocado e pode acordar para lhe ser revelado o seu Amante, que substitui o antigo Namorado.",
-                requires: ["a07"] // Amante Secreto
+                requires: ["as01b"] // Amante Secreto
             },
             {
                 text: "O Salvador acorda e indica quem será imune durante esta noite e o dia.",
