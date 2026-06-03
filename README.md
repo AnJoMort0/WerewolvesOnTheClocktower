@@ -22,9 +22,9 @@ This script is designed to help the reading GM by providing a constantly updated
 
 ## Languages
 
-The game is currently available in EU Portuguese.  
+The game is currently available in EU Portuguese and French.  
 
-Future plans include French and English versions. The long-term goal is to make the repository more versatile by providing rule manuals in multiple languages.
+Future plans include English versions. The long-term goal is to make the repository more versatile by providing rule manuals in multiple languages.
 
 The current updated list of characters and script can be found [here](https://docs.google.com/document/d/1aV9II9br_8ln4zrA7wgHRByBLqyb8EzkOqc2ltHGCes/edit?usp=sharing) in Portuguese and [here](https://docs.google.com/document/d/1Jd6N6Us3eo_LdNMcFmwEd3A5IbOAB332adSVViu7Na0/edit?tab=t.0#heading=h.dy2z3kn1r3as) in French.
 
