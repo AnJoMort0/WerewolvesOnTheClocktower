@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mestre do Jogo — Gerador de Personagens</title>
+  <title>Lobisomens · Gerador de mensagens</title>
   <style>
     :root {
       --bg: #292620;
+      --bg-mid: #24211d;
       --bg-deep: #171514;
       --panel: rgba(48, 44, 38, 0.82);
       --panel-soft: rgba(55, 49, 43, 0.88);
@@ -14,6 +15,7 @@
       --text: #ece2d2;
       --text-strong: #fff8ea;
       --muted: #9f9586;
+      --muted-dark: #746a5e;
       --accent: #c73b35;
       --accent-bright: #e24a41;
       --accent-deep: #7d2424;
@@ -364,6 +366,82 @@
       background: rgba(255, 248, 234, 0.032);
     }
 
+
+
+    .rich-copy-preview {
+      display: flex;
+      gap: 13px;
+      align-items: center;
+      width: 100%;
+      min-height: 104px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(34, 31, 28, 0.92);
+      color: var(--text);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    }
+
+    .rich-copy-preview img {
+      width: 74px;
+      height: 74px;
+      object-fit: contain;
+      flex: 0 0 auto;
+      border-radius: 13px;
+      border: 1px solid rgba(226, 74, 65, 0.55);
+      background: rgba(0, 0, 0, 0.32);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .rich-copy-preview .message-preview {
+      margin: 0;
+      min-width: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      color: var(--text-strong);
+      font: 0.9rem/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .copy-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .copy-options .copy-button {
+      justify-self: auto;
+    }
+
+    .rich-copy-hint {
+      margin: 0;
+      color: var(--muted-dark);
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    .image-warning {
+      display: none;
+      color: var(--danger);
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .role-card.missing-image .image-warning {
+      display: block;
+    }
+
+    @media (max-width: 520px) {
+      .rich-copy-preview {
+        align-items: flex-start;
+      }
+
+      .rich-copy-preview img {
+        width: 62px;
+        height: 62px;
+      }
+    }
+
     @media (max-width: 760px) {
       main {
         width: min(100% - 20px, 1120px);
@@ -384,24 +462,27 @@
         width: 100%;
       }
     }
+  
   </style>
 </head>
 <body>
   <main>
     <header>
-      <p id="eyebrow" class="eyebrow"></p>
-      <h1 id="pageTitle"></h1>
-      <p id="subtitle" class="subtitle"></p>
+      <p class="eyebrow" data-i18n="eyebrow">Lobisomens na Torre Sangrenta</p>
+      <h1 data-i18n="title">Gerador de mensagens</h1>
+      <p class="subtitle" data-i18n="subtitle">
+        Escolhe o número de jogadores e a língua. A página gera uma mensagem privada por jogador, agora com a carta e o texto prontos a copiar.
+      </p>
     </header>
 
-    <section id="controls" class="controls" aria-label="">
+    <section class="controls" aria-label="Generator controls">
       <div class="field">
-        <label id="playerCountLabel" for="playerCount"></label>
+        <label for="playerCount" data-i18n="playerCountLabel">Número de jogadores</label>
         <input id="playerCount" type="number" min="8" step="1" value="10" inputmode="numeric" />
       </div>
 
       <fieldset>
-        <legend id="languageLegend"></legend>
+        <legend data-i18n="languageLegend">Língua</legend>
         <div class="radio-row">
           <label class="radio-pill">
             <input type="radio" name="language" value="PT" checked />
@@ -414,17 +495,20 @@
         </div>
       </fieldset>
 
-      <button id="generateButton" type="button"></button>
+      <button id="generateButton" type="button" data-i18n="generateButton">Gerar personagens</button>
     </section>
 
     <div class="status-row">
-      <p id="status" class="status"></p>
+      <p id="status" class="status" data-status-kind="empty">Ainda não há personagens geradas.</p>
       <div class="actions">
-        <button id="copyAllButton" class="secondary-button" type="button" hidden></button>
+        <button id="copyAllButton" class="secondary-button" type="button" hidden data-i18n="copyAllRichButton">Copiar tudo com imagens</button>
+        <button id="copyAllTextButton" class="secondary-button" type="button" hidden data-i18n="copyAllTextButton">Copiar tudo em texto</button>
       </div>
     </div>
 
-    <section id="results" class="grid" aria-live="polite"></section>
+    <section id="results" class="grid" aria-live="polite">
+      <div class="empty-state" data-i18n="emptyState">As mensagens geradas aparecerão aqui.</div>
+    </section>
   </main>
 
   <script>
@@ -530,53 +614,6 @@
       l04: "Frères"
     };
 
-    const UI_TEXT = {
-      PT: {
-        htmlLang: "pt",
-        documentTitle: "Mestre do Jogo — Gerador de Personagens",
-        eyebrow: "Lobisomens na Torre Sangrenta",
-        pageTitle: "Mestre do Jogo",
-        subtitle: "Escolhe o número de jogadores e a língua. Esta página prepara uma mensagem privada por jogador, pronta a copiar e enviar.",
-        controlsLabel: "Controlos do gerador",
-        playerCountLabel: "Número de jogadores",
-        languageLegend: "Língua",
-        generateButton: "Gerar personagens",
-        initialStatus: "Escolhe os jogadores e gera a distribuição.",
-        emptyState: "As mensagens privadas vão aparecer aqui.",
-        copyAllButton: "Copiar todas as mensagens",
-        playerBadge: "Jogador",
-        copyButton: "Copiar mensagem",
-        copiedButton: "Copiado!",
-        allCopiedButton: "Tudo copiado!",
-        errorMinPlayers: "Insere pelo menos 8 jogadores.",
-        noRoles: "Nenhuma personagem gerada.",
-        generatedStatus: (count) => `${count} mensagens prontas em PT.`,
-        textareaAria: (id, name) => `Mensagem para copiar de ${id}.${name}`
-      },
-      FR: {
-        htmlLang: "fr",
-        documentTitle: "Maître du Jeu — Générateur de Personnages",
-        eyebrow: "Loups-Garous de la Tour Sanglante",
-        pageTitle: "Maître du Jeu",
-        subtitle: "Choisis le nombre de joueurs et la langue. Cette page prépare un message privé par joueur, prêt à copier et à envoyer.",
-        controlsLabel: "Contrôles du générateur",
-        playerCountLabel: "Nombre de joueurs",
-        languageLegend: "Langue",
-        generateButton: "Générer les personnages",
-        initialStatus: "Choisis les joueurs et génère la distribution.",
-        emptyState: "Les messages privés apparaîtront ici.",
-        copyAllButton: "Copier tous les messages",
-        playerBadge: "Joueur",
-        copyButton: "Copier le message",
-        copiedButton: "Copié !",
-        allCopiedButton: "Tout est copié !",
-        errorMinPlayers: "Indique au moins 8 joueurs.",
-        noRoles: "Aucun personnage généré.",
-        generatedStatus: (count) => `${count} messages prêts en FR.`,
-        textareaAria: (id, name) => `Message à copier pour ${id}.${name}`
-      }
-    };
-
     const ROLE_DEFS = {
       e01: { id: "e01", category: "e" },
       e02: { id: "e02", category: "e" },
@@ -644,20 +681,128 @@
       FR: "https://anjomort0.github.io/WerewolvesOnTheClocktower/Rulebook_FR.html"
     };
 
-    const eyebrow = document.querySelector("#eyebrow");
-    const pageTitle = document.querySelector("#pageTitle");
-    const subtitle = document.querySelector("#subtitle");
-    const controls = document.querySelector("#controls");
-    const playerCountLabel = document.querySelector("#playerCountLabel");
+
+    const ROLE_IMAGE_PATHS = {
+      "e01": "art/final/e01_final.png",
+      "e02": "art/final/e02_final.png",
+      "e03": "art/final/e03_final.png",
+      "e04": "art/final/e04_final.png",
+      "v01": "art/final/v01_final.png",
+      "v02": "art/final/v02_final.png",
+      "v03": "art/final/v03_final.png",
+      "v04": "art/final/v04_final.png",
+      "v05": "art/final/v05_final.png",
+      "v06": "art/final/v06_final.png",
+      "v07": "art/final/v07_final.png",
+      "v08": "art/final/v08_final.png",
+      "v08b": "art/final/v08b_final.png",
+      "v09": "art/final/v09_final.png",
+      "v10": "art/final/v10_final.png",
+      "v11": "art/final/v11_final.png",
+      "v12": "art/final/v12_final.png",
+      "v13": "art/final/v13_final.png",
+      "v14": "art/final/v14_final.png",
+      "v15": "art/final/v15_final.png",
+      "v16": "art/final/v16_final.png",
+      "v17": "art/final/v17_final.png",
+      "v18": "art/final/v18_final.png",
+      "v19": "art/final/v19_final.png",
+      "v20": "art/final/v20_final.png",
+      "v21": "art/final/v21_final.png",
+      "v22": "art/final/v22_final.png",
+      "v23": "art/final/v23_final.png",
+      "m01": "art/final/m01_final.png",
+      "m02": "art/final/m02_final.png",
+      "m03": "art/final/m03_final.png",
+      "m04": "art/final/m04_final.png",
+      "m05": "art/final/m05_final.png",
+      "s01": "art/final/s01_final.png",
+      "s02": "art/final/s02_final.png",
+      "f01": "art/final/f01_final.png",
+      "f02": "art/final/f02_final.png",
+      "a01": "art/final/a01_final.png",
+      "a02": "art/final/a02_final.png",
+      "a03": "art/final/a03_final.png",
+      "a04": "art/final/a04_final.png",
+      "a05": "art/final/a05_final.png",
+      "a06": "art/final/a06_final.png",
+      "as01b": "art/final/as01b_final.png",
+      "l01": "art/final/l01_final.png",
+      "l02": "art/final/l02_final.png",
+      "l03": "art/final/l03_final.png",
+      "l04": "art/final/l04_final.png"
+};
+
+    const IMAGE_ROOT = "https://anjomort0.github.io/WerewolvesOnTheClocktower/";
+
+    const UI_TEXT = {
+      PT: {
+        pageTitle: "Lobisomens · Gerador de mensagens",
+        eyebrow: "Lobisomens na Torre Sangrenta",
+        title: "Gerador de mensagens",
+        subtitle: "Escolhe o número de jogadores e a língua. A página gera uma mensagem privada por jogador, agora com a carta e o texto prontos a copiar.",
+        playerCountLabel: "Número de jogadores",
+        languageLegend: "Língua",
+        generateButton: "Gerar personagens",
+        copyAllRichButton: "Copiar tudo com imagens",
+        copyAllTextButton: "Copiar tudo em texto",
+        emptyStatus: "Ainda não há personagens geradas.",
+        emptyState: "As mensagens geradas aparecerão aqui.",
+        noRoles: "Nenhuma personagem gerada.",
+        invalidPlayers: "Insere pelo menos 8 jogadores.",
+        generated: (count) => `${count} mensagens geradas em Português.`,
+        player: (number) => `Jogador ${number}`,
+        copyRich: "Copiar imagem + texto",
+        copyText: "Copiar só texto",
+        copied: "Copiado!",
+        copiedText: "Texto copiado!",
+        copiedFallback: "Texto copiado",
+        allCopied: "Tudo copiado!",
+        allTextCopied: "Texto todo copiado!",
+        richCopyHint: "A cópia com imagem depende da aplicação onde colas. Em apps que aceitam HTML rico, cola a carta e o texto; nas outras, cola pelo menos o texto.",
+        missingImage: "Imagem não encontrada neste caminho. Confirma que a pasta art/final existe no mesmo site.",
+        ariaCopyRich: (id, name) => `Copiar imagem e mensagem de ${id}.${name}`,
+        ariaCopyText: (id, name) => `Copiar só texto de ${id}.${name}`
+      },
+      FR: {
+        pageTitle: "Loups-garous · Générateur de messages",
+        eyebrow: "Loups-Garous de la Tour Sanglante",
+        title: "Générateur de messages",
+        subtitle: "Choisis le nombre de joueurs et la langue. La page génère un message privé par joueur, maintenant avec la carte et le texte prêts à copier.",
+        playerCountLabel: "Nombre de joueurs",
+        languageLegend: "Langue",
+        generateButton: "Générer les personnages",
+        copyAllRichButton: "Tout copier avec images",
+        copyAllTextButton: "Tout copier en texte",
+        emptyStatus: "Aucun personnage généré pour l’instant.",
+        emptyState: "Les messages générés apparaîtront ici.",
+        noRoles: "Aucun personnage généré.",
+        invalidPlayers: "Entre au moins 8 joueurs.",
+        generated: (count) => `${count} messages générés en Français.`,
+        player: (number) => `Joueur ${number}`,
+        copyRich: "Copier image + texte",
+        copyText: "Copier texte seul",
+        copied: "Copié !",
+        copiedText: "Texte copié !",
+        copiedFallback: "Texte copié",
+        allCopied: "Tout copié !",
+        allTextCopied: "Tout le texte copié !",
+        richCopyHint: "La copie avec image dépend de l’application où tu colles. Dans les apps qui acceptent le HTML riche, elle colle la carte et le texte ; ailleurs, elle colle au moins le texte.",
+        missingImage: "Image introuvable à ce chemin. Vérifie que le dossier art/final existe sur le même site.",
+        ariaCopyRich: (id, name) => `Copier l’image et le message de ${id}.${name}`,
+        ariaCopyText: (id, name) => `Copier seulement le texte de ${id}.${name}`
+      }
+    };
+
     const playerCountInput = document.querySelector("#playerCount");
-    const languageLegend = document.querySelector("#languageLegend");
     const generateButton = document.querySelector("#generateButton");
     const copyAllButton = document.querySelector("#copyAllButton");
+    const copyAllTextButton = document.querySelector("#copyAllTextButton");
     const results = document.querySelector("#results");
     const status = document.querySelector("#status");
 
-    let currentMessages = [];
     let currentRoleIds = [];
+    let currentPayloads = [];
 
     function getWerewolfCount(playerCount) {
       if (playerCount < 12) return 2;
@@ -770,27 +915,69 @@
       return document.querySelector('input[name="language"]:checked').value;
     }
 
+    function getUiText(language = getSelectedLanguage()) {
+      return UI_TEXT[language];
+    }
+
     function getLabels(language) {
       return language === "FR" ? ROLE_LABELS_FR : ROLE_LABELS_PT;
     }
 
-    function getUI(language = getSelectedLanguage()) {
-      return UI_TEXT[language];
+    function getRoleLink(id, language) {
+      return `${BASE_URLS[language]}#${id}`;
+    }
+
+    function getRoleImageUrl(id) {
+      const path = ROLE_IMAGE_PATHS[id] || `art/final/${id}_final.png`;
+      return new URL(path, IMAGE_ROOT).href;
     }
 
     function createRoleMessage(id, language) {
       const labels = getLabels(language);
       const name = labels[id] || id;
-      const baseUrl = BASE_URLS[language];
+      const link = getRoleLink(id, language);
 
       if (language === "FR") {
-        return `Ton personnage est ${id}.${name} :\n${baseUrl}#${id}`;
+        return `Ton personnage est ${id}.${name} :\n${link}`;
       }
 
-      return `O teu personagem é ${id}.${name} :\n${baseUrl}#${id}`;
+      return `O teu personagem é ${id}.${name} :\n${link}`;
     }
 
-    async function copyText(text) {
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function createRolePayload(id, language) {
+      const labels = getLabels(language);
+      const name = labels[id] || id;
+      const link = getRoleLink(id, language);
+      const imageUrl = getRoleImageUrl(id);
+      const message = createRoleMessage(id, language);
+      const safeId = escapeHtml(id);
+      const safeName = escapeHtml(name);
+      const safeLink = escapeHtml(link);
+      const safeImageUrl = escapeHtml(imageUrl);
+      const languageLine = language === "FR" ? "Ton personnage est" : "O teu personagem é";
+
+      const html = `
+        <div style="display:flex;gap:12px;align-items:center;font-family:Georgia,'Times New Roman',serif;color:#2d231f;max-width:520px;">
+          <img src="${safeImageUrl}" alt="${safeId}.${safeName}" style="width:92px;height:92px;object-fit:contain;border-radius:12px;border:1px solid #7d2424;background:#211d19;">
+          <div style="font-size:16px;line-height:1.35;">
+            <div>${languageLine} <strong>${safeId}.${safeName}</strong> :</div>
+            <a href="${safeLink}">${safeLink}</a>
+          </div>
+        </div>
+      `.trim();
+
+      return { id, name, link, imageUrl, message, html };
+    }
+
+    async function copyPlainText(text) {
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(text);
         return;
@@ -807,123 +994,147 @@
       temporaryTextarea.remove();
     }
 
+    async function copyRichContent(html, plainText) {
+      if (navigator.clipboard && window.ClipboardItem && window.isSecureContext) {
+        const htmlBlob = new Blob([html], { type: "text/html" });
+        const textBlob = new Blob([plainText], { type: "text/plain" });
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            "text/html": htmlBlob,
+            "text/plain": textBlob
+          })
+        ]);
+        return true;
+      }
+
+      await copyPlainText(plainText);
+      return false;
+    }
+
     function setTemporaryButtonState(button, label) {
-      const previousLabel = button.textContent;
+      const originalLabel = button.textContent;
       button.textContent = label;
       button.classList.add("copied");
       setTimeout(() => {
-        button.textContent = previousLabel;
+        button.textContent = originalLabel;
         button.classList.remove("copied");
-      }, 1100);
+      }, 1300);
     }
 
-    function renderEmptyState(text) {
-      results.innerHTML = "";
-      const emptyState = document.createElement("div");
-      emptyState.className = "empty-state";
-      emptyState.textContent = text;
-      results.appendChild(emptyState);
+    function setStatus(text, kind = "normal") {
+      status.textContent = text;
+      status.dataset.statusKind = kind;
+      status.classList.toggle("error", kind === "error");
     }
 
-    function applyUI(language) {
-      const t = getUI(language);
-      document.documentElement.lang = t.htmlLang;
-      document.title = t.documentTitle;
-      eyebrow.textContent = t.eyebrow;
-      pageTitle.textContent = t.pageTitle;
-      subtitle.textContent = t.subtitle;
-      controls.setAttribute("aria-label", t.controlsLabel);
-      playerCountLabel.textContent = t.playerCountLabel;
-      languageLegend.textContent = t.languageLegend;
-      generateButton.textContent = t.generateButton;
-      copyAllButton.textContent = t.copyAllButton;
+    function updateStaticInterface() {
+      const language = getSelectedLanguage();
+      const text = getUiText(language);
+      document.documentElement.lang = language === "FR" ? "fr" : "pt";
+      document.title = text.pageTitle;
 
-      if (currentRoleIds.length === 0) {
-        status.classList.remove("error");
-        status.textContent = t.initialStatus;
-        renderEmptyState(t.emptyState);
-      }
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        if (typeof text[key] === "string") element.textContent = text[key];
+      });
+
+      if (status.dataset.statusKind === "empty") setStatus(text.emptyStatus, "empty");
+    }
+
+    function renderEmptyState(language = getSelectedLanguage()) {
+      const text = getUiText(language);
+      results.innerHTML = `<div class="empty-state">${escapeHtml(text.emptyState)}</div>`;
+      copyAllButton.hidden = true;
+      copyAllTextButton.hidden = true;
+      currentPayloads = [];
+      currentRoleIds = [];
+      setStatus(text.emptyStatus, "empty");
     }
 
     function renderRoles(roleIds, language) {
-      const labels = getLabels(language);
-      const t = getUI(language);
+      const text = getUiText(language);
       currentRoleIds = [...roleIds];
-      currentMessages = roleIds.map((id) => createRoleMessage(id, language));
+      currentPayloads = roleIds.map((id) => createRolePayload(id, language));
       results.innerHTML = "";
 
-      roleIds.forEach((id, index) => {
-        const name = labels[id] || id;
-        const message = currentMessages[index];
-
+      currentPayloads.forEach((payload, index) => {
         const article = document.createElement("article");
         article.className = "role-card";
+        article.innerHTML = `
+          <div class="role-top">
+            <span class="player-badge">${escapeHtml(text.player(index + 1))}</span>
+            <span class="role-id">${escapeHtml(payload.id)}</span>
+          </div>
+          <h2 class="role-name">${escapeHtml(payload.name)}</h2>
+          <div class="rich-copy-preview" aria-label="${escapeHtml(payload.message)}">
+            <img src="${escapeHtml(payload.imageUrl)}" alt="${escapeHtml(payload.id)}.${escapeHtml(payload.name)}">
+            <p class="message-preview">${escapeHtml(payload.message)}</p>
+          </div>
+          <p class="image-warning">${escapeHtml(text.missingImage)}</p>
+          <p class="rich-copy-hint">${escapeHtml(text.richCopyHint)}</p>
+          <div class="copy-options">
+            <button class="copy-button copy-rich-button" type="button" aria-label="${escapeHtml(text.ariaCopyRich(payload.id, payload.name))}">${escapeHtml(text.copyRich)}</button>
+            <button class="copy-button secondary-button copy-text-button" type="button" aria-label="${escapeHtml(text.ariaCopyText(payload.id, payload.name))}">${escapeHtml(text.copyText)}</button>
+          </div>
+        `;
 
-        const topRow = document.createElement("div");
-        topRow.className = "role-top";
+        const image = article.querySelector("img");
+        image.addEventListener("error", () => article.classList.add("missing-image"));
 
-        const playerBadge = document.createElement("span");
-        playerBadge.className = "player-badge";
-        playerBadge.textContent = `${t.playerBadge} ${index + 1}`;
-
-        const roleId = document.createElement("span");
-        roleId.className = "role-id";
-        roleId.textContent = id;
-
-        const roleName = document.createElement("h2");
-        roleName.className = "role-name";
-        roleName.textContent = name;
-
-        const textarea = document.createElement("textarea");
-        textarea.readOnly = true;
-        textarea.value = message;
-        textarea.setAttribute("aria-label", t.textareaAria(id, name));
-
-        const copyButton = document.createElement("button");
-        copyButton.className = "copy-button";
-        copyButton.type = "button";
-        copyButton.textContent = t.copyButton;
-        copyButton.addEventListener("click", async () => {
-          await copyText(message);
-          setTemporaryButtonState(copyButton, t.copiedButton);
+        const richButton = article.querySelector(".copy-rich-button");
+        richButton.addEventListener("click", async () => {
+          const usedRichCopy = await copyRichContent(payload.html, payload.message);
+          setTemporaryButtonState(richButton, usedRichCopy ? text.copied : text.copiedFallback);
         });
 
-        topRow.append(playerBadge, roleId);
-        article.append(topRow, roleName, textarea, copyButton);
+        const textButton = article.querySelector(".copy-text-button");
+        textButton.addEventListener("click", async () => {
+          await copyPlainText(payload.message);
+          setTemporaryButtonState(textButton, text.copiedText);
+        });
+
         results.appendChild(article);
       });
 
-      copyAllButton.hidden = currentMessages.length === 0;
-      status.classList.remove("error");
-      status.textContent = t.generatedStatus(roleIds.length);
+      copyAllButton.hidden = currentPayloads.length === 0;
+      copyAllTextButton.hidden = currentPayloads.length === 0;
+      setStatus(text.generated(roleIds.length), "generated");
     }
 
     function generateRoles() {
       const playerCount = Number.parseInt(playerCountInput.value, 10);
       const language = getSelectedLanguage();
-      const t = getUI(language);
+      const text = getUiText(language);
 
       if (!Number.isInteger(playerCount) || playerCount < 8) {
-        status.textContent = t.errorMinPlayers;
-        status.classList.add("error");
-        renderEmptyState(t.noRoles);
+        setStatus(text.invalidPlayers, "error");
+        results.innerHTML = `<div class="empty-state">${escapeHtml(text.noRoles)}</div>`;
         copyAllButton.hidden = true;
-        currentMessages = [];
+        copyAllTextButton.hidden = true;
+        currentPayloads = [];
         currentRoleIds = [];
         return;
       }
 
-      const roleIds = assignRoles(playerCount, false);
-      renderRoles(roleIds, language);
+      renderRoles(assignRoles(playerCount, false), language);
     }
 
     generateButton.addEventListener("click", generateRoles);
 
     copyAllButton.addEventListener("click", async () => {
-      if (currentMessages.length === 0) return;
-      const t = getUI();
-      await copyText(currentMessages.join("\n\n"));
-      setTemporaryButtonState(copyAllButton, t.allCopiedButton);
+      if (currentPayloads.length === 0) return;
+      const text = getUiText();
+      const html = `<div>${currentPayloads.map((payload) => payload.html).join("<br><br>")}</div>`;
+      const plainText = currentPayloads.map((payload) => payload.message).join("\n\n");
+      const usedRichCopy = await copyRichContent(html, plainText);
+      setTemporaryButtonState(copyAllButton, usedRichCopy ? text.allCopied : text.copiedFallback);
+    });
+
+    copyAllTextButton.addEventListener("click", async () => {
+      if (currentPayloads.length === 0) return;
+      const text = getUiText();
+      await copyPlainText(currentPayloads.map((payload) => payload.message).join("\n\n"));
+      setTemporaryButtonState(copyAllTextButton, text.allTextCopied);
     });
 
     playerCountInput.addEventListener("keydown", (event) => {
@@ -932,15 +1143,17 @@
 
     document.querySelectorAll('input[name="language"]').forEach((radio) => {
       radio.addEventListener("change", () => {
-        const language = getSelectedLanguage();
-        applyUI(language);
+        updateStaticInterface();
         if (currentRoleIds.length > 0) {
-          renderRoles(currentRoleIds, language);
+          renderRoles(currentRoleIds, getSelectedLanguage());
+        } else {
+          renderEmptyState(getSelectedLanguage());
         }
       });
     });
 
-    applyUI(getSelectedLanguage());
+    updateStaticInterface();
+    renderEmptyState(getSelectedLanguage());
   </script>
 </body>
 </html>
