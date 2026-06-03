@@ -1,9 +1,3 @@
----
-title: "Loups-garous de la Tour Sanglante"
-language: "fr"
-source: "Loup-garous de la Tour Sanglante.docx"
----
-
 # Loups-garous de la Tour Sanglante
 
 <style>
@@ -226,98 +220,98 @@ Utilisez cette liste comme carte de navigation pour sauter directement à une fi
 
 | Code | Personnage | Fiche |
 |---|---|---|
-| `e01` | Loup-garou | [voir fiche](#e01-loup-garou) |
-| `e02` | Méchante Sorcière | [voir fiche](#e02-mechante-sorciere) |
-| `e03` | Chaman | [voir fiche](#e03-chaman) |
-| `e04` | Voyante | [voir fiche](#e04-voyante) |
+| `e01` | Loup-garou | [voir fiche](#e01) |
+| `e02` | Méchante Sorcière | [voir fiche](#e02) |
+| `e03` | Chaman | [voir fiche](#e03) |
+| `e04` | Voyante | [voir fiche](#e04) |
 
 ### Villageois
 
 | Code | Personnage | Fiche |
 |---|---|---|
-| `v01` | Petite Fille | [voir fiche](#v01-petite-fille) |
-| `v02` | Maître de l’Ours | [voir fiche](#v02-maitre-de-lours) |
-| `v03` | Maître du Corbeau | [voir fiche](#v03-maitre-du-corbeau) |
-| `v04` | Maître du Renard | [voir fiche](#v04-maitre-du-renard) |
-| `v05` | Maître des Lapins | [voir fiche](#v05-maitre-des-lapins) |
-| `v06` | Marionnettiste | [voir fiche](#v06-marionnettiste) |
-| `v07` | Chevalier Rouillé | [voir fiche](#v07-chevalier-rouille) |
-| `v08` | Chasseur | [voir fiche](#v08-chasseur) |
-| `v08b` | Petit Chaperon Rouge | [voir fiche](#v08b-petit-chaperon-rouge) |
-| `v09` | Capitaine | [voir fiche](#v09-capitaine) |
-| `v10` | Paranoïaque | [voir fiche](#v10-paranoiaque) |
-| `v11` | Ancien du Village | [voir fiche](#v11-ancien-du-village) |
-| `v12` | Gitane | [voir fiche](#v12-gitane) |
-| `v13` | Juge | [voir fiche](#v13-juge) |
-| `v14` | Accusateur | [voir fiche](#v14-accusateur) |
-| `v15` | Pyromane | [voir fiche](#v15-pyromane) |
-| `v16` | Somnambule | [voir fiche](#v16-somnambule) |
-| `v17` | Sauveur | [voir fiche](#v17-sauveur) |
-| `v18` | Ange | [voir fiche](#v18-ange) |
-| `v19` | Prophète | [voir fiche](#v19-prophete) |
-| `v20` | Domestique | [voir fiche](#v20-domestique) |
-| `v21` | Falotier | [voir fiche](#v21-falotier) |
-| `v22` | Enfant | [voir fiche](#v22-enfant) |
-| `v23` | Maître de l’Araignée | [voir fiche](#v23-maitre-de-laraignee) |
+| `v01` | Petite Fille | [voir fiche](#v01) |
+| `v02` | Maître de l’Ours | [voir fiche](#v02) |
+| `v03` | Maître du Corbeau | [voir fiche](#v03) |
+| `v04` | Maître du Renard | [voir fiche](#v04) |
+| `v05` | Maître des Lapins | [voir fiche](#v05) |
+| `v06` | Marionnettiste | [voir fiche](#v06) |
+| `v07` | Chevalier Rouillé | [voir fiche](#v07) |
+| `v08` | Chasseur | [voir fiche](#v08) |
+| `v08b` | Petit Chaperon Rouge | [voir fiche](#v08b) |
+| `v09` | Capitaine | [voir fiche](#v09) |
+| `v10` | Paranoïaque | [voir fiche](#v10) |
+| `v11` | Ancien du Village | [voir fiche](#v11) |
+| `v12` | Gitane | [voir fiche](#v12) |
+| `v13` | Juge | [voir fiche](#v13) |
+| `v14` | Accusateur | [voir fiche](#v14) |
+| `v15` | Pyromane | [voir fiche](#v15) |
+| `v16` | Somnambule | [voir fiche](#v16) |
+| `v17` | Sauveur | [voir fiche](#v17) |
+| `v18` | Ange | [voir fiche](#v18) |
+| `v19` | Prophète | [voir fiche](#v19) |
+| `v20` | Domestique | [voir fiche](#v20) |
+| `v21` | Falotier | [voir fiche](#v21) |
+| `v22` | Enfant | [voir fiche](#v22) |
+| `v23` | Maître de l’Araignée | [voir fiche](#v23) |
 
 ### Créatures Maléfiques
 
 | Code | Personnage | Fiche |
 |---|---|---|
-| `m01` | Méchant Loup-garou | [voir fiche](#m01-mechant-loup-garou) |
-| `m02` | Loup-garou Voyante | [voir fiche](#m02-loup-garou-voyante) |
-| `m03` | Loup-garou Vampire | [voir fiche](#m03-loup-garou-vampire) |
-| `m04` | Ankou | [voir fiche](#m04-ankou) |
-| `m05` | Méchant Cupidon | [voir fiche](#m05-mechant-cupidon) |
+| `m01` | Méchant Loup-garou | [voir fiche](#m01) |
+| `m02` | Loup-garou Voyante | [voir fiche](#m02) |
+| `m03` | Loup-garou Vampire | [voir fiche](#m03) |
+| `m04` | Ankou | [voir fiche](#m04) |
+| `m05` | Méchant Cupidon | [voir fiche](#m05) |
 
 ### Personnages indépendants
 
 | Code | Personnage | Fiche |
 |---|---|---|
-| `s01` | Cupidon | [voir fiche](#s01-cupidon) |
-| `s02` | Loup-garou Blanc | [voir fiche](#s02-loup-garou-blanc) |
+| `s01` | Cupidon | [voir fiche](#s01) |
+| `s02` | Loup-garou Blanc | [voir fiche](#s02) |
 
 ### Personnages flexibles
 
 | Code | Personnage | Fiche |
 |---|---|---|
-| `f01` | Voleur | [voir fiche](#f01-voleur) |
-| `f02` | Espion | [voir fiche](#f02-espion) |
+| `f01` | Voleur | [voir fiche](#f01) |
+| `f02` | Espion | [voir fiche](#f02) |
 
 ### Personnages complexes
 
 | Code | Personnage | Fiche |
 |---|---|---|
-| `a01` | Ivrogne | [voir fiche](#a01-ivrogne) |
-| `a02` | Chien-Loup | [voir fiche](#a02-chien-loup) |
-| `a03` | Mime | [voir fiche](#a03-mime) |
-| `a04` | Comédien | [voir fiche](#a04-comedien) |
-| `a05` | Pilleur de Tombes | [voir fiche](#a05-pilleur-de-tombes) |
-| `a06` | Illusionniste | [voir fiche](#a06-illusionniste) |
-| `as01b` | Arnacœur | [voir fiche](#as01b-arnacoeur) |
+| `a01` | Ivrogne | [voir fiche](#a01) |
+| `a02` | Chien-Loup | [voir fiche](#a02) |
+| `a03` | Mime | [voir fiche](#a03) |
+| `a04` | Comédien | [voir fiche](#a04) |
+| `a05` | Pilleur de Tombes | [voir fiche](#a05) |
+| `a06` | Illusionniste | [voir fiche](#a06) |
+| `as01b` | Arnacœur | [voir fiche](#as01b) |
 
 ### Personnages nuls (pour quand il y a beaucoup de joueurs)
 
 | Code | Personnage | Fiche |
 |---|---|---|
-| `l01` | Villageois Triste | [voir fiche](#l01-villageois-triste) |
-| `l02` | Enfant Sauvage | [voir fiche](#l02-enfant-sauvage) |
-| `l03` | Sœurs | [voir fiche](#l03-soeurs) |
-| `l04` | Frères | [voir fiche](#l04-freres) |
+| `l01` | Villageois Triste | [voir fiche](#l01) |
+| `l02` | Enfant Sauvage | [voir fiche](#l02) |
+| `l03` | Sœurs | [voir fiche](#l03) |
+| `l04` | Frères | [voir fiche](#l04) |
 
 ### Extras
 
 | Code | Personnage | Fiche |
 |---|---|---|
-| `x01` | Villageois | [voir fiche](#x01-villageois) |
-| `x02` | Créatures Maléfiques | [voir fiche](#x02-creatures-malefiques) |
-| `x02.1` | Loups-garous | [voir fiche](#x02.1-loups-garous) |
-| `x03` | Fantômes | [voir fiche](#x03-fantomes) |
-| `x.v09` | Soldat | [voir fiche](#x.v09-soldat) |
-| `x.s01` | Amoureux | [voir fiche](#x.s01-amoureux) |
-| `x.as01b.1` | Traître | [voir fiche](#x.as01b.1-traitre) |
-| `x.as01b.2` | Trahi | [voir fiche](#x.as01b.2-trahi) |
-| `x.m05` | Ennemi | [voir fiche](#x.m05-ennemi) |
+| `x01` | Villageois | [voir fiche](#x01) |
+| `x02` | Créatures Maléfiques | [voir fiche](#x02) |
+| `x02.1` | Loups-garous | [voir fiche](#x02.1) |
+| `x03` | Fantômes | [voir fiche](#x03) |
+| `x.v09` | Soldat | [voir fiche](#x.v09) |
+| `x.s01` | Amoureux | [voir fiche](#x.s01) |
+| `x.as01b.1` | Traître | [voir fiche](#x.as01b.1) |
+| `x.as01b.2` | Trahi | [voir fiche](#x.as01b.2) |
+| `x.m05` | Ennemi | [voir fiche](#x.m05) |
 
 ---
 <a id="personnages"></a>
@@ -341,7 +335,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-evil" id="e01-loup-garou">
+<tr class="role-row faction-evil" id="e01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/e01_final.png" alt="Carte : Loup-garou" width="130">
 <div><code>e01</code></div>
@@ -356,7 +350,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="e02-mechante-sorciere">
+<tr class="role-row faction-evil" id="e02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/e02_final.png" alt="Carte : Méchante Sorcière" width="130">
 <div><code>e02</code></div>
@@ -373,7 +367,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="e03-chaman">
+<tr class="role-row faction-good" id="e03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/e03_final.png" alt="Carte : Chaman" width="130">
 <div><code>e03</code></div>
@@ -389,7 +383,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="e04-voyante">
+<tr class="role-row faction-good" id="e04">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/e04_final.png" alt="Carte : Voyante" width="130">
 <div><code>e04</code></div>
@@ -424,7 +418,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-good" id="v01-petite-fille">
+<tr class="role-row faction-good" id="v01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v01_final.png" alt="Carte : Petite Fille" width="130">
 <div><code>v01</code></div>
@@ -442,7 +436,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v02-maitre-de-lours">
+<tr class="role-row faction-good" id="v02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v02_final.png" alt="Carte : Maître de l’Ours" width="130">
 <div><code>v02</code></div>
@@ -457,7 +451,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v03-maitre-du-corbeau">
+<tr class="role-row faction-good" id="v03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v03_final.png" alt="Carte : Maître du Corbeau" width="130">
 <div><code>v03</code></div>
@@ -472,7 +466,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v04-maitre-du-renard">
+<tr class="role-row faction-good" id="v04">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v04_final.png" alt="Carte : Maître du Renard" width="130">
 <div><code>v04</code></div>
@@ -488,7 +482,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v05-maitre-des-lapins">
+<tr class="role-row faction-good" id="v05">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v05_final.png" alt="Carte : Maître des Lapins" width="130">
 <div><code>v05</code></div>
@@ -503,7 +497,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v06-marionnettiste">
+<tr class="role-row faction-good" id="v06">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v06_final.png" alt="Carte : Marionnettiste" width="130">
 <div><code>v06</code></div>
@@ -519,7 +513,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v07-chevalier-rouille">
+<tr class="role-row faction-good" id="v07">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v07_final.png" alt="Carte : Chevalier Rouillé" width="130">
 <div><code>v07</code></div>
@@ -534,7 +528,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v08-chasseur">
+<tr class="role-row faction-good" id="v08">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v08_final.png" alt="Carte : Chasseur" width="130">
 <div><code>v08</code></div>
@@ -550,7 +544,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v08b-petit-chaperon-rouge">
+<tr class="role-row faction-good" id="v08b">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v08b_final.png" alt="Carte : Petit Chaperon Rouge" width="130">
 <div><code>v08b</code></div>
@@ -566,7 +560,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v09-capitaine">
+<tr class="role-row faction-good" id="v09">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v09_final.png" alt="Carte : Capitaine" width="130">
 <div><code>v09</code></div>
@@ -582,7 +576,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v10-paranoiaque">
+<tr class="role-row faction-good" id="v10">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v10_final.png" alt="Carte : Paranoïaque" width="130">
 <div><code>v10</code></div>
@@ -597,7 +591,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v11-ancien-du-village">
+<tr class="role-row faction-good" id="v11">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v11_final.png" alt="Carte : Ancien du Village" width="130">
 <div><code>v11</code></div>
@@ -612,7 +606,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v12-gitane">
+<tr class="role-row faction-good" id="v12">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v12_final.png" alt="Carte : Gitane" width="130">
 <div><code>v12</code></div>
@@ -628,7 +622,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v13-juge">
+<tr class="role-row faction-good" id="v13">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v13_final.png" alt="Carte : Juge" width="130">
 <div><code>v13</code></div>
@@ -645,7 +639,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v14-accusateur">
+<tr class="role-row faction-good" id="v14">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v14_final.png" alt="Carte : Accusateur" width="130">
 <div><code>v14</code></div>
@@ -661,7 +655,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v15-pyromane">
+<tr class="role-row faction-good" id="v15">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v15_final.png" alt="Carte : Pyromane" width="130">
 <div><code>v15</code></div>
@@ -677,7 +671,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v16-somnambule">
+<tr class="role-row faction-good" id="v16">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v16_final.png" alt="Carte : Somnambule" width="130">
 <div><code>v16</code></div>
@@ -694,7 +688,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v17-sauveur">
+<tr class="role-row faction-good" id="v17">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v17_final.png" alt="Carte : Sauveur" width="130">
 <div><code>v17</code></div>
@@ -710,7 +704,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v18-ange">
+<tr class="role-row faction-good" id="v18">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v18_final.png" alt="Carte : Ange" width="130">
 <div><code>v18</code></div>
@@ -727,7 +721,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v19-prophete">
+<tr class="role-row faction-good" id="v19">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v19_final.png" alt="Carte : Prophète" width="130">
 <div><code>v19</code></div>
@@ -744,7 +738,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v20-domestique">
+<tr class="role-row faction-good" id="v20">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v20_final.png" alt="Carte : Domestique" width="130">
 <div><code>v20</code></div>
@@ -760,7 +754,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v21-falotier">
+<tr class="role-row faction-good" id="v21">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v21_final.png" alt="Carte : Falotier" width="130">
 <div><code>v21</code></div>
@@ -775,7 +769,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v22-enfant">
+<tr class="role-row faction-good" id="v22">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v22_final.png" alt="Carte : Enfant" width="130">
 <div><code>v22</code></div>
@@ -791,7 +785,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v23-maitre-de-laraignee">
+<tr class="role-row faction-good" id="v23">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v23_final.png" alt="Carte : Maître de l’Araignée" width="130">
 <div><code>v23</code></div>
@@ -828,7 +822,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-evil" id="m01-mechant-loup-garou">
+<tr class="role-row faction-evil" id="m01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/m01_final.png" alt="Carte : Méchant Loup-garou" width="130">
 <div><code>m01</code></div>
@@ -844,7 +838,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="m02-loup-garou-voyante">
+<tr class="role-row faction-evil" id="m02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/m02_final.png" alt="Carte : Loup-garou Voyante" width="130">
 <div><code>m02</code></div>
@@ -859,7 +853,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="m03-loup-garou-vampire">
+<tr class="role-row faction-evil" id="m03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/m03_final.png" alt="Carte : Loup-garou Vampire" width="130">
 <div><code>m03</code></div>
@@ -876,7 +870,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="m04-ankou">
+<tr class="role-row faction-evil" id="m04">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/m04_final.png" alt="Carte : Ankou" width="130">
 <div><code>m04</code></div>
@@ -892,7 +886,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="m05-mechant-cupidon">
+<tr class="role-row faction-evil" id="m05">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/m05_final.png" alt="Carte : Méchant Cupidon" width="130">
 <div><code>m05</code></div>
@@ -930,7 +924,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-independent" id="s01-cupidon">
+<tr class="role-row faction-independent" id="s01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/s01_final.png" alt="Carte : Cupidon" width="130">
 <div><code>s01</code></div>
@@ -948,7 +942,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-independent" id="s02-loup-garou-blanc">
+<tr class="role-row faction-independent" id="s02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/s02_final.png" alt="Carte : Loup-garou Blanc" width="130">
 <div><code>s02</code></div>
@@ -983,7 +977,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-flex" id="f01-voleur">
+<tr class="role-row faction-flex" id="f01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/f01_final.png" alt="Carte : Voleur" width="130">
 <div><code>f01</code></div>
@@ -1000,7 +994,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-flex" id="f02-espion">
+<tr class="role-row faction-flex" id="f02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/f02_final.png" alt="Carte : Espion" width="130">
 <div><code>f02</code></div>
@@ -1037,7 +1031,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-good" id="a01-ivrogne">
+<tr class="role-row faction-good" id="a01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a01_final.png" alt="Carte : Ivrogne" width="130">
 <div><code>a01</code></div>
@@ -1054,7 +1048,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-flex" id="a02-chien-loup">
+<tr class="role-row faction-flex" id="a02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a02_final.png" alt="Carte : Chien-Loup" width="130">
 <div><code>a02</code></div>
@@ -1071,7 +1065,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="a03-mime">
+<tr class="role-row faction-good" id="a03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a03_final.png" alt="Carte : Mime" width="130">
 <div><code>a03</code></div>
@@ -1088,7 +1082,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-shifting" id="a04-comedien">
+<tr class="role-row faction-shifting" id="a04">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a04_final.png" alt="Carte : Comédien" width="130">
 <div><code>a04</code></div>
@@ -1104,7 +1098,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-shifting" id="a05-pilleur-de-tombes">
+<tr class="role-row faction-shifting" id="a05">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a05_final.png" alt="Carte : Pilleur de Tombes" width="130">
 <div><code>a05</code></div>
@@ -1123,7 +1117,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="a06-illusionniste">
+<tr class="role-row faction-evil" id="a06">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a06_final.png" alt="Carte : Illusionniste" width="130">
 <div><code>a06</code></div>
@@ -1143,7 +1137,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-independent" id="as01b-arnacoeur">
+<tr class="role-row faction-independent" id="as01b">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/as01b_final.png" alt="Carte : Arnacœur" width="130">
 <div><code>as01b</code></div>
@@ -1181,7 +1175,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-good" id="l01-villageois-triste">
+<tr class="role-row faction-good" id="l01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/l01_final.png" alt="Carte : Villageois Triste" width="130">
 <div><code>l01</code></div>
@@ -1195,7 +1189,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-shifting" id="l02-enfant-sauvage">
+<tr class="role-row faction-shifting" id="l02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/l02_final.png" alt="Carte : Enfant Sauvage" width="130">
 <div><code>l02</code></div>
@@ -1211,7 +1205,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-shifting" id="l03-soeurs">
+<tr class="role-row faction-shifting" id="l03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/l03_final.png" alt="Carte : Sœurs" width="130">
 <div><code>l03</code></div>
@@ -1228,7 +1222,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="l04-freres">
+<tr class="role-row faction-good" id="l04">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/l04_final.png" alt="Carte : Frères" width="130">
 <div><code>l04</code></div>
@@ -1264,7 +1258,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-extra" id="x01-villageois">
+<tr class="role-row faction-extra" id="x01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x01_card.png" alt="Carte : Villageois" width="130">
 <div><code>x01</code></div>
@@ -1278,7 +1272,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x02-creatures-malefiques">
+<tr class="role-row faction-extra" id="x02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x02_card.png" alt="Carte : Créatures Maléfiques" width="130">
 <div><code>x02</code></div>
@@ -1293,7 +1287,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x02.1-loups-garous">
+<tr class="role-row faction-extra" id="x02.1">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x021_card.png" alt="Carte : Loups-garous" width="130">
 <div><code>x02.1</code></div>
@@ -1309,7 +1303,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x03-fantomes">
+<tr class="role-row faction-extra" id="x03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x03_card.png" alt="Carte : Fantômes" width="130">
 <div><code>x03</code></div>
@@ -1326,7 +1320,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x.v09-soldat">
+<tr class="role-row faction-extra" id="x.v09">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/xv09_card.png" alt="Carte : Soldat" width="130">
 <div><code>x.v09</code></div>
@@ -1342,7 +1336,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x.s01-amoureux">
+<tr class="role-row faction-extra" id="x.s01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/xs01_card.png" alt="Carte : Amoureux" width="130">
 <div><code>x.s01</code></div>
@@ -1359,7 +1353,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x.as01b.1-traitre">
+<tr class="role-row faction-extra" id="x.as01b.1">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x.as01b.1_card.png" alt="Carte : Traître" width="130">
 <div><code>x.as01b.1</code></div>
@@ -1376,7 +1370,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x.as01b.2-trahi">
+<tr class="role-row faction-extra" id="x.as01b.2">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x.as01b.2_card.png" alt="Carte : Trahi" width="130">
 <div><code>x.as01b.2</code></div>
@@ -1391,7 +1385,7 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x.m05-ennemi">
+<tr class="role-row faction-extra" id="x.m05">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/xm05_card.png" alt="Carte : Ennemi" width="130">
 <div><code>x.m05</code></div>

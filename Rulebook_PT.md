@@ -1,9 +1,3 @@
----
-title: "Lobisomens da Torre Sangrenta"
-language: "pt-PT"
-source: "Lobisomens na Torre Sangrenta.docx"
----
-
 # Lobisomens da Torre Sangrenta
 
 <style>
@@ -227,98 +221,98 @@ Use esta lista como mapa de navegação para saltar diretamente para uma ficha n
 
 | Código | Personagem | Ficha |
 |---|---|---|
-| `e01` | Lobisomem | [ver ficha](#e01-lobisomem) |
-| `e02` | Bruxa Malvada | [ver ficha](#e02-bruxa-malvada) |
-| `e03` | Chaman | [ver ficha](#e03-chaman) |
-| `e04` | Vidente | [ver ficha](#e04-vidente) |
+| `e01` | Lobisomem | [ver ficha](#e01) |
+| `e02` | Bruxa Malvada | [ver ficha](#e02) |
+| `e03` | Chaman | [ver ficha](#e03) |
+| `e04` | Vidente | [ver ficha](#e04) |
 
 ### Aldeões
 
 | Código | Personagem | Ficha |
 |---|---|---|
-| `v01` | Menina | [ver ficha](#v01-menina) |
-| `v02` | Domador do Urso | [ver ficha](#v02-domador-do-urso) |
-| `v03` | Domador do Corvo | [ver ficha](#v03-domador-do-corvo) |
-| `v04` | Domador da Raposa | [ver ficha](#v04-domador-da-raposa) |
-| `v05` | Domador dos Coelhos | [ver ficha](#v05-domador-dos-coelhos) |
-| `v06` | Marionetista | [ver ficha](#v06-marionetista) |
-| `v07` | Cavaleiro Enferrujado | [ver ficha](#v07-cavaleiro-enferrujado) |
-| `v08` | Caçador | [ver ficha](#v08-cacador) |
-| `v08b` | Capuchinho Vermelho | [ver ficha](#v08b-capuchinho-vermelho) |
-| `v09` | Capitão | [ver ficha](#v09-capitao) |
-| `v10` | Paranoico | [ver ficha](#v10-paranoico) |
-| `v11` | Chefe da Aldeia | [ver ficha](#v11-chefe-da-aldeia) |
-| `v12` | Cigana | [ver ficha](#v12-cigana) |
-| `v13` | Juiz | [ver ficha](#v13-juiz) |
-| `v14` | Acusador | [ver ficha](#v14-acusador) |
-| `v15` | Piromaníaco | [ver ficha](#v15-piromaniaco) |
-| `v16` | Sonâmbulo | [ver ficha](#v16-sonambulo) |
-| `v17` | Salvador | [ver ficha](#v17-salvador) |
-| `v18` | Anjo | [ver ficha](#v18-anjo) |
-| `v19` | Profeta | [ver ficha](#v19-profeta) |
-| `v20` | Empregada | [ver ficha](#v20-empregada) |
-| `v21` | Faroleiro | [ver ficha](#v21-faroleiro) |
-| `v22` | Pedro | [ver ficha](#v22-pedro) |
-| `v23` | Domador da Aranha | [ver ficha](#v23-domador-da-aranha) |
+| `v01` | Menina | [ver ficha](#v01) |
+| `v02` | Domador do Urso | [ver ficha](#v02) |
+| `v03` | Domador do Corvo | [ver ficha](#v03) |
+| `v04` | Domador da Raposa | [ver ficha](#v04) |
+| `v05` | Domador dos Coelhos | [ver ficha](#v05) |
+| `v06` | Marionetista | [ver ficha](#v06) |
+| `v07` | Cavaleiro Enferrujado | [ver ficha](#v07) |
+| `v08` | Caçador | [ver ficha](#v08) |
+| `v08b` | Capuchinho Vermelho | [ver ficha](#v08b) |
+| `v09` | Capitão | [ver ficha](#v09) |
+| `v10` | Paranoico | [ver ficha](#v10) |
+| `v11` | Chefe da Aldeia | [ver ficha](#v11) |
+| `v12` | Cigana | [ver ficha](#v12) |
+| `v13` | Juiz | [ver ficha](#v13) |
+| `v14` | Acusador | [ver ficha](#v14) |
+| `v15` | Piromaníaco | [ver ficha](#v15) |
+| `v16` | Sonâmbulo | [ver ficha](#v16) |
+| `v17` | Salvador | [ver ficha](#v17) |
+| `v18` | Anjo | [ver ficha](#v18) |
+| `v19` | Profeta | [ver ficha](#v19) |
+| `v20` | Empregada | [ver ficha](#v20) |
+| `v21` | Faroleiro | [ver ficha](#v21) |
+| `v22` | Pedro | [ver ficha](#v22) |
+| `v23` | Domador da Aranha | [ver ficha](#v23) |
 
 ### Personagens malvados
 
 | Código | Personagem | Ficha |
 |---|---|---|
-| `m01` | Lobisomem Mau | [ver ficha](#m01-lobisomem-mau) |
-| `m02` | Lobisomem Vidente | [ver ficha](#m02-lobisomem-vidente) |
-| `m03` | Lobisomem Vampiro | [ver ficha](#m03-lobisomem-vampiro) |
-| `m04` | Ankou | [ver ficha](#m04-ankou) |
-| `m05` | Cupido Malvado | [ver ficha](#m05-cupido-malvado) |
+| `m01` | Lobisomem Mau | [ver ficha](#m01) |
+| `m02` | Lobisomem Vidente | [ver ficha](#m02) |
+| `m03` | Lobisomem Vampiro | [ver ficha](#m03) |
+| `m04` | Ankou | [ver ficha](#m04) |
+| `m05` | Cupido Malvado | [ver ficha](#m05) |
 
 ### Personagens independentes
 
 | Código | Personagem | Ficha |
 |---|---|---|
-| `s01` | Cupido | [ver ficha](#s01-cupido) |
-| `s02` | Lobisomem Branco | [ver ficha](#s02-lobisomem-branco) |
+| `s01` | Cupido | [ver ficha](#s01) |
+| `s02` | Lobisomem Branco | [ver ficha](#s02) |
 
 ### Personagens flexíveis
 
 | Código | Personagem | Ficha |
 |---|---|---|
-| `f01` | Ladrão | [ver ficha](#f01-ladrao) |
-| `f02` | Espião | [ver ficha](#f02-espiao) |
+| `f01` | Ladrão | [ver ficha](#f01) |
+| `f02` | Espião | [ver ficha](#f02) |
 
 ### Personagens complexos
 
 | Código | Personagem | Ficha |
 |---|---|---|
-| `a01` | Bêbado | [ver ficha](#a01-bebado) |
-| `a02` | Cão-Lobo | [ver ficha](#a02-cao-lobo) |
-| `a03` | Mimo | [ver ficha](#a03-mimo) |
-| `a04` | Ator | [ver ficha](#a04-ator) |
-| `a05` | Rouba-Túmulos | [ver ficha](#a05-rouba-tumulos) |
-| `a06` | Ilusionista | [ver ficha](#a06-ilusionista) |
-| `as01b` | Amante Secreto | [ver ficha](#as01b-amante-secreto) |
+| `a01` | Bêbado | [ver ficha](#a01) |
+| `a02` | Cão-Lobo | [ver ficha](#a02) |
+| `a03` | Mimo | [ver ficha](#a03) |
+| `a04` | Ator | [ver ficha](#a04) |
+| `a05` | Rouba-Túmulos | [ver ficha](#a05) |
+| `a06` | Ilusionista | [ver ficha](#a06) |
+| `as01b` | Amante Secreto | [ver ficha](#as01b) |
 
 ### Personagens forretas (para quando há muita gente)
 
 | Código | Personagem | Ficha |
 |---|---|---|
-| `l01` | Aldeão Triste | [ver ficha](#l01-aldeao-triste) |
-| `l02` | Criança Selvagem | [ver ficha](#l02-crianca-selvagem) |
-| `l03` | Irmãs | [ver ficha](#l03-irmas) |
-| `l04` | Irmãos | [ver ficha](#l04-irmaos) |
+| `l01` | Aldeão Triste | [ver ficha](#l01) |
+| `l02` | Criança Selvagem | [ver ficha](#l02) |
+| `l03` | Irmãs | [ver ficha](#l03) |
+| `l04` | Irmãos | [ver ficha](#l04) |
 
 ### Extras
 
 | Código | Personagem | Ficha |
 |---|---|---|
-| `x01` | Aldeões | [ver ficha](#x01-aldeoes) |
-| `x02` | Criaturas Malvadas | [ver ficha](#x02-criaturas-malvadas) |
-| `x02.1` | Lobisomens | [ver ficha](#x02.1-lobisomens) |
-| `x03` | Fantasma | [ver ficha](#x03-fantasma) |
-| `x.v09` | Soldado | [ver ficha](#x.v09-soldado) |
-| `x.s01` | Namorado | [ver ficha](#x.s01-namorado) |
-| `x.as01b.1` | Traidor | [ver ficha](#x.as01b.1-traidor) |
-| `x.as01b.2` | Traído | [ver ficha](#x.as01b.2-traido) |
-| `x.m05` | Inimigo | [ver ficha](#x.m05-inimigo) |
+| `x01` | Aldeões | [ver ficha](#x01) |
+| `x02` | Criaturas Malvadas | [ver ficha](#x02) |
+| `x02.1` | Lobisomens | [ver ficha](#x02.1) |
+| `x03` | Fantasma | [ver ficha](#x03) |
+| `x.v09` | Soldado | [ver ficha](#x.v09) |
+| `x.s01` | Namorado | [ver ficha](#x.s01) |
+| `x.as01b.1` | Traidor | [ver ficha](#x.as01b.1) |
+| `x.as01b.2` | Traído | [ver ficha](#x.as01b.2) |
+| `x.m05` | Inimigo | [ver ficha](#x.m05) |
 
 ---
 <a id="personagens"></a>
@@ -342,7 +336,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-evil" id="e01-lobisomem">
+<tr class="role-row faction-evil" id="e01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/e01_final.png" alt="Carta: Lobisomem" width="130">
 <div><code>e01</code></div>
@@ -357,7 +351,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="e02-bruxa-malvada">
+<tr class="role-row faction-evil" id="e02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/e02_final.png" alt="Carta: Bruxa Malvada" width="130">
 <div><code>e02</code></div>
@@ -374,7 +368,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="e03-chaman">
+<tr class="role-row faction-good" id="e03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/e03_final.png" alt="Carta: Chaman" width="130">
 <div><code>e03</code></div>
@@ -390,7 +384,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="e04-vidente">
+<tr class="role-row faction-good" id="e04">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/e04_final.png" alt="Carta: Vidente" width="130">
 <div><code>e04</code></div>
@@ -425,7 +419,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-good" id="v01-menina">
+<tr class="role-row faction-good" id="v01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v01_final.png" alt="Carta: Menina" width="130">
 <div><code>v01</code></div>
@@ -443,7 +437,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v02-domador-do-urso">
+<tr class="role-row faction-good" id="v02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v02_final.png" alt="Carta: Domador do Urso" width="130">
 <div><code>v02</code></div>
@@ -458,7 +452,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v03-domador-do-corvo">
+<tr class="role-row faction-good" id="v03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v03_final.png" alt="Carta: Domador do Corvo" width="130">
 <div><code>v03</code></div>
@@ -473,7 +467,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v04-domador-da-raposa">
+<tr class="role-row faction-good" id="v04">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v04_final.png" alt="Carta: Domador da Raposa" width="130">
 <div><code>v04</code></div>
@@ -489,7 +483,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v05-domador-dos-coelhos">
+<tr class="role-row faction-good" id="v05">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v05_final.png" alt="Carta: Domador dos Coelhos" width="130">
 <div><code>v05</code></div>
@@ -504,7 +498,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v06-marionetista">
+<tr class="role-row faction-good" id="v06">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v06_final.png" alt="Carta: Marionetista" width="130">
 <div><code>v06</code></div>
@@ -520,7 +514,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v07-cavaleiro-enferrujado">
+<tr class="role-row faction-good" id="v07">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v07_final.png" alt="Carta: Cavaleiro Enferrujado" width="130">
 <div><code>v07</code></div>
@@ -535,7 +529,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v08-cacador">
+<tr class="role-row faction-good" id="v08">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v08_final.png" alt="Carta: Caçador" width="130">
 <div><code>v08</code></div>
@@ -551,7 +545,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v08b-capuchinho-vermelho">
+<tr class="role-row faction-good" id="v08b">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v08b_final.png" alt="Carta: Capuchinho Vermelho" width="130">
 <div><code>v08b</code></div>
@@ -567,7 +561,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v09-capitao">
+<tr class="role-row faction-good" id="v09">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v09_final.png" alt="Carta: Capitão" width="130">
 <div><code>v09</code></div>
@@ -583,7 +577,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v10-paranoico">
+<tr class="role-row faction-good" id="v10">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v10_final.png" alt="Carta: Paranoico" width="130">
 <div><code>v10</code></div>
@@ -598,7 +592,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v11-chefe-da-aldeia">
+<tr class="role-row faction-good" id="v11">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v11_final.png" alt="Carta: Chefe da Aldeia" width="130">
 <div><code>v11</code></div>
@@ -613,7 +607,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v12-cigana">
+<tr class="role-row faction-good" id="v12">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v12_final.png" alt="Carta: Cigana" width="130">
 <div><code>v12</code></div>
@@ -629,7 +623,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v13-juiz">
+<tr class="role-row faction-good" id="v13">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v13_final.png" alt="Carta: Juiz" width="130">
 <div><code>v13</code></div>
@@ -646,7 +640,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v14-acusador">
+<tr class="role-row faction-good" id="v14">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v14_final.png" alt="Carta: Acusador" width="130">
 <div><code>v14</code></div>
@@ -662,7 +656,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v15-piromaniaco">
+<tr class="role-row faction-good" id="v15">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v15_final.png" alt="Carta: Piromaníaco" width="130">
 <div><code>v15</code></div>
@@ -678,7 +672,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v16-sonambulo">
+<tr class="role-row faction-good" id="v16">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v16_final.png" alt="Carta: Sonâmbulo" width="130">
 <div><code>v16</code></div>
@@ -695,7 +689,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v17-salvador">
+<tr class="role-row faction-good" id="v17">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v17_final.png" alt="Carta: Salvador" width="130">
 <div><code>v17</code></div>
@@ -711,7 +705,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v18-anjo">
+<tr class="role-row faction-good" id="v18">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v18_final.png" alt="Carta: Anjo" width="130">
 <div><code>v18</code></div>
@@ -728,7 +722,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v19-profeta">
+<tr class="role-row faction-good" id="v19">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v19_final.png" alt="Carta: Profeta" width="130">
 <div><code>v19</code></div>
@@ -745,7 +739,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v20-empregada">
+<tr class="role-row faction-good" id="v20">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v20_final.png" alt="Carta: Empregada" width="130">
 <div><code>v20</code></div>
@@ -761,7 +755,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v21-faroleiro">
+<tr class="role-row faction-good" id="v21">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v21_final.png" alt="Carta: Faroleiro" width="130">
 <div><code>v21</code></div>
@@ -776,7 +770,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v22-pedro">
+<tr class="role-row faction-good" id="v22">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v22_final.png" alt="Carta: Pedro" width="130">
 <div><code>v22</code></div>
@@ -792,7 +786,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="v23-domador-da-aranha">
+<tr class="role-row faction-good" id="v23">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/v23_final.png" alt="Carta: Domador da Aranha" width="130">
 <div><code>v23</code></div>
@@ -829,7 +823,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-evil" id="m01-lobisomem-mau">
+<tr class="role-row faction-evil" id="m01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/m01_final.png" alt="Carta: Lobisomem Mau" width="130">
 <div><code>m01</code></div>
@@ -845,7 +839,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="m02-lobisomem-vidente">
+<tr class="role-row faction-evil" id="m02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/m02_final.png" alt="Carta: Lobisomem Vidente" width="130">
 <div><code>m02</code></div>
@@ -860,7 +854,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="m03-lobisomem-vampiro">
+<tr class="role-row faction-evil" id="m03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/m03_final.png" alt="Carta: Lobisomem Vampiro" width="130">
 <div><code>m03</code></div>
@@ -877,7 +871,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="m04-ankou">
+<tr class="role-row faction-evil" id="m04">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/m04_final.png" alt="Carta: Ankou" width="130">
 <div><code>m04</code></div>
@@ -893,7 +887,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="m05-cupido-malvado">
+<tr class="role-row faction-evil" id="m05">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/m05_final.png" alt="Carta: Cupido Malvado" width="130">
 <div><code>m05</code></div>
@@ -930,7 +924,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-independent" id="s01-cupido">
+<tr class="role-row faction-independent" id="s01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/s01_final.png" alt="Carta: Cupido" width="130">
 <div><code>s01</code></div>
@@ -947,7 +941,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-independent" id="s02-lobisomem-branco">
+<tr class="role-row faction-independent" id="s02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/s02_final.png" alt="Carta: Lobisomem Branco" width="130">
 <div><code>s02</code></div>
@@ -982,7 +976,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-flex" id="f01-ladrao">
+<tr class="role-row faction-flex" id="f01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/f01_final.png" alt="Carta: Ladrão" width="130">
 <div><code>f01</code></div>
@@ -999,7 +993,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-flex" id="f02-espiao">
+<tr class="role-row faction-flex" id="f02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/f02_final.png" alt="Carta: Espião" width="130">
 <div><code>f02</code></div>
@@ -1036,7 +1030,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-good" id="a01-bebado">
+<tr class="role-row faction-good" id="a01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a01_final.png" alt="Carta: Bêbado" width="130">
 <div><code>a01</code></div>
@@ -1053,7 +1047,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-flex" id="a02-cao-lobo">
+<tr class="role-row faction-flex" id="a02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a02_final.png" alt="Carta: Cão-Lobo" width="130">
 <div><code>a02</code></div>
@@ -1070,7 +1064,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="a03-mimo">
+<tr class="role-row faction-good" id="a03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a03_final.png" alt="Carta: Mimo" width="130">
 <div><code>a03</code></div>
@@ -1087,7 +1081,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-shifting" id="a04-ator">
+<tr class="role-row faction-shifting" id="a04">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a04_final.png" alt="Carta: Ator" width="130">
 <div><code>a04</code></div>
@@ -1103,7 +1097,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-shifting" id="a05-rouba-tumulos">
+<tr class="role-row faction-shifting" id="a05">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a05_final.png" alt="Carta: Rouba-Túmulos" width="130">
 <div><code>a05</code></div>
@@ -1122,7 +1116,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-evil" id="a06-ilusionista">
+<tr class="role-row faction-evil" id="a06">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/a06_final.png" alt="Carta: Ilusionista" width="130">
 <div><code>a06</code></div>
@@ -1142,7 +1136,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-independent" id="as01b-amante-secreto">
+<tr class="role-row faction-independent" id="as01b">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/as01b_final.png" alt="Carta: Amante Secreto" width="130">
 <div><code>as01b</code></div>
@@ -1180,7 +1174,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-good" id="l01-aldeao-triste">
+<tr class="role-row faction-good" id="l01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/l01_final.png" alt="Carta: Aldeão Triste" width="130">
 <div><code>l01</code></div>
@@ -1194,7 +1188,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-shifting" id="l02-crianca-selvagem">
+<tr class="role-row faction-shifting" id="l02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/l02_final.png" alt="Carta: Criança Selvagem" width="130">
 <div><code>l02</code></div>
@@ -1210,7 +1204,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-shifting" id="l03-irmas">
+<tr class="role-row faction-shifting" id="l03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/l03_final.png" alt="Carta: Irmãs" width="130">
 <div><code>l03</code></div>
@@ -1227,7 +1221,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-good" id="l04-irmaos">
+<tr class="role-row faction-good" id="l04">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/final/l04_final.png" alt="Carta: Irmãos" width="130">
 <div><code>l04</code></div>
@@ -1263,7 +1257,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </tr>
 </thead>
 <tbody>
-<tr class="role-row faction-extra" id="x01-aldeoes">
+<tr class="role-row faction-extra" id="x01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x01_card.png" alt="Carta: Aldeões" width="130">
 <div><code>x01</code></div>
@@ -1277,7 +1271,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x02-criaturas-malvadas">
+<tr class="role-row faction-extra" id="x02">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x02_card.png" alt="Carta: Criaturas Malvadas" width="130">
 <div><code>x02</code></div>
@@ -1292,7 +1286,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x02.1-lobisomens">
+<tr class="role-row faction-extra" id="x02.1">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x021_card.png" alt="Carta: Lobisomens" width="130">
 <div><code>x02.1</code></div>
@@ -1308,7 +1302,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x03-fantasma">
+<tr class="role-row faction-extra" id="x03">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x03_card.png" alt="Carta: Fantasma" width="130">
 <div><code>x03</code></div>
@@ -1325,7 +1319,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x.v09-soldado">
+<tr class="role-row faction-extra" id="x.v09">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/xv09_card.png" alt="Carta: Soldado" width="130">
 <div><code>x.v09</code></div>
@@ -1341,7 +1335,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x.s01-namorado">
+<tr class="role-row faction-extra" id="x.s01">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/xs01_card.png" alt="Carta: Namorado" width="130">
 <div><code>x.s01</code></div>
@@ -1358,7 +1352,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x.as01b.1-traidor">
+<tr class="role-row faction-extra" id="x.as01b.1">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x.as01b.1_card.png" alt="Carta: Traidor" width="130">
 <div><code>x.as01b.1</code></div>
@@ -1375,7 +1369,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x.as01b.2-traido">
+<tr class="role-row faction-extra" id="x.as01b.2">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/x.as01b.2_card.png" alt="Carta: Traído" width="130">
 <div><code>x.as01b.2</code></div>
@@ -1390,7 +1384,7 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 </div>
 </td>
 </tr>
-<tr class="role-row faction-extra" id="x.m05-inimigo">
+<tr class="role-row faction-extra" id="x.m05">
 <td class="role-image-cell" width="150" valign="top" align="center">
 <img src="art/xtras_cards/xm05_card.png" alt="Carta: Inimigo" width="130">
 <div><code>x.m05</code></div>
