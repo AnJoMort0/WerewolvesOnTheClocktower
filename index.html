@@ -1,12 +1,946 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mestre do Jogo — Gerador de Personagens</title>
+  <style>
+    :root {
+      --bg: #292620;
+      --bg-deep: #171514;
+      --panel: rgba(48, 44, 38, 0.82);
+      --panel-soft: rgba(55, 49, 43, 0.88);
+      --field: rgba(38, 34, 30, 0.92);
+      --text: #ece2d2;
+      --text-strong: #fff8ea;
+      --muted: #9f9586;
+      --accent: #c73b35;
+      --accent-bright: #e24a41;
+      --accent-deep: #7d2424;
+      --accent-soft: rgba(205, 49, 46, 0.16);
+      --gold: #b48b51;
+      --gold-bright: #d39d56;
+      --gold-soft: rgba(211, 157, 86, 0.14);
+      --line: rgba(225, 210, 177, 0.11);
+      --line-strong: rgba(225, 210, 177, 0.2);
+      --shadow: rgba(0, 0, 0, 0.44);
+      --success: #23824e;
+      --danger: #e24a41;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      color-scheme: dark;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at 52% 18%, rgba(211, 157, 86, 0.075), transparent 27rem),
+        radial-gradient(circle at 12% 5%, rgba(199, 59, 53, 0.1), transparent 22rem),
+        radial-gradient(circle at 88% 90%, rgba(180, 139, 81, 0.055), transparent 26rem),
+        linear-gradient(135deg, #302d27 0%, var(--bg) 46%, var(--bg-deep) 100%);
+      color: var(--text);
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    body::before {
+      background-image:
+        linear-gradient(rgba(255, 248, 234, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 248, 234, 0.012) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 77%);
+    }
+
+    body::after {
+      background:
+        radial-gradient(circle at center, transparent 18%, rgba(0, 0, 0, 0.22) 100%),
+        repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.015) 0 1px, transparent 1px 7px);
+      opacity: 0.72;
+      mix-blend-mode: soft-light;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 50px;
+    }
+
+    header {
+      display: grid;
+      gap: 7px;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      opacity: 0.86;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--accent-bright);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      letter-spacing: 0.05em;
+      line-height: 0.96;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 rgba(0, 0, 0, 0.38), 0 0 18px rgba(199, 59, 53, 0.16);
+    }
+
+    .subtitle {
+      max-width: 780px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.55;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(190px, 1fr) minmax(220px, 1fr) auto;
+      gap: 16px;
+      align-items: end;
+      margin: 26px 0 16px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background:
+        linear-gradient(145deg, rgba(61, 55, 48, 0.72), rgba(37, 34, 30, 0.91)),
+        radial-gradient(circle at 20% 0%, rgba(211, 157, 86, 0.1), transparent 18rem);
+      box-shadow: 0 18px 44px var(--shadow), inset 0 1px 0 rgba(255, 248, 234, 0.04);
+      backdrop-filter: blur(10px);
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label,
+    legend {
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--field);
+      color: var(--text-strong);
+      font: inherit;
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    }
+
+    input[type="number"]:focus {
+      border-color: rgba(199, 59, 53, 0.64);
+      box-shadow: 0 0 0 4px var(--accent-soft), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    fieldset {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .radio-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .radio-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 248, 234, 0.04);
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .radio-pill:has(input:checked) {
+      border-color: rgba(199, 59, 53, 0.72);
+      background: linear-gradient(180deg, rgba(199, 59, 53, 0.2), rgba(125, 36, 36, 0.18));
+      color: var(--text-strong);
+      box-shadow: 0 0 0 1px rgba(199, 59, 53, 0.08);
+    }
+
+    .radio-pill input {
+      accent-color: var(--accent);
+    }
+
+    button {
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 18px;
+      background: linear-gradient(180deg, var(--accent-bright), var(--accent-deep));
+      color: #fff8ea;
+      font: inherit;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(199, 59, 53, 0.2), inset 0 1px 0 rgba(255, 248, 234, 0.15);
+      transition: transform 0.16s ease, filter 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.07);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .secondary-button {
+      background: rgba(255, 248, 234, 0.045);
+      border: 1px solid var(--line);
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    .secondary-button:hover {
+      background: rgba(255, 248, 234, 0.075);
+      border-color: var(--line-strong);
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 38px;
+      margin-bottom: 16px;
+    }
+
+    .status {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .status.error {
+      color: var(--danger);
+      font-weight: 800;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .role-card {
+      display: grid;
+      gap: 12px;
+      min-height: 190px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background:
+        linear-gradient(145deg, var(--panel-soft), rgba(38, 34, 30, 0.94)),
+        radial-gradient(circle at 0% 0%, rgba(211, 157, 86, 0.08), transparent 14rem);
+      box-shadow: 0 16px 38px var(--shadow), inset 0 1px 0 rgba(255, 248, 234, 0.035);
+    }
+
+    .role-card:hover {
+      border-color: rgba(225, 210, 177, 0.18);
+    }
+
+    .role-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .player-badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: var(--gold-soft);
+      color: #d1b98d;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .role-id {
+      color: var(--accent-bright);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .role-name {
+      margin: 0;
+      color: var(--text-strong);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      line-height: 1.16;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 86px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(34, 31, 28, 0.92);
+      color: var(--text);
+      font: 0.94rem/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: rgba(211, 157, 86, 0.55);
+      box-shadow: 0 0 0 4px var(--gold-soft);
+    }
+
+    .copy-button {
+      justify-self: start;
+      padding: 11px 14px;
+      font-size: 0.76rem;
+    }
+
+    .copy-button.copied,
+    .secondary-button.copied {
+      background: var(--success);
+      color: #f5fff4;
+      box-shadow: none;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 26px;
+      border: 1px dashed var(--line-strong);
+      border-radius: 18px;
+      color: var(--muted);
+      text-align: center;
+      background: rgba(255, 248, 234, 0.032);
+    }
+
+    @media (max-width: 760px) {
+      main {
+        width: min(100% - 20px, 1120px);
+        padding-top: 22px;
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+        border-radius: 18px;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .actions,
+      .actions button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <script src="langData.js"></script>
-    <script src="main.js"></script>
+  <main>
+    <header>
+      <p id="eyebrow" class="eyebrow"></p>
+      <h1 id="pageTitle"></h1>
+      <p id="subtitle" class="subtitle"></p>
+    </header>
+
+    <section id="controls" class="controls" aria-label="">
+      <div class="field">
+        <label id="playerCountLabel" for="playerCount"></label>
+        <input id="playerCount" type="number" min="8" step="1" value="10" inputmode="numeric" />
+      </div>
+
+      <fieldset>
+        <legend id="languageLegend"></legend>
+        <div class="radio-row">
+          <label class="radio-pill">
+            <input type="radio" name="language" value="PT" checked />
+            Português
+          </label>
+          <label class="radio-pill">
+            <input type="radio" name="language" value="FR" />
+            Français
+          </label>
+        </div>
+      </fieldset>
+
+      <button id="generateButton" type="button"></button>
+    </section>
+
+    <div class="status-row">
+      <p id="status" class="status"></p>
+      <div class="actions">
+        <button id="copyAllButton" class="secondary-button" type="button" hidden></button>
+      </div>
+    </div>
+
+    <section id="results" class="grid" aria-live="polite"></section>
+  </main>
+
+  <script>
+    const ROLE_LABELS_PT = {
+      e01: "Lobisomem",
+      e02: "Bruxa Malvada",
+      e03: "Chaman",
+      e04: "Vidente",
+      v01: "Menina",
+      v02: "Domador do Urso",
+      v03: "Domador do Corvo",
+      v04: "Domador da Raposa",
+      v05: "Domador dos Coelhos",
+      v06: "Marionetista",
+      v07: "Cavaleiro Enferrujado",
+      v08: "Caçador",
+      v08b: "Capuchinho Vermelho",
+      v09: "Capitão",
+      v10: "Paranoico",
+      v11: "Chefe da Aldeia",
+      v12: "Cigana",
+      v13: "Juiz",
+      v14: "Acusador",
+      v15: "Piromaníaco",
+      v16: "Sonâmbulo",
+      v17: "Salvador",
+      v18: "Anjo",
+      v19: "Profeta",
+      v20: "Empregada",
+      v21: "Faroleiro",
+      v22: "Pedro",
+      v23: "Domador da Aranha",
+      m01: "Lobisomem Mau",
+      m02: "Lobisomem Vidente",
+      m03: "Lobisomem Vampiro",
+      m04: "Ankou",
+      m05: "Cupido Malvado",
+      s01: "Cupido",
+      s02: "Lobisomem Branco",
+      f01: "Ladrão",
+      f02: "Espião",
+      a01: "Bêbado",
+      a02: "Cão-Lobo",
+      a03: "Mimo",
+      a04: "Ator",
+      a05: "Rouba-Túmulos",
+      a06: "Ilusionista",
+      as01b: "Amante Secreto",
+      l01: "Aldeão Triste",
+      l02: "Criança Selvagem",
+      l03: "Irmãs",
+      l04: "Irmãos"
+    };
+
+    const ROLE_LABELS_FR = {
+      e01: "Loup-garou",
+      e02: "Méchante Sorcière",
+      e03: "Chaman",
+      e04: "Voyante",
+      v01: "Petite Fille",
+      v02: "Maître de l'Ours",
+      v03: "Maître du Corbeau",
+      v04: "Maître du Renard",
+      v05: "Maîtres des Lapins",
+      v06: "Marionettiste",
+      v07: "Chevalier Rouillé",
+      v08: "Chasseur",
+      v08b: "Petit Chaperon Rouge",
+      v09: "Capitaine",
+      v10: "Paranoïaque",
+      v11: "Ancien du Village",
+      v12: "Gitane",
+      v13: "Juge",
+      v14: "Accusateur",
+      v15: "Pyromane",
+      v16: "Somnambule",
+      v17: "Sauveur",
+      v18: "Ange",
+      v19: "Prophète",
+      v20: "Domestique",
+      v21: "Falotier",
+      v22: "Enfant",
+      m01: "Méchant Loup-garou",
+      m02: "Loup-garou Voyant",
+      m03: "Loup-garou Vampire",
+      m04: "Ankou",
+      m05: "Méchant Cupidon",
+      s01: "Cupidon",
+      s02: "Loup-garou Blanc",
+      f01: "Voleur",
+      a01: "Ivrogne",
+      a02: "Chien-Loup",
+      a03: "Mîme",
+      a04: "Comédien",
+      a05: "Pilleur de Tombes",
+      a06: "Illusionniste",
+      as01b: "Arnacœur",
+      v23: "Maître de l'Araignée",
+      f02: "Espion",
+      l01: "Villageois Triste",
+      l02: "Enfant Sauvage",
+      l03: "Sœurs",
+      l04: "Frères"
+    };
+
+    const UI_TEXT = {
+      PT: {
+        htmlLang: "pt",
+        documentTitle: "Mestre do Jogo — Gerador de Personagens",
+        eyebrow: "Lobisomens na Torre Sangrenta",
+        pageTitle: "Mestre do Jogo",
+        subtitle: "Escolhe o número de jogadores e a língua. Esta página prepara uma mensagem privada por jogador, pronta a copiar e enviar.",
+        controlsLabel: "Controlos do gerador",
+        playerCountLabel: "Número de jogadores",
+        languageLegend: "Língua",
+        generateButton: "Gerar personagens",
+        initialStatus: "Escolhe os jogadores e gera a distribuição.",
+        emptyState: "As mensagens privadas vão aparecer aqui.",
+        copyAllButton: "Copiar todas as mensagens",
+        playerBadge: "Jogador",
+        copyButton: "Copiar mensagem",
+        copiedButton: "Copiado!",
+        allCopiedButton: "Tudo copiado!",
+        errorMinPlayers: "Insere pelo menos 8 jogadores.",
+        noRoles: "Nenhuma personagem gerada.",
+        generatedStatus: (count) => `${count} mensagens prontas em PT.`,
+        textareaAria: (id, name) => `Mensagem para copiar de ${id}.${name}`
+      },
+      FR: {
+        htmlLang: "fr",
+        documentTitle: "Maître du Jeu — Générateur de Personnages",
+        eyebrow: "Loups-Garous de la Tour Sanglante",
+        pageTitle: "Maître du Jeu",
+        subtitle: "Choisis le nombre de joueurs et la langue. Cette page prépare un message privé par joueur, prêt à copier et à envoyer.",
+        controlsLabel: "Contrôles du générateur",
+        playerCountLabel: "Nombre de joueurs",
+        languageLegend: "Langue",
+        generateButton: "Générer les personnages",
+        initialStatus: "Choisis les joueurs et génère la distribution.",
+        emptyState: "Les messages privés apparaîtront ici.",
+        copyAllButton: "Copier tous les messages",
+        playerBadge: "Joueur",
+        copyButton: "Copier le message",
+        copiedButton: "Copié !",
+        allCopiedButton: "Tout est copié !",
+        errorMinPlayers: "Indique au moins 8 joueurs.",
+        noRoles: "Aucun personnage généré.",
+        generatedStatus: (count) => `${count} messages prêts en FR.`,
+        textareaAria: (id, name) => `Message à copier pour ${id}.${name}`
+      }
+    };
+
+    const ROLE_DEFS = {
+      e01: { id: "e01", category: "e" },
+      e02: { id: "e02", category: "e" },
+      e03: { id: "e03", category: "e" },
+      e04: { id: "e04", category: "e" },
+      v01: { id: "v01", category: "v" },
+      v02: { id: "v02", category: "v" },
+      v03: { id: "v03", category: "v" },
+      v04: { id: "v04", category: "v" },
+      v05: { id: "v05", category: "v" },
+      v06: { id: "v06", category: "v" },
+      v07: { id: "v07", category: "v" },
+      v08: { id: "v08", category: "v" },
+      v08b: { id: "v08b", category: "v", requires: "v08" },
+      v09: { id: "v09", category: "v" },
+      v10: { id: "v10", category: "v" },
+      v11: { id: "v11", category: "v" },
+      v12: { id: "v12", category: "v" },
+      v13: { id: "v13", category: "v" },
+      v14: { id: "v14", category: "v" },
+      v15: { id: "v15", category: "v" },
+      v16: { id: "v16", category: "v" },
+      v17: { id: "v17", category: "v" },
+      v18: { id: "v18", category: "v" },
+      v19: { id: "v19", category: "v" },
+      v20: { id: "v20", category: "v" },
+      v21: { id: "v21", category: "v" },
+      v22: { id: "v22", category: "v" },
+      v23: { id: "v23", category: "v" },
+      m01: { id: "m01", category: "m" },
+      m02: { id: "m02", category: "m" },
+      m03: { id: "m03", category: "m" },
+      m04: { id: "m04", category: "m" },
+      m05: { id: "m05", category: "m" },
+      s01: { id: "s01", category: "s" },
+      s02: { id: "s02", category: "s" },
+      f01: { id: "f01", category: "f" },
+      f02: { id: "f02", category: "f" },
+      a01: { id: "a01", category: "a" },
+      a02: { id: "a02", category: "a" },
+      a03: { id: "a03", category: "a" },
+      a04: { id: "a04", category: "a" },
+      a05: { id: "a05", category: "a" },
+      a06: { id: "a06", category: "a" },
+      as01b: { id: "as01b", category: "a", requires: "s01" },
+      l01: { id: "l01", category: "l" },
+      l02: { id: "l02", category: "l" },
+      l03: { id: "l03", category: "l", groupSize: 2 },
+      l04: { id: "l04", category: "l", groupSize: 3 }
+    };
+
+    const ESSENTIAL_SINGLES = ["e02", "e03", "e04"];
+    const SPECIAL_WEREWOLVES = ["m01", "m02", "m03", "s02"];
+    const VILLAGER_UNIQUE = [
+      "v01", "v02", "v03", "v04", "v05", "v06", "v07", "v08", "v08b", "v09", "v10",
+      "v11", "v12", "v13", "v14", "v15", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23"
+    ];
+    const ADVANCED_ROLES = ["a01", "a02", "a03", "a04", "a05", "a06", "as01b"];
+    const OTHER_UNIQUE = ["m04", "m05", "s01", "f01", "f02"];
+    const LAME_SINGLES = ["l02"];
+    const INFO_ROLES = ["v02", "v03", "v04", "v05", "v06", "v22", "v23", "f02"];
+
+    const BASE_URLS = {
+      PT: "https://anjomort0.github.io/WerewolvesOnTheClocktower/Rulebook_PT.html",
+      FR: "https://anjomort0.github.io/WerewolvesOnTheClocktower/Rulebook_FR.html"
+    };
+
+    const eyebrow = document.querySelector("#eyebrow");
+    const pageTitle = document.querySelector("#pageTitle");
+    const subtitle = document.querySelector("#subtitle");
+    const controls = document.querySelector("#controls");
+    const playerCountLabel = document.querySelector("#playerCountLabel");
+    const playerCountInput = document.querySelector("#playerCount");
+    const languageLegend = document.querySelector("#languageLegend");
+    const generateButton = document.querySelector("#generateButton");
+    const copyAllButton = document.querySelector("#copyAllButton");
+    const results = document.querySelector("#results");
+    const status = document.querySelector("#status");
+
+    let currentMessages = [];
+    let currentRoleIds = [];
+
+    function getWerewolfCount(playerCount) {
+      if (playerCount < 12) return 2;
+      if (playerCount < 18) return 3;
+      return 3 + Math.floor((playerCount - 18) / 6);
+    }
+
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function assignRoles(playerCount, advancedEnabled = false) {
+      const roles = [];
+      roles.push(...ESSENTIAL_SINGLES);
+
+      const wwCount = getWerewolfCount(playerCount);
+
+      if (playerCount < 12) {
+        for (let i = 0; i < wwCount; i++) roles.push("e01");
+      } else {
+        roles.push("e01");
+        const remainingWW = wwCount - 1;
+        const shuffledSpecialWW = shuffle(SPECIAL_WEREWOLVES);
+        let specialUsed = 0;
+
+        for (let i = 0; i < remainingWW; i++) {
+          if (specialUsed < shuffledSpecialWW.length) {
+            roles.push(shuffledSpecialWW[specialUsed]);
+            specialUsed++;
+          } else {
+            roles.push("e01");
+          }
+        }
+      }
+
+      const assigned = new Set(roles);
+
+      if (roles.length < playerCount) {
+        const shuffledInfo = shuffle(INFO_ROLES);
+        for (const id of shuffledInfo) {
+          if (!assigned.has(id)) {
+            roles.push(id);
+            assigned.add(id);
+            break;
+          }
+        }
+      }
+
+      const shuffledVillagers = shuffle(VILLAGER_UNIQUE);
+      for (const id of shuffledVillagers) {
+        if (roles.length >= playerCount) break;
+        const def = ROLE_DEFS[id];
+        if (def.requires && !assigned.has(def.requires)) continue;
+        if (assigned.has(id)) continue;
+        roles.push(id);
+        assigned.add(id);
+      }
+
+      if (advancedEnabled) {
+        const shuffledAdvanced = shuffle(ADVANCED_ROLES);
+        for (const id of shuffledAdvanced) {
+          if (roles.length >= playerCount) break;
+          const def = ROLE_DEFS[id];
+          if (def.requires && !assigned.has(def.requires)) continue;
+          if (assigned.has(id)) continue;
+          roles.push(id);
+          assigned.add(id);
+        }
+      }
+
+      const shuffledOther = shuffle(OTHER_UNIQUE);
+      for (const id of shuffledOther) {
+        if (roles.length >= playerCount) break;
+        if (assigned.has(id)) continue;
+        roles.push(id);
+        assigned.add(id);
+      }
+
+      for (const lameId of LAME_SINGLES) {
+        if (roles.length >= playerCount) break;
+        if (!assigned.has(lameId)) {
+          roles.push(lameId);
+          assigned.add(lameId);
+        }
+      }
+
+      if (roles.length + 2 <= playerCount && !assigned.has("l03")) {
+        roles.push("l03", "l03");
+        assigned.add("l03");
+      }
+
+      if (roles.length + 3 <= playerCount && !assigned.has("l04")) {
+        roles.push("l04", "l04", "l04");
+        assigned.add("l04");
+      }
+
+      while (roles.length < playerCount) {
+        roles.push("l01");
+      }
+
+      return shuffle(roles);
+    }
+
+    function getSelectedLanguage() {
+      return document.querySelector('input[name="language"]:checked').value;
+    }
+
+    function getLabels(language) {
+      return language === "FR" ? ROLE_LABELS_FR : ROLE_LABELS_PT;
+    }
+
+    function getUI(language = getSelectedLanguage()) {
+      return UI_TEXT[language];
+    }
+
+    function createRoleMessage(id, language) {
+      const labels = getLabels(language);
+      const name = labels[id] || id;
+      const baseUrl = BASE_URLS[language];
+
+      if (language === "FR") {
+        return `Ton personnage est ${id}.${name} :\n${baseUrl}#${id}`;
+      }
+
+      return `O teu personagem é ${id}.${name} :\n${baseUrl}#${id}`;
+    }
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const temporaryTextarea = document.createElement("textarea");
+      temporaryTextarea.value = text;
+      temporaryTextarea.setAttribute("readonly", "");
+      temporaryTextarea.style.position = "fixed";
+      temporaryTextarea.style.left = "-9999px";
+      document.body.appendChild(temporaryTextarea);
+      temporaryTextarea.select();
+      document.execCommand("copy");
+      temporaryTextarea.remove();
+    }
+
+    function setTemporaryButtonState(button, label) {
+      const previousLabel = button.textContent;
+      button.textContent = label;
+      button.classList.add("copied");
+      setTimeout(() => {
+        button.textContent = previousLabel;
+        button.classList.remove("copied");
+      }, 1100);
+    }
+
+    function renderEmptyState(text) {
+      results.innerHTML = "";
+      const emptyState = document.createElement("div");
+      emptyState.className = "empty-state";
+      emptyState.textContent = text;
+      results.appendChild(emptyState);
+    }
+
+    function applyUI(language) {
+      const t = getUI(language);
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.documentTitle;
+      eyebrow.textContent = t.eyebrow;
+      pageTitle.textContent = t.pageTitle;
+      subtitle.textContent = t.subtitle;
+      controls.setAttribute("aria-label", t.controlsLabel);
+      playerCountLabel.textContent = t.playerCountLabel;
+      languageLegend.textContent = t.languageLegend;
+      generateButton.textContent = t.generateButton;
+      copyAllButton.textContent = t.copyAllButton;
+
+      if (currentRoleIds.length === 0) {
+        status.classList.remove("error");
+        status.textContent = t.initialStatus;
+        renderEmptyState(t.emptyState);
+      }
+    }
+
+    function renderRoles(roleIds, language) {
+      const labels = getLabels(language);
+      const t = getUI(language);
+      currentRoleIds = [...roleIds];
+      currentMessages = roleIds.map((id) => createRoleMessage(id, language));
+      results.innerHTML = "";
+
+      roleIds.forEach((id, index) => {
+        const name = labels[id] || id;
+        const message = currentMessages[index];
+
+        const article = document.createElement("article");
+        article.className = "role-card";
+
+        const topRow = document.createElement("div");
+        topRow.className = "role-top";
+
+        const playerBadge = document.createElement("span");
+        playerBadge.className = "player-badge";
+        playerBadge.textContent = `${t.playerBadge} ${index + 1}`;
+
+        const roleId = document.createElement("span");
+        roleId.className = "role-id";
+        roleId.textContent = id;
+
+        const roleName = document.createElement("h2");
+        roleName.className = "role-name";
+        roleName.textContent = name;
+
+        const textarea = document.createElement("textarea");
+        textarea.readOnly = true;
+        textarea.value = message;
+        textarea.setAttribute("aria-label", t.textareaAria(id, name));
+
+        const copyButton = document.createElement("button");
+        copyButton.className = "copy-button";
+        copyButton.type = "button";
+        copyButton.textContent = t.copyButton;
+        copyButton.addEventListener("click", async () => {
+          await copyText(message);
+          setTemporaryButtonState(copyButton, t.copiedButton);
+        });
+
+        topRow.append(playerBadge, roleId);
+        article.append(topRow, roleName, textarea, copyButton);
+        results.appendChild(article);
+      });
+
+      copyAllButton.hidden = currentMessages.length === 0;
+      status.classList.remove("error");
+      status.textContent = t.generatedStatus(roleIds.length);
+    }
+
+    function generateRoles() {
+      const playerCount = Number.parseInt(playerCountInput.value, 10);
+      const language = getSelectedLanguage();
+      const t = getUI(language);
+
+      if (!Number.isInteger(playerCount) || playerCount < 8) {
+        status.textContent = t.errorMinPlayers;
+        status.classList.add("error");
+        renderEmptyState(t.noRoles);
+        copyAllButton.hidden = true;
+        currentMessages = [];
+        currentRoleIds = [];
+        return;
+      }
+
+      const roleIds = assignRoles(playerCount, false);
+      renderRoles(roleIds, language);
+    }
+
+    generateButton.addEventListener("click", generateRoles);
+
+    copyAllButton.addEventListener("click", async () => {
+      if (currentMessages.length === 0) return;
+      const t = getUI();
+      await copyText(currentMessages.join("\n\n"));
+      setTemporaryButtonState(copyAllButton, t.allCopiedButton);
+    });
+
+    playerCountInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") generateRoles();
+    });
+
+    document.querySelectorAll('input[name="language"]').forEach((radio) => {
+      radio.addEventListener("change", () => {
+        const language = getSelectedLanguage();
+        applyUI(language);
+        if (currentRoleIds.length > 0) {
+          renderRoles(currentRoleIds, language);
+        }
+      });
+    });
+
+    applyUI(getSelectedLanguage());
+  </script>
 </body>
 </html>
