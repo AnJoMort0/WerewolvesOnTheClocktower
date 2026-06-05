@@ -215,7 +215,7 @@ Os jogadores mortos transformam-se em fantasmas, que podem continuar a comunicar
 <a id="lista-rapida-de-personagens"></a>
 
 ## Lista rápida de personagens
-Use esta lista como mapa de navegação para saltar diretamente para uma ficha na tabela.
+Usa esta lista como mapa de navegação para saltar diretamente para uma ficha na tabela.
 
 ### Essenciais
 
@@ -318,7 +318,6 @@ Use esta lista como mapa de navegação para saltar diretamente para uma ficha n
 <a id="personagens"></a>
 
 ## Personagens
-As fichas abaixo ficam todas abertas, como no documento original: imagem à esquerda, descrição à direita, e uma linha compacta por personagem. A lista rápida continua a servir como mapa de navegação para saltar diretamente para cada ficha.
 
 <a id="essenciais"></a>
 
@@ -1127,9 +1126,9 @@ As fichas abaixo ficam todas abertas, como no documento original: imagem à esqu
 <div class="role-description">
 <p><span class="rule-red" style="color:#cc0000;font-weight:700;">NÃO</span> ACORDA COM OS LOBISOMENS.</p>
 <p><span class="rule-red" style="color:#cc0000;font-weight:700;">Cada noite</span>, escolhe um jogador (pode ser a si próprio). Esse jogador estará escondido por uma Ilusão.</p>
-<p>Se a Vidente, Lobisomem-Vidente, Faroleiro ou Espião virem uma Ilusão, verão o papel “Ilusionista”.</p>
+<p>Se a Vidente, Lobisomem-Vidente, Domador da Aranha, Faroleiro ou Espião virem uma Ilusão, verão o papel “Ilusionista”.</p>
 <p>Se o Mimo copia uma Ilusão, ele copia o Ilusionista.</p>
-<p>Se o alvo de um dos Domadores de Animais for uma Ilusão, o animal ficará confuso.</p>
+<p>Se o alvo de um dos Domadores de Animais for uma Ilusão, o animal ficará confuso. No caso do Domador da Aranha, se o jogador com a teia de aranha for uma Ilusão, a aranha estará confusa.</p>
 <p>Se o assassino da vítima escolhida pela Menina for uma Ilusão, a Menina verá o papel “Ilusionista”.</p>
 <p><strong>Se envenenado:</strong><br>A ilusão não acontecerá.</p>
 <p><strong>Objetivo:</strong><br>Matar todos os Aldeões.</p>

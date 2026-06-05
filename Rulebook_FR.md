@@ -214,7 +214,7 @@ Les joueurs morts se transforment en fantômes, qui peuvent continuer à communi
 <a id="liste-rapide-de-personnages"></a>
 
 ## Liste rapide de personnages
-Utilisez cette liste comme carte de navigation pour sauter directement à une fiche dans le tableau.
+Utilises cette liste comme carte de navigation pour sauter directement à une fiche dans le tableau.
 
 ### Essentiels
 
@@ -317,7 +317,6 @@ Utilisez cette liste comme carte de navigation pour sauter directement à une fi
 <a id="personnages"></a>
 
 ## Personnages
-Les fiches ci-dessous restent toutes ouvertes, comme dans le document original : image à gauche, description à droite, et une ligne compacte par personnage. La liste rapide continue à servir de carte de navigation pour sauter directement à chaque fiche.
 
 <a id="essentiels"></a>
 
@@ -1128,9 +1127,9 @@ Les fiches ci-dessous restent toutes ouvertes, comme dans le document original :
 <div class="role-description">
 <p><span class="rule-red" style="color:#cc0000;font-weight:700;">NE </span>SE RÉVEILLE <span class="rule-red" style="color:#cc0000;font-weight:700;">PAS </span>AVEC LES LOUPS-GAROUS.</p>
 <p><span class="rule-red" style="color:#cc0000;font-weight:700;">Chaque nuit</span>, il choisit un joueur (qui peut être soi-même). Celui-ci sera offusqué par une Illusion.</p>
-<p>Si la Voyante, Loup-garou Voyante, le Falotier ou l’Espion voient une Illusion, ils verront le rôle “Illusionniste”.</p>
+<p>Si la Voyante, Loup-garou Voyante, le Maître de l’Araignée, le Falotier ou l’Espion voient une Illusion, ils verront le rôle “Illusionniste”.</p>
 <p>Si le Mime copie une Illusion, il copiera l&#x27;Illusionniste.</p>
-<p>Si l’une des cibles des Maîtres des Animaux est une Illusion, l’animal sera confus.</p>
+<p>Si l’une des cibles des Maîtres des Animaux est une Illusion, l’animal sera confus. Dans le cas du Maître de l’Araignée, si le joueur avec la toile d’araignée est une Illusion, l’araignée sera confuse.</p>
 <p>Si l’assassin de la victime choisi par la Petite Fille est une Illusion, la Petite Fille verra le rôle “Illusionniste”.</p>
 <p><strong>Si empoisonné :</strong><br>L’Illusion ne sera pas créée.</p>
 <p><strong>Objectif :</strong><br>Tuer tous les Villageois.</p>
