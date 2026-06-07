@@ -967,7 +967,8 @@
         manualHint: "Modo manual ativo: clica num jogador para abrir a lista e mudar a personagem.",
         roleSelectLabel: "Alterar personagem",
         warningsTitle: "Avisos de equilíbrio",
-        solveButton: "Resolver automaticamente",
+        solveButton: "Resolver com mínimo de alterações",
+        solvedMinimal: (count) => `Problemas resolvidos com ${count} alteração${count === 1 ? "" : "ões"}.`,
         warningsAllGood: "A seleção respeita os requisitos principais de equilíbrio.",
         warningWerewolves: (actual, expected) => `Número de Lobisomens incorreto: há ${actual}, mas para este número de jogadores devem existir ${expected}.`,
         warningRepeated: (items) => `Personagens únicas repetidas: ${items}. Só Lobisomem, Aldeão Triste, Irmãs em dupla e Irmãos em trio podem repetir.`,
@@ -1016,7 +1017,8 @@
         manualHint: "Mode manuel actif : clique sur un joueur pour ouvrir la liste et changer son personnage.",
         roleSelectLabel: "Changer le personnage",
         warningsTitle: "Avertissements d’équilibre",
-        solveButton: "Résoudre automatiquement",
+        solveButton: "Résoudre avec un minimum de changements",
+        solvedMinimal: (count) => `Problèmes résolus avec ${count} changement${count === 1 ? "" : "s"}.`,
         warningsAllGood: "La sélection respecte les principaux critères d’équilibre.",
         warningWerewolves: (actual, expected) => `Nombre de Loups-garous incorrect : il y en a ${actual}, alors qu’il en faut ${expected} pour ce nombre de joueurs.`,
         warningRepeated: (items) => `Personnages uniques répétés : ${items}. Seuls Loup-garou, Villageois Triste, Sœurs en duo et Frères en trio peuvent se répéter.`,
@@ -1450,10 +1452,253 @@
         : warnings.map((warning) => `<li>${escapeHtml(warning)}</li>`).join("");
     }
 
+    function buildMinimalBalancedSelection(originalRoleIds, advancedEnabled) {
+      const playerCount = originalRoleIds.length;
+      const target = [];
+      const targetCounts = {};
+      const originalCounts = countRoles(originalRoleIds);
+
+      function targetCount(id) {
+        return targetCounts[id] || 0;
+      }
+
+      function hasTarget(id) {
+        return targetCount(id) > 0;
+      }
+
+      function isAllowedByAdvanced(id) {
+        return advancedEnabled || !ADVANCED_ROLES.includes(id);
+      }
+
+      function isRepeatable(id) {
+        return ALLOWED_REPEAT_ROLES.has(id);
+      }
+
+      function canAddToTarget(id, amount = 1) {
+        if (!ROLE_DEFS[id]) return false;
+        if (!isAllowedByAdvanced(id)) return false;
+        if (target.length + amount > playerCount) return false;
+        if (!isRepeatable(id) && targetCount(id) + amount > 1) return false;
+        if ((id === "l03" || id === "l04") && targetCount(id) + amount > ROLE_DEFS[id].groupSize) return false;
+        return true;
+      }
+
+      function addToTarget(id, amount = 1) {
+        if (!canAddToTarget(id, amount)) return false;
+        for (let i = 0; i < amount; i++) {
+          target.push(id);
+          targetCounts[id] = targetCount(id) + 1;
+        }
+        return true;
+      }
+
+      function removeOneFromTarget(id) {
+        const index = target.indexOf(id);
+        if (index === -1) return false;
+        target.splice(index, 1);
+        targetCounts[id] = targetCount(id) - 1;
+        if (targetCounts[id] <= 0) delete targetCounts[id];
+        return true;
+      }
+
+      function requiredIdsInTarget() {
+        const required = new Set();
+        target.forEach((id) => {
+          const requirement = ROLE_DEFS[id]?.requires;
+          if (requirement) required.add(requirement);
+        });
+        return required;
+      }
+
+      function isProtectedFromRemoval(id, extraProtected = new Set()) {
+        if (extraProtected.has(id)) return true;
+        if (ESSENTIAL_SINGLES.includes(id)) return true;
+        if (WEREWOLF_ROLES.includes(id)) return true;
+        if (requiredIdsInTarget().has(id)) return true;
+        return false;
+      }
+
+      function findRemovableRole(extraProtected = new Set()) {
+        const priorities = [
+          "l01",
+          "l02",
+          ...VILLAGER_UNIQUE.filter((id) => !INFO_ROLES.includes(id) && id !== "v08"),
+          ...OTHER_UNIQUE.filter((id) => !INFO_ROLES.includes(id) && id !== "s01"),
+          ...ADVANCED_ROLES.filter((id) => !INFO_ROLES.includes(id) && id !== "as01b"),
+          ...INFO_ROLES,
+          "v08",
+          "s01"
+        ];
+
+        for (const id of priorities) {
+          if (targetCount(id) > 0 && !isProtectedFromRemoval(id, extraProtected)) return id;
+        }
+
+        return target.find((id) => !isProtectedFromRemoval(id, extraProtected)) || null;
+      }
+
+      function makeRoomFor(id, extraProtected = new Set()) {
+        if (target.length < playerCount) return true;
+        const removable = findRemovableRole(extraProtected);
+        if (!removable) return false;
+        return removeOneFromTarget(removable);
+      }
+
+      function addWithDependency(id) {
+        const requirement = ROLE_DEFS[id]?.requires;
+        if (requirement && !hasTarget(requirement)) {
+          if (!isAllowedByAdvanced(requirement)) return false;
+          if (!canAddToTarget(requirement)) {
+            const protectedRoles = new Set([id, requirement]);
+            if (!makeRoomFor(requirement, protectedRoles)) return false;
+          }
+          if (!addToTarget(requirement)) return false;
+        }
+
+        if (!canAddToTarget(id)) {
+          if (target.length >= playerCount) {
+            const protectedRoles = new Set([id]);
+            if (requirement) protectedRoles.add(requirement);
+            if (!makeRoomFor(id, protectedRoles)) return false;
+          }
+        }
+
+        return addToTarget(id);
+      }
+
+      function ensureRole(id) {
+        if (hasTarget(id)) return true;
+        return addWithDependency(id);
+      }
+
+      function ensureGroup(id) {
+        const groupSize = ROLE_DEFS[id]?.groupSize || 1;
+        if (targetCount(id) === groupSize) return true;
+        while (targetCount(id) > 0) removeOneFromTarget(id);
+        if (target.length + groupSize > playerCount) return false;
+        return addToTarget(id, groupSize);
+      }
+
+      function addFiller() {
+        const preferredFillers = [
+          ...originalRoleIds,
+          ...VILLAGER_UNIQUE,
+          ...(advancedEnabled ? ADVANCED_ROLES : []),
+          ...OTHER_UNIQUE,
+          ...LAME_SINGLES
+        ];
+
+        for (const id of preferredFillers) {
+          if (id === "l03" || id === "l04") continue;
+          if (WEREWOLF_ROLES.includes(id)) continue;
+          if (ESSENTIAL_SINGLES.includes(id)) continue;
+          if (addWithDependency(id)) return true;
+        }
+
+        if (!hasTarget("l03") && target.length + 2 <= playerCount) return addToTarget("l03", 2);
+        if (!hasTarget("l04") && target.length + 3 <= playerCount) return addToTarget("l04", 3);
+        return addToTarget("l01");
+      }
+
+      ESSENTIAL_SINGLES.forEach((id) => ensureRole(id));
+
+      const expectedWolves = getWerewolfCount(playerCount);
+      if (playerCount < 12) {
+        addToTarget("e01", expectedWolves);
+      } else if (expectedWolves > 0) {
+        addToTarget("e01");
+        const preferredSpecialWolves = [
+          ...originalRoleIds.filter((id, index, arr) => SPECIAL_WEREWOLVES.includes(id) && arr.indexOf(id) === index),
+          ...SPECIAL_WEREWOLVES
+        ].filter((id, index, arr) => arr.indexOf(id) === index);
+
+        for (const id of preferredSpecialWolves) {
+          if (target.filter((roleId) => WEREWOLF_ROLES.includes(roleId)).length >= expectedWolves) break;
+          addToTarget(id);
+        }
+
+        while (target.filter((roleId) => WEREWOLF_ROLES.includes(roleId)).length < expectedWolves) {
+          addToTarget("e01");
+        }
+      }
+
+      originalRoleIds.forEach((id) => {
+        if (ESSENTIAL_SINGLES.includes(id)) return;
+        if (WEREWOLF_ROLES.includes(id)) return;
+        if (id === "l01" || id === "l03" || id === "l04") return;
+        if (!isAllowedByAdvanced(id)) return;
+        addWithDependency(id);
+      });
+
+      if (originalCounts.l03 && !hasTarget("l03")) ensureGroup("l03");
+      if (originalCounts.l04 && !hasTarget("l04")) ensureGroup("l04");
+
+      if (!INFO_ROLES.some((id) => hasTarget(id))) {
+        const preferredInfo = originalRoleIds.find((id) => INFO_ROLES.includes(id) && isAllowedByAdvanced(id));
+        const infoToAdd = preferredInfo || INFO_ROLES.find((id) => isAllowedByAdvanced(id));
+        if (infoToAdd) {
+          if (!canAddToTarget(infoToAdd) && target.length >= playerCount) {
+            makeRoomFor(infoToAdd, new Set([infoToAdd]));
+          }
+          addWithDependency(infoToAdd);
+        }
+      }
+
+      target.slice().forEach((id) => {
+        const requirement = ROLE_DEFS[id]?.requires;
+        if (requirement && !hasTarget(requirement)) {
+          if (!canAddToTarget(requirement) && target.length >= playerCount) {
+            makeRoomFor(requirement, new Set([id, requirement]));
+          }
+          addToTarget(requirement);
+        }
+      });
+
+      while (target.length < playerCount) {
+        if (!addFiller()) break;
+      }
+
+      while (target.length > playerCount) {
+        const removable = findRemovableRole();
+        if (!removable || !removeOneFromTarget(removable)) break;
+      }
+
+      const targetCounter = countRoles(target);
+      const result = new Array(playerCount).fill(null);
+
+      originalRoleIds.forEach((id, index) => {
+        if (targetCounter[id] > 0) {
+          result[index] = id;
+          targetCounter[id] -= 1;
+        }
+      });
+
+      const remainingRoles = [];
+      Object.entries(targetCounter).forEach(([id, count]) => {
+        for (let i = 0; i < count; i++) remainingRoles.push(id);
+      });
+
+      result.forEach((id, index) => {
+        if (id === null) result[index] = remainingRoles.shift() || "l01";
+      });
+
+      return result;
+    }
+
     function solveWarningsAutomatically() {
       if (currentRoleIds.length === 0) return;
-      const fixedRoleIds = assignRoles(currentRoleIds.length, getAdvancedEnabled());
+      const previousRoleIds = [...currentRoleIds];
+      let fixedRoleIds = buildMinimalBalancedSelection(previousRoleIds, getAdvancedEnabled());
+      let remainingWarnings = validateRoleSelection(fixedRoleIds, getSelectedLanguage());
+
+      if (remainingWarnings.length > 0) {
+        fixedRoleIds = assignRoles(previousRoleIds.length, getAdvancedEnabled());
+        remainingWarnings = validateRoleSelection(fixedRoleIds, getSelectedLanguage());
+      }
+
+      const changedCount = fixedRoleIds.reduce((total, id, index) => total + (id === previousRoleIds[index] ? 0 : 1), 0);
       renderRoles(fixedRoleIds, getSelectedLanguage());
+      setStatus(getUiText().solvedMinimal(changedCount), remainingWarnings.length > 0 ? "error" : "generated");
     }
 
     function updateStaticInterface() {
