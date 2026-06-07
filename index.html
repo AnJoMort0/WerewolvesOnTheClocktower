@@ -119,7 +119,7 @@
 
     .controls {
       display: grid;
-      grid-template-columns: minmax(190px, 1fr) minmax(220px, 1fr) auto;
+      grid-template-columns: minmax(160px, 0.8fr) minmax(220px, 1fr) minmax(230px, 1fr) auto auto;
       gap: 16px;
       align-items: end;
       margin: 26px 0 16px;
@@ -431,6 +431,134 @@
       display: block;
     }
 
+
+
+    .toggle-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 248, 234, 0.04);
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .toggle-pill:has(input:checked) {
+      border-color: rgba(211, 157, 86, 0.68);
+      background: linear-gradient(180deg, rgba(211, 157, 86, 0.18), rgba(180, 139, 81, 0.12));
+      color: var(--text-strong);
+      box-shadow: 0 0 0 1px rgba(211, 157, 86, 0.08);
+    }
+
+    .toggle-pill input {
+      accent-color: var(--gold-bright);
+    }
+
+    .manual-mode-button.active {
+      background: linear-gradient(180deg, var(--gold-bright), #8a6031);
+      color: #1c1714;
+      box-shadow: 0 10px 24px rgba(211, 157, 86, 0.16), inset 0 1px 0 rgba(255, 248, 234, 0.18);
+    }
+
+    .manual-hint {
+      display: none;
+      grid-column: 1 / -1;
+      margin: -2px 0 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    body.manual-mode .manual-hint {
+      display: block;
+    }
+
+    .warnings-panel {
+      margin: 0 0 18px;
+      padding: 15px 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(28, 25, 22, 0.66);
+      box-shadow: inset 0 1px 0 rgba(255, 248, 234, 0.035);
+    }
+
+    .warnings-panel[hidden] {
+      display: none;
+    }
+
+    .warnings-title {
+      margin: 0 0 8px;
+      color: var(--gold-bright);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .warnings-list {
+      margin: 0;
+      padding-left: 1.25rem;
+      color: var(--text);
+      line-height: 1.45;
+      font-size: 0.94rem;
+    }
+
+    .warnings-list li + li {
+      margin-top: 5px;
+    }
+
+    .warnings-list.good {
+      padding-left: 0;
+      list-style: none;
+      color: #b8d9b8;
+    }
+
+    .manual-controls {
+      display: none;
+      gap: 7px;
+    }
+
+    body.manual-mode .manual-controls {
+      display: grid;
+    }
+
+    .role-card.manual-open {
+      border-color: rgba(211, 157, 86, 0.52);
+      box-shadow: 0 16px 38px var(--shadow), 0 0 0 3px rgba(211, 157, 86, 0.08), inset 0 1px 0 rgba(255, 248, 234, 0.035);
+    }
+
+    .role-card {
+      transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+    }
+
+    body.manual-mode .role-card {
+      cursor: pointer;
+    }
+
+    body.manual-mode .role-card:hover {
+      transform: translateY(-1px);
+    }
+
+    .role-select {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: rgba(34, 31, 28, 0.96);
+      color: var(--text-strong);
+      font: inherit;
+      outline: none;
+    }
+
+    .role-select:focus {
+      border-color: rgba(211, 157, 86, 0.62);
+      box-shadow: 0 0 0 4px var(--gold-soft);
+    }
+
     @media (max-width: 520px) {
       .rich-copy-preview {
         align-items: flex-start;
@@ -495,7 +623,19 @@
         </div>
       </fieldset>
 
+      <fieldset>
+        <legend data-i18n="advancedLegend">Personagens avançadas</legend>
+        <div class="radio-row">
+          <label class="toggle-pill">
+            <input id="advancedToggle" type="checkbox" />
+            <span data-i18n="advancedToggleLabel">Incluir avançadas</span>
+          </label>
+        </div>
+      </fieldset>
+
       <button id="generateButton" type="button" data-i18n="generateButton">Gerar personagens</button>
+      <button id="manualModeButton" class="secondary-button manual-mode-button" type="button">Modo manual</button>
+      <p class="manual-hint" data-i18n="manualHint">Modo manual ativo: clica num jogador para abrir a lista e mudar a personagem.</p>
     </section>
 
     <div class="status-row">
@@ -505,6 +645,11 @@
         <button id="copyAllTextButton" class="secondary-button" type="button" hidden data-i18n="copyAllTextButton">Copiar tudo em texto</button>
       </div>
     </div>
+
+    <section id="warningsPanel" class="warnings-panel" hidden aria-live="polite">
+      <h2 class="warnings-title" data-i18n="warningsTitle">Avisos de equilíbrio</h2>
+      <ul id="warningsList" class="warnings-list"></ul>
+    </section>
 
     <section id="results" class="grid" aria-live="polite">
       <div class="empty-state" data-i18n="emptyState">As mensagens geradas aparecerão aqui.</div>
@@ -675,6 +820,8 @@
     const OTHER_UNIQUE = ["m04", "m05", "s01", "f01", "f02"];
     const LAME_SINGLES = ["l02"];
     const INFO_ROLES = ["v02", "v03", "v04", "v05", "v06", "v22", "v23", "f02"];
+    const WEREWOLF_ROLES = ["e01", "m01", "m02", "m03", "s02"];
+    const ALLOWED_REPEAT_ROLES = new Set(["e01", "l01", "l03", "l04"]);
 
     const BASE_URLS = {
       PT: "https://anjomort0.github.io/WerewolvesOnTheClocktower/Rulebook_PT.html",
@@ -743,6 +890,23 @@
         subtitle: "Escolhe o número de jogadores e a língua. A página gera uma mensagem privada por jogador, agora com a carta e o texto prontos a copiar.",
         playerCountLabel: "Número de jogadores",
         languageLegend: "Língua",
+        advancedLegend: "Personagens avançadas",
+        advancedToggleLabel: "Incluir avançadas",
+        manualModeButton: "Modo manual",
+        manualModeOn: "Sair do modo manual",
+        manualHint: "Modo manual ativo: clica num jogador para abrir a lista e mudar a personagem.",
+        roleSelectLabel: "Alterar personagem",
+        warningsTitle: "Avisos de equilíbrio",
+        warningsAllGood: "A seleção respeita os requisitos principais de equilíbrio.",
+        warningWerewolves: (actual, expected) => `Número de Lobisomens incorreto: há ${actual}, mas para este número de jogadores devem existir ${expected}.`,
+        warningRepeated: (items) => `Personagens únicas repetidas: ${items}. Só Lobisomem, Aldeão Triste, Irmãs em dupla e Irmãos em trio podem repetir.`,
+        warningDependency: (role, dependency) => `${role} precisa de ${dependency}, mas essa personagem não está em jogo.`,
+        warningAdvancedOff: (items) => `Personagens avançadas presentes com o modo avançado desligado: ${items}.`,
+        warningInfoMissing: "Falta pelo menos uma personagem de informação.",
+        warningEssentialMissing: (items) => `Personagens essenciais em falta: ${items}.`,
+        warningEssentialRepeated: (items) => `Personagens essenciais repetidas: ${items}.`,
+        warningGroupSize: (role, expected, actual) => `${role} deve aparecer ${expected} vezes quando está em jogo, mas aparece ${actual}.`,
+        warningUnder12Special: (items) => `Com menos de 12 jogadores, os Lobisomens devem ser simples. Personagens de Lobisomem especiais presentes: ${items}.`,
         generateButton: "Gerar personagens",
         copyAllRichButton: "Copiar tudo com imagens",
         copyAllTextButton: "Copiar tudo em texto",
@@ -771,6 +935,23 @@
         subtitle: "Choisis le nombre de joueurs et la langue. La page génère un message privé par joueur, maintenant avec la carte et le texte prêts à copier.",
         playerCountLabel: "Nombre de joueurs",
         languageLegend: "Langue",
+        advancedLegend: "Personnages avancés",
+        advancedToggleLabel: "Inclure les avancés",
+        manualModeButton: "Mode manuel",
+        manualModeOn: "Quitter le mode manuel",
+        manualHint: "Mode manuel actif : clique sur un joueur pour ouvrir la liste et changer son personnage.",
+        roleSelectLabel: "Changer le personnage",
+        warningsTitle: "Avertissements d’équilibre",
+        warningsAllGood: "La sélection respecte les principaux critères d’équilibre.",
+        warningWerewolves: (actual, expected) => `Nombre de Loups-garous incorrect : il y en a ${actual}, alors qu’il en faut ${expected} pour ce nombre de joueurs.`,
+        warningRepeated: (items) => `Personnages uniques répétés : ${items}. Seuls Loup-garou, Villageois Triste, Sœurs en duo et Frères en trio peuvent se répéter.`,
+        warningDependency: (role, dependency) => `${role} dépend de ${dependency}, mais ce personnage n’est pas en jeu.`,
+        warningAdvancedOff: (items) => `Personnages avancés présents alors que le mode avancé est désactivé : ${items}.`,
+        warningInfoMissing: "Il manque au moins un personnage d’information.",
+        warningEssentialMissing: (items) => `Personnages essentiels manquants : ${items}.`,
+        warningEssentialRepeated: (items) => `Personnages essentiels répétés : ${items}.`,
+        warningGroupSize: (role, expected, actual) => `${role} doit apparaître ${expected} fois lorsqu’il est en jeu, mais apparaît ${actual} fois.`,
+        warningUnder12Special: (items) => `Avec moins de 12 joueurs, les Loups-garous doivent être simples. Personnages Loups-garous spéciaux présents : ${items}.`,
         generateButton: "Générer les personnages",
         copyAllRichButton: "Tout copier avec images",
         copyAllTextButton: "Tout copier en texte",
@@ -795,19 +976,21 @@
     };
 
     const playerCountInput = document.querySelector("#playerCount");
-    const generateButton = document.querySelector("#generateButton");
+    const advancedToggle = document.querySelector("#advancedToggle");
+    const manualModeButton = document.querySelector("#manualModeButton");
     const copyAllButton = document.querySelector("#copyAllButton");
     const copyAllTextButton = document.querySelector("#copyAllTextButton");
     const results = document.querySelector("#results");
     const status = document.querySelector("#status");
+    const warningsPanel = document.querySelector("#warningsPanel");
+    const warningsList = document.querySelector("#warningsList");
 
     let currentRoleIds = [];
     let currentPayloads = [];
+    let manualMode = false;
 
     function getWerewolfCount(playerCount) {
-      if (playerCount < 12) return 2;
-      if (playerCount < 18) return 3;
-      return 3 + Math.floor((playerCount - 18) / 6);
+      return Math.floor(playerCount / 4);
     }
 
     function shuffle(arr) {
@@ -856,26 +1039,16 @@
         }
       }
 
-      const shuffledVillagers = shuffle(VILLAGER_UNIQUE);
-      for (const id of shuffledVillagers) {
+      const mainPool = advancedEnabled
+        ? shuffle([...VILLAGER_UNIQUE, ...ADVANCED_ROLES])
+        : shuffle(VILLAGER_UNIQUE);
+      for (const id of mainPool) {
         if (roles.length >= playerCount) break;
         const def = ROLE_DEFS[id];
         if (def.requires && !assigned.has(def.requires)) continue;
         if (assigned.has(id)) continue;
         roles.push(id);
         assigned.add(id);
-      }
-
-      if (advancedEnabled) {
-        const shuffledAdvanced = shuffle(ADVANCED_ROLES);
-        for (const id of shuffledAdvanced) {
-          if (roles.length >= playerCount) break;
-          const def = ROLE_DEFS[id];
-          if (def.requires && !assigned.has(def.requires)) continue;
-          if (assigned.has(id)) continue;
-          roles.push(id);
-          assigned.add(id);
-        }
       }
 
       const shuffledOther = shuffle(OTHER_UNIQUE);
@@ -1027,6 +1200,119 @@
       status.classList.toggle("error", kind === "error");
     }
 
+
+
+    function getAdvancedEnabled() {
+      return Boolean(advancedToggle.checked);
+    }
+
+    function getRoleDisplayName(id, language = getSelectedLanguage()) {
+      const labels = getLabels(language);
+      return `${id}.${labels[id] || id}`;
+    }
+
+    function getManualRoleOptions(language = getSelectedLanguage()) {
+      const labels = getLabels(language);
+      const availableIds = Object.keys(ROLE_DEFS).filter((id) => getAdvancedEnabled() || !ADVANCED_ROLES.includes(id));
+      return availableIds
+        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+        .map((id) => ({ id, label: `${id}.${labels[id] || id}` }));
+    }
+
+    function buildRoleSelectHtml(selectedId, language = getSelectedLanguage()) {
+      const text = getUiText(language);
+      const options = getManualRoleOptions(language);
+      return `
+        <div class="manual-controls">
+          <label>${escapeHtml(text.roleSelectLabel)}</label>
+          <select class="role-select">
+            ${options.map((option) => `<option value="${escapeHtml(option.id)}" ${option.id === selectedId ? "selected" : ""}>${escapeHtml(option.label)}</option>`).join("")}
+          </select>
+        </div>
+      `.trim();
+    }
+
+    function updateManualModeButton() {
+      const text = getUiText();
+      manualModeButton.textContent = manualMode ? text.manualModeOn : text.manualModeButton;
+      manualModeButton.classList.toggle("active", manualMode);
+      document.body.classList.toggle("manual-mode", manualMode);
+    }
+
+    function countRoles(roleIds) {
+      return roleIds.reduce((acc, id) => {
+        acc[id] = (acc[id] || 0) + 1;
+        return acc;
+      }, {});
+    }
+
+    function validateRoleSelection(roleIds, language = getSelectedLanguage()) {
+      const text = getUiText(language);
+      const counts = countRoles(roleIds);
+      const warnings = [];
+      const playerCount = roleIds.length;
+      const expectedWolves = getWerewolfCount(playerCount);
+      const actualWolves = roleIds.filter((id) => WEREWOLF_ROLES.includes(id)).length;
+
+      if (actualWolves !== expectedWolves) warnings.push(text.warningWerewolves(actualWolves, expectedWolves));
+
+      const repeatedUnique = Object.entries(counts)
+        .filter(([id, count]) => count > 1 && !ALLOWED_REPEAT_ROLES.has(id))
+        .map(([id]) => getRoleDisplayName(id, language));
+      if (repeatedUnique.length > 0) warnings.push(text.warningRepeated(repeatedUnique.join(", ")));
+
+      const missingEssentials = ESSENTIAL_SINGLES.filter((id) => !counts[id]).map((id) => getRoleDisplayName(id, language));
+      const repeatedEssentials = ESSENTIAL_SINGLES.filter((id) => counts[id] > 1).map((id) => getRoleDisplayName(id, language));
+      if (missingEssentials.length > 0) warnings.push(text.warningEssentialMissing(missingEssentials.join(", ")));
+      if (repeatedEssentials.length > 0) warnings.push(text.warningEssentialRepeated(repeatedEssentials.join(", ")));
+
+      roleIds.forEach((id) => {
+        const def = ROLE_DEFS[id];
+        if (def?.requires && !counts[def.requires]) {
+          warnings.push(text.warningDependency(getRoleDisplayName(id, language), getRoleDisplayName(def.requires, language)));
+        }
+      });
+
+      if (counts.l03 && counts.l03 !== 2) warnings.push(text.warningGroupSize(getRoleDisplayName("l03", language), 2, counts.l03));
+      if (counts.l04 && counts.l04 !== 3) warnings.push(text.warningGroupSize(getRoleDisplayName("l04", language), 3, counts.l04));
+
+      if (!INFO_ROLES.some((id) => counts[id])) warnings.push(text.warningInfoMissing);
+
+      if (!getAdvancedEnabled()) {
+        const advancedPresent = [...new Set(roleIds.filter((id) => ADVANCED_ROLES.includes(id)))].map((id) => getRoleDisplayName(id, language));
+        if (advancedPresent.length > 0) warnings.push(text.warningAdvancedOff(advancedPresent.join(", ")));
+      }
+
+      if (playerCount < 12) {
+        const specialWolves = [...new Set(roleIds.filter((id) => SPECIAL_WEREWOLVES.includes(id)))].map((id) => getRoleDisplayName(id, language));
+        if (specialWolves.length > 0) warnings.push(text.warningUnder12Special(specialWolves.join(", ")));
+      }
+
+      return warnings;
+    }
+
+    function renderWarnings() {
+      if (currentRoleIds.length === 0) {
+        warningsPanel.hidden = true;
+        warningsList.innerHTML = "";
+        return;
+      }
+
+      const language = getSelectedLanguage();
+      const text = getUiText(language);
+      const warnings = validateRoleSelection(currentRoleIds, language);
+      warningsPanel.hidden = false;
+      warningsList.classList.toggle("good", warnings.length === 0);
+      warningsList.innerHTML = warnings.length === 0
+        ? `<li>${escapeHtml(text.warningsAllGood)}</li>`
+        : warnings.map((warning) => `<li>${escapeHtml(warning)}</li>`).join("");
+    }
+
+    function removeAdvancedRolesIfDisabled(roleIds) {
+      if (getAdvancedEnabled()) return roleIds;
+      return roleIds.map((id) => ADVANCED_ROLES.includes(id) ? "l01" : id);
+    }
+
     function updateStaticInterface() {
       const language = getSelectedLanguage();
       const text = getUiText(language);
@@ -1039,6 +1325,8 @@
       });
 
       if (status.dataset.statusKind === "empty") setStatus(text.emptyStatus, "empty");
+      updateManualModeButton();
+      renderWarnings();
     }
 
     function renderEmptyState(language = getSelectedLanguage()) {
@@ -1048,24 +1336,28 @@
       copyAllTextButton.hidden = true;
       currentPayloads = [];
       currentRoleIds = [];
+      warningsPanel.hidden = true;
+      warningsList.innerHTML = "";
       setStatus(text.emptyStatus, "empty");
     }
 
     function renderRoles(roleIds, language) {
       const text = getUiText(language);
-      currentRoleIds = [...roleIds];
-      currentPayloads = roleIds.map((id) => createRolePayload(id, language));
+      currentRoleIds = removeAdvancedRolesIfDisabled([...roleIds]);
+      currentPayloads = currentRoleIds.map((id) => createRolePayload(id, language));
       results.innerHTML = "";
 
       currentPayloads.forEach((payload, index) => {
         const article = document.createElement("article");
         article.className = "role-card";
+        article.dataset.index = String(index);
         article.innerHTML = `
           <div class="role-top">
             <span class="player-badge">${escapeHtml(text.player(index + 1))}</span>
             <span class="role-id">${escapeHtml(payload.id)}</span>
           </div>
           <h2 class="role-name">${escapeHtml(payload.name)}</h2>
+          ${buildRoleSelectHtml(payload.id, language)}
           <div class="rich-copy-preview" aria-label="${escapeHtml(payload.message)}">
             <img src="${escapeHtml(payload.imageUrl)}" alt="${escapeHtml(payload.id)}.${escapeHtml(payload.name)}">
             <p class="message-preview">${escapeHtml(payload.message)}</p>
@@ -1080,6 +1372,20 @@
 
         const image = article.querySelector("img");
         image.addEventListener("error", () => article.classList.add("missing-image"));
+
+        const select = article.querySelector(".role-select");
+        select.addEventListener("click", (event) => event.stopPropagation());
+        select.addEventListener("change", (event) => {
+          currentRoleIds[index] = event.target.value;
+          renderRoles(currentRoleIds, getSelectedLanguage());
+        });
+
+        article.addEventListener("click", (event) => {
+          if (!manualMode || event.target.closest("button") || event.target.closest("select")) return;
+          article.classList.add("manual-open");
+          select.focus();
+          if (typeof select.showPicker === "function") select.showPicker();
+        });
 
         const richButton = article.querySelector(".copy-rich-button");
         richButton.addEventListener("click", async () => {
@@ -1098,7 +1404,8 @@
 
       copyAllButton.hidden = currentPayloads.length === 0;
       copyAllTextButton.hidden = currentPayloads.length === 0;
-      setStatus(text.generated(roleIds.length), "generated");
+      setStatus(text.generated(currentRoleIds.length), "generated");
+      renderWarnings();
     }
 
     function generateRoles() {
@@ -1113,11 +1420,28 @@
         copyAllTextButton.hidden = true;
         currentPayloads = [];
         currentRoleIds = [];
+        warningsPanel.hidden = true;
+        warningsList.innerHTML = "";
         return;
       }
 
-      renderRoles(assignRoles(playerCount, false), language);
+      renderRoles(assignRoles(playerCount, getAdvancedEnabled()), language);
     }
+
+    manualModeButton.addEventListener("click", () => {
+      manualMode = !manualMode;
+      updateManualModeButton();
+      if (currentRoleIds.length > 0) renderRoles(currentRoleIds, getSelectedLanguage());
+    });
+
+    advancedToggle.addEventListener("change", () => {
+      if (currentRoleIds.length > 0) {
+        currentRoleIds = removeAdvancedRolesIfDisabled(currentRoleIds);
+        renderRoles(currentRoleIds, getSelectedLanguage());
+      } else {
+        renderWarnings();
+      }
+    });
 
     generateButton.addEventListener("click", generateRoles);
 
