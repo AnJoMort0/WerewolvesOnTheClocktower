@@ -489,14 +489,30 @@
       display: none;
     }
 
+    .warnings-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
     .warnings-title {
-      margin: 0 0 8px;
+      margin: 0;
       color: var(--gold-bright);
       font-family: Georgia, "Times New Roman", serif;
       font-size: 0.82rem;
       font-weight: 800;
       letter-spacing: 0.16em;
       text-transform: uppercase;
+    }
+
+    .solve-button {
+      width: auto;
+      padding: 9px 12px;
+      color: var(--text-strong);
+      font-size: 0.72rem;
+      white-space: nowrap;
     }
 
     .warnings-list {
@@ -559,6 +575,48 @@
       box-shadow: 0 0 0 4px var(--gold-soft);
     }
 
+    .role-card.has-warning {
+      border-color: rgba(226, 74, 65, 0.82);
+      background:
+        linear-gradient(145deg, rgba(88, 36, 33, 0.74), rgba(38, 31, 28, 0.95)),
+        radial-gradient(circle at 0% 0%, rgba(226, 74, 65, 0.12), transparent 14rem);
+      box-shadow: 0 16px 38px var(--shadow), 0 0 0 3px rgba(226, 74, 65, 0.12), inset 0 1px 0 rgba(255, 248, 234, 0.035);
+    }
+
+    .card-warning-icon {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(226, 74, 65, 0.75);
+      background: rgba(226, 74, 65, 0.18);
+      color: #ffd7c9;
+      font-size: 1rem;
+      box-shadow: 0 0 18px rgba(226, 74, 65, 0.12);
+    }
+
+    .role-card.has-warning .card-warning-icon {
+      display: inline-flex;
+    }
+
+    .card-warning-note {
+      display: none;
+      margin: 0;
+      padding: 8px 10px;
+      border: 1px solid rgba(226, 74, 65, 0.46);
+      border-radius: 12px;
+      background: rgba(226, 74, 65, 0.12);
+      color: #ffd7c9;
+      font-size: 0.8rem;
+      line-height: 1.35;
+    }
+
+    .role-card.has-warning .card-warning-note {
+      display: block;
+    }
+
     @media (max-width: 520px) {
       .rich-copy-preview {
         align-items: flex-start;
@@ -571,6 +629,15 @@
     }
 
     @media (max-width: 760px) {
+      .warnings-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .solve-button {
+        width: 100%;
+      }
+
       main {
         width: min(100% - 20px, 1120px);
         padding-top: 22px;
@@ -647,7 +714,10 @@
     </div>
 
     <section id="warningsPanel" class="warnings-panel" hidden aria-live="polite">
-      <h2 class="warnings-title" data-i18n="warningsTitle">Avisos de equilíbrio</h2>
+      <div class="warnings-header">
+        <h2 class="warnings-title" data-i18n="warningsTitle">Avisos de equilíbrio</h2>
+        <button id="solveWarningsButton" class="secondary-button solve-button" type="button" hidden data-i18n="solveButton">Resolver automaticamente</button>
+      </div>
       <ul id="warningsList" class="warnings-list"></ul>
     </section>
 
@@ -897,6 +967,7 @@
         manualHint: "Modo manual ativo: clica num jogador para abrir a lista e mudar a personagem.",
         roleSelectLabel: "Alterar personagem",
         warningsTitle: "Avisos de equilíbrio",
+        solveButton: "Resolver automaticamente",
         warningsAllGood: "A seleção respeita os requisitos principais de equilíbrio.",
         warningWerewolves: (actual, expected) => `Número de Lobisomens incorreto: há ${actual}, mas para este número de jogadores devem existir ${expected}.`,
         warningRepeated: (items) => `Personagens únicas repetidas: ${items}. Só Lobisomem, Aldeão Triste, Irmãs em dupla e Irmãos em trio podem repetir.`,
@@ -907,6 +978,9 @@
         warningEssentialRepeated: (items) => `Personagens essenciais repetidas: ${items}.`,
         warningGroupSize: (role, expected, actual) => `${role} deve aparecer ${expected} vezes quando está em jogo, mas aparece ${actual}.`,
         warningUnder12Special: (items) => `Com menos de 12 jogadores, os Lobisomens devem ser simples. Personagens de Lobisomem especiais presentes: ${items}.`,
+        cardWarningLabel: "Aviso",
+        cardWarningMultiple: (count) => `${count} problemas nesta personagem`,
+        advancedOffOption: "modo avançado desligado",
         generateButton: "Gerar personagens",
         copyAllRichButton: "Copiar tudo com imagens",
         copyAllTextButton: "Copiar tudo em texto",
@@ -942,6 +1016,7 @@
         manualHint: "Mode manuel actif : clique sur un joueur pour ouvrir la liste et changer son personnage.",
         roleSelectLabel: "Changer le personnage",
         warningsTitle: "Avertissements d’équilibre",
+        solveButton: "Résoudre automatiquement",
         warningsAllGood: "La sélection respecte les principaux critères d’équilibre.",
         warningWerewolves: (actual, expected) => `Nombre de Loups-garous incorrect : il y en a ${actual}, alors qu’il en faut ${expected} pour ce nombre de joueurs.`,
         warningRepeated: (items) => `Personnages uniques répétés : ${items}. Seuls Loup-garou, Villageois Triste, Sœurs en duo et Frères en trio peuvent se répéter.`,
@@ -952,6 +1027,9 @@
         warningEssentialRepeated: (items) => `Personnages essentiels répétés : ${items}.`,
         warningGroupSize: (role, expected, actual) => `${role} doit apparaître ${expected} fois lorsqu’il est en jeu, mais apparaît ${actual} fois.`,
         warningUnder12Special: (items) => `Avec moins de 12 joueurs, les Loups-garous doivent être simples. Personnages Loups-garous spéciaux présents : ${items}.`,
+        cardWarningLabel: "Avertissement",
+        cardWarningMultiple: (count) => `${count} problèmes sur ce personnage`,
+        advancedOffOption: "mode avancé désactivé",
         generateButton: "Générer les personnages",
         copyAllRichButton: "Tout copier avec images",
         copyAllTextButton: "Tout copier en texte",
@@ -984,6 +1062,7 @@
     const status = document.querySelector("#status");
     const warningsPanel = document.querySelector("#warningsPanel");
     const warningsList = document.querySelector("#warningsList");
+    const solveWarningsButton = document.querySelector("#solveWarningsButton");
 
     let currentRoleIds = [];
     let currentPayloads = [];
@@ -1211,22 +1290,32 @@
       return `${id}.${labels[id] || id}`;
     }
 
-    function getManualRoleOptions(language = getSelectedLanguage()) {
+    function getManualRoleOptions(language = getSelectedLanguage(), selectedId = null) {
       const labels = getLabels(language);
       const availableIds = Object.keys(ROLE_DEFS).filter((id) => getAdvancedEnabled() || !ADVANCED_ROLES.includes(id));
-      return availableIds
+      const options = availableIds
         .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-        .map((id) => ({ id, label: `${id}.${labels[id] || id}` }));
+        .map((id) => ({ id, label: `${id}.${labels[id] || id}`, disabled: false }));
+
+      if (selectedId && !availableIds.includes(selectedId)) {
+        options.unshift({
+          id: selectedId,
+          label: `${selectedId}.${labels[selectedId] || selectedId} — ${getUiText(language).advancedOffOption}`,
+          disabled: true
+        });
+      }
+
+      return options;
     }
 
     function buildRoleSelectHtml(selectedId, language = getSelectedLanguage()) {
       const text = getUiText(language);
-      const options = getManualRoleOptions(language);
+      const options = getManualRoleOptions(language, selectedId);
       return `
         <div class="manual-controls">
           <label>${escapeHtml(text.roleSelectLabel)}</label>
           <select class="role-select">
-            ${options.map((option) => `<option value="${escapeHtml(option.id)}" ${option.id === selectedId ? "selected" : ""}>${escapeHtml(option.label)}</option>`).join("")}
+            ${options.map((option) => `<option value="${escapeHtml(option.id)}" ${option.id === selectedId ? "selected" : ""} ${option.disabled ? "disabled" : ""}>${escapeHtml(option.label)}</option>`).join("")}
           </select>
         </div>
       `.trim();
@@ -1246,71 +1335,125 @@
       }, {});
     }
 
-    function validateRoleSelection(roleIds, language = getSelectedLanguage()) {
+    function createValidationDetails(roleIds, language = getSelectedLanguage()) {
       const text = getUiText(language);
       const counts = countRoles(roleIds);
       const warnings = [];
+      const issuesByIndex = roleIds.map(() => []);
       const playerCount = roleIds.length;
       const expectedWolves = getWerewolfCount(playerCount);
       const actualWolves = roleIds.filter((id) => WEREWOLF_ROLES.includes(id)).length;
 
-      if (actualWolves !== expectedWolves) warnings.push(text.warningWerewolves(actualWolves, expectedWolves));
+      function addGlobal(message) {
+        warnings.push(message);
+      }
+
+      function addIssue(index, message) {
+        if (index >= 0 && index < issuesByIndex.length) issuesByIndex[index].push(message);
+      }
+
+      function addRoleIssue(id, message) {
+        roleIds.forEach((roleId, index) => {
+          if (roleId === id) addIssue(index, message);
+        });
+      }
+
+      if (actualWolves !== expectedWolves) {
+        const message = text.warningWerewolves(actualWolves, expectedWolves);
+        addGlobal(message);
+        roleIds.forEach((id, index) => {
+          if (WEREWOLF_ROLES.includes(id)) addIssue(index, message);
+        });
+      }
 
       const repeatedUnique = Object.entries(counts)
-        .filter(([id, count]) => count > 1 && !ALLOWED_REPEAT_ROLES.has(id))
-        .map(([id]) => getRoleDisplayName(id, language));
-      if (repeatedUnique.length > 0) warnings.push(text.warningRepeated(repeatedUnique.join(", ")));
+        .filter(([id, count]) => count > 1 && !ALLOWED_REPEAT_ROLES.has(id));
+      if (repeatedUnique.length > 0) {
+        const message = text.warningRepeated(repeatedUnique.map(([id]) => getRoleDisplayName(id, language)).join(", "));
+        addGlobal(message);
+        repeatedUnique.forEach(([id]) => addRoleIssue(id, message));
+      }
 
       const missingEssentials = ESSENTIAL_SINGLES.filter((id) => !counts[id]).map((id) => getRoleDisplayName(id, language));
-      const repeatedEssentials = ESSENTIAL_SINGLES.filter((id) => counts[id] > 1).map((id) => getRoleDisplayName(id, language));
-      if (missingEssentials.length > 0) warnings.push(text.warningEssentialMissing(missingEssentials.join(", ")));
-      if (repeatedEssentials.length > 0) warnings.push(text.warningEssentialRepeated(repeatedEssentials.join(", ")));
+      const repeatedEssentials = ESSENTIAL_SINGLES.filter((id) => counts[id] > 1);
+      if (missingEssentials.length > 0) addGlobal(text.warningEssentialMissing(missingEssentials.join(", ")));
+      if (repeatedEssentials.length > 0) {
+        const message = text.warningEssentialRepeated(repeatedEssentials.map((id) => getRoleDisplayName(id, language)).join(", "));
+        addGlobal(message);
+        repeatedEssentials.forEach((id) => addRoleIssue(id, message));
+      }
 
-      roleIds.forEach((id) => {
+      roleIds.forEach((id, index) => {
         const def = ROLE_DEFS[id];
         if (def?.requires && !counts[def.requires]) {
-          warnings.push(text.warningDependency(getRoleDisplayName(id, language), getRoleDisplayName(def.requires, language)));
+          const message = text.warningDependency(getRoleDisplayName(id, language), getRoleDisplayName(def.requires, language));
+          addGlobal(message);
+          addIssue(index, message);
         }
       });
 
-      if (counts.l03 && counts.l03 !== 2) warnings.push(text.warningGroupSize(getRoleDisplayName("l03", language), 2, counts.l03));
-      if (counts.l04 && counts.l04 !== 3) warnings.push(text.warningGroupSize(getRoleDisplayName("l04", language), 3, counts.l04));
+      if (counts.l03 && counts.l03 !== 2) {
+        const message = text.warningGroupSize(getRoleDisplayName("l03", language), 2, counts.l03);
+        addGlobal(message);
+        addRoleIssue("l03", message);
+      }
 
-      if (!INFO_ROLES.some((id) => counts[id])) warnings.push(text.warningInfoMissing);
+      if (counts.l04 && counts.l04 !== 3) {
+        const message = text.warningGroupSize(getRoleDisplayName("l04", language), 3, counts.l04);
+        addGlobal(message);
+        addRoleIssue("l04", message);
+      }
+
+      if (!INFO_ROLES.some((id) => counts[id])) addGlobal(text.warningInfoMissing);
 
       if (!getAdvancedEnabled()) {
-        const advancedPresent = [...new Set(roleIds.filter((id) => ADVANCED_ROLES.includes(id)))].map((id) => getRoleDisplayName(id, language));
-        if (advancedPresent.length > 0) warnings.push(text.warningAdvancedOff(advancedPresent.join(", ")));
+        const advancedPresentIds = [...new Set(roleIds.filter((id) => ADVANCED_ROLES.includes(id)))];
+        if (advancedPresentIds.length > 0) {
+          const message = text.warningAdvancedOff(advancedPresentIds.map((id) => getRoleDisplayName(id, language)).join(", "));
+          addGlobal(message);
+          advancedPresentIds.forEach((id) => addRoleIssue(id, message));
+        }
       }
 
       if (playerCount < 12) {
-        const specialWolves = [...new Set(roleIds.filter((id) => SPECIAL_WEREWOLVES.includes(id)))].map((id) => getRoleDisplayName(id, language));
-        if (specialWolves.length > 0) warnings.push(text.warningUnder12Special(specialWolves.join(", ")));
+        const specialWolves = [...new Set(roleIds.filter((id) => SPECIAL_WEREWOLVES.includes(id)))];
+        if (specialWolves.length > 0) {
+          const message = text.warningUnder12Special(specialWolves.map((id) => getRoleDisplayName(id, language)).join(", "));
+          addGlobal(message);
+          specialWolves.forEach((id) => addRoleIssue(id, message));
+        }
       }
 
-      return warnings;
+      return { warnings, issuesByIndex };
+    }
+
+    function validateRoleSelection(roleIds, language = getSelectedLanguage()) {
+      return createValidationDetails(roleIds, language).warnings;
     }
 
     function renderWarnings() {
       if (currentRoleIds.length === 0) {
         warningsPanel.hidden = true;
         warningsList.innerHTML = "";
+        solveWarningsButton.hidden = true;
         return;
       }
 
       const language = getSelectedLanguage();
       const text = getUiText(language);
-      const warnings = validateRoleSelection(currentRoleIds, language);
+      const { warnings } = createValidationDetails(currentRoleIds, language);
       warningsPanel.hidden = false;
+      solveWarningsButton.hidden = warnings.length === 0;
       warningsList.classList.toggle("good", warnings.length === 0);
       warningsList.innerHTML = warnings.length === 0
         ? `<li>${escapeHtml(text.warningsAllGood)}</li>`
         : warnings.map((warning) => `<li>${escapeHtml(warning)}</li>`).join("");
     }
 
-    function removeAdvancedRolesIfDisabled(roleIds) {
-      if (getAdvancedEnabled()) return roleIds;
-      return roleIds.map((id) => ADVANCED_ROLES.includes(id) ? "l01" : id);
+    function solveWarningsAutomatically() {
+      if (currentRoleIds.length === 0) return;
+      const fixedRoleIds = assignRoles(currentRoleIds.length, getAdvancedEnabled());
+      renderRoles(fixedRoleIds, getSelectedLanguage());
     }
 
     function updateStaticInterface() {
@@ -1338,25 +1481,30 @@
       currentRoleIds = [];
       warningsPanel.hidden = true;
       warningsList.innerHTML = "";
+      solveWarningsButton.hidden = true;
       setStatus(text.emptyStatus, "empty");
     }
 
     function renderRoles(roleIds, language) {
       const text = getUiText(language);
-      currentRoleIds = removeAdvancedRolesIfDisabled([...roleIds]);
+      currentRoleIds = [...roleIds];
       currentPayloads = currentRoleIds.map((id) => createRolePayload(id, language));
+      const validationDetails = createValidationDetails(currentRoleIds, language);
       results.innerHTML = "";
 
       currentPayloads.forEach((payload, index) => {
         const article = document.createElement("article");
-        article.className = "role-card";
+        const cardIssues = validationDetails.issuesByIndex[index] || [];
+        article.className = `role-card${cardIssues.length > 0 ? " has-warning" : ""}`;
         article.dataset.index = String(index);
         article.innerHTML = `
           <div class="role-top">
             <span class="player-badge">${escapeHtml(text.player(index + 1))}</span>
+            <span class="card-warning-icon" title="${escapeHtml(cardIssues.join("\n"))}" aria-label="${escapeHtml(text.cardWarningLabel)}">⚠</span>
             <span class="role-id">${escapeHtml(payload.id)}</span>
           </div>
           <h2 class="role-name">${escapeHtml(payload.name)}</h2>
+          <p class="card-warning-note">${escapeHtml(cardIssues.length === 1 ? cardIssues[0] : text.cardWarningMultiple(cardIssues.length))}</p>
           ${buildRoleSelectHtml(payload.id, language)}
           <div class="rich-copy-preview" aria-label="${escapeHtml(payload.message)}">
             <img src="${escapeHtml(payload.imageUrl)}" alt="${escapeHtml(payload.id)}.${escapeHtml(payload.name)}">
@@ -1422,6 +1570,7 @@
         currentRoleIds = [];
         warningsPanel.hidden = true;
         warningsList.innerHTML = "";
+        solveWarningsButton.hidden = true;
         return;
       }
 
@@ -1436,12 +1585,13 @@
 
     advancedToggle.addEventListener("change", () => {
       if (currentRoleIds.length > 0) {
-        currentRoleIds = removeAdvancedRolesIfDisabled(currentRoleIds);
         renderRoles(currentRoleIds, getSelectedLanguage());
       } else {
         renderWarnings();
       }
     });
+
+    solveWarningsButton.addEventListener("click", solveWarningsAutomatically);
 
     generateButton.addEventListener("click", generateRoles);
 
