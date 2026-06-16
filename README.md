@@ -34,6 +34,8 @@ The current updated list of characters and script can be found [here](https://do
 
 Feel free to share your ideas, suggestions, or experiences. Your feedback is welcome and may help shape future development, playtesting, and updates.
 
+You can use our official Tierlist to give your opinion of all the game's cards on [Tierlister](https://tiermaker.com/create/werewolves-on-the-clocktower---official-teir-list-17406677)
+
 ---
 
 ## Contact
