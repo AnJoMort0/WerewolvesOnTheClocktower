@@ -1,0 +1,53 @@
+-- Patch Notes 1 --
+
+> New Card: (Were)Wolf Tamer
+	- Needs to be added to Docs and almanac
+	- Needs to be added to handler app
+
+> New Card: Vintner
+	- Needs to be added to Docs and almanac
+	- Needs to be added to handler app
+
+> Nerfed: Saviour
+Full Immunity only lasts for one night
+	- Needs to be updated on Docs and almanac
+	- Needs to be updated on handler app
+
+> Buffed: Spy
+When a card is called by the Narrator, they gain the "Spied On" status effect (all reg Werewolves when the werewolves are called)
+	- Needs to be updated on Docs and almanac
+	- Needs to be updated on handler app
+
+> Buffed: Spider Tamer
+Once per game, during day time, the Spider Tamer can ask to change the webbed player even if they haven't died yet
+	- Needs to be added to Docs and almanac
+	- Needs to be added to handler app
+
+> Buffed: Illusioner
+If Pedro accuses werewolf who is illusion, should see innocent
+	- Needs to be added to Docs and almanac
+	- Needs to be added to handler app
+
+> Bug Fix: Raven Tamer
+Raven should only be confused if an Evil Being is an illusion, as otherwise it's always confused
+	- Needs to be updated on handler app
+
+> Bug Fix: Boy
+"Accused" status effect should be permanent. Use new "Accused last night" status effect to know who needs to be shown to Boy
+	- Needs to be updated on handler app
+
+> Bug Fix: Spy
+Spy should be able to see the cards of dead characters
+	- Needs to be updated on handler app
+
+> Bug Fix: Checkboxes
+Adapt checkboxes for specific usages (powers running out)
+	- Needs to be updated on handler app
+	 
+> Misc: Rearrange cards in Docs and almanac
+Cards should be organized by affinity on the Docs and almanac instead of ID (Spider Tamer next to other tamers, split werewolves/allies)
+	- Needs to be updated on Docs and almanac
+
+> Misc: Turn rulebook .md files into integrated .html rulebooks
+
+> Misc: Check Big Bad Werewolf immuntiy on handler app

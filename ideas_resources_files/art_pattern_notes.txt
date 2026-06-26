@@ -4,14 +4,14 @@ Colours / Colour combos and their correlation:
 -	Green					| Villager
 -	Purple					| Solo
 -	Yellow			- Person skin	| Flexible
--	Light Blue				| Flexible
+-	Cyan					| Flexible
 -	Beige			- Sad villager	| Neutral/Passive
 
--	Green / Lime				| Villager ; Assassination
+-	Lime					| Assassination
 -	Yellow / Lavender	- Fortune Teller
--	Black / Orange				| Villager ; Information
--	Green / Cyan				| Villager ; Life/Death
--	Green / Grey / Vote			| Villager ; Tribunal
+-	Black / Orange				| Information
+-	Cyan / White				| Life/Death
+-	Grey / Vote				| Tribunal
 
 Iconology of symbols:
 
