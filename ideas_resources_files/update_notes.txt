@@ -15,7 +15,6 @@ Full Immunity only lasts for one night
 
 > Buffed: Spy
 When a card is called by the Narrator, they gain the "Spied On" status effect (all reg Werewolves when the werewolves are called)
-	- Needs to be updated on Docs and almanac
 	- Needs to be updated on handler app
 
 > Buffed: Spider Tamer
