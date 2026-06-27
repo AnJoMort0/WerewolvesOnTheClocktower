@@ -553,7 +553,7 @@ Utilises cette liste comme carte de navigation pour sauter directement à une fi
 <div class="role-meta">Catégorie : Villageois · <a href="#liste-rapide-de-personnages">retour à la liste rapide</a></div>
 <div class="role-description">
 <p>Est immune aux <span class="rule-red" style="color:#cc0000;font-weight:700;">assassinats des </span><span class="rule-red" style="color:#cc0000;font-weight:700;">Loups-garous</span><span class="rule-red" style="color:#cc0000;font-weight:700;"> </span>tant que le Chasseur soit en vie.</p>
-<p>Si <span class="rule-red" style="color:#cc0000;font-weight:700;">exécuté pendant que le </span><span class="rule-red" style="color:#cc0000;font-weight:700;">Chasseur </span><span class="rule-red" style="color:#cc0000;font-weight:700;">est vivant</span>, le Chasseur peut tuer quelqu’un la nuit suivante.</p>
+<p>Si <span class="rule-red" style="color:#cc0000;font-weight:700;">exécuté pendant que le Chasseur est vivant</span>, le Chasseur peut tuer quelqu’un la nuit suivante.</p>
 <p><strong>Si empoisonné :</strong><br>Perd son immunité cette nuit-là.</p>
 <p><strong>Objectif :</strong><br>Tuer tous les Loups-garous.</p>
 </div>
@@ -795,7 +795,8 @@ Utilises cette liste comme carte de navigation pour sauter directement à une fi
 <div class="role-description">
 <p><span class="rule-red" style="color:#cc0000;font-weight:700;">La première nuit</span>, il choisit un joueur chez qui il fera une toile d’araignée.</p>
 <p><span class="rule-red" style="color:#cc0000;font-weight:700;">Chaque nuit après la première</span>, le Meneur révèle au Maître de l’Araignée chaque carte qui a pointé le joueur avec la toile cette nuit-là.</p>
-<p><span class="rule-red" style="color:#cc0000;font-weight:700;">La nuit suivant la mort du joueur avec la toile d’araignée</span>, le Maître de l’Araignée est réveillé et en choisit un nouveau..</p>
+<p><span class="rule-red" style="color:#cc0000;font-weight:700;">La nuit suivant la mort du joueur avec la toile d’araignée</span>, le Maître de l’Araignée est réveillé et en choisit un nouveau.</p>
+<p><span class="rule-red" style="color:#cc0000;font-weight:700;">Une fois</span> dans le jeu, <span class="rule-red" style="color:#cc0000;font-weight:700;">pendant le jour</span>, il peut dire <span class="rule-red" style="color:#cc0000;font-weight:700;">discrètement</span> au Meneur s’il souhaite changer le joueur avec la toile avant la mort de celui-ci.</p>
 <p><strong>Si empoisonné :</strong><br>Recevra de fausses informations.</p>
 <p><strong>Objectif :</strong><br>Tuer tous les Loups-garous.</p>
 </div>
@@ -950,7 +951,8 @@ Utilises cette liste comme carte de navigation pour sauter directement à une fi
 <div class="role-title">🟪 <code>s02</code> · Loup-garou Blanc <span class="role-badge">Indépendant</span></div>
 <div class="role-meta">Catégorie : Personnages indépendants · <a href="#liste-rapide-de-personnages">retour à la liste rapide</a></div>
 <div class="role-description">
-<p>Il se réveille et agit comme un Loup-garou, mais <span class="rule-red" style="color:#cc0000;font-weight:700;">à chaque trois nuits</span>, il<span class="rule-red" style="color:#cc0000;font-weight:700;"> doit </span>aussi assassiner un Loup-garou.</p>
+<p>Il se réveille et agit comme un Loup-garou, mais <span class="rule-red" style="color:#cc0000;font-weight:700;">à chaque trois nuits, il doit</span> aussi assassiner un Loup-garou.</p>
+<p><span class="rule-red" style="color:#cc0000;font-weight:700;">Si le Loup-garou Blanc est le seul Loup-garou restant,</span> il continue d’être appelé à chaque trois nuits, pour assassiner un joueur supplémentaire.</p>
 <p><strong>Si empoisonné :</strong><br>Peut tuer un Loup-garou de plus.</p>
 <p><strong>Objectif :</strong><br>Être le dernier survivant.</p>
 </div>
@@ -1125,12 +1127,13 @@ Utilises cette liste comme carte de navigation pour sauter directement à une fi
 <div class="role-title">🟥 <code>a06</code> · Illusionniste <span class="role-badge">Créatures Maléfiques</span></div>
 <div class="role-meta">Catégorie : Personnages complexes · <a href="#liste-rapide-de-personnages">retour à la liste rapide</a></div>
 <div class="role-description">
-<p><span class="rule-red" style="color:#cc0000;font-weight:700;">NE </span>SE RÉVEILLE <span class="rule-red" style="color:#cc0000;font-weight:700;">PAS </span>AVEC LES LOUPS-GAROUS.</p>
+<p><span class="rule-red" style="color:#cc0000;font-weight:700;">NE</span> SE RÉVEILLE <span class="rule-red" style="color:#cc0000;font-weight:700;">PAS</span> AVEC LES LOUPS-GAROUS.</p>
 <p><span class="rule-red" style="color:#cc0000;font-weight:700;">Chaque nuit</span>, il choisit un joueur (qui peut être soi-même). Celui-ci sera offusqué par une Illusion.</p>
 <p>Si la Voyante, Loup-garou Voyante, le Maître de l’Araignée, le Falotier ou l’Espion voient une Illusion, ils verront le rôle “Illusionniste”.</p>
 <p>Si le Mime copie une Illusion, il copiera l&#x27;Illusionniste.</p>
 <p>Si l’une des cibles des Maîtres des Animaux est une Illusion, l’animal sera confus. Dans le cas du Maître de l’Araignée, si le joueur avec la toile d’araignée est une Illusion, l’araignée sera confuse.</p>
 <p>Si l’assassin de la victime choisi par la Petite Fille est une Illusion, la Petite Fille verra le rôle “Illusionniste”.</p>
+<p>Si le joueur accusé par l’Enfant est une Illusion, l’Enfant recevra l’information que le joueur n’était pas un Loup-garou, même s’il s’en agissait d’un.</p>
 <p><strong>Si empoisonné :</strong><br>L’Illusion ne sera pas créée.</p>
 <p><strong>Objectif :</strong><br>Tuer tous les Villageois.</p>
 </div>
@@ -1413,7 +1416,7 @@ Utilises cette liste comme carte de navigation pour sauter directement à une fi
 > Cette nuit n’aura pas de morts.
 > Lancer un d12.
 
-- Cupidon se réveille et choisit deux joueurs qui seront Amoureux.  Cupidon s’endort et les Amoureux seront maintenant touchés pour qu’ils se connaissent. Si un Amoureux meurt, l’autre se suicide. L’objectif des Amoureux et de Cupidon est que les Amoureux soient les derniers survivants.
+- Cupidon se réveille et choisit deux joueurs qui seront Amoureux.  Cupidon s’endort et les Amoureux seront maintenant touchés pour qu’ils se connaissent. Si un Amoureux meurt, l’autre se suicide. L’objectif des Amoureux et de Cupidon est que les Amoureux soient les derniers survivants. Tant que les Amoureux sont en vie, le jeu continue.
 - Le Méchant Cupidon se réveille et choisit deux joueurs qui seront Ennemis.  Le Méchant Cupidon s’endort et les Ennemis seront maintenant touchés pour qu’ils se connaissent. Si un Ennemi parvient à amener l’autre à exécution, le premier reçoit immunité contre le prochain assassinat.
 - Les Sœurs se réveillent pour se connaître.
 - Les Frères se réveillent pour se connaître.
@@ -1471,7 +1474,7 @@ Utilises cette liste comme carte de navigation pour sauter directement à une fi
 - Le Méchant Loup-garou se réveille et indique di pouce s’il veut ou on se déguiser en Grand-maman aujourd’hui. Il ne peut utiliser ce pouvoir que deux fois par jeu.
 - Le Loup-garou Voyant se réveillent / ne se réveillent pas si empoisonnés. Il indique du pouce s’il veut sauver la victime pour savoir son rôle ou la laisser mourir.
 - Le Loup-garou Vampire se réveillent / ne se réveillent pas si empoisonnés ou victime sauvé par Loup-garou Voyant. Il indique du pouce s’il veut sauver la victime ou non.  Si oui, la victime sera touchée, ne se réveillera pas, et passera à se réveiller avec les Loups-garous. La victime indique du pouce si elle souhaite ou non garder ses pouvoirs.
-- (Chaque troisième nuit) Le Loup-garou Blanc se réveille et chosit un Loup-garou qu’il souhaite tuer.
+- (Chaque troisième nuit) Le Loup-garou Blanc se réveille et chosit un Loup-garou qu’il souhaite tuer. Le Loup-garou Blanc se réveille et chosit un autre joueur qu’il souhaite tuer.
 - Le Maître des Lapins entend les lapins effrayés cette nuit / [rien] (/ les Lapins sont confus)
 - Le Chaman se réveille  (/ ne se réveille pas s’il n’y a pas de victimes) et les victimes de cette nuit lui sont révélées. Il choisit s’il souhaite sauver une des victimes. Il ne peut utiliser ce pouvoir que deux fois par jeu.
 - Le Falotier se réveille et apprend d’une carte en jeu avec un pouvoir limité et découvre combien d’utilisations restent encore au pouvoir.

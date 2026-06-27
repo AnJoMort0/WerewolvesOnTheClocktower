@@ -554,7 +554,7 @@ Usa esta lista como mapa de navegação para saltar diretamente para uma ficha n
 <div class="role-meta">Categoria: Aldeões · <a href="#lista-rapida-de-personagens">voltar à lista rápida</a></div>
 <div class="role-description">
 <p>É imune aos <span class="rule-red" style="color:#cc0000;font-weight:700;">assassinatos dos</span> <span class="rule-red" style="color:#cc0000;font-weight:700;">Lobisomens</span> enquanto o <span class="rule-red" style="color:#cc0000;font-weight:700;">Caçador</span> <span class="rule-red" style="color:#cc0000;font-weight:700;">estiver vivo</span>.</p>
-<p>Se for <span class="rule-red" style="color:#cc0000;font-weight:700;">executada enquanto o</span> Caçador estiver vivo, o Caçador pode matar alguém na próxima noite.</p>
+<p>Se for <span class="rule-red" style="color:#cc0000;font-weight:700;">executada enquanto o Caçador estiver vivo</span>, o Caçador pode matar alguém na próxima noite.</p>
 <p><strong>Se envenenado:</strong><br>Perde a imunidade essa noite.</p>
 <p><strong>Objetivo:</strong><br>Matar todos os Lobisomens.</p>
 </div>
@@ -797,6 +797,7 @@ Usa esta lista como mapa de navegação para saltar diretamente para uma ficha n
 <p><span class="rule-red" style="color:#cc0000;font-weight:700;">Na primeira noite</span>, escolhe um jogador no qual tece uma teia de aranha.</p>
 <p><span class="rule-red" style="color:#cc0000;font-weight:700;">Cada noite depois da primeira</span>, o Domador da Aranha será mostrado as cartas que durante a noite apontaram o jogador com a teia.</p>
 <p><span class="rule-red" style="color:#cc0000;font-weight:700;">Na noite seguinte à morte do jogador com a teia de aranha</span>, o Domador da Aranha é acordado para escolher um novo.</p>
+<p><span class="rule-red" style="color:#cc0000;font-weight:700;">Uma vez</span> no jogo, <span class="rule-red" style="color:#cc0000;font-weight:700;">durante o dia</span>, pode dizer <span class="rule-red" style="color:#cc0000;font-weight:700;">discretamente</span> ao Narrador para mudar o jogador com a teia antes da morte dele.</p>
 <p><strong>Se envenenado:</strong><br>Receberá a informação errada.</p>
 <p><strong>Objetivo:</strong><br>Matar todos os Lobisomens.</p>
 </div>
@@ -863,7 +864,7 @@ Usa esta lista como mapa de navegação para saltar diretamente para uma ficha n
 <div class="role-meta">Categoria: Personagens malvados · <a href="#lista-rapida-de-personagens">voltar à lista rápida</a></div>
 <div class="role-description">
 <p><span class="rule-red" style="color:#cc0000;font-weight:700;">Uma só vez durante todo o jogo</span>, pode transformar a vítima dos Lobisomens em Lobisomem.</p>
-<p>A vítima será avisada e <span class="rule-red" style="color:#cc0000;font-weight:700;">guarda os seus poderes de Aldeão se quiser (</span><span class="rule-red" style="color:#cc0000;font-weight:700;">👍</span>/<span class="rule-red" style="color:#cc0000;font-weight:700;">👎</span>) mas joga com o objetivo dos Lobisomens.</p>
+<p>A vítima será avisada e <span class="rule-red" style="color:#cc0000;font-weight:700;">guarda os seus poderes de Aldeão se quiser </span><span class="rule-red" style="color:#cc0000;font-weight:700;"></span>(👍/👎) mas joga com o objetivo dos Lobisomens.</p>
 <p>Se a vítima tiver um poder com usos limitados, recupera todos os usos quando transformada.</p>
 <p><strong>Se qualquer Lobisomem estiver envenenado:</strong><br>Não podem matar.</p>
 <p><strong>Objetivo:</strong><br>Matar todos os Aldeões.</p>
@@ -949,7 +950,8 @@ Usa esta lista como mapa de navegação para saltar diretamente para uma ficha n
 <div class="role-title">🟪 <code>s02</code> · Lobisomem Branco <span class="role-badge">Independente</span></div>
 <div class="role-meta">Categoria: Personagens independentes · <a href="#lista-rapida-de-personagens">voltar à lista rápida</a></div>
 <div class="role-description">
-<p>Acorda e age como um Lobisomem, mas <span class="rule-red" style="color:#cc0000;font-weight:700;">a cada três noites</span> <span class="rule-red" style="color:#cc0000;font-weight:700;">tem</span> também de assassinar um Lobisomem.</p>
+<p>Acorda e age como um Lobisomem, mas <span class="rule-red" style="color:#cc0000;font-weight:700;">a cada três noites tem</span> também de assassinar um Lobisomem.</p>
+<p><span class="rule-red" style="color:#cc0000;font-weight:700;">Se o Lobisomem Branco for o único Lobisomem vivo</span>, ele continua a ser chamado a cada três noites para assassinar um jogador a mais.</p>
 <p><strong>Se envenenado:</strong><br>Pode matar um Lobisomem a mais.</p>
 <p><strong>Objetivo:</strong><br>Ser o último sobrevivente.</p>
 </div>
@@ -1130,6 +1132,7 @@ Usa esta lista como mapa de navegação para saltar diretamente para uma ficha n
 <p>Se o Mimo copia uma Ilusão, ele copia o Ilusionista.</p>
 <p>Se o alvo de um dos Domadores de Animais for uma Ilusão, o animal ficará confuso. No caso do Domador da Aranha, se o jogador com a teia de aranha for uma Ilusão, a aranha estará confusa.</p>
 <p>Se o assassino da vítima escolhida pela Menina for uma Ilusão, a Menina verá o papel “Ilusionista”.</p>
+<p>Se o jogador acusado pelo Pedro for uma Ilusão, o Pedro recebe como informação que esse jogador não é Lobisomem, mesmo se for.</p>
 <p><strong>Se envenenado:</strong><br>A ilusão não acontecerá.</p>
 <p><strong>Objetivo:</strong><br>Matar todos os Aldeões.</p>
 </div>
@@ -1412,7 +1415,7 @@ Usa esta lista como mapa de navegação para saltar diretamente para uma ficha n
 > Esta noite não terá mortos.
 > Lançar um d12.
 
-- O Cupido acorda e escolhe dois jogadores que serão Namorados. O Cupido adormece e os Namorados serão agora tocados e podem se conhecer. Se um Namorado morre, o outro se suicida. O objetivo dos Namorados e do Cupido é que os Namorados sejam os últimos sobreviventes.
+- O Cupido acorda e escolhe dois jogadores que serão Namorados. O Cupido adormece e os Namorados serão agora tocados e podem se conhecer. Se um Namorado morre, o outro se suicida. O objetivo dos Namorados e do Cupido é que os Namorados sejam os últimos sobreviventes. Enquanto os Namorados estiverem vivos, o jogo continua.
 - O Cupido Malvado acorda e escolhe dois jogadores que serão Inimigos. O Cupido Malvado adormece e os Inimigos serão tocados e podem se conhecer. Se um Inimigo consegue condenar o outro a execução, o primeiro recebe imunidade na próxima tentativa de assassinato.
 - As Irmãs acordam para se conhecerem.
 - Os Irmãos acordam para se conhecerem.
@@ -1465,7 +1468,7 @@ Usa esta lista como mapa de navegação para saltar diretamente para uma ficha n
 - O Lobisomem Mau acorda e escolhe com o polegar se quer se mascarar de Avózinha esta noite e dia, ou não. Pode usar esse poder duas vezes durante todo o jogo.
 - O Lobisomem Vidente acorda/não acorda se envenenados e decide com o polegar se quer salvar a vítima para ver o seu papel ou deixá-la morrer.
 - O Lobisomem Vampiro acorda/não acorda se salvo pela Vidente ou se envenenados e diz com o polegar se quer transformar a vítima em Lobisomem. Se for o caso, a vítima será tocada, e passará a acordar sempre com os Lobisomens. A vítima diz com o polegar se quer guardar os seus poderes ou não.
-- (A cada 3 noites) O Lobisomem Branco acorda e escolhe o Lobisomem que quer matar.
+- (A cada 3 noites) O Lobisomem Branco acorda e escolhe o Lobisomem que quer matar. / O Lobisomem Branco acorda e escolhe mais um jogador que quer matar.
 - O Domador dos Coelhos ouviu os Coelhos assustados esta noite/ [nada] (/os Coelhos estão confusos)
 - O Chaman acorda/não acorda se não houver vítimas e são-lhe apresentadas as vítimas. Ele escolhe então com o polegar se as quer salvar ou não. Relembro que pode salvar duas pessoas durante o jogo todo.
 - O Faroleiro acorda e é-lhe mostrado um personagem em jogo com um poder limitado e é informado de quantos usos esse personagem ainda tem.
