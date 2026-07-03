@@ -1,70 +1,56 @@
 -- Patch Notes 1 --
 
-> New Card: (Were)Wolf Tamer
-	- Needs to be added to Docs and almanac
-	- Needs to be added to handler app
+> New Card: (Were)Wolf Tamer (m06)
+Werewolf who passes by as a good guy
+	- Almanac (PT / FR)
+	- App
 
-> New Card: Vintner
-	- Needs to be added to Docs and almanac
-	- Needs to be added to handler app
+> New Card: Vintner (v24)
+Good guy who poisons
+	- Almanac (PT / FR)
+	- App
 
-> Nerfed: Saviour
+> Nerfed: Saviour (v17)
 Full Immunity only lasts for one night
-	- Needs to be updated on Docs and almanac
-	- Needs to be updated on handler app
+	- Almanac (PT / FR)
+	- App
 
-> Buffed: Spy
-When a card is called by the Narrator, they gain the "Spied On" status effect (all reg Werewolves when the werewolves are called)
-	- Needs to be updated on handler app
-
-> Buffed: Spider Tamer
+> Buffed: Spider Tamer (v23)
 Once per game, during day time, the Spider Tamer can ask to change the webbed player even if they haven't died yet
-	- Needs to be added to Docs and almanac
-	- Needs to be added to handler app
+	- Almanac
+	- App
 
-> Buffed: Illusioner
+> Buffed: Illusioner (a06)
 If Pedro accuses werewolf who is illusion, should see innocent
-	- Needs to be added to Docs and almanac
-	- Needs to be added to handler app
-
-> Bug Fix: Raven Tamer
-Raven should only be confused if an Evil Being is an illusion, as otherwise it's always confused
-	- Needs to be updated on handler app
-
-> Bug Fix: Boy
-"Accused" status effect should be permanent. Use new "Accused last night" status effect to know who needs to be shown to Boy
-	- Needs to be updated on handler app
-
-> Bug Fix: Spy
-Spy should be able to see the cards of dead characters
-	- Needs to be updated on handler app
-
-> Bug Fix: Checkboxes
-Adapt checkboxes for specific usages (powers running out)
-	- Needs to be updated on handler app
+	- Almanac
+	- App
 	 
 > Misc: Rearrange cards in Docs and almanac
-Cards should be organized by affinity on the Docs and almanac instead of ID (Spider Tamer next to other tamers, split werewolves/allies)
-	- Needs to be updated on Docs and almanac
-
-> Misc: Turn rulebook .md files into integrated .html rulebooks
-
-> Misc: Check Big Bad Werewolf immuntiy on handler app
+Cards should be organized by affinity on the Docs and almanac instead of ID:
+Split Werewolves/Allies (m01, m02, m03, m06 then m04, m05)
+v23 after v05 / v22 after v15 / v24 after v19 / v20, v21 and v25 after v06 / v16 before v07
+	- Almanac
 
 -- Patch 2 --
 
 > Misc: Minor Visual Update
 a05, a06, e02, e04, m03, v20, v22
-	- Docs & Almanac
+	- Docs (FR) & Almanac (PT / FR)
 	- App
 
 > New Card: Priest (v25)
 Discovers roles through confession
-	- Docs & Almanac
+	- Almanac (PT / FR)
 	- App
 
-> Visual Update: Switch Icon
-Card switch icon for game log
+> New Card: Astronomer (l05)
+Moon is sad when dead
+	- Almanac
+	- App
+
+> New Card: Devout Servant (l06)
+Sacrifices self for night's victime
+	- Almanac
 	- App
 
 > Skin Pack: Thiercelieux
