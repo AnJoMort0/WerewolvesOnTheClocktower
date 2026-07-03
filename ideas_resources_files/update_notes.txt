@@ -69,10 +69,10 @@ Card switch icon for game log
 
 > Skin Pack: Thiercelieux
 Classic card designs of:
-e02-04, m01-04, a01, a02, a04, as01b, f01, l01-04, l06, s01, s02, v01-16, v18
+e02-04, m01-04, a01, a02, a04, a06, as01b, f01, l01-04, l06, s01, s02, v01-18
 
 Werewolves of Millers Hollow-style redraws of WOTCT original roles:
-a03, m05-06, v08b, v20, v25
+a03, m05-06, v08b, v20, v23, v25
 
 > Skin Pack: Dynamic Flexibles
 Dynamic good/evil appearances for Flexible characters:
