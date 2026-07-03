@@ -50,3 +50,34 @@ Cards should be organized by affinity on the Docs and almanac instead of ID (Spi
 > Misc: Turn rulebook .md files into integrated .html rulebooks
 
 > Misc: Check Big Bad Werewolf immuntiy on handler app
+
+-- Patch 2 --
+
+> Misc: Minor Visual Update
+a05, a06, e02, e04, m03, v20, v22
+	- Docs & Almanac
+	- App
+
+> New Card: Priest (v25)
+Discovers roles through confession
+	- Docs & Almanac
+	- App
+
+> Visual Update: Switch Icon
+Card switch icon for game log
+	- App
+
+> Skin Pack: Thiercelieux
+Classic card designs of:
+e02-04, m01-04, a01, a02, a04, as01b, f01, l01-04, l06, s01, s02, v01-16, v18
+
+Werewolves of Millers Hollow-style redraws of WOTCT original roles:
+a03, m05-06, v08b, v20, v25
+
+> Skin Pack: Dynamic Flexibles
+Dynamic good/evil appearances for Flexible characters:
+f01, f02
+
+> Skin Pack: Seasonal - Easter
+Easter-themed card design for:
+v05
