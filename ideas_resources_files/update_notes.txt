@@ -2,55 +2,55 @@
 
 > New Card: (Were)Wolf Tamer (m06)
 Werewolf who passes by as a good guy
-	- Almanac (PT / FR)
+	- Rulebook (PT / FR)
 	- App
 
 > New Card: Vintner (v24)
 Good guy who poisons
-	- Almanac (PT / FR)
+	- Rulebook (PT / FR)
 	- App
 
 > Nerfed: Saviour (v17)
 Full Immunity only lasts for one night
-	- Almanac (PT / FR)
+	- Rulebook (PT / FR)
 	- App
 
 > Buffed: Spider Tamer (v23)
 Once per game, during day time, the Spider Tamer can ask to change the webbed player even if they haven't died yet
-	- Almanac
+	- Rulebook
 	- App
 
 > Buffed: Illusioner (a06)
 If Pedro accuses werewolf who is illusion, should see innocent
-	- Almanac
+	- Rulebook
 	- App
 	 
-> Misc: Rearrange cards in Docs and almanac
-Cards should be organized by affinity on the Docs and almanac instead of ID:
+> Misc: Rearrange cards in Docs and Rulebook
+Cards should be organized by affinity on the Docs and Rulebook instead of ID:
 Split Werewolves/Allies (m01, m02, m03, m06 then m04, m05)
 v23 after v05 / v22 after v15 / v24 after v19 / v20, v21 and v25 after v06 / v16 before v07
-	- Almanac
+	- Rulebook
 
 -- Patch 2 --
 
 > Misc: Minor Visual Update
 a05, a06, e02, e04, m03, v20, v22
-	- Docs (FR) & Almanac (PT / FR)
+	- Rulebook (PT / FR)
 	- App
 
 > New Card: Priest (v25)
 Discovers roles through confession
-	- Almanac (PT / FR)
+	- Rulebook (PT / FR)
 	- App
 
 > New Card: Astronomer (l05)
 Moon is sad when dead
-	- Almanac
+	- Rulebook
 	- App
 
 > New Card: Devout Servant (l06)
 Sacrifices self for night's victime
-	- Almanac
+	- Rulebook
 	- App
 
 > Skin Pack: Thiercelieux
