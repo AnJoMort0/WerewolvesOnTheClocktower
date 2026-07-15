@@ -10,21 +10,21 @@ Dynamic good/evil/solo appearances for Flexible characters:
 f01, f02, l03, a02
 
 > Skin Pack: Seasonal - Easter
-Easter-themed card design for:
+Easter-themed card designs for:
 v05
 
 > Skin Pack: Seasonal - NewYear
-Year's-themed card design for:
+Year's-themed card designs for:
 v24
 
-> Skin Pack: Seasonal - Muertos
-Dia De Los Muertos-themed card design for:
-e04
+> Skin Pack: Seasonal - Halloween
+Halloween-, Dia De Los Muertos-themed or otherwise scary card designs for:
+e04, a04
 
 > Skin Pack: Seasonal - Christmas
-Christmas-themed card design for:
+Christmas-themed card designs for:
 l04
 
 > Skin Pack: Seasonal - Carnival
-Carnival-themed or festive card design for:
+Carnival-themed or festive card designs for:
 a01, v23
