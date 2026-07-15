@@ -1,45 +1,3 @@
--- Patch Notes 1 --
-
-> New Card: (Were)Wolf Tamer (m06)
-Werewolf who passes by as a good guy
-	- App
-
-> New Card: Vintner (v24)
-Good guy who poisons
-	- App
-
-> Nerfed: Saviour (v17)
-Full Immunity only lasts for one night
-	- App
-
-> Buffed: Spider Tamer (v23)
-Once per game, during day time, the Spider Tamer can ask to change the webbed player even if they haven't died yet
-	- App
-
-> Buffed: Illusioner (a06)
-If Pedro accuses werewolf who is illusion, should see innocent
-	- App
-	 
-> Misc: Rearrange cards in Docs and Rulebook
-Cards should be organized by affinity on the Docs and Rulebook instead of ID:
-Split Werewolves/Allies (m01, m02, m03, m06 then m04, m05)
-v23 after v05 / v22 after v15 / v24 after v19 / v20, v21 and v25 after v06 / v16 before v07
-	- Rulebook
-
--- Patch 2 --
-
-> New Card: Priest (v25)
-Discovers roles through confession
-	- App
-
-> New Card: Astronomer (l05)
-Moon is sad when dead
-	- App
-
-> New Card: Devout Servant (l06)
-Sacrifices self for night's victime
-	- App
-
 > Skin Pack: Thiercelieux
 Classic card designs of:
 e02-04, m01-04, a01, a02, a04, a06, as01b, f01, l01-04, l06, s01, s02, v01-18
@@ -48,9 +6,25 @@ Werewolves of Millers Hollow-style redraws of WOTCT original roles:
 a03, m05-06, v08b, v20, v23, v25
 
 > Skin Pack: Dynamic Flexibles
-Dynamic good/evil appearances for Flexible characters:
-f01, f02
+Dynamic good/evil/solo appearances for Flexible characters:
+f01, f02, l03, a02
 
 > Skin Pack: Seasonal - Easter
 Easter-themed card design for:
 v05
+
+> Skin Pack: Seasonal - NewYear
+Year's-themed card design for:
+v24
+
+> Skin Pack: Seasonal - Muertos
+Dia De Los Muertos-themed card design for:
+e04
+
+> Skin Pack: Seasonal - Christmas
+Christmas-themed card design for:
+l04
+
+> Skin Pack: Seasonal - Carnival
+Carnival-themed or festive card design for:
+a01, v23
