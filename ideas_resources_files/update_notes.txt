@@ -5,6 +5,13 @@ Every night, wakes up and sees a card. If it is an Evil Being, loses its powers
 
 Assets: default, classic Thiercelieux design
 
+> New Card - v27 Colossus
+Assassination characetr ; added in order after v09 Captain
+
+If killed by the Werewolves, gets to assassinate a person who acted that night
+
+Assets: default, classic Thiercelieux design, Halloween Frankenstein's monster, undefined cyclops skin (TBD)
+
 _____
 
 > Skin Pack: Thiercelieux
