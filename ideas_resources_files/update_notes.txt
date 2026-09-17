@@ -1,6 +1,15 @@
+> New Card - v26 Monkey Tamer
+Tamer information character ; added in order after v05 Bunny Tamer
+
+Every night, wakes up and sees a card. If it is an Evil Being, loses its powers
+
+Assets: default, classic Thiercelieux design
+
+_____
+
 > Skin Pack: Thiercelieux
 Classic card designs of:
-e02-04, m01-04, a01, a02, a04, a06, as01b, f01, l01-04, l06, s01, s02, v01-18
+e02-04, m01-04, a01, a02, a04, a06, as01b, f01, l01-06, s01, s02, v01-19
 
 Werewolves of Millers Hollow-style redraws of WOTCT original roles:
 a03, m05-06, v08b, v20, v23, v25
