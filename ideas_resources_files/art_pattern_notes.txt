@@ -19,6 +19,7 @@ Iconology of symbols:
 -	Skull					| Death - Postmortem
 -	Thread					| Resurection
 -	Square with loop	- Vote		| Tribunal
++	Yellow / Beige circle background	| Travellers
 -	Heart					| Lovers
 -	Devil horns				| Represents Evil Beings
 -	Chain					| Animal Tamer
